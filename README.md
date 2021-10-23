@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://reactnative.dev/" target="blank"><img src="https://i.imgur.com/HPX7AP1.png" width="120" alt="React Logo" /></a>
 </p>
-<h1 align="center">Cursos UPE</h1>
+<h1 align="center">Seja UPE</h1>
 <p align="center">Descubra tudo sobre os cursos da UPE, os docentes e faça um autoconhecimento vocacional!</p>
 
 <p align="center">
