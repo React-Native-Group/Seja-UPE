@@ -42,7 +42,7 @@ Distributed under MIT license. See ``LICENSE`` for more informations.
 
 ## Contribuição
 
-1. Create a fork (<https://github.com/MurylloEx/Rastreio-Correios/fork>)
+1. Create a fork (<https://github.com/React-Native-Group/Seja-UPE/fork>)
 2. Create a feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Send a push of your commit (`git push origin feature/fooBar`)
