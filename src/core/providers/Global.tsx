@@ -1,7 +1,7 @@
 import React, { createContext, FunctionComponent, useState } from "react";
 
 export interface GlobalProps {
-  children?: React.ReactChildren
+  children?: React.ReactNode
 }
 
 export interface GlobalValue {
