@@ -13,11 +13,14 @@ export interface GlobalValue {
 }
 
 export interface GlobalProviderValue {
-  data?: GlobalValue,
-  setData?: (v: GlobalValue) => void
+  data: GlobalValue,
+  setData: (v: GlobalValue) => void
 }
 
-export const GlobalContext = createContext<GlobalProviderValue>({});
+export const GlobalContext = createContext<GlobalProviderValue>({
+  data: {}, 
+  setData: (v: GlobalValue) => {}
+});
 
 export const GlobalProvider: FunctionComponent<GlobalProps> = ({ children }: GlobalProps) => {
   const [data, setData] = useState<GlobalValue>({});
