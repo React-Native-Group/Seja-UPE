@@ -1,17 +1,17 @@
 import React from 'react';
 import 'react-native-gesture-handler';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { GlobalProvider, ThemeProvider } from './src/core/providers';
-import { StatusBar } from 'expo-status-bar';
 import { DrawerRoutes } from './src/routes';
+import { GlobalProvider, ThemeProvider } from './src/core/providers';
 
 export default function App() {
   return (
     <GlobalProvider>
       <ThemeProvider>
+        <StatusBar hidden={false} />
         <NavigationContainer>
-          <StatusBar hidden={false} style="dark" />
           <DrawerRoutes />
         </NavigationContainer>
       </ThemeProvider>
