@@ -21,19 +21,17 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack }) => {
   }
 
   return (
-    <Fragment>
-      <Container>
-        <Render if={!!canGoBack}>
-          <BackButton activeOpacity={0.7} onPress={goBack}>
-            <FontAwesome5 name="arrow-left" size={24} color="#324A76" />
-          </BackButton>
-        </Render>
+    <Container>
+      <Render if={!!canGoBack}>
+        <BackButton activeOpacity={0.7} onPress={goBack}>
+          <FontAwesome5 name="arrow-left" size={24} color="#324A76" />
+        </BackButton>
+      </Render>
 
-        <Logo 
-          resizeMode="contain" 
-          source={AssetHeaderLogo}
-        />
-      </Container>
-    </Fragment>
+      <Logo
+        resizeMode="contain"
+        source={AssetHeaderLogo}
+      />
+    </Container>
   );
 }
