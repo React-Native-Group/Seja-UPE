@@ -18,17 +18,17 @@ export interface ThemeValue {
 }
 
 export interface ThemeProviderValue {
-  data?: Partial<ThemeValue>,
-  setData?: (v: ThemeValue) => void
+  theme?: Partial<ThemeValue>,
+  setTheme?: (v: ThemeValue) => void
 }
 
 export const ThemeContext = createContext<ThemeProviderValue>({});
 
 export const ThemeProvider: FunctionComponent<ThemeProps> = ({ children }: ThemeProps) => {
-  const [data, setData] = useState<Partial<ThemeValue>>({});
+  const [theme, setTheme] = useState<Partial<ThemeValue>>({});
 
   return (
-    <ThemeContext.Provider value={{data, setData}}>
+    <ThemeContext.Provider value={{theme, setTheme}}>
       {children}
     </ThemeContext.Provider>
   );
