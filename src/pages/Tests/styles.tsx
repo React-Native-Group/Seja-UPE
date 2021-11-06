@@ -4,3 +4,4 @@ export const Scrollable = styled.ScrollView`
   flex: 1;
 `;
 
+

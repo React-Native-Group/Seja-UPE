@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Welcome } from '../pages';
+import { Tests } from '../pages';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,8 +15,8 @@ export const DrawerRoutes: FunctionComponent<DrawerRoutesProps> = () => {
       }}
     >
       <Drawer.Screen 
-        name="Welcome" 
-        component={Welcome} 
+        name="Tests" 
+        component={Tests} 
       />
     </Drawer.Navigator>
   );

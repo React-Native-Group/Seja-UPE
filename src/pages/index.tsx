@@ -10,3 +10,4 @@ export * from './CourseProfessors';
 export * from './Suggestions';
 export * from './Survey';
 export * from './Welcome';
+export * from './Tests';

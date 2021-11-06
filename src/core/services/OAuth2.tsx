@@ -4,32 +4,44 @@ import Constants, { AppOwnership } from 'expo-constants';
 import { get } from './Http';
 import { ExpoClientId, RealClientId } from '../config';
 
-export async function OAuth2LoginAsync() {
+export type OAuth2Result = {
+  token: string,
+  idToken: string,
+  user: any,
+  error: boolean,
+  cancelled: boolean
+}
+
+export async function OAuth2LoginAsync(): Promise<OAuth2Result> {
   try {
     let isRunningOnExpo = Constants.appOwnership == AppOwnership.Expo;
     const result = await Google.logInAsync({
       androidClientId: isRunningOnExpo ? ExpoClientId : RealClientId,
+      androidStandaloneAppClientId: isRunningOnExpo ? ExpoClientId : RealClientId,
       scopes: ['profile', 'email'],
     });
 
     if (result.type === 'success') {
       return { 
         cancelled: false, 
-        token: result.accessToken, 
+        token: result.accessToken || '', 
+        idToken: result.idToken || '',
         user: result.user,
         error: false 
       };
     }
     return {
       cancelled: true,
-      token: null,
+      token: '',
+      idToken: '',
       user: null,
       error: false
     };
-  } catch (e) {
+  } catch (e: any) {
     return { 
       cancelled: false, 
-      token: null, 
+      token: '', 
+      idToken: '',
       user: null,
       error: true 
     };
