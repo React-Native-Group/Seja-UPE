@@ -7,10 +7,10 @@ export const Container = styled.TouchableOpacity`
   align-items: center;
   border-radius: 8px;
   padding: 4px;
-  height: 64px;
+  height: 94px;
   elevation: 5;
 `;
 
 export const Logo = styled.Image`
-  height: 100%;
+  height: 75%;
 `;
