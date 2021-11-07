@@ -18,7 +18,7 @@ export const DividerConcurrency: FunctionComponent<DividerConcurrencyProps> = ({
   return (
     <Container>
       <Banner source={banner} />
-      <Title>{title}</Title>
+      <Title numberOfLines={1}>{title}</Title>
     </Container>
   );
 }

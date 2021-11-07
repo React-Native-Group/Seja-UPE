@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
 
-interface CarouselProps {
+export interface CarouselProps {
   length: number,
   currentIndex: number
 }
 
-const Carousel: FunctionComponent<CarouselProps> = ({ length, currentIndex }) => {
+export const Carousel: FunctionComponent<CarouselProps> = ({ length, currentIndex }) => {
   return (
     <AnimatedDotsCarousel
       length={length}
@@ -37,5 +37,3 @@ const Carousel: FunctionComponent<CarouselProps> = ({ length, currentIndex }) =>
     />
   );
 }
-
-export default Carousel;
