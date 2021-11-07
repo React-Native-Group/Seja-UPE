@@ -1,7 +1,6 @@
 import React, { Fragment, FunctionComponent } from 'react';
 
-import { CardConcurrency, Header, Spacer } from '../../core/components';
-import { Carousel } from '../../core/components';
+import { Carousel, ButtonLattes, Header, Spacer } from '../../core/components';
 import { Scrollable } from './styles';
 
 export interface TestsProps { }
@@ -15,7 +14,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
         <Spacer verticalSpace={50} />
         <Carousel length={5} currentIndex={0} />
         <Spacer verticalSpace={50} />
-        <CardConcurrency higherNote="970" lowerNote="499" />
+        <ButtonLattes />
         <Spacer verticalSpace={50} />
       </Scrollable>
     </Fragment>
