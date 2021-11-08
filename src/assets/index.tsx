@@ -5,3 +5,4 @@ export const AssetSisuWhiteLogo = require('./res_sisu_white_logo.png');
 export const AssetLattesWhiteLogo = require('./res_lattes_white_logo.png');
 export const AssetStarIcon = require('./res_star_icon.png');
 export const AssetBookIcon = require('./res_book_icon.png');
+export const AssetWidgetSampleIcon = require('./res_widget_sample_icon.png')

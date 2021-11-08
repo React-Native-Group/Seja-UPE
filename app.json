@@ -36,7 +36,8 @@
           "config": {
             "organization": "university-of-pernambuco",
             "project": "seja-upe",
-            "authToken": "23afbbb74bbe4bfe856ac16faa88d344b3897b549db24e1980cfe6b9385d1f30"
+            "authToken": "23afbbb74bbe4bfe856ac16faa88d344b3897b549db24e1980cfe6b9385d1f30",
+            "setCommits": true
           }
         }
       ]
