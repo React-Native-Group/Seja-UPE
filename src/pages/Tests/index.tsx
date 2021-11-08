@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Text } from 'react-native';
 
-import { CardBaloon, PageLayout } from '../../core/components';
+import { Badge, CardBaloon, PageLayout } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -13,9 +13,8 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       showHeader={true} 
       canGoBack={true}
     >
-      <CardBaloon direction="left">
-        <Text>Olá mundo! :)</Text>
-      </CardBaloon>
+      <Badge text="Engenharia" width="71px"/>
+
     </PageLayout>
   );
 }
