@@ -1,8 +1,8 @@
 import React from 'react';
+import * as Sentry from 'sentry-expo';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import * as Sentry from 'sentry-expo';
 
 import { DrawerRoutes } from './src/routes';
 import { SentryDsn } from './src/core/config';

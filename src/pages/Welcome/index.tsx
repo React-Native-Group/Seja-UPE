@@ -1,15 +1,16 @@
-import React, { Fragment, FunctionComponent } from 'react';
-
-import { Scrollable } from './styles';
+import React, { FunctionComponent } from 'react';
+import { PageLayout } from '../../core/components';
 
 export interface WelcomeProps { }
 
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
   return (
-    <Fragment>
-      <Scrollable>
+    <PageLayout
+      canScroll={true}
+      showHeader={true}
+      canGoBack={true}
+    >
 
-      </Scrollable>
-    </Fragment>
+    </PageLayout>
   );
 }

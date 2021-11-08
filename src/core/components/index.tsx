@@ -18,6 +18,7 @@ export * from './Chart';
 export * from './DividerConcurrency';
 export * from './Header';
 export * from './Message';
+export * from './PageLayout';
 export * from './Paragraph';
 export * from './Progress';
 export * from './Render';
