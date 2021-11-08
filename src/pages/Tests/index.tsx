@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { Badge, PageLayout } from '../../core/components';
+import { Badge, CardCourse, PageLayout } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -18,6 +18,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
         animated={false} 
         hasShadow={true} 
       />
+      <CardCourse text="Engenharia de Software" />
     </PageLayout>
   );
 }
