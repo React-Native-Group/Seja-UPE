@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
+import { Text } from 'react-native';
 
-import { ButtonWidget, PageLayout } from '../../core/components';
+import { CardBaloon, PageLayout } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -12,9 +13,9 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       showHeader={true} 
       canGoBack={true}
     >
-      <ButtonWidget 
-        legend="Sobre o Campus" 
-      />
+      <CardBaloon direction="left">
+        <Text>Olá mundo! :)</Text>
+      </CardBaloon>
     </PageLayout>
   );
 }
