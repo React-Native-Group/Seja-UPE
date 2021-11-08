@@ -12,8 +12,12 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       showHeader={true} 
       canGoBack={true}
     >
-      <Badge text="Engenharia" width="71px" animated={false} />
-
+      <Badge 
+        text="Engenharia" 
+        width="71px" 
+        animated={false} 
+        hasShadow={true} 
+      />
     </PageLayout>
   );
 }

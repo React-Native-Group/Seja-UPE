@@ -9,32 +9,32 @@ export interface BadgeProps {
   width?: string;
   maxWidth?: string;
   animated?: boolean;
+  fontSize?: string;
+  hasShadow?: boolean;
   onPress?: (e: GestureResponderEvent) => void;
   text: string;
 }
 
-export const Badge: FunctionComponent<BadgeProps> = ({ 
-  bgColor,
-  color,
-  numberOfLines,
-  text,
-  animated,
-  onPress,
-  width,
-  maxWidth 
-}) => {
+export const Badge: FunctionComponent<BadgeProps> = (props) => {
+
+  let { bgColor, color, numberOfLines } = props;
+  let { text, animated, onPress, hasShadow } = props;
+  let { width, maxWidth, fontSize } = props;
+
   if (typeof animated == 'undefined')
     animated = true;
 
   return (
     <Container 
-      onPress={onPress || (() => {})}
-      activeOpacity={!!animated ? 0.7 : 1}
+      onPress={onPress || (() => {})} 
+      activeOpacity={!!animated ? 0.7 : 1} 
       width={width || '100%'} 
       maxWidth={maxWidth || '100%'} 
-      bgColor={bgColor || '#ED3237'}
+      bgColor={bgColor || '#ED3237'} 
+      hasShadow={!!hasShadow}
     >
       <Label 
+        fontSize={fontSize || '10px'} 
         color={color || '#fff'} 
         numberOfLines={numberOfLines || 1} 
       >
