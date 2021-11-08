@@ -10,13 +10,17 @@ export type ContainerProps = {
 export type LabelProps = {
   color: string;
   fontSize: string;
+  bold: boolean;
 }
 
 export const Container = styled.TouchableOpacity.attrs<ContainerProps>(props => props)<ContainerProps>`
   width: ${props => props.width};
   max-width: ${props => props.maxWidth};
-  padding: 4px;
-  border-radius: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 16px;
   justify-content: center;
   align-items: center;
   background-color: ${props => props.bgColor};
@@ -26,6 +30,6 @@ export const Container = styled.TouchableOpacity.attrs<ContainerProps>(props => 
 export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`
   color: ${props => props.color};
   font-size: ${props => props.fontSize};
-  font-weight: bold;
   text-align: center;
+  ${props => props.bold ? 'font-weight: bold;' : ''} 
 `;

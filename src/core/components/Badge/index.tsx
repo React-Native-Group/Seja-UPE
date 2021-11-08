@@ -9,6 +9,7 @@ export interface BadgeProps {
   width?: string;
   maxWidth?: string;
   animated?: boolean;
+  bold?: boolean;
   fontSize?: string;
   hasShadow?: boolean;
   onPress?: (e: GestureResponderEvent) => void;
@@ -19,7 +20,7 @@ export const Badge: FunctionComponent<BadgeProps> = (props) => {
 
   let { bgColor, color, numberOfLines } = props;
   let { text, animated, onPress, hasShadow } = props;
-  let { width, maxWidth, fontSize } = props;
+  let { width, maxWidth, fontSize, bold } = props;
 
   if (typeof animated == 'undefined')
     animated = true;
@@ -37,6 +38,7 @@ export const Badge: FunctionComponent<BadgeProps> = (props) => {
         fontSize={fontSize || '10px'} 
         color={color || '#fff'} 
         numberOfLines={numberOfLines || 1} 
+        bold={!!bold}
       >
         {text}
       </Label>
