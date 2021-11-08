@@ -8,15 +8,28 @@ export interface BadgeProps {
   numberOfLines?: number;
   width?: string;
   maxWidth?: string;
+  animated?: boolean;
   onPress?: (e: GestureResponderEvent) => void;
   text: string;
 }
 
-export const Badge: FunctionComponent<BadgeProps> = ({ bgColor, color, numberOfLines, text, onPress, width, maxWidth }) => {
+export const Badge: FunctionComponent<BadgeProps> = ({ 
+  bgColor,
+  color,
+  numberOfLines,
+  text,
+  animated,
+  onPress,
+  width,
+  maxWidth 
+}) => {
+  if (typeof animated == 'undefined')
+    animated = true;
+
   return (
     <Container 
       onPress={onPress || (() => {})}
-      activeOpacity={0.7}
+      activeOpacity={!!animated ? 0.7 : 1}
       width={width || '100%'} 
       maxWidth={maxWidth || '100%'} 
       bgColor={bgColor || '#ED3237'}
