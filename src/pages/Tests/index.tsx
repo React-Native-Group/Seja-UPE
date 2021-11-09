@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
+import { AssetWidgetSampleIcon } from '../../assets';
 
-import { CardSuggestion, PageLayout } from '../../core/components';
+import { CardSuggestion, PageLayout, TitleOutline } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -12,11 +13,9 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       showHeader={true} 
       canGoBack={true}
     >
-      <CardSuggestion 
-        title="Engenharia de Software"
-        onPress={() => alert('Teste')}
-        progress="100"
-      />
+      <TitleOutline title="Teste" />
+
+      <TitleOutline icon={AssetWidgetSampleIcon} title="Teste" />
     </PageLayout>
   );
 }
