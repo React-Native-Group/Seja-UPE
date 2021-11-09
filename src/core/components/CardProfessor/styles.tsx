@@ -56,16 +56,18 @@ export const InfoContainer = styled.View`
 
 export const BiographyContainer = styled.View`
   flex: 4;
+  padding-bottom: 6px;
 `;
 
 export const Biography = styled.Text`
   color: #000;
   font-size: 11px;
   text-align: justify;
+  
 `;
 
 export const AreaList = styled.FlatList`
-  flex: 3;
+  flex: 3; 
 `;
 
 export const ItemView = styled.View`
