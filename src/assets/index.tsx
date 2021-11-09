@@ -8,3 +8,4 @@ export const AssetBookIcon = require('./res_book_icon.png');
 export const AssetWidgetSampleIcon = require('./res_widget_sample_icon.png');
 export const AssetTriangleLeftIcon = require('./res_triangle_left_icon.png');
 export const AssetTriangleRightIcon = require('./res_triangle_right_icon.png');
+export const AssetCapIcon = require('./res_cap_icon.png');

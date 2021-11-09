@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { ButtonLink, CardCourse, CardProfessor, PageLayout } from '../../core/components';
+import { CardSuggestion, PageLayout } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -12,7 +12,11 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       showHeader={true} 
       canGoBack={true}
     >
-      <ButtonLink iconName="envelope" text="escolaridade.multicampi@upe.br" />
+      <CardSuggestion 
+        title="Engenharia de Software"
+        onPress={() => alert('Teste')}
+        progress="100"
+      />
     </PageLayout>
   );
 }
