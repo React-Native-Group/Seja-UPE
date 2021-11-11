@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { AssetWidgetSampleIcon } from '../../assets';
 
-import { CardSuggestion, PageLayout, TitleOutline } from '../../core/components';
+import { MapView, PageLayout, TitleOutline } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -13,9 +12,27 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       showHeader={true} 
       canGoBack={true}
     >
-      <TitleOutline title="Teste" />
+      <TitleOutline title="Teste de mapa" />
 
-      <TitleOutline icon={AssetWidgetSampleIcon} title="Teste" />
+      <MapView 
+        height="200px"
+        region={{
+          latitude: -8.8833723,
+          longitude: -36.4970813,
+          latitudeDelta: 0,
+          longitudeDelta: 0.003,
+        }}
+        points={[
+          {
+            title: 'Universidade de Pernambuco',
+            description: 'Campus Garanhuns',
+            coords: {
+              latitude: -8.8833723,
+              longitude: -36.4970813
+            }
+          }
+        ]}        
+      />
     </PageLayout>
   );
 }

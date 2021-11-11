@@ -24,6 +24,11 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "config": {
+        "googleMaps":{
+          "apiKey": "AIzaSyDni-txc9gLlSRDZrgXW7y2Ig43-CdzVkw"
+        }
+      },
       "package": "com.sejaupe.app"
     },
     "web": {
