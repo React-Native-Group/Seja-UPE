@@ -1,4 +1,6 @@
 import React, { Fragment, FunctionComponent } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import Fab from 'react-native-fab';
 
 import { Header } from '../Header';
 import { Render } from '../Render';
@@ -6,12 +8,14 @@ import { AreaView, Container, ScrollableContainer } from './styles';
 
 export interface PageLayoutProps {
   canScroll?: boolean;
-  showHeader?: boolean;
   canGoBack?: boolean;
+  showHeader?: boolean;
+  showFab?: boolean;
+  onFabClick?: () => void;
   children: React.ReactNode;
 }
 
-export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, showHeader, canScroll, children }) => {
+export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canScroll, showHeader, showFab, onFabClick, children }) => {
   return (
     <Fragment>
       <Render if={!!canScroll}>
@@ -34,6 +38,15 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, show
           </AreaView>
         </Container>
       </Render>
+      <Fab
+        buttonColor="#fff"
+        iconTextColor="#324A76"
+        onClickAction={onFabClick || (() => {})}
+        visible={!!showFab}
+        iconTextComponent={
+          <Ionicons name="chatbubbles-sharp" size={24} /> 
+        }
+      />
     </Fragment>
   );
 }

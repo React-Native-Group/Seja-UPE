@@ -1,4 +1,7 @@
 import React, { FunctionComponent } from 'react';
+import Fab from 'react-native-fab'
+import { AntDesign } from '@expo/vector-icons'; 
+
 
 import { MapView, PageLayout, TitleOutline } from '../../core/components';
 
@@ -8,6 +11,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
 
   return (
     <PageLayout 
+      showFab={true}
       canScroll={true} 
       showHeader={true} 
       canGoBack={true}
@@ -33,6 +37,8 @@ export const Tests: FunctionComponent<TestsProps> = () => {
           }
         ]}        
       />
+
+
     </PageLayout>
   );
 }
