@@ -3,7 +3,7 @@ import Fab from 'react-native-fab'
 import { AntDesign } from '@expo/vector-icons'; 
 
 
-import { MapView, PageLayout, TitleOutline } from '../../core/components';
+import { Accordion, MapView, PageLayout, TitleOutline } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -16,27 +16,11 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       showHeader={true} 
       canGoBack={true}
     >
-      <TitleOutline title="Teste de mapa" />
+      <TitleOutline title="Teste de sanfona" />
 
-      <MapView 
-        height="200px"
-        region={{
-          latitude: -8.8833723,
-          longitude: -36.4970813,
-          latitudeDelta: 0,
-          longitudeDelta: 0.003,
-        }}
-        points={[
-          {
-            title: 'Universidade de Pernambuco',
-            description: 'Campus Garanhuns',
-            coords: {
-              latitude: -8.8833723,
-              longitude: -36.4970813
-            }
-          }
-        ]}        
-      />
+      <Accordion title="Sobre o Curso" body="Corpo do texto">
+
+      </Accordion>
 
 
     </PageLayout>

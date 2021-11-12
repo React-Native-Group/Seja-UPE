@@ -5,9 +5,9 @@ import { Render } from '../Render';
 import { Container, Header, Title, Body, Text } from './styles';
 
 export interface AccordionProps {
-  onToggle?: (state: boolean) => void,
-  title: string,
-  body: string
+  onToggle?: (state: boolean) => void;
+  title: string;
+  body: string;
 }
 
 export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, body }) => {
@@ -33,7 +33,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
       >
         <Title>{title}</Title>
         <FontAwesome 
-          name="caret-down" 
+          name={isOpen ? "caret-down" : "caret-right"} 
           size={24} 
           color="#fff" 
         />

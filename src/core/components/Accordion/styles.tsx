@@ -18,6 +18,7 @@ export const Container = styled.View.attrs<ContainerProps>(props => props)<Conta
 export const Header = styled.TouchableOpacity.attrs<HeaderProps>(props => props)<HeaderProps>`
   flex: 1;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   padding: 8px;
   border-top-left-radius: 8px;
@@ -29,6 +30,8 @@ export const Header = styled.TouchableOpacity.attrs<HeaderProps>(props => props)
 
 export const Title = styled.Text`
   font-size: 16px;
+  font-weight: bold;
+  padding-left: 8px;
   color: #fff;
 `;
 
