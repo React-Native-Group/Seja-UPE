@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent } from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import Fab from 'react-native-fab';
 
 import { Header } from '../Header';
@@ -43,9 +43,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canS
         iconTextColor="#324A76"
         onClickAction={onFabClick || (() => {})}
         visible={!!showFab}
-        iconTextComponent={
-          <Ionicons name="chatbubbles-sharp" size={24} /> 
-        }
+        iconTextComponent={<FontAwesome name="comments" size={24} />}
       />
     </Fragment>
   );

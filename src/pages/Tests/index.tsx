@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import Fab from 'react-native-fab'
-import { AntDesign } from '@expo/vector-icons'; 
 
 
-import { Accordion, MapView, PageLayout, TitleOutline } from '../../core/components';
+import { Accordion, PageLayout, Spacer, TitleOutline } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -18,11 +16,10 @@ export const Tests: FunctionComponent<TestsProps> = () => {
     >
       <TitleOutline title="Teste de sanfona" />
 
-      <Accordion title="Sobre o Curso" body="Corpo do texto">
+      <Spacer verticalSpace={10} />
 
-      </Accordion>
-
-
+      <Accordion title="Sobre o Curso" body="Corpo do texto" />
+      
     </PageLayout>
   );
 }

@@ -5,6 +5,7 @@ export * from './ButtonEvent';
 export * from './ButtonGoogle';
 export * from './ButtonLattes';
 export * from './ButtonLink';
+export * from './ButtonSocial';
 export * from './ButtonWidget';
 export * from './CardBaloon';
 export * from './CardBaloonBottom';

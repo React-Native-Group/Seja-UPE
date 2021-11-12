@@ -31,7 +31,6 @@ export const Header = styled.TouchableOpacity.attrs<HeaderProps>(props => props)
 export const Title = styled.Text`
   font-size: 16px;
   font-weight: bold;
-  padding-left: 8px;
   color: #fff;
 `;
 
