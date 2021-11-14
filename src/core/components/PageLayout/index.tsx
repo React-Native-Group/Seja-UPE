@@ -11,18 +11,28 @@ export interface PageLayoutProps {
   canGoBack?: boolean;
   showHeader?: boolean;
   showFab?: boolean;
+  showTabs?: boolean;
   fabIcon?: keyof typeof FontAwesome.glyphMap;
   onFabClick?: () => void;
+  onTabClick?: (e: 'suggestions' | 'search') => void;
   children: React.ReactNode;
 }
 
-export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canScroll, showHeader, showFab, fabIcon, onFabClick, children }) => {
+export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
+  const { canGoBack, canScroll, showHeader } = props;
+  const { showFab, showTabs, fabIcon } = props;
+  const { onFabClick, onTabClick, children } = props;
+  
   return (
     <Fragment>
       <Render if={!!canScroll}>
         <ScrollableContainer>
           <Render if={!!showHeader}>
-            <Header canGoBack={!!canGoBack} />
+            <Header 
+              canGoBack={!!canGoBack} 
+              showTabs={showTabs} 
+              onTabClick={onTabClick}
+            />
           </Render>
           <AreaView>
             {children}
@@ -32,7 +42,11 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canS
       <Render if={!canScroll}>
         <Container>
           <Render if={!!showHeader}>
-            <Header canGoBack={!!canGoBack} />
+            <Header 
+              canGoBack={!!canGoBack} 
+              showTabs={showTabs} 
+              onTabClick={onTabClick}
+            />
           </Render>
           <AreaView>
             {children}
@@ -42,7 +56,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canS
       <Fab
         buttonColor="#fff"
         iconTextColor="#324A76"
-        onClickAction={onFabClick || (() => {})}
+        onClickAction={onFabClick ?? (() => {})}
         visible={!!showFab}
         iconTextComponent={<FontAwesome name={fabIcon ?? "comments"} size={24} />}
       />

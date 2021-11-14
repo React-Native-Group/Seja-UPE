@@ -1,18 +1,21 @@
-import React, { Fragment, FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { BackHandler } from 'react-native';
 
-import { AssetHeaderLogo } from '../../../assets';
-import { BackButton, Container, Logo } from './styles';
 import { Render } from '../Render';
+import { AssetHeaderLogo } from '../../../assets';
+import { BackButton, Container, Logo, Stack, Tab, TabsContainer, TabText } from './styles';
 
 export interface HeaderProps {
-  canGoBack?: boolean
+  canGoBack?: boolean;
+  showTabs?: boolean;
+  onTabClick?: (e: 'suggestions' | 'search') => void;
 }
 
-export const Header: FunctionComponent<HeaderProps> = ({ canGoBack }) => {
+export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, onTabClick }) => {
   const navigation = useNavigation();
+  const [tabIndex, setTabIndex] = useState(0);
 
   function goBack(){
     if (navigation.canGoBack())
@@ -20,18 +23,39 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack }) => {
     BackHandler.exitApp();
   }
 
+  function changeTabs(index: number){
+    if (!!onTabClick)
+      onTabClick(index == 0 ? 'suggestions' : 'search');
+    setTabIndex(index++ % 2);
+  }
+
   return (
-    <Container>
-      <Render if={!!canGoBack}>
-        <BackButton activeOpacity={0.7} onPress={goBack}>
-          <FontAwesome5 name="arrow-left" size={24} color="#324A76" />
-        </BackButton>
+    <Stack>
+
+      <Container>
+        <Render if={!!canGoBack}>
+          <BackButton activeOpacity={0.7} onPress={goBack}>
+            <FontAwesome5 name="arrow-left" size={24} color="#324A76" />
+          </BackButton>
+        </Render>
+
+        <Logo
+          resizeMode="contain"
+          source={AssetHeaderLogo}
+        />
+      </Container>
+
+      <Render if={!!showTabs}>
+        <TabsContainer>
+          <Tab isActive={tabIndex == 0} onPress={() => changeTabs(0)}>
+            <TabText numberOfLines={1}>Recomendados para mim</TabText>
+          </Tab>
+          <Tab isActive={tabIndex == 1} onPress={() => changeTabs(1)}>
+            <TabText numberOfLines={1}>Já sei o que quero</TabText>
+          </Tab>
+        </TabsContainer>
       </Render>
 
-      <Logo
-        resizeMode="contain"
-        source={AssetHeaderLogo}
-      />
-    </Container>
+    </Stack>
   );
 }

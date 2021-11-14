@@ -9,22 +9,19 @@ export const Tests: FunctionComponent<TestsProps> = () => {
 
   return (
     <PageLayout 
-      showFab={true}
-      showHeader={true} 
-      canScroll={true} 
-      canGoBack={true}
+      showFab
+      showHeader
+      showTabs 
+      canScroll
+      canGoBack
+      onTabClick={console.log}
     >
       <TitleOutline title="Teste de sanfona" />
-
       <Spacer verticalSpace={10} />
 
       <Accordion title="Sobre o Curso" body="Corpo do texto" />
-      
-      <CardBaloonBottom>
-        
-      </CardBaloonBottom>
+      <Spacer verticalSpace={10} />
 
-      <ButtonWidget legend="Sobre o curso" onPress={() => alert('dgfghdf')}/>
     </PageLayout>
   );
 }
