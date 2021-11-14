@@ -28,3 +28,4 @@ export * from './Render';
 export * from './Spacer';
 export * from './Title';
 export * from './TitleOutline';
+export * from './ToggleGroup';

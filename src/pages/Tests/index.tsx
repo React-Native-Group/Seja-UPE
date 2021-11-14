@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Accordion, MultiSlider, PageLayout, Spacer, TitleOutline } from '../../core/components';
+import { Accordion, MultiSlider, PageLayout, Spacer, TitleOutline, ToggleGroup } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -19,11 +19,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <Accordion title="Sobre o Curso" body="Corpo do texto" />
       <Spacer verticalSpace={10} />
 
-      <MultiSlider 
-        minValue={0} 
-        maxValue={1000} 
-        minDistance={50} 
-      />
+      <ToggleGroup onChange={console.log} />
 
     </PageLayout>
   );

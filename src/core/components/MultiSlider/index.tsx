@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
+import { LayoutChangeEvent } from 'react-native';
 import Slider from '@ptomasroos/react-native-multi-slider';
 
 import { Render } from '../Render';
 import { Container, Group, Label } from './styles';
-import { LayoutChangeEvent } from 'react-native';
 
 export interface MultiSliderValue {
   lowerValue: number;
