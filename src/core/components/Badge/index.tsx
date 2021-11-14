@@ -27,17 +27,17 @@ export const Badge: FunctionComponent<BadgeProps> = (props) => {
 
   return (
     <Container 
-      onPress={onPress || (() => {})} 
+      onPress={onPress ?? (() => {})} 
       activeOpacity={!!animated ? 0.7 : 1} 
-      width={width || '100%'} 
-      maxWidth={maxWidth || '100%'} 
-      bgColor={bgColor || '#ED3237'} 
+      width={width ?? '100%'} 
+      maxWidth={maxWidth ?? '100%'} 
+      bgColor={bgColor ?? '#ED3237'} 
       hasShadow={!!hasShadow}
     >
       <Label 
-        fontSize={fontSize || '10px'} 
-        color={color || '#fff'} 
-        numberOfLines={numberOfLines || 1} 
+        fontSize={fontSize ?? '10px'} 
+        color={color ?? '#fff'} 
+        numberOfLines={numberOfLines ?? 1} 
         bold={!!bold}
       >
         {text}

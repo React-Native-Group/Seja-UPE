@@ -27,7 +27,7 @@ export const CardSuggestion: FunctionComponent<CardSuggestionProps> = ({ title, 
           text="Informações" 
           bold={true} 
           animated={false} 
-          onPress={onPress || (() => {})}
+          onPress={onPress ?? (() => {})}
         />
       </Footer>
     </Container>

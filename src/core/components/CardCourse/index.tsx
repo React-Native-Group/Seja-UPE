@@ -12,7 +12,7 @@ export const CardCourse: FunctionComponent<CardCourseProps> = ({ banner, text })
   return (
     <Container>
       <BannerContainer>
-        <Banner resizeMode="contain" source={banner || AssetWidgetSampleIcon} />
+        <Banner resizeMode="contain" source={banner ?? AssetWidgetSampleIcon} />
       </BannerContainer>
       <Footer>
         <FooterLabel>{text}</FooterLabel>

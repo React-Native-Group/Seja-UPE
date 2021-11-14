@@ -10,7 +10,7 @@ export interface ButtonEventProps {
 
 export const ButtonEvent: FunctionComponent<ButtonEventProps> = ({ onPress, title }) => {
   return (
-    <Container activeOpacity={0.7} onPress={onPress || (() => {})}>
+    <Container activeOpacity={0.7} onPress={onPress ?? (() => {})}>
       <Banner resizeMode="contain" source={AssetStarIcon} />
       <Title numberOfLines={1}>{title}</Title>
       <Icon name="link" size={20} color="#C4C4C4" />

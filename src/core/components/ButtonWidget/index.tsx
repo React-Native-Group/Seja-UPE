@@ -11,9 +11,9 @@ export interface ButtonWidgetProps {
 
 export const ButtonWidget: FunctionComponent<ButtonWidgetProps> = ({ legend, banner, onPress }) => {
   return (
-    <Box activeOpacity={0.7} onPress={onPress || (() => {})}>
+    <Box activeOpacity={0.7} onPress={onPress ?? (() => {})}>
       <Container>
-        <Banner resizeMode="contain" source={banner || AssetWidgetSampleIcon} />
+        <Banner resizeMode="contain" source={banner ?? AssetWidgetSampleIcon} />
       </Container>
       <Legend numberOfLines={2}>{legend}</Legend>
     </Box>

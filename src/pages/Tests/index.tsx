@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 
-import { Accordion, PageLayout, Spacer, Title, TitleOutline } from '../../core/components';
+import { Accordion, ButtonSocial, PageLayout, Spacer, Title, TitleOutline } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -20,11 +20,8 @@ export const Tests: FunctionComponent<TestsProps> = () => {
 
       <Accordion title="Sobre o Curso" body="Corpo do texto" />
       
-      <Title>Teste de título</Title> 
-      <Title>Teste de título</Title>
-      <Title>Teste de título</Title>
-      <Title>Teste de título</Title>
-      
+      <ButtonSocial text="Instagram UPE Multicampi" type="instagram" />
+
     </PageLayout>
   );
 }

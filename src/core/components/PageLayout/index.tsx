@@ -44,7 +44,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canS
         iconTextColor="#324A76"
         onClickAction={onFabClick || (() => {})}
         visible={!!showFab}
-        iconTextComponent={<FontAwesome name={!!fabIcon ? fabIcon : "comments"} size={24} />}
+        iconTextComponent={<FontAwesome name={fabIcon ?? "comments"} size={24} />}
       />
     </Fragment>
   );

@@ -13,9 +13,9 @@ export interface ButtonLinkProps {
 
 export const ButtonLink: FunctionComponent<ButtonLinkProps> = ({ iconName, iconColor, textColor, text, onPress }) => {
   return (
-    <Container activeOpacity={0.7} onPress={onPress || (() => {})}>
-      <FontAwesome5 name={iconName} size={24} color={iconColor || '#000'} />
-      <Text numberOfLines={1} textColor={textColor || '#000'}>{text}</Text>
+    <Container activeOpacity={0.7} onPress={onPress ?? (() => {})}>
+      <FontAwesome5 name={iconName} size={24} color={iconColor ?? '#000'} />
+      <Text numberOfLines={1} textColor={textColor ?? '#000'}>{text}</Text>
     </Container>
   );
 }

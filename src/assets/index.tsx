@@ -9,3 +9,7 @@ export const AssetWidgetSampleIcon = require('./res_widget_sample_icon.png');
 export const AssetTriangleLeftIcon = require('./res_triangle_left_icon.png');
 export const AssetTriangleRightIcon = require('./res_triangle_right_icon.png');
 export const AssetCapIcon = require('./res_cap_icon.png');
+export const AssetSocialFacebookIcon = require('./res_social_facebook_icon.png');
+export const AssetSocialInstagramIcon = require('./res_social_instagram_icon.png');
+export const AssetSocialTwitterIcon = require('./res_social_twitter_icon.png');
+export const AssetSocialYoutubeIcon = require('./res_social_youtube_icon.png');

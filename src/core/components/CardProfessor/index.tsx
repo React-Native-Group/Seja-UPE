@@ -8,12 +8,12 @@ export interface CardProfessorProps {
   photo: ImageSourcePropType;
   shortbio: string;
   areas: string[];
-  onPress?: (e: GestureResponderEvent) => void
+  onPress?: (e: GestureResponderEvent) => void;
 }
 
 export const CardProfessor: FunctionComponent<CardProfessorProps> = ({ name, photo, shortbio, areas, onPress }) => {
   return (
-    <Container activeOpacity={0.7} onPress={onPress || (() => {})}>
+    <Container activeOpacity={0.7} onPress={onPress ?? (() => {})}>
       <Header>
         <Title numberOfLines={1}>{name}</Title>
       </Header>

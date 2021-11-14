@@ -9,6 +9,7 @@ export type HeaderProps = {
 }
 
 export const Container = styled.View.attrs<ContainerProps>(props => props)<ContainerProps>`
+  flex: 1;
   elevation: 5;
   background-color: #fff;
   border-radius: 8px;
