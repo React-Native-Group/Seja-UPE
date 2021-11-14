@@ -9,7 +9,7 @@ export interface ButtonLattesProps {
 
 export const ButtonLattes: FunctionComponent<ButtonLattesProps> = ({ onPress }) => {
   return (
-    <Container activeOpacity={0.7} onPress={onPress ?? (() => {})}>
+    <Container onPress={onPress ?? (() => {})}>
       <Logo resizeMode="contain" source={AssetLattesWhiteLogo} />
     </Container>
   );

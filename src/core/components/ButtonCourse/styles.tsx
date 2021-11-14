@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
 import { FontAwesome5 } from '@expo/vector-icons';
+import Ripple from 'react-native-material-ripple';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled(Ripple)`
   flex: 1;
   flex-direction: row;
   align-items: center;

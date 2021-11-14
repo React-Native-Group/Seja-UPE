@@ -11,7 +11,7 @@ export interface ButtonCourseProps {
 
 export const ButtonCourse: FunctionComponent<ButtonCourseProps> = ({ onPress, title }) => {
   return (
-    <Container activeOpacity={0.7} onPress={onPress ?? (() => {})}>
+    <Container onPress={onPress ?? (() => {})}>
       <Banner resizeMode="contain" source={AssetBookIcon} />
       <Title numberOfLines={1}>{title}</Title>
       <Icon name="link" size={20} color="#C4C4C4" />

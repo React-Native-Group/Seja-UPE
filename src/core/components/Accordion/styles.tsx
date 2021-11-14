@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import Ripple from 'react-native-material-ripple';
 
 export type ContainerProps = {
   paddingBottom: number
@@ -16,7 +17,7 @@ export const Container = styled.View.attrs<ContainerProps>(props => props)<Conta
   padding-bottom: ${props => props.paddingBottom}px;
 `;
 
-export const Header = styled.TouchableOpacity.attrs<HeaderProps>(props => props)<HeaderProps>`
+export const Header = styled(Ripple).attrs<HeaderProps>(props => props)<HeaderProps>`
   flex: 1;
   flex-direction: row;
   align-items: center;

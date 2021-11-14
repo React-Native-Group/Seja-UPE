@@ -9,7 +9,7 @@ export interface ButtonGoogleProps {
 
 export const ButtonGoogle: FunctionComponent<ButtonGoogleProps> = ({ text, onPress }) => {
   return (
-    <Container onPress={onPress} activeOpacity={0.7}>
+    <Container onPress={onPress}>
       <Logo source={AssetGoogleLogo} />
       <Label>{text}</Label>
     </Container>

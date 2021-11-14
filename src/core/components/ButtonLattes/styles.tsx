@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
+import Ripple from 'react-native-material-ripple';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled(Ripple)`
   flex: 1;
   background-color: #324A76;
   justify-content: center;

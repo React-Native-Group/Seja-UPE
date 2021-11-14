@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 
-import { Accordion, ButtonSocial, CardBaloonBottom, PageLayout, Spacer, Title, TitleOutline } from '../../core/components';
+import { Accordion, ButtonSocial, ButtonWidget, CardBaloonBottom, PageLayout, Spacer, Title, TitleOutline } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -23,6 +23,8 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <CardBaloonBottom>
         
       </CardBaloonBottom>
+
+      <ButtonWidget legend="Sobre o curso" onPress={() => alert('dgfghdf')}/>
     </PageLayout>
   );
 }

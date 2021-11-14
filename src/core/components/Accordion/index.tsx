@@ -28,7 +28,6 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
 
       <Header 
         borderBottomRadius={borderRadius} 
-        activeOpacity={0.8} 
         onPress={toggle}
       >
         <Title>{title}</Title>
