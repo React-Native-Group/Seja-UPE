@@ -20,6 +20,7 @@ export * from './DividerConcurrency';
 export * from './Header';
 export * from './MapView';
 export * from './Message';
+export * from './MultiSlider';
 export * from './PageLayout';
 export * from './Paragraph';
 export * from './Progress';
