@@ -11,11 +11,12 @@ export interface PageLayoutProps {
   canGoBack?: boolean;
   showHeader?: boolean;
   showFab?: boolean;
+  fabIcon?: keyof typeof FontAwesome.glyphMap;
   onFabClick?: () => void;
   children: React.ReactNode;
 }
 
-export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canScroll, showHeader, showFab, onFabClick, children }) => {
+export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canScroll, showHeader, showFab, fabIcon, onFabClick, children }) => {
   return (
     <Fragment>
       <Render if={!!canScroll}>
@@ -43,7 +44,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = ({ canGoBack, canS
         iconTextColor="#324A76"
         onClickAction={onFabClick || (() => {})}
         visible={!!showFab}
-        iconTextComponent={<FontAwesome name="comments" size={24} />}
+        iconTextComponent={<FontAwesome name={!!fabIcon ? fabIcon : "comments"} size={24} />}
       />
     </Fragment>
   );

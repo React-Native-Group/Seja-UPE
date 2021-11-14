@@ -20,7 +20,10 @@ export const Header = styled.TouchableOpacity.attrs<HeaderProps>(props => props)
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-bottom-left-radius: ${props => props.borderBottomRadius}px;
@@ -30,7 +33,6 @@ export const Header = styled.TouchableOpacity.attrs<HeaderProps>(props => props)
 
 export const Title = styled.Text`
   font-size: 16px;
-  font-weight: bold;
   color: #fff;
 `;
 
@@ -43,6 +45,9 @@ export const Body = styled.ScrollView`
 
 export const Text = styled.Text`
   font-size: 14px;
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
   color: #252525;
 `;
