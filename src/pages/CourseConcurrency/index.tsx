@@ -1,4 +1,5 @@
 import React, { Fragment, FunctionComponent } from 'react';
+import { PageLayout } from '../../core/components';
 
 export interface CourseConcurrencyProps {
   
@@ -6,6 +7,12 @@ export interface CourseConcurrencyProps {
 
 export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () => {
   return (
-    <Fragment />
+    <PageLayout 
+      showHeader
+      canGoBack
+      canScroll
+    >
+      
+    </PageLayout>
   );
 }

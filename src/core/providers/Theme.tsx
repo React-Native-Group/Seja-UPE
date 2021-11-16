@@ -1,31 +1,28 @@
 import React, { createContext, FunctionComponent, useState } from "react";
+import { Pallete } from "../themes";
 
 export interface ThemeProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 export interface ThemeValue {
-  primary: string,
-  secondary: string,
-  success: string,
-  danger: string,
-  warning: string,
-  info: string,
-  light: string,
-  dark: string,
-  muted: string,
-  white: string
+  blue: string;
+  red: string;
+  black: string;
+  gray: string;
+  white: string;
+  whiteSmoke: string;
 }
 
 export interface ThemeProviderValue {
-  theme?: Partial<ThemeValue>,
-  setTheme?: (v: ThemeValue) => void
+  theme?: Partial<ThemeValue>;
+  setTheme?: (v: ThemeValue) => void;
 }
 
 export const ThemeContext = createContext<ThemeProviderValue>({});
 
 export const ThemeProvider: FunctionComponent<ThemeProps> = ({ children }: ThemeProps) => {
-  const [theme, setTheme] = useState<Partial<ThemeValue>>({});
+  const [theme, setTheme] = useState<Partial<ThemeValue>>(Pallete);
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>

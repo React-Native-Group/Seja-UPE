@@ -1,4 +1,5 @@
 import React, { Fragment, FunctionComponent } from 'react';
+import { PageLayout } from '../../core/components';
 
 export interface CampusProps {
   
@@ -6,6 +7,12 @@ export interface CampusProps {
 
 export const Campus: FunctionComponent<CampusProps> = () => {
   return (
-    <Fragment />
+    <PageLayout 
+      showHeader
+      canGoBack
+      canScroll
+    >
+      
+    </PageLayout>
   );
 }
