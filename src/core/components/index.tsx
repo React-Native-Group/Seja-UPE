@@ -19,7 +19,7 @@ export * from './Chart';
 export * from './DividerConcurrency';
 export * from './Header';
 export * from './MapView';
-export * from './Message';
+export * from './Messages';
 export * from './MultiSlider';
 export * from './PageLayout';
 export * from './Paragraph';
