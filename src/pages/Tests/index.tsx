@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Accordion, Messages, PageLayout, Spacer, TitleOutline, ToggleGroup } from '../../core/components';
+import { Accordion, Messages, PageLayout, Paragraph, Spacer, TitleOutline, ToggleGroup } from '../../core/components';
 
 export interface TestsProps { }
 
@@ -73,7 +73,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
 
       <ToggleGroup onChange={console.log} />
 
-      <Messages messages={messages} />
+      <Paragraph>Muryllo</Paragraph>
 
     </PageLayout>
   );
