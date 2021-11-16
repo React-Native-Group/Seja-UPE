@@ -24,6 +24,7 @@ export * from './MultiSlider';
 export * from './PageLayout';
 export * from './Paragraph';
 export * from './Progress';
+export * from './Radio';
 export * from './Render';
 export * from './Spacer';
 export * from './Title';

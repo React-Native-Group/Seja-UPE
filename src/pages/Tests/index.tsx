@@ -1,60 +1,12 @@
-import React, { FunctionComponent } from 'react';
-import { Accordion, Messages, PageLayout, Paragraph, Spacer, TitleOutline, ToggleGroup } from '../../core/components';
+import React, { FunctionComponent, useState } from 'react';
+
+import { createRadioGroup, PageLayout, Radio, RadioType, Spacer, TitleOutline } from '../../core/components';
 
 export interface TestsProps { }
 
 export const Tests: FunctionComponent<TestsProps> = () => {
 
-  const messages = [
-    {
-      isOwner: true, 
-      text: 'Teste de balão de fala...', 
-      photo: null, 
-      username: null
-    },
-    {
-      isOwner: false, 
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis, elit vel accumsan suscipit, quam turpis condimentum nisl, a laoreet nisl leo id arcu. Nunc bibendum interdum mi, scelerisque egestas turpis bibendum ac.!', 
-      photo: 'https://images.generated.photos/w2glHM0lPCc6uEctJ6U4Rhve6JqNOJjFXfXw3yerOIo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGU0NTEy/ZWQtYzE3MS00ZmVm/LTkxODMtNmI2ZGIy/YTJhMjAxLmpwZw.jpg', 
-      username: 'Sofia Oliveira'
-    },
-    {
-      isOwner: true, 
-      text: 'Teste de balão de fala...', 
-      photo: null, 
-      username: null
-    },
-    {
-      isOwner: false, 
-      text: 'Olá!', 
-      photo: 'https://images.generated.photos/w2glHM0lPCc6uEctJ6U4Rhve6JqNOJjFXfXw3yerOIo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGU0NTEy/ZWQtYzE3MS00ZmVm/LTkxODMtNmI2ZGIy/YTJhMjAxLmpwZw.jpg', 
-      username: 'Sofia Oliveira'
-    },
-    {
-      isOwner: true, 
-      text: 'Teste de balão de fala...', 
-      photo: null, 
-      username: null
-    },
-    {
-      isOwner: false, 
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis, elit vel accumsan suscipit, quam turpis condimentum nisl, a laoreet nisl leo id arcu. Nunc bibendum interdum mi, scelerisque egestas turpis bibendum ac.!', 
-      photo: 'https://images.generated.photos/w2glHM0lPCc6uEctJ6U4Rhve6JqNOJjFXfXw3yerOIo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGU0NTEy/ZWQtYzE3MS00ZmVm/LTkxODMtNmI2ZGIy/YTJhMjAxLmpwZw.jpg', 
-      username: 'Sofia Oliveira'
-    },
-    {
-      isOwner: true, 
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis, elit vel accumsan suscipit, quam turpis condimentum nisl, a laoreet nisl leo id arcu. Nunc bibendum interdum mi, scelerisque egestas turpis bibendum ac.', 
-      photo: null, 
-      username: null
-    },
-    {
-      isOwner: false, 
-      text: 'Olá!', 
-      photo: 'https://images.generated.photos/w2glHM0lPCc6uEctJ6U4Rhve6JqNOJjFXfXw3yerOIo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGU0NTEy/ZWQtYzE3MS00ZmVm/LTkxODMtNmI2ZGIy/YTJhMjAxLmpwZw.jpg', 
-      username: 'Sofia Oliveira'
-    }
-  ]
+  const [state, setState] = useState<RadioType[]>(createRadioGroup(5));
 
   return (
     <PageLayout 
@@ -67,13 +19,12 @@ export const Tests: FunctionComponent<TestsProps> = () => {
     >
       <TitleOutline title="Teste de sanfona" />
       <Spacer verticalSpace={10} />
-
-      <Accordion title="Sobre o Curso" body="Corpo do texto" />
-      <Spacer verticalSpace={10} />
-
-      <ToggleGroup onChange={console.log} />
-
-      <Paragraph>Muryllo</Paragraph>
+      
+      <Radio onPress={console.log} reference={state[0]} group={state} onHandle={setState} />
+      <Radio onPress={console.log} reference={state[1]} group={state} onHandle={setState} />
+      <Radio onPress={console.log} reference={state[2]} group={state} onHandle={setState} />
+      <Radio onPress={console.log} reference={state[3]} group={state} onHandle={setState} />
+      <Radio onPress={console.log} reference={state[4]} group={state} onHandle={setState} />
 
     </PageLayout>
   );
