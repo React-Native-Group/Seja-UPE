@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { useTheme } from '../../hooks';
 import { Text, Container } from './styles';
 
 export interface TitleProps {
@@ -7,9 +8,11 @@ export interface TitleProps {
 }
 
 export const Title: FunctionComponent<TitleProps> = ({ children, align }) => {
+  const [theme] = useTheme();
+
   return (
     <Container>
-      <Text align={align ?? 'left'}>{children}</Text>
+      <Text {...theme} align={align ?? 'left'}>{children}</Text>
     </Container>
   );
 }

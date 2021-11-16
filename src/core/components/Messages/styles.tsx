@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
-export type ChatProps = {
+export interface ChatProps extends ThemeValue {
   isOwner: boolean;
 }
 
@@ -10,7 +11,7 @@ export const Container = styled.ScrollView`
 `;
 
 export const MessageContainer = styled.View.attrs<ChatProps>(props => props)<ChatProps>`
-  background-color: ${({ isOwner }) => isOwner ? '#324A76' : '#e4e4e4'};
+  background-color: ${({ isOwner, ...props }) => isOwner ? props.chatOwnBackgroundColor : props.chatBackgroundColor};
   border-radius: 12px;
   padding: 4px;
   padding-left: 12px;
@@ -19,7 +20,7 @@ export const MessageContainer = styled.View.attrs<ChatProps>(props => props)<Cha
 `;
 
 export const MessageText = styled.Text.attrs<ChatProps>(props => props)<ChatProps>`
-  color: ${({ isOwner }) => isOwner ? '#fff' : '#676767'};
+  color: ${({ isOwner, ...props }) => isOwner ? props.chatOwnTextColor : props.chatTextColor};
   font-size: 16px;
   font-weight: bold;
 `;

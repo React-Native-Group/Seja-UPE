@@ -12,17 +12,29 @@ export interface ThemeValue {
   gray: string;
   white: string;
   whiteSmoke: string;
+  concurrencyGreen: string;
+  concurrencyRed: string;
+  chartDatasetColor: string;
+  chartGradientFrom: string;
+  chartGradientTo: string;
+  chartColor: string;
+  chartLabelColor: string;
+  chartDotColor: string;
+  chatOwnTextColor: string,
+  chatOwnBackgroundColor: string,
+  chatTextColor: string,
+  chatBackgroundColor: string;
 }
 
 export interface ThemeProviderValue {
-  theme?: Partial<ThemeValue>;
+  theme: ThemeValue;
   setTheme?: (v: ThemeValue) => void;
 }
 
-export const ThemeContext = createContext<ThemeProviderValue>({});
+export const ThemeContext = createContext<ThemeProviderValue>({ theme: Pallete });
 
 export const ThemeProvider: FunctionComponent<ThemeProps> = ({ children }: ThemeProps) => {
-  const [theme, setTheme] = useState<Partial<ThemeValue>>(Pallete);
+  const [theme, setTheme] = useState<ThemeValue>(Pallete);
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>

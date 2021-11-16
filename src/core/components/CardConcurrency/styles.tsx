@@ -1,19 +1,20 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
-export const Container = styled.View`
+export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   elevation: 4;
   height: 79px;
-  background-color: #fff;
+  background-color: ${props => props.white};
   border-radius: 8px;
 `;
 
-export const Note = styled.Text`
+export const Note = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 36px;
-  color: #324A76;
+  color: ${props => props.blue};
 `;
 
 export const Group = styled.View`

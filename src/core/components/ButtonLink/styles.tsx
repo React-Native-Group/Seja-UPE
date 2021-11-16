@@ -1,15 +1,16 @@
 import styled from "styled-components/native";
 import Ripple from 'react-native-material-ripple';
+import { ThemeValue } from "../../providers";
 
-export type TextProps = {
+export interface TextProps {
   textColor: string;
 } 
 
-export const Container = styled(Ripple)`
+export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
   align-items: center;
-  background-color: #fff;
+  background-color: ${props => props.white};
   border-radius: 8px;
   height: 32px;
   elevation: 2;

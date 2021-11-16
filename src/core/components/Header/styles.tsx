@@ -1,16 +1,17 @@
 import styled from "styled-components/native";
 import Ripple from "react-native-material-ripple";
+import { ThemeValue } from "../../providers";
 
-export type TabProps = {
+export interface TabProps extends ThemeValue {
   isActive: boolean;
 }
 
-export const Container = styled.View`
+export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
   height: 51px;
   elevation: 5;
-  background-color: #fff;
+  background-color: ${props => props.white};
   justify-content: center;
   align-items: center;
 `;
@@ -27,11 +28,11 @@ export const BackButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const TabsContainer = styled.View`
+export const TabsContainer = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
   elevation: 5;
-  background-color: #fff;
+  background-color: ${props => props.white};
 `;
 
 export const Tab = styled(Ripple).attrs<TabProps>(props => props)<TabProps>`
@@ -39,7 +40,7 @@ export const Tab = styled(Ripple).attrs<TabProps>(props => props)<TabProps>`
   height: 51px;
   justify-content: center;
   align-items: center;
-  border-color: #324A76;
+  border-color: ${props => props.blue};
   ${({ isActive }) => isActive ? 'border-bottom-width: 4px;' : ''}
 `;
 
@@ -48,7 +49,7 @@ export const Stack = styled.View`
   flex-direction: column;
 `;
 
-export const TabText = styled.Text`
-  color: #324A76;
+export const TabText = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
+  color: ${props => props.blue};
   font-size: 16px;
 `;

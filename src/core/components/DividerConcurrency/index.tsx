@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { AssetSisuWhiteLogo, AssetUpeWhiteLogo } from '../../../assets';
+import { useTheme } from '../../hooks';
 import { Banner, Container, Title } from './styles';
 
 export interface DividerConcurrencyProps {
@@ -8,6 +9,7 @@ export interface DividerConcurrencyProps {
 }
 
 export const DividerConcurrency: FunctionComponent<DividerConcurrencyProps> = ({ type, title }) => {
+  const [theme] = useTheme();
   const [banner, setBanner] = useState(AssetUpeWhiteLogo);
 
   useEffect(() => {
@@ -16,9 +18,9 @@ export const DividerConcurrency: FunctionComponent<DividerConcurrencyProps> = ({
   }, [type]);
 
   return (
-    <Container>
+    <Container {...theme}>
       <Banner source={banner} />
-      <Title numberOfLines={1}>{title}</Title>
+      <Title {...theme} numberOfLines={1}>{title}</Title>
     </Container>
   );
 }

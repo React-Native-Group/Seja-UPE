@@ -6,6 +6,7 @@ import { BackHandler } from 'react-native';
 import { Render } from '../Render';
 import { AssetHeaderLogo } from '../../../assets';
 import { BackButton, Container, Logo, Stack, Tab, TabsContainer, TabText } from './styles';
+import { useTheme } from '../../hooks';
 
 export interface HeaderProps {
   canGoBack?: boolean;
@@ -14,6 +15,7 @@ export interface HeaderProps {
 }
 
 export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, onTabClick }) => {
+  const [theme] = useTheme();
   const navigation = useNavigation();
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -32,7 +34,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
   return (
     <Stack>
 
-      <Container>
+      <Container {...theme}>
         <Render if={!!canGoBack}>
           <BackButton activeOpacity={0.7} onPress={goBack}>
             <FontAwesome5 name="arrow-left" size={24} color="#324A76" />
@@ -46,12 +48,12 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
       </Container>
 
       <Render if={!!showTabs}>
-        <TabsContainer>
-          <Tab isActive={tabIndex == 0} onPress={() => changeTabs(0)}>
-            <TabText numberOfLines={1}>Recomendados para mim</TabText>
+        <TabsContainer {...theme}>
+          <Tab {...theme} isActive={tabIndex == 0} onPress={() => changeTabs(0)}>
+            <TabText {...theme} numberOfLines={1}>Recomendados para mim</TabText>
           </Tab>
-          <Tab isActive={tabIndex == 1} onPress={() => changeTabs(1)}>
-            <TabText numberOfLines={1}>Já sei o que quero</TabText>
+          <Tab {...theme} isActive={tabIndex == 1} onPress={() => changeTabs(1)}>
+            <TabText {...theme} numberOfLines={1}>Já sei o que quero</TabText>
           </Tab>
         </TabsContainer>
       </Render>

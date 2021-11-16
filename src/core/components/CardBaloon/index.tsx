@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import { AssetTriangleLeftIcon, AssetTriangleRightIcon } from '../../../assets';
+
 import { Render } from '../Render';
+import { useTheme } from '../../hooks';
 import { Box, Container, ArrowLeft, ArrowRight } from './styles';
+import { AssetTriangleLeftIcon, AssetTriangleRightIcon } from '../../../assets';
 
 export interface CardBaloonProps {
   direction?: 'left' | 'right';
@@ -9,9 +11,11 @@ export interface CardBaloonProps {
 }
 
 export const CardBaloon: FunctionComponent<CardBaloonProps> = ({ children, direction: dir }) => {
+  const [theme] = useTheme();
+  
   return (
     <Box paddingLeft={dir == 'left' ? 27 : 0} paddingRight={dir == 'right' ? 27 : 0}>
-      <Container>
+      <Container {...theme}>
         <Render if={dir == 'left'}>
           <ArrowLeft source={AssetTriangleLeftIcon} />
         </Render>

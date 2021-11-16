@@ -3,6 +3,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import { Render } from '../Render';
 import { Container, Header, Title, Body, Text } from './styles';
+import { useTheme } from '../../hooks';
 
 export interface AccordionProps {
   onToggle?: (state: boolean) => void;
@@ -11,6 +12,8 @@ export interface AccordionProps {
 }
 
 export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, body }) => {
+  const [theme] = useTheme();
+
   const [isOpen, setIsOpen] = useState(false);
   const [paddingBottom, setPaddingBottom] = useState(0);
   const [borderRadius, setBorderRadius] = useState(8);
@@ -24,23 +27,24 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
   }
 
   return (
-    <Container paddingBottom={paddingBottom}>
+    <Container {...theme} paddingBottom={paddingBottom}>
 
       <Header 
+        {...theme}
         borderBottomRadius={borderRadius} 
         onPress={toggle}
       >
-        <Title>{title}</Title>
+        <Title {...theme}>{title}</Title>
         <FontAwesome 
           name={isOpen ? "caret-down" : "caret-right"} 
           size={24} 
-          color="#fff" 
+          color={theme.white} 
         />
       </Header>
 
       <Render if={isOpen}>
-        <Body>
-          <Text>
+        <Body {...theme}>
+          <Text {...theme}>
             {body}
           </Text>
         </Body>

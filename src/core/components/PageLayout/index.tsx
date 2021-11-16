@@ -4,6 +4,7 @@ import Fab from 'react-native-fab';
 
 import { Header } from '../Header';
 import { Render } from '../Render';
+import { useTheme } from '../../hooks';
 import { AreaView, Container, ScrollableContainer } from './styles';
 
 export interface PageLayoutProps {
@@ -19,6 +20,8 @@ export interface PageLayoutProps {
 }
 
 export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
+  const [ theme ] = useTheme();
+
   const { canGoBack, canScroll, showHeader } = props;
   const { showFab, showTabs, fabIcon } = props;
   const { onFabClick, onTabClick, children } = props;
@@ -54,8 +57,8 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
         </Container>
       </Render>
       <Fab
-        buttonColor="#fff"
-        iconTextColor="#324A76"
+        buttonColor={theme.white}
+        iconTextColor={theme.blue}
         onClickAction={onFabClick ?? (() => {})}
         visible={!!showFab}
         iconTextComponent={<FontAwesome name={fabIcon ?? "comments"} size={24} />}

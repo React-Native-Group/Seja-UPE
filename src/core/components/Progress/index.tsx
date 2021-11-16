@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
+import { useTheme } from '../../hooks';
 import { Bar, Container, Label } from './styles';
 
 export interface ProgressProps {
@@ -7,18 +8,19 @@ export interface ProgressProps {
 }
 
 export const Progress: FunctionComponent<ProgressProps> = ({ value, maxValue }) => {
-  const [color, setColor] = useState('#252525');
+  const [theme] = useTheme();
+  const [color, setColor] = useState(theme.black);
 
   useEffect(() => {
     if ((value / maxValue) > 0.93)
-      setColor('#fff');
+      setColor(theme.white);
     else 
-      setColor('#252525');
+      setColor(theme.black);
   }, [value, maxValue]);
 
   return (
     <Container>
-      <Bar style={{ width: Math.floor(100 * value / maxValue) + '%' }} />
+      <Bar {...theme} style={{ width: Math.floor(100 * value / maxValue) + '%' }} />
       <Label color={color}>
         {value}/{maxValue}
       </Label>

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { GestureResponderEvent } from 'react-native';
+import { useTheme } from '../../hooks';
 import { Container, Label } from './styles';
 
 export interface BadgeProps {
@@ -17,6 +18,7 @@ export interface BadgeProps {
 }
 
 export const Badge: FunctionComponent<BadgeProps> = (props) => {
+  const [theme] = useTheme();
 
   let { bgColor, color, numberOfLines } = props;
   let { text, animated, onPress, hasShadow } = props;
@@ -31,12 +33,12 @@ export const Badge: FunctionComponent<BadgeProps> = (props) => {
       activeOpacity={!!animated ? 0.7 : 1} 
       width={width ?? '100%'} 
       maxWidth={maxWidth ?? '100%'} 
-      bgColor={bgColor ?? '#ED3237'} 
+      bgColor={bgColor ?? theme.red} 
       hasShadow={!!hasShadow}
     >
       <Label 
         fontSize={fontSize ?? '10px'} 
-        color={color ?? '#fff'} 
+        color={color ?? theme.white} 
         numberOfLines={numberOfLines ?? 1} 
         bold={!!bold}
       >

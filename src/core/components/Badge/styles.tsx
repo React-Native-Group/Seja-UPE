@@ -1,13 +1,13 @@
 import styled from "styled-components/native";
 
-export type ContainerProps = {
+export interface ContainerProps {
   bgColor: string;
   width: string;
   maxWidth: string;
   hasShadow: boolean;
 }
 
-export type LabelProps = {
+export interface LabelProps {
   color: string;
   fontSize: string;
   bold: boolean;

@@ -1,6 +1,7 @@
 import React, { Fragment, FunctionComponent } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Container, Label } from './styles';
+import { useTheme } from '../../hooks';
 
 
 export interface CardBenefitedProps {
@@ -8,10 +9,12 @@ export interface CardBenefitedProps {
 }
 
 export const CardBenefited: FunctionComponent<CardBenefitedProps> = ({ value }) => {
+  const [theme] = useTheme();
+
   return (
-    <Container>
-      <FontAwesome5 name="people-carry" size={28} color="#324A76" /> 
-      <Label>{value}</Label>
+    <Container {...theme}>
+      <FontAwesome5 name="people-carry" size={28} color={theme.blue} /> 
+      <Label {...theme}>{value}</Label>
     </Container>
   );
 }

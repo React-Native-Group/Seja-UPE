@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
-export type LabelProps = {
+export interface LabelProps {
   color: string
 }
 
@@ -8,9 +9,9 @@ export const Container = styled.View`
   height: 17px;
 `;
 
-export const Bar = styled.View`
+export const Bar = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   height: 100%;
-  background-color: #324A76;
+  background-color: ${props => props.blue};
 `;
 
 export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`

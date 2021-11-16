@@ -1,15 +1,16 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
 export type BoxProps = {
   paddingLeft: number;
   paddingRight: number;
 }
 
-export const Container = styled.View`
+export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   z-index: 1;
   min-height: 96px;
   border-radius: 8px; 
-  background-color: #fff;
+  background-color: ${props => props.white};
   padding: 8px;
   elevation: 3;
 `;

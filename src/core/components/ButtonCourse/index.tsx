@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { GestureResponderEvent } from 'react-native';
 
 import { AssetBookIcon } from '../../../assets';
+import { useTheme } from '../../hooks';
 import { Banner, Container, Icon, Title } from './styles';
 
 export interface ButtonCourseProps {
@@ -10,11 +11,13 @@ export interface ButtonCourseProps {
 }
 
 export const ButtonCourse: FunctionComponent<ButtonCourseProps> = ({ onPress, title }) => {
+  const [theme] = useTheme();
+
   return (
-    <Container onPress={onPress ?? (() => {})}>
+    <Container {...theme} onPress={onPress ?? (() => {})}>
       <Banner resizeMode="contain" source={AssetBookIcon} />
-      <Title numberOfLines={1}>{title}</Title>
-      <Icon name="link" size={20} color="#C4C4C4" />
+      <Title {...theme} numberOfLines={1}>{title}</Title>
+      <Icon name="link" size={20} color={theme.gray} />
     </Container>
   );
 }

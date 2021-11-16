@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Container, Text } from './styles';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { GestureResponderEvent } from 'react-native';
+import { useTheme } from '../../hooks';
 
 export interface ButtonLinkProps {
   iconName: string;
@@ -12,10 +13,12 @@ export interface ButtonLinkProps {
 }
 
 export const ButtonLink: FunctionComponent<ButtonLinkProps> = ({ iconName, iconColor, textColor, text, onPress }) => {
+  const [theme] = useTheme();
+  
   return (
-    <Container onPress={onPress ?? (() => {})}>
-      <FontAwesome5 name={iconName} size={24} color={iconColor ?? '#000'} />
-      <Text numberOfLines={1} textColor={textColor ?? '#000'}>{text}</Text>
+    <Container {...theme} onPress={onPress ?? (() => {})}>
+      <FontAwesome5 name={iconName} size={24} color={iconColor ?? theme.black} />
+      <Text numberOfLines={1} textColor={textColor ?? theme.black}>{text}</Text>
     </Container>
   );
 }

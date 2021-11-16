@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { useTheme } from '../../hooks';
 import { Text } from './styles';
 
 export interface ParagraphProps {
@@ -11,7 +12,9 @@ export interface ParagraphProps {
 }
 
 export const Paragraph: FunctionComponent<ParagraphProps> = ({children, ...props}) => {
+  const [theme] = useTheme();
+
   return (
-    <Text {...props}>{children}</Text>
+    <Text {...theme} {...props}>{children}</Text>
   );
 }

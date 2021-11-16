@@ -3,6 +3,7 @@ import { LayoutChangeEvent } from 'react-native';
 import Slider from '@ptomasroos/react-native-multi-slider';
 
 import { Render } from '../Render';
+import { useTheme } from '../../hooks';
 import { Container, Group, Label } from './styles';
 
 export interface MultiSliderValue {
@@ -21,6 +22,7 @@ export const MultiSlider: FunctionComponent<MultiSliderProps> = (props) => {
   const { minValue, maxValue } = props;
   const { minDistance, onChange } = props;
 
+  const [ theme ] = useTheme();
   const [ length, setLength ] = useState(0);
   const [ value, setValue ] = useState([minValue, maxValue]);
   const [ scale, setScale ] = useState(0);
@@ -57,17 +59,19 @@ export const MultiSlider: FunctionComponent<MultiSliderProps> = (props) => {
           values={[value[0], value[1]]}
           onValuesChange={onValueChange}
           minMarkerOverlapDistance={minDistance * scale}
-          selectedStyle={{ backgroundColor: '#324A76' }}
-          markerStyle={{ backgroundColor: '#324A76' }}
+          selectedStyle={{ backgroundColor: theme.blue }}
+          markerStyle={{ backgroundColor: theme.blue }}
         />
         <Group>
           <Label 
+            {...theme}
             onLayout={(e) => onLabelLayoutChange('left', e)} 
             offset={value[0] * scale - (leftLabelLength / 2)}
           >
             {value[0]}
           </Label>
           <Label 
+            {...theme}
             onLayout={(e) => onLabelLayoutChange('right', e)} 
             offset={value[1] * scale - (rightLabelLength / 2)}
           >

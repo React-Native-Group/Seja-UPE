@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Container, Group, Note } from './styles';
+import { useTheme } from '../../hooks';
 
 export interface CardConcurrencyProps {
   lowerNote: string,
@@ -9,23 +10,25 @@ export interface CardConcurrencyProps {
 }
 
 export const CardConcurrency: FunctionComponent<CardConcurrencyProps> = ({ lowerNote, higherNote }) => {
+  const [theme] = useTheme();
+
   return (
-    <Container>
+    <Container {...theme}>
       <Group>
         <MaterialCommunityIcons 
           name="chevron-double-up" 
           size={30} 
-          color="#17B41E" 
+          color={theme.concurrencyGreen} 
         />
-        <Note>{lowerNote}</Note>
+        <Note {...theme}>{lowerNote}</Note>
       </Group>
       <Group>
         <MaterialCommunityIcons 
           name="chevron-double-down" 
           size={30} 
-          color="#D7292D" 
+          color={theme.concurrencyRed} 
         />
-        <Note>{higherNote}</Note>
+        <Note {...theme}>{higherNote}</Note>
       </Group>
     </Container>
   );

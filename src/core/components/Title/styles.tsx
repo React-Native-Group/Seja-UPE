@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
-export type TextProps = {
+export interface TextProps extends ThemeValue {
   align: 'center' | 'left' | 'right' | 'justify';
 } 
 
@@ -13,5 +14,5 @@ export const Text = styled.Text.attrs<TextProps>(props => props)<TextProps>`
   font-size: 30px;
   font-weight: bold;
   text-align: ${props => props.align};
-  color: #324A76;
+  color: ${props => props.blue};
 `;

@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
-export type LabelProps = {
+export interface LabelProps extends ThemeValue {
   offset?: number;
 }
 
@@ -10,7 +11,7 @@ export const Container = styled.View`
 `;
 
 export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`
-  color: #324A76;
+  color: ${props => props.blue};
   font-weight: bold;
   font-size: 16px;
   position: absolute;

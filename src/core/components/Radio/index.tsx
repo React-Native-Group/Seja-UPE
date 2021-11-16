@@ -1,4 +1,5 @@
 import React, { FunctionComponent, SetStateAction } from 'react';
+import { useTheme } from '../../hooks';
 
 import { Render } from '../Render';
 import { Container, InnerContainer } from './styles';
@@ -24,6 +25,7 @@ export function createRadioGroup(choices: number){
 }
 
 export const Radio: FunctionComponent<RadioProps> = ({ reference, group, onPress, onHandle }) => {
+  const [theme] = useTheme();
 
   function radioHandler(e: number){
     onHandle(group.map(v => {
@@ -37,9 +39,9 @@ export const Radio: FunctionComponent<RadioProps> = ({ reference, group, onPress
   }
 
   return (
-    <Container activeOpacity={0.7} onPress={() => radioHandler(reference.index)}>
+    <Container {...theme} activeOpacity={0.7} onPress={() => radioHandler(reference.index)}>
       <Render if={reference.active}>
-        <InnerContainer />
+        <InnerContainer {...theme} />
       </Render>
     </Container>
   );

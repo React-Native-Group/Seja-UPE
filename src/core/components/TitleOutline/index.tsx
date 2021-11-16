@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { ImageSourcePropType } from 'react-native';
 
 import { Render } from '../Render';
+import { useTheme } from '../../hooks';
 import { AssetWidgetSampleIcon } from '../../../assets';
 import { Banner, Container, Divider, Group, Title } from './styles';
 
@@ -11,15 +12,17 @@ export interface TitleOutlineProps {
 }
 
 export const TitleOutline: FunctionComponent<TitleOutlineProps> = ({ title, icon }) => {
+  const [theme] = useTheme();
+
   return (
     <Container>
       <Group>
         <Render if={!!icon}>
           <Banner source={icon || AssetWidgetSampleIcon} />
         </Render>
-        <Title numberOfLines={1}>{title}</Title>
+        <Title {...theme} numberOfLines={1}>{title}</Title>
       </Group>
-      <Divider />
+      <Divider {...theme} />
     </Container>
   );
 }

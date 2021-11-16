@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
 export const Container = styled.View`
   flex: 1;
@@ -17,18 +18,18 @@ export const Banner = styled.Image`
   margin-right: 8px; 
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   align-self: flex-end;
   width: 100%;
   font-size: 24px;
   font-weight: bold;
   padding-bottom: 2px;
-  color: #324A76;
+  color: ${props => props.blue};
 `;
 
-export const Divider = styled.View`
+export const Divider = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   height: 5px;
   width: 32%;
-  background-color: #ED3237;
+  background-color: ${props => props.red};
 `;

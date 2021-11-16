@@ -1,18 +1,19 @@
 import styled from "styled-components/native";
 import Ripple from 'react-native-material-ripple';
+import { ThemeValue } from "../../providers";
 
-export type ContainerProps = {
+export interface ContainerProps extends ThemeValue {
   paddingBottom: number
 }
 
-export type HeaderProps = {
+export interface HeaderProps extends ThemeValue {
   borderBottomRadius: number
 }
 
 export const Container = styled.View.attrs<ContainerProps>(props => props)<ContainerProps>`
   flex: 1;
   elevation: 5;
-  background-color: #fff;
+  background-color: ${props => props.white};
   border-radius: 8px;
   padding-bottom: ${props => props.paddingBottom}px;
 `;
@@ -30,26 +31,26 @@ export const Header = styled(Ripple).attrs<HeaderProps>(props => props)<HeaderPr
   border-top-right-radius: 8px;
   border-bottom-left-radius: ${props => props.borderBottomRadius}px;
   border-bottom-right-radius: ${props => props.borderBottomRadius}px;
-  background-color: #324A76;
+  background-color: ${props => props.blue};
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 16px;
-  color: #fff;
+  color: ${props => props.white};
 `;
 
-export const Body = styled.ScrollView`
+export const Body = styled.ScrollView.attrs<ThemeValue>(props => props)<ThemeValue>`
   height: 120px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  background-color: #fff;
+  background-color: ${props => props.white};
 `;
 
-export const Text = styled.Text`
+export const Text = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 14px;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
-  color: #252525;
+  color: ${props => props.black};
 `;

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { LineChart } from "react-native-chart-kit";
+import { useTheme } from '../../hooks';
 import { Container } from './styles';
 
 export interface ChartProps {
@@ -11,30 +12,32 @@ export interface ChartProps {
 }
 
 export const Chart: FunctionComponent<ChartProps> = ({ height, width, legend, labels, data}) => {
+  const [theme] = useTheme();
+  
   const chartData = {
     labels,
     datasets: [
       {
         data,
-        color: () => `#ed3238`,
+        color: () => theme.chartDatasetColor,
         strokeWidth: 2
       }
     ],
-    legend: [legend] // optional
+    legend: [legend]
   };
 
   const chartConfig = {
-    backgroundGradientFrom: "#f3ecec",
-    backgroundGradientTo: "#ffffff",
-    color: () => `#dfdfdf`,
-    labelColor: () => `#324A76`,
+    backgroundGradientFrom: theme.chartGradientFrom,
+    backgroundGradientTo: theme.chartGradientTo,
+    color: () => theme.chartColor,
+    labelColor: () => theme.chartLabelColor,
     style: {
       borderRadius: 16
     },
     propsForDots: {
       r: "4",
       strokeWidth: "1",
-      stroke: "#830408"
+      stroke: theme.chartDotColor
     } 
   };
 

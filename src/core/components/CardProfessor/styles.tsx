@@ -1,14 +1,15 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
-export const Container = styled.TouchableOpacity`
-  background-color: #fff;
+export const Container = styled.TouchableOpacity.attrs<ThemeValue>(props => props)<ThemeValue>`
+  background-color: ${props => props.white};
   border-radius: 8px;
   height: 110px;
   elevation: 3;
 `;
 
-export const Header = styled.View`
-  background-color: #324A76;
+export const Header = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
+  background-color: ${props => props.blue};
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   justify-content: center;
@@ -17,9 +18,9 @@ export const Header = styled.View`
   height: 19px;
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 12px;
-  color: #fff;
+  color: ${props => props.white};
 `;
 
 export const Body = styled.View`
@@ -59,8 +60,8 @@ export const BiographyContainer = styled.View`
   padding-bottom: 6px;
 `;
 
-export const Biography = styled.Text`
-  color: #000;
+export const Biography = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
+  color: ${props => props.black};
   font-size: 11px;
   text-align: justify;
   

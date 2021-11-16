@@ -1,7 +1,20 @@
 import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent, ImageSourcePropType, View } from 'react-native';
+import { GestureResponderEvent, ImageSourcePropType } from 'react-native';
+import { useTheme } from '../../hooks';
 import { Badge } from '../Badge';
-import { AreaList, Biography, BiographyContainer, Body, Container, Header, InfoContainer, ItemView, Photo, PhotoContainer, Title } from './styles';
+import { 
+  AreaList, 
+  Biography, 
+  BiographyContainer, 
+  Body, 
+  Container, 
+  Header, 
+  InfoContainer, 
+  ItemView, 
+  Photo, 
+  PhotoContainer, 
+  Title 
+} from './styles';
 
 export interface CardProfessorProps {
   name: string;
@@ -12,10 +25,12 @@ export interface CardProfessorProps {
 }
 
 export const CardProfessor: FunctionComponent<CardProfessorProps> = ({ name, photo, shortbio, areas, onPress }) => {
+  const [theme] = useTheme();
+
   return (
-    <Container activeOpacity={0.7} onPress={onPress ?? (() => {})}>
-      <Header>
-        <Title numberOfLines={1}>{name}</Title>
+    <Container {...theme} activeOpacity={0.7} onPress={onPress ?? (() => {})}>
+      <Header {...theme}>
+        <Title {...theme} numberOfLines={1}>{name}</Title>
       </Header>
       <Body>
         <PhotoContainer>
@@ -23,9 +38,9 @@ export const CardProfessor: FunctionComponent<CardProfessorProps> = ({ name, pho
         </PhotoContainer>
         <InfoContainer>
           <BiographyContainer>
-            <Biography numberOfLines={3}>{shortbio}</Biography>
+            <Biography {...theme} numberOfLines={3}>{shortbio}</Biography>
           </BiographyContainer>
-          <AreaList
+          <AreaList 
             data={areas}
             horizontal={true}
             keyExtractor={(item) => String(item)}
@@ -35,8 +50,8 @@ export const CardProfessor: FunctionComponent<CardProfessorProps> = ({ name, pho
                 <Badge 
                   text={String(item)} 
                   animated={false} 
-                  bgColor="#C4C4C4" 
-                  color="#000"
+                  bgColor={theme.gray} 
+                  color={theme.black}
                 />
               </ItemView>
             )}

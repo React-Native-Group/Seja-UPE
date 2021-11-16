@@ -1,26 +1,27 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity.attrs<ThemeValue>(props => props)<ThemeValue>`
   height: 149px;
   width: 261px;
   border-radius: 8px;
   overflow: hidden;
-  background-color: #fff;
+  background-color: ${props => props.white};
   elevation: 5;
 `;
 
-export const Header = styled.View`
+export const Header = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   height: 37px;
   padding-left: 24px;  
   padding-right: 16px;
   justify-content: center;
-  background-color: #324A76;
+  background-color: ${props => props.blue};
   elevation: 3;
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 18px;
-  color: #fff;
+  color: ${props => props.white};
 `;
 
 export const Body = styled.View`
@@ -39,9 +40,9 @@ export const Icon = styled.Image`
   width: 86px;
 `;
 
-export const Progress = styled.Text`
+export const Progress = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 48px;
-  color: #324A76;
+  color: ${props => props.blue};
 `;
 
 export const Footer = styled.View`

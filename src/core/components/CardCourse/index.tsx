@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { ImageSourcePropType } from 'react-native';
 import { AssetWidgetSampleIcon } from '../../../assets';
+import { useTheme } from '../../hooks';
 import { Banner, BannerContainer, Container, Footer, FooterLabel } from './styles';
 
 export interface CardCourseProps {
@@ -9,13 +10,15 @@ export interface CardCourseProps {
 }
 
 export const CardCourse: FunctionComponent<CardCourseProps> = ({ banner, text }) => {
+  const [theme] = useTheme();
+
   return (
-    <Container>
+    <Container {...theme}>
       <BannerContainer>
         <Banner resizeMode="contain" source={banner ?? AssetWidgetSampleIcon} />
       </BannerContainer>
-      <Footer>
-        <FooterLabel>{text}</FooterLabel>
+      <Footer {...theme}>
+        <FooterLabel {...theme}>{text}</FooterLabel>
       </Footer>
     </Container>
   );
