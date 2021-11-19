@@ -52,7 +52,6 @@ export const InfoContainer = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 `;
 
 export const BiographyContainer = styled.View`
@@ -64,7 +63,6 @@ export const Biography = styled.Text.attrs<ThemeValue>(props => props)<ThemeValu
   color: ${props => props.black};
   font-size: 11px;
   text-align: justify;
-  
 `;
 
 export const AreaList = styled.FlatList`

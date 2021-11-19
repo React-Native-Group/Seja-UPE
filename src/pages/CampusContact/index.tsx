@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import { useTheme } from '../../core/hooks';
-import { AssetCampusContactIcon } from '../../assets';
+import { AssetWidgetContactIcon } from '../../assets';
 import { Accordion, ButtonLink, PageLayout, Spacer, TitleOutline } from '../../core/components';
 import { AccordionBody } from './styles';
 
@@ -18,7 +18,7 @@ export const CampusContact: FunctionComponent<CampusContactProps> = () => {
       canGoBack
       canScroll
     >
-      <TitleOutline title="Teste de sanfona" icon={AssetCampusContactIcon} />
+      <TitleOutline title="Contatos" icon={AssetWidgetContactIcon} />
       <Spacer verticalSpace={32} />
 
       <Accordion title="Escolaridade" bold>
