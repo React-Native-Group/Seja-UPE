@@ -34,6 +34,7 @@ export const ArrowRight = styled.Image`
 `;
 
 export const Box = styled.View.attrs<BoxProps>(props => props)<BoxProps>`
+  flex: 1;
   padding-left: ${props => props.paddingLeft}px;
   padding-right: ${props => props.paddingRight}px;
 `;

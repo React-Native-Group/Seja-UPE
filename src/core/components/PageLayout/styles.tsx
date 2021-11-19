@@ -10,7 +10,7 @@ export const ScrollableContainer = styled.ScrollView`
 
 export const AreaView = styled.View`
   padding-top: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
   padding-bottom: 32px;
 `;

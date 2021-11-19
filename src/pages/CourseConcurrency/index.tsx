@@ -38,7 +38,7 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
       <Spacer verticalSpace={48} />
 
       <DividerConcurrency type="sisu" title="Informações do Sisu" />
-      <Spacer verticalSpace={48} />
+      <Spacer verticalSpace={16} />
 
       <TitleOutline title="Ampla Concorrência" bold={false} />
       <Spacer verticalSpace={16} />
