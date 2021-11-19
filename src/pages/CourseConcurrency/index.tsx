@@ -1,10 +1,8 @@
 import React, { Fragment, FunctionComponent } from 'react';
-import { AssetClassificationIcon } from '../../assets';
+import { AssetWidgetClassificationIcon } from '../../assets';
 import { CardConcurrency, CardVacancy, Chart, DividerConcurrency, PageLayout, Spacer, TitleOutline } from '../../core/components';
 
-export interface CourseConcurrencyProps {
-  
-}
+export interface CourseConcurrencyProps { }
 
 export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () => {
   return (
@@ -13,7 +11,7 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
       canGoBack
       canScroll
     >
-      <TitleOutline title="Notas de Corte" icon={AssetClassificationIcon} />
+      <TitleOutline title="Notas de Corte" icon={AssetWidgetClassificationIcon} />
       <Spacer verticalSpace={48} />
 
       <DividerConcurrency type="ssa" title="Informações do SSA" />

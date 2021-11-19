@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { AssetCourseBookIcon, AssetRobotNormalIcon } from '../../assets';
+import { AssetWidgetCoursesIcon, AssetRobotNormalIcon } from '../../assets';
 import { Avatar, ButtonCourse, CardBaloon, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
 import { RobotContainer } from './styles';
 
@@ -14,7 +14,7 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
       canGoBack
       canScroll
     >
-      <TitleOutline title="Cursos" icon={AssetCourseBookIcon} />
+      <TitleOutline title="Cursos" icon={AssetWidgetCoursesIcon} />
       <Spacer verticalSpace={32} />
 
       <RobotContainer>

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent, ImageSourcePropType } from 'react-native';
+import { GestureResponderEvent } from 'react-native';
 import { AssetSocialFacebookIcon, AssetSocialInstagramIcon, AssetSocialTwitterIcon, AssetSocialYoutubeIcon, AssetWidgetSampleIcon } from '../../../assets';
 import { Container, Icon, Text } from './styles';
 
