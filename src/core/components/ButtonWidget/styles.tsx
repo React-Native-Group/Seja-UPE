@@ -6,7 +6,7 @@ export const Box = styled.TouchableOpacity`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 107px;
+  width: 128px;
 `;
 
 export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
@@ -21,6 +21,8 @@ export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValu
 export const Legend = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 14px;
   padding-top: 12px;
+  height: 48px;
+  text-align: center;
   color: ${props => props.red};
 `;
 

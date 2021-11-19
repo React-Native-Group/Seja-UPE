@@ -18,7 +18,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
 
   function navigate(){
-    navigation.navigate('CampusContact');
+    navigation.navigate('Course');
   }
 
   return (
