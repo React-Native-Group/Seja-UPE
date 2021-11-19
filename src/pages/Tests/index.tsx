@@ -1,12 +1,15 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
+import { AssetCapIcon } from '../../assets';
 
 import {
+  Avatar,
   ButtonLink,
   PageLayout,
   Spacer,
   TitleOutline
 } from '../../core/components';
+
 import { CampusNavigationProp } from '../../routes';
 
 export interface TestsProps { }
@@ -15,7 +18,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
 
   function navigate(){
-    navigation.navigate('Campus');
+    navigation.navigate('CourseConcurrency');
   }
 
   return (
@@ -31,6 +34,8 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <Spacer verticalSpace={10} />
 
       <ButtonLink text="hdfhdf" iconName={'share'} onPress={navigate} />
+      
+      <Avatar diameter={48} source={AssetCapIcon} />
 
     </PageLayout>
   );
