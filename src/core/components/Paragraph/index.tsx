@@ -5,16 +5,24 @@ import { Text } from './styles';
 export interface ParagraphProps {
   children: string;
   numberOfLines?: number;
+  fontSize?: string;
   paddingLeft?: string;
   paddingRight?: string;
   paddingTop?: string;
   paddingBottom?: string;
+  justify?: boolean;
 }
 
-export const Paragraph: FunctionComponent<ParagraphProps> = ({children, ...props}) => {
+export const Paragraph: FunctionComponent<ParagraphProps> = ({children, justify = false, ...props}) => {
   const [theme] = useTheme();
 
   return (
-    <Text {...theme} {...props}>{children}</Text>
+    <Text 
+      justify={justify} 
+      {...theme} 
+      {...props}
+    >
+      {children}
+    </Text>
   );
 }

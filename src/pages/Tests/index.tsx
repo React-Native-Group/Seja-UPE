@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent } from 'react';
 
+import { CampusNavigationProp } from '../../routes';
 import {
   ButtonLink,
   PageLayout,
@@ -8,15 +9,13 @@ import {
   TitleOutline
 } from '../../core/components';
 
-import { CampusNavigationProp } from '../../routes';
-
 export interface TestsProps { }
 
 export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
 
   function navigate(){
-    navigation.navigate('CoursePlanning');
+    navigation.navigate('CourseProfessor');
   }
 
   return (

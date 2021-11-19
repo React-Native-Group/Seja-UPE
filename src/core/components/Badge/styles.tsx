@@ -5,6 +5,7 @@ export interface ContainerProps {
   width: string;
   maxWidth: string;
   hasShadow: boolean;
+  borderRadius: string;
 }
 
 export interface LabelProps {
@@ -18,9 +19,9 @@ export const Container = styled.TouchableOpacity.attrs<ContainerProps>(props => 
   max-width: ${props => props.maxWidth};
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: 6px;
-  padding-right: 6px;
-  border-radius: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: ${props => props.borderRadius};
   justify-content: center;
   align-items: center;
   background-color: ${props => props.bgColor};

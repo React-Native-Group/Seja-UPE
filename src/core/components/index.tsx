@@ -19,6 +19,7 @@ export * from './Carousel';
 export * from './Chart';
 export * from './DividerConcurrency';
 export * from './Header';
+export * from './HorizontalContent';
 export * from './MapView';
 export * from './Messages';
 export * from './MultiSlider';

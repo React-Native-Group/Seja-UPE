@@ -7,6 +7,7 @@ export interface BadgeProps {
   bgColor?: string;
   color?: string;
   numberOfLines?: number;
+  borderRadius?: string;
   width?: string;
   maxWidth?: string;
   animated?: boolean;
@@ -20,7 +21,7 @@ export interface BadgeProps {
 export const Badge: FunctionComponent<BadgeProps> = (props) => {
   const [theme] = useTheme();
 
-  let { bgColor, color, numberOfLines } = props;
+  let { bgColor, color, numberOfLines, borderRadius = '16px' } = props;
   let { text, animated, onPress, hasShadow } = props;
   let { width, maxWidth, fontSize, bold } = props;
 
@@ -35,6 +36,7 @@ export const Badge: FunctionComponent<BadgeProps> = (props) => {
       maxWidth={maxWidth ?? '100%'} 
       bgColor={bgColor ?? theme.red} 
       hasShadow={!!hasShadow}
+      borderRadius={borderRadius}
     >
       <Label 
         fontSize={fontSize ?? '10px'} 
