@@ -9,7 +9,7 @@ export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValu
   padding: 16px;
   border-radius: 8px;
   background-color: ${props => props.white};
-  elevation: 3;
+  elevation: 4;
 `;
 
 export const Label = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`

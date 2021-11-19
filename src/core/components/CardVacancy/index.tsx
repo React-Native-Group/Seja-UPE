@@ -1,14 +1,13 @@
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Container, Label } from './styles';
 import { useTheme } from '../../hooks';
 
-
-export interface CardBenefitedProps {
+export interface CardVacancyProps {
   value: number
 }
 
-export const CardBenefited: FunctionComponent<CardBenefitedProps> = ({ value }) => {
+export const CardVacancy: FunctionComponent<CardVacancyProps> = ({ value }) => {
   const [theme] = useTheme();
 
   return (

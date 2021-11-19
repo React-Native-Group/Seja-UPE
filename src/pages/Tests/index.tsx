@@ -33,9 +33,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <TitleOutline title="Teste de sanfona" />
       <Spacer verticalSpace={10} />
 
-      <ButtonLink text="hdfhdf" iconName={'share'} onPress={navigate} />
-      
-      <Avatar diameter={48} source={AssetCapIcon} />
+      <ButtonLink text="Notas de Corte" iconName={'share'} onPress={navigate} />
 
     </PageLayout>
   );

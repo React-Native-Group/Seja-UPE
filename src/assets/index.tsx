@@ -14,3 +14,4 @@ export const AssetSocialFacebookIcon = require('./res_social_facebook_icon.png')
 export const AssetSocialInstagramIcon = require('./res_social_instagram_icon.png');
 export const AssetSocialTwitterIcon = require('./res_social_twitter_icon.png');
 export const AssetSocialYoutubeIcon = require('./res_social_youtube_icon.png');
+export const AssetClassificationIcon = require('./res_classification_icon.png');

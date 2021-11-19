@@ -9,18 +9,19 @@ import { Banner, Container, Divider, Group, Title } from './styles';
 export interface TitleOutlineProps {
   icon?: ImageSourcePropType;
   title: string;
+  bold?: boolean;
 }
 
-export const TitleOutline: FunctionComponent<TitleOutlineProps> = ({ title, icon }) => {
+export const TitleOutline: FunctionComponent<TitleOutlineProps> = ({ title, icon, bold = true }) => {
   const [theme] = useTheme();
 
   return (
     <Container>
       <Group>
         <Render if={!!icon}>
-          <Banner source={icon || AssetWidgetSampleIcon} />
+          <Banner source={icon || AssetWidgetSampleIcon} resizeMode="contain" />
         </Render>
-        <Title {...theme} numberOfLines={1}>{title}</Title>
+        <Title {...theme} numberOfLines={1} bold={bold}>{title}</Title>
       </Group>
       <Divider {...theme} />
     </Container>
