@@ -46,8 +46,6 @@ export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
       <ButtonEvent title="Jornal Extensionista" />
       <Spacer verticalSpace={18} />
 
-
-
     </PageLayout>
   );
 }

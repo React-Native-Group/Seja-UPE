@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons'; 
 
 import { Render } from '../Render';
@@ -8,10 +8,12 @@ import { useTheme } from '../../hooks';
 export interface AccordionProps {
   onToggle?: (state: boolean) => void;
   title: string;
-  body: string;
+  body?: string;
+  bold?: boolean;
+  children?: ReactNode;
 }
 
-export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, body }) => {
+export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, body, bold = false, children }) => {
   const [theme] = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +36,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
         borderBottomRadius={borderRadius} 
         onPress={toggle}
       >
-        <Title {...theme}>{title}</Title>
+        <Title {...theme} bold={bold}>{title}</Title>
         <FontAwesome 
           name={isOpen ? "caret-down" : "caret-right"} 
           size={24} 
@@ -44,9 +46,14 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
 
       <Render if={isOpen}>
         <Body {...theme}>
-          <Text {...theme}>
-            {body}
-          </Text>
+          <Render if={!!body}>
+            <Text {...theme}>
+              {body}
+            </Text>
+          </Render>
+          <Render if={!body}>
+            {children}
+          </Render>
         </Body>
       </Render>
 

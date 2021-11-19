@@ -10,6 +10,10 @@ export interface HeaderProps extends ThemeValue {
   borderBottomRadius: number
 }
 
+export interface TitleProps extends ThemeValue {
+  bold: boolean;
+}
+
 export const Container = styled.View.attrs<ContainerProps>(props => props)<ContainerProps>`
   flex: 1;
   elevation: 5;
@@ -34,9 +38,10 @@ export const Header = styled(Ripple).attrs<HeaderProps>(props => props)<HeaderPr
   background-color: ${props => props.blue};
 `;
 
-export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
+export const Title = styled.Text.attrs<TitleProps>(props => props)<TitleProps>`
   font-size: 16px;
   color: ${props => props.white};
+  ${props => props.bold ? 'font-weight: bold;' : ''}
 `;
 
 export const Body = styled.ScrollView.attrs<ThemeValue>(props => props)<ThemeValue>`

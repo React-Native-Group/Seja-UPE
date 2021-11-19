@@ -17,3 +17,5 @@ export const AssetSocialYoutubeIcon   = require('./res_social_youtube_icon.png')
 export const AssetClassificationIcon  = require('./res_classification_icon.png');
 export const AssetEventsIcon          = require('./res_events_icon.png');
 export const AssetRobotNormalIcon     = require('./res_robot_normal_icon.png');
+export const AssetCourseBookIcon      = require('./res_course_book_icon.png');
+export const AssetCampusContactIcon   = require('./res_campus_contact_icon.png');

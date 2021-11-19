@@ -18,7 +18,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
 
   function navigate(){
-    navigation.navigate('CampusEvents');
+    navigation.navigate('CampusContact');
   }
 
   return (
@@ -33,7 +33,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <TitleOutline title="Teste de sanfona" />
       <Spacer verticalSpace={10} />
 
-      <ButtonLink text="Eventos do Campus" iconName={'share'} onPress={navigate} />
+      <ButtonLink text="Cursos do Campus" iconName={'share'} onPress={navigate} />
 
     </PageLayout>
   );

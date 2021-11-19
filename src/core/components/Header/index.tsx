@@ -27,7 +27,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
 
   function changeTabs(index: number){
     if (!!onTabClick)
-      onTabClick(index == 0 ? 'suggestions' : 'search');
+      onTabClick(index == 0 ? 'search' : 'suggestions');
     setTabIndex(index++ % 2);
   }
 
@@ -50,10 +50,10 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
       <Render if={!!showTabs}>
         <TabsContainer {...theme}>
           <Tab {...theme} isActive={tabIndex == 0} onPress={() => changeTabs(0)}>
-            <TabText {...theme} numberOfLines={1}>Recomendados para mim</TabText>
+            <TabText {...theme} numberOfLines={1}>Já sei o que quero</TabText>
           </Tab>
           <Tab {...theme} isActive={tabIndex == 1} onPress={() => changeTabs(1)}>
-            <TabText {...theme} numberOfLines={1}>Já sei o que quero</TabText>
+            <TabText {...theme} numberOfLines={1}>Não sei o que quero</TabText>
           </Tab>
         </TabsContainer>
       </Render>
