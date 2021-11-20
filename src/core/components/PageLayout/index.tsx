@@ -29,7 +29,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
   return (
     <Fragment>
       <Render if={!!canScroll}>
-        <ScrollableContainer>
+        <ScrollableContainer nestedScrollEnabled>
           <Render if={!!showHeader}>
             <Header 
               canGoBack={!!canGoBack} 

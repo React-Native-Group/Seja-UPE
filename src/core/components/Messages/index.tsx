@@ -19,7 +19,7 @@ export const Messages: FunctionComponent<MessagesProps> = ({ messages }) => {
   const [theme] = useTheme();
 
   return (
-    <Container>
+    <Container nestedScrollEnabled>
 
       {messages.map(({isOwner, ...message}) => (
         <Fragment key={String(Math.floor(Math.random() * 10**5))}>

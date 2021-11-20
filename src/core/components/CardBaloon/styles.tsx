@@ -21,7 +21,7 @@ export const ArrowLeft = styled.Image`
   width: 27px;
   height: 27px;
   left: -24px;
-  top: 40%;
+  top: 45%;
 `;
 
 export const ArrowRight = styled.Image`

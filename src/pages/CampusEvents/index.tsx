@@ -1,5 +1,5 @@
-import React, { Fragment, FunctionComponent } from 'react';
-import { AssetEventsIcon, AssetRobotNormalIcon } from '../../assets';
+import React, { FunctionComponent } from 'react';
+import { AssetWidgetEventsIcon, AssetRobotNormalIcon } from '../../assets';
 import { Avatar, ButtonEvent, CardBaloon, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
 import { RobotContainer } from './styles';
 
@@ -14,14 +14,21 @@ export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
       canGoBack
       canScroll
     >
-      <TitleOutline title="Principais Eventos" icon={AssetEventsIcon} />
+      <TitleOutline title="Principais Eventos" icon={AssetWidgetEventsIcon} />
       <Spacer verticalSpace={32} />
 
       <RobotContainer>
 
         <Avatar source={AssetRobotNormalIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
-          <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px" paddingBottom="16px">
+          <Paragraph
+            paddingLeft="8px"
+            paddingRight="8px"
+            paddingTop="8px"
+            paddingBottom="8px"
+            fontSize="16px"
+            justify
+          >
             Prestigie nossos eventos acadêmicos, 
             fique por dentro do que ocorre na universidade.
           </Paragraph>

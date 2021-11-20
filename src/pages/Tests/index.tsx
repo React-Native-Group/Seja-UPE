@@ -1,22 +1,25 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent } from 'react';
 
-import { CampusNavigationProp } from '../../routes';
+import { CampusNavigationProp, RoutesParamList } from '../../routes';
 import {
   ButtonLink,
   PageLayout,
   Spacer,
   TitleOutline
 } from '../../core/components';
+import { PixelRatio } from 'react-native';
 
 export interface TestsProps { }
 
 export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
 
-  function navigate(){
-    navigation.navigate('CourseProfessors');
+  function navigate(route: keyof RoutesParamList){
+    navigation.navigate(route);
   }
+
+  console.log(PixelRatio.getPixelSizeForLayoutSize(100))
 
   return (
     <PageLayout 
@@ -27,14 +30,71 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       canGoBack
       onTabClick={console.log}
     >
-      <TitleOutline title="Teste de sanfona" />
+      <TitleOutline title="Layouts de telas prontos" />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
-        text="Cursos do Campus" 
+        text="Campus" 
         iconName={'share'} 
-        onPress={navigate} 
+        onPress={() => navigate('Campus')} 
       />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Campus > Contatos" 
+        iconName={'share'} 
+        onPress={() => navigate('CampusContact')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Campus > Cursos" 
+        iconName={'share'} 
+        onPress={() => navigate('CampusCourses')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Campus > Events" 
+        iconName={'share'} 
+        onPress={() => navigate('CampusEvents')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Curso" 
+        iconName={'share'} 
+        onPress={() => navigate('Course')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Curso > Notas de Corte" 
+        iconName={'share'} 
+        onPress={() => navigate('CourseConcurrency')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Curso > Projeto Pedagógico" 
+        iconName={'share'} 
+        onPress={() => navigate('CoursePlanning')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Curso > Professores" 
+        iconName={'share'} 
+        onPress={() => navigate('CourseProfessors')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Curso > Professores > Professor" 
+        iconName={'share'} 
+        onPress={() => navigate('CourseProfessor')} 
+      />
+      <Spacer verticalSpace={10} />
 
     </PageLayout>
   );

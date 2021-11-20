@@ -21,7 +21,14 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
 
         <Avatar source={AssetRobotNormalIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
-          <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px" paddingBottom="16px">
+          <Paragraph 
+            paddingLeft="8px" 
+            paddingRight="8px" 
+            paddingTop="8px" 
+            paddingBottom="8px" 
+            fontSize="16px"
+            justify
+          >
             Atualmente no Campus Garanhuns, possuímos 10 cursos presenciais.
           </Paragraph>
         </CardBaloon>
