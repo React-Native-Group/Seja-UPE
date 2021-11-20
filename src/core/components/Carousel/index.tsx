@@ -29,11 +29,11 @@ export const Carousel: FunctionComponent<CarouselProps> = ({ length, currentInde
       }}
       decreasingDots={[
         {
-          config: { color: theme.white, margin: 3, opacity: 0.5, size: 6 },
+          config: { color: theme.gray, margin: 3, opacity: 1, size: 12 },
           quantity: 1
         },
         {
-          config: { color: theme.white, margin: 3, opacity: 0.5, size: 4 },
+          config: { color: theme.gray, margin: 3, opacity: 1, size: 12 },
           quantity: 1
         },
       ]}

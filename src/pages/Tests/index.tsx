@@ -8,7 +8,6 @@ import {
   Spacer,
   TitleOutline
 } from '../../core/components';
-import { PixelRatio } from 'react-native';
 
 export interface TestsProps { }
 
@@ -18,8 +17,6 @@ export const Tests: FunctionComponent<TestsProps> = () => {
   function navigate(route: keyof RoutesParamList){
     navigation.navigate(route);
   }
-
-  console.log(PixelRatio.getPixelSizeForLayoutSize(100))
 
   return (
     <PageLayout 
@@ -34,64 +31,71 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
+        text="Início" 
+        iconName="share" 
+        onPress={() => navigate('Welcome')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
         text="Campus" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('Campus')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Campus > Contatos" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('CampusContact')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Campus > Cursos" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('CampusCourses')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Campus > Events" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('CampusEvents')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Curso" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('Course')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Curso > Notas de Corte" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('CourseConcurrency')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Curso > Projeto Pedagógico" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('CoursePlanning')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Curso > Professores" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('CourseProfessors')} 
       />
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
         text="Curso > Professores > Professor" 
-        iconName={'share'} 
+        iconName="share" 
         onPress={() => navigate('CourseProfessor')} 
       />
       <Spacer verticalSpace={10} />

@@ -7,6 +7,7 @@ export * from './ButtonGoogle';
 export * from './ButtonLattes';
 export * from './ButtonLink';
 export * from './ButtonSocial';
+export * from './ButtonStep';
 export * from './ButtonWidget';
 export * from './CardBaloon';
 export * from './CardBaloonBottom';

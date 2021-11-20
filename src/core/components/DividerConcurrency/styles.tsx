@@ -5,9 +5,11 @@ export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValu
   flex: 1;
   flex-direction: row;
   align-items: center;
-  height: 49px;
+  overflow: hidden;
   border-radius: 8px;
   padding-left: 16px;
+  padding-right: 16px;
+  height: 49px;
   background-color: ${props => props.blue};
 `;
 
@@ -20,6 +22,6 @@ export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  color: ${props => props.white};
   margin-left: 16px;
+  color: ${props => props.white};
 `;

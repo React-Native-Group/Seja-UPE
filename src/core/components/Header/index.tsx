@@ -12,14 +12,17 @@ export interface HeaderProps {
   canGoBack?: boolean;
   showTabs?: boolean;
   onTabClick?: (e: 'suggestions' | 'search') => void;
+  onBackPressed?: () => boolean;
 }
 
-export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, onTabClick }) => {
-  const [theme] = useTheme();
+export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, onTabClick, onBackPressed }) => {
   const navigation = useNavigation();
+  const [theme] = useTheme();
   const [tabIndex, setTabIndex] = useState(0);
 
   function goBack(){
+    if (!!onBackPressed)
+      return onBackPressed();
     if (navigation.canGoBack())
       return navigation.goBack();
     BackHandler.exitApp();

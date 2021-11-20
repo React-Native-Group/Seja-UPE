@@ -17,7 +17,7 @@ export const CoursePlanning: FunctionComponent<CoursePlanningProps> = () => {
   const [theme] = useTheme();
   const {height} = Dimensions.get('window');
   
-  const url = 'https://www.ufjf.br/cursocomputacao/files/2018/09/PPC-2018.pdf';
+  const url = 'http://www.upe.br/garanhuns/wp-content/uploads/2020/02/BACHARELADO-ENGENHARIA-DE-SOFTWARE-v2.pdf';
   const isPdf = url.toLocaleLowerCase().endsWith('.pdf');
 
   return (

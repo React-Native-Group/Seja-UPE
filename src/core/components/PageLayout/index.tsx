@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { Fragment, FunctionComponent, useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import Fab from 'react-native-fab';
 
@@ -6,6 +6,7 @@ import { Header } from '../Header';
 import { Render } from '../Render';
 import { useTheme } from '../../hooks';
 import { AreaView, Container, ScrollableContainer } from './styles';
+import { BackHandler } from 'react-native';
 
 export interface PageLayoutProps {
   canScroll?: boolean;
@@ -16,6 +17,7 @@ export interface PageLayoutProps {
   fabIcon?: keyof typeof FontAwesome.glyphMap;
   onFabClick?: () => void;
   onTabClick?: (e: 'suggestions' | 'search') => void;
+  onBackPressed?: () => boolean;
   children: React.ReactNode;
 }
 
@@ -25,7 +27,16 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
   const { canGoBack, canScroll, showHeader } = props;
   const { showFab, showTabs, fabIcon } = props;
   const { onFabClick, onTabClick, children } = props;
-  
+  const { onBackPressed } = props;
+
+  useEffect(() => {
+    function backButtonHandler() {
+      return !canGoBack;
+    }
+    BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+    return () => BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+  }, []);
+
   return (
     <Fragment>
       <Render if={!!canScroll}>
@@ -35,6 +46,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
               canGoBack={!!canGoBack} 
               showTabs={showTabs} 
               onTabClick={onTabClick}
+              onBackPressed={onBackPressed}
             />
           </Render>
           <AreaView>
@@ -49,6 +61,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
               canGoBack={!!canGoBack} 
               showTabs={showTabs} 
               onTabClick={onTabClick}
+              onBackPressed={onBackPressed}
             />
           </Render>
           <AreaView>
