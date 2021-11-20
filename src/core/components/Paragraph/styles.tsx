@@ -11,6 +11,7 @@ export interface TextProps extends ThemeValue {
 }
 
 export const Text = styled.Text.attrs<TextProps>(props => props)<TextProps>`
+  flex: 1;
   color: ${props => props.blue};
   padding-left: ${props => props.paddingLeft ?? '0'};
   padding-right: ${props => props.paddingRight ?? '0'};

@@ -38,6 +38,13 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <Spacer verticalSpace={10} />
 
       <ButtonLink 
+        text="Início > Teste Vocacional" 
+        iconName="share" 
+        onPress={() => navigate('Survey')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
         text="Campus" 
         iconName="share" 
         onPress={() => navigate('Campus')} 
