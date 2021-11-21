@@ -14,6 +14,7 @@ export const AssetSocialInstagramIcon       = require('./res_social_instagram_ic
 export const AssetSocialTwitterIcon         = require('./res_social_twitter_icon.png');
 export const AssetSocialYoutubeIcon         = require('./res_social_youtube_icon.png');
 export const AssetRobotNormalIcon           = require('./res_robot_normal_icon.png');
+export const AssetRobotAskingIcon           = require('./res_robot_asking_icon.png');
 export const AssetCardCourseLogo            = require('./res_card_course_logo.png');
 export const AssetWidgetSampleIcon          = require('./res_widget_sample_icon.png');
 export const AssetWidgetCampusIcon          = require('./res_widget_campus_icon.png');
