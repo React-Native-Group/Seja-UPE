@@ -1,28 +1,48 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useRef, useState } from 'react';
 import { AssetRobotNormalIcon } from '../../assets';
+
 import {
   Avatar,
+  Button,
   CardBaloonBottom,
-  createRadioGroup,
+  HorizontalContent,
   PageLayout,
   Paragraph,
   Progress,
   Radio,
-  RadioType,
-  Spacer
+  Render,
+  Spacer,
+  useRadioGroup
 } from '../../core/components';
-import { ChoiceContainer, RadioContainer, RobotContainer } from './styles';
+
+import {
+  ButtonContainer,
+  ButtonSpacer,
+  ChoiceContainer,
+  RadioContainer,
+  RobotContainer
+} from './styles';
 
 export interface SurveyProps {
   
 }
 
 export const Survey: FunctionComponent<SurveyProps> = () => {
+  const maxProgress = 15;
   const [progress, setProgress] = useState(1);
-  const [group, setGroup] = useState<RadioType[]>(createRadioGroup(5));
+  const [group, setGroup] = useRadioGroup(5);
+  const responses = useRef([]);
 
   function choiceChanged(e: number){
     console.log('Escolhido: ' + e)
+  }
+
+  function doSurveyBack(){
+    setProgress(progress-1)
+  }
+
+  function doSurveyAdvance(){
+    setProgress(progress+1)
   }
 
   return (
@@ -30,7 +50,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
       showHeader
       canScroll
     >
-      <Progress value={progress} maxValue={15} />
+      <Progress value={progress} maxValue={maxProgress} />
       <Spacer verticalSpace={16} />
 
       <RobotContainer>
@@ -121,6 +141,37 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
         </Paragraph>
       </ChoiceContainer>
       <Spacer verticalSpace={16} />
+
+      <Spacer verticalSpace={32} />
+
+      <HorizontalContent>
+
+        <Render if={progress > 1}>
+          <ButtonContainer>
+            <Button 
+              text="Voltar" 
+              bgColor="white" 
+              color="blue" 
+              onPress={doSurveyBack}
+            />
+          </ButtonContainer>
+
+          <ButtonSpacer />
+        </Render>
+
+        <Render if={progress < maxProgress}>
+          <ButtonContainer>
+            <Button 
+              text="Avançar" 
+              bgColor="blue" 
+              color="white" 
+              onPress={doSurveyAdvance}
+            />
+          </ButtonContainer>
+        </Render>
+
+      </HorizontalContent>
+
 
     </PageLayout>
   );

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, SetStateAction } from 'react';
+import React, { FunctionComponent, SetStateAction, useState } from 'react';
 import { useTheme } from '../../hooks';
 
 import { Render } from '../Render';
@@ -16,12 +16,12 @@ export interface RadioProps {
   onHandle: (v: SetStateAction<RadioType[]>) => void;
 }
 
-export function createRadioGroup(choices: number){
+export function useRadioGroup(choices: number){
   let group: RadioType[] = [];
   for (let k = 0; k < choices; k++){
     group.push({ index: k, active: false });
   }
-  return group;
+  return useState<RadioType[]>(group);
 }
 
 export const Radio: FunctionComponent<RadioProps> = ({ reference, group, onPress, onHandle }) => {
@@ -29,10 +29,7 @@ export const Radio: FunctionComponent<RadioProps> = ({ reference, group, onPress
 
   function radioHandler(e: number){
     onHandle(group.map(v => {
-      if (v.index == e)
-        v.active = true;
-      else 
-        v.active = false;
+      v.active = v.index == e;
       return v;
     }));
     onPress(e);
