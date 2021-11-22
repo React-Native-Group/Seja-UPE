@@ -3,9 +3,7 @@ import { AssetRobotNormalIcon, AssetWidgetProfessorsIcon } from '../../assets';
 import { Avatar, CardBaloon, CardProfessor, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
 import { RobotContainer } from './styles';
 
-export interface CourseProfessorsProps {
-  
-}
+export interface CourseProfessorsProps { }
 
 export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => {
   

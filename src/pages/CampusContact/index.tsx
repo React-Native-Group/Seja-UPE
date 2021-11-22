@@ -5,9 +5,7 @@ import { AssetWidgetContactIcon } from '../../assets';
 import { Accordion, ButtonLink, PageLayout, Spacer, TitleOutline } from '../../core/components';
 import { AccordionBody } from './styles';
 
-export interface CampusContactProps {
-  
-}
+export interface CampusContactProps { }
 
 export const CampusContact: FunctionComponent<CampusContactProps> = () => {
   const [theme] = useTheme();

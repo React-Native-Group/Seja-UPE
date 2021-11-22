@@ -30,6 +30,7 @@ export * from './Paragraph';
 export * from './Progress';
 export * from './Radio';
 export * from './Render';
+export * from './Select';
 export * from './Spacer';
 export * from './Title';
 export * from './TitleOutline';

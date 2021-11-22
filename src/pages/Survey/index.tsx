@@ -23,9 +23,7 @@ import {
   RobotContainer
 } from './styles';
 
-export interface SurveyProps {
-  
-}
+export interface SurveyProps { }
 
 export const Survey: FunctionComponent<SurveyProps> = () => {
   const maxProgress = 15;

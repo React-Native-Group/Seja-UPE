@@ -1,11 +1,18 @@
 import React, { FunctionComponent } from 'react';
-import { AssetWidgetEventsIcon, AssetRobotNormalIcon } from '../../assets';
-import { Avatar, ButtonEvent, CardBaloon, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
-import { RobotContainer } from './styles';
 
-export interface CampusEventsProps {
-  
-}
+import {
+  Avatar,
+  ButtonEvent,
+  CardBaloon,
+  PageLayout,
+  Paragraph,
+  Spacer,
+  TitleOutline
+} from '../../core/components';
+import { RobotContainer } from './styles';
+import { AssetWidgetEventsIcon, AssetRobotNormalIcon } from '../../assets';
+
+export interface CampusEventsProps { }
 
 export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
   return (

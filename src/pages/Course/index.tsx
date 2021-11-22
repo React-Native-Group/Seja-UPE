@@ -1,7 +1,24 @@
 import React, { Fragment, FunctionComponent, useState } from 'react';
 import { FlatList, ImageSourcePropType } from 'react-native';
-import { AssetBookIcon, AssetCardCourseLogo, AssetWidgetCampusIcon, AssetWidgetClassificationIcon, AssetWidgetPlanningIcon, AssetWidgetProfessorsIcon } from '../../assets';
-import { Accordion, ButtonWidget, CardCourse, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
+
+import {
+  AssetCardCourseLogo,
+  AssetWidgetCampusIcon,
+  AssetWidgetClassificationIcon,
+  AssetWidgetPlanningIcon,
+  AssetWidgetProfessorsIcon
+} from '../../assets';
+
+import {
+  Accordion,
+  ButtonWidget,
+  CardCourse,
+  PageLayout,
+  Paragraph,
+  Spacer,
+  TitleOutline
+} from '../../core/components';
+
 import { RoutesParamList } from '../../routes';
 
 type WidgetData = {
@@ -12,9 +29,7 @@ type WidgetData = {
   params: any;
 }
 
-export interface CourseProps {
-
-}
+export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
 

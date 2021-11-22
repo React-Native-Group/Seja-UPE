@@ -5,9 +5,7 @@ import { useTheme } from '../../core/hooks';
 import { AvatarRow, BadgeContainer, NameContainer, NameText } from './styles';
 import { Avatar, Badge, ButtonLattes, ButtonLink, HorizontalContent, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
 
-export interface CourseProfessorProps {
-  
-}
+export interface CourseProfessorProps { }
 
 export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
   const [theme] = useTheme();

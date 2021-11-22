@@ -1,7 +1,24 @@
 import React, { Fragment, FunctionComponent, useState } from 'react';
 import { FlatList, ImageSourcePropType } from 'react-native';
-import { AssetBookIcon, AssetWidgetCampusIcon, AssetWidgetContactIcon, AssetWidgetCoursesIcon, AssetWidgetEventsIcon } from '../../assets';
-import { Accordion, ButtonSocial, ButtonWidget, MapView, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
+
+import {
+  AssetWidgetCampusIcon,
+  AssetWidgetContactIcon,
+  AssetWidgetCoursesIcon,
+  AssetWidgetEventsIcon
+} from '../../assets';
+
+import {
+  Accordion,
+  ButtonSocial,
+  ButtonWidget,
+  MapView,
+  PageLayout,
+  Paragraph,
+  Spacer,
+  TitleOutline
+} from '../../core/components';
+
 import { RoutesParamList } from '../../routes';
 
 type WidgetData = {
@@ -12,9 +29,7 @@ type WidgetData = {
   params: any;
 }
 
-export interface CampusProps {
-  
-}
+export interface CampusProps { }
 
 export const Campus: FunctionComponent<CampusProps> = () => {
   const [widgets, setWidgets] = useState<WidgetData[]>([

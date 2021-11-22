@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Container, Label, Toggle } from './styles';
 
 export interface ToggleGroupProps {
@@ -8,6 +8,10 @@ export interface ToggleGroupProps {
 
 export const ToggleGroup: FunctionComponent<ToggleGroupProps> = ({ onChange, initialValue }) => {
   const [ selected, setSelected ] = useState<'ssa' | 'sisu'>(initialValue ?? 'ssa');
+
+  useEffect(() => {
+    if (!!onChange) onChange(selected);
+  }, []);
 
   function onChangeSelection(e: 'ssa' | 'sisu'){
     if (!!onChange) onChange(e);

@@ -9,9 +9,7 @@ import { AssetWidgetPlanningIcon } from '../../assets';
 import { PageLayout, Render, Spacer, TitleOutline } from '../../core/components';
 
 
-export interface CoursePlanningProps {
-  
-}
+export interface CoursePlanningProps { }
 
 export const CoursePlanning: FunctionComponent<CoursePlanningProps> = () => {
   const [theme] = useTheme();

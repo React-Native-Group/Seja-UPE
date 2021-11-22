@@ -1,49 +1,82 @@
-import React, { Fragment, FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { FlatList } from 'react-native';
-import { AssetRobotAskingIcon } from '../../assets';
 
 import {
   Avatar,
   Badge,
+  Button,
   CardBaloon,
   CardBaloonBottom,
   CardSuggestion,
+  HorizontalContent,
+  MultiSlider,
+  MultiSliderValue,
   PageLayout,
   Paragraph,
   Render,
+  Select,
+  SelectOption,
   Spacer,
   TitleOutline,
+  ToggleGroup,
   VerticalContent
 } from '../../core/components';
 
 import { useTheme } from '../../core/hooks';
-import { RobotContainer } from '../CampusCourses/styles';
-import { RobotContainerRow, SurveyButtonContainer } from './styles';
+import { AssetRobotAskingIcon } from '../../assets';
 
-export interface SuggestionsProps {
-  
-}
+import {
+  RobotContainer,
+  RobotContainerRow,
+  SearchButtonSpacer,
+  SliderTitle,
+  SurveyButtonContainer
+} from './styles';
+
+export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [theme] = useTheme();
 
   const [tab, setTab] = useState<'search' | 'suggestions'>('search');
-  const [surveyDone, setSurveyDone] = useState(true);
+  const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
+  const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
+  const [surveyDone, setSurveyDone] = useState(false);
 
-  const courseList = [
-    
-  ];
-
-  function onSurveyButtonClick(isSurveyDone: boolean){
+  function onSurveyButtonClick(isSurveyDone: boolean) {
     console.log(isSurveyDone)
   }
 
-  function onCourseClick(courseData: any){
+  function onCourseClick(courseData: any) {
 
   }
 
+  function onCampusSelected(campus: SelectOption){
+
+  }
+
+  function onCourseSelected(course: SelectOption){
+
+  }
+
+  const campusList = [
+    { key: 0, label: 'Campus Garanhuns' },
+    { key: 1, label: 'Campus Serra Talhada' },
+    { key: 2, label: 'Campus Mata Norte' },
+    { key: 3, label: 'Campus Caruaru' },
+    { key: 4, label: 'Campus Benfica' }
+  ];
+
+  const courseList = [
+    { key: 0, label: 'Medicina' },
+    { key: 1, label: 'Engenharia Civil' },
+    { key: 2, label: 'Engenharia de Software' },
+    { key: 3, label: 'Direito' },
+    { key: 4, label: 'Psicologia' }
+  ];
+
   return (
-    <PageLayout 
+    <PageLayout
       showHeader
       showTabs
       canGoBack
@@ -52,6 +85,62 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     >
 
       <Render if={tab == 'search'}>
+
+        <ToggleGroup onChange={setToggle} />
+        <Spacer verticalSpace={24} />
+
+        <SliderTitle {...theme}>Minha nota está entre</SliderTitle>
+        <Spacer verticalSpace={4} />
+        
+        <Render if={toggle == 'ssa'}>
+          <MultiSlider 
+            minValue={0} 
+            maxValue={100} 
+            minDistance={10} 
+            onChange={setNoteRange}
+          />
+        </Render>
+        <Render if={toggle == 'sisu'}>
+          <MultiSlider 
+            minValue={0} 
+            maxValue={1000} 
+            minDistance={50} 
+            onChange={setNoteRange}
+          />
+        </Render>
+
+        <Spacer verticalSpace={24} />
+
+        <TitleOutline title="Campus" bold={false} />
+        <Spacer verticalSpace={16} />
+
+        <Select 
+          data={campusList}
+          placeholder="Escolha o Campus (Opcional)" 
+          onSelect={onCampusSelected} 
+        />
+        <Spacer verticalSpace={24} />
+
+        <TitleOutline title="Curso" bold={false} />
+        <Spacer verticalSpace={16} />
+
+        <Select 
+          data={courseList}
+          placeholder="Escolha o Curso (Opcional)" 
+          onSelect={onCourseSelected} 
+        />
+        <Spacer verticalSpace={32} />
+
+        <HorizontalContent>
+          <SearchButtonSpacer />
+          <Button
+            text="Pesquisar"
+            bgColor="blue"
+            color="white"
+          />
+          <SearchButtonSpacer />
+        </HorizontalContent>
+
 
       </Render>
 
@@ -64,11 +153,11 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             <Avatar source={AssetRobotAskingIcon} diameter={96} padding={8} />
 
             <CardBaloon direction="left">
-              <Paragraph 
-                paddingLeft="8px" 
-                paddingRight="8px" 
-                paddingTop="8px" 
-                paddingBottom="8px" 
+              <Paragraph
+                paddingLeft="8px"
+                paddingRight="8px"
+                paddingTop="8px"
+                paddingBottom="8px"
                 justify
               >
                 Encontrei 7 cursos com base nas informações que você me passou.
@@ -95,16 +184,16 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           <TitleOutline title="Campus Garanhuns" bold={false} />
           <Spacer verticalSpace={16} />
 
-          <FlatList 
+          <FlatList
             data={[]}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             alwaysBounceHorizontal={false}
             renderItem={({ item }) => (
-              <CardSuggestion 
-                title={''} 
-                progress={''} 
-                onPress={() => onCourseClick(item)}             
+              <CardSuggestion
+                title={''}
+                progress={''}
+                onPress={() => onCourseClick(item)}
               />
             )}
           />
@@ -113,10 +202,10 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           <Spacer verticalSpace={16} />
 
           <TitleOutline title="Campus Salgueiro" bold={false} />
-          <Spacer verticalSpace={16} />
+          <Spacer verticalSpace={24} />
 
         </Render>
-        
+
         <Render if={!surveyDone}>
           <RobotContainer>
             <Avatar source={AssetRobotAskingIcon} diameter={129} padding={8} />
@@ -126,24 +215,24 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
           <CardBaloonBottom>
             <VerticalContent>
-              <Paragraph 
-                paddingLeft="8px" 
-                paddingRight="8px" 
-                paddingTop="8px" 
-                paddingBottom="8px" 
+              <Paragraph
+                paddingLeft="8px"
+                paddingRight="8px"
+                paddingTop="8px"
+                paddingBottom="8px"
                 justify
               >
-                Preciso te conhecer melhor. Responda a um breve 
+                Preciso te conhecer melhor. Responda a um breve
                 questionário para que eu possa te indicar alguns cursos.
               </Paragraph>
 
               <Spacer verticalSpace={8} />
 
               <SurveyButtonContainer>
-                <Badge 
+                <Badge
                   bold
-                  text="Fazer questionário" 
-                  bgColor={theme.blue} 
+                  text="Fazer questionário"
+                  bgColor={theme.blue}
                   maxWidth="160px"
                   onPress={() => onSurveyButtonClick(surveyDone)}
                 />
