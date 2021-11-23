@@ -43,6 +43,10 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
     setProgress(progress+1)
   }
 
+  function doSurveyFinish(){
+
+  }
+
   return (
     <PageLayout 
       showHeader
@@ -58,7 +62,13 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
       <Spacer verticalSpace={4} />
 
       <CardBaloonBottom>
-        <Paragraph fontSize="16px" paddingLeft="8px" paddingRight="8px" paddingTop="8px" paddingBottom="8px">
+        <Paragraph 
+          fontSize="16px" 
+          paddingLeft="8px" 
+          paddingRight="8px" 
+          paddingTop="8px" 
+          paddingBottom="8px"
+        >
           Você gosta de disciplinas como Matemática, Física, Química? Que tal cálculos?
         </Paragraph>
       </CardBaloonBottom>
@@ -138,9 +148,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
           Lorem ipsum dolor sit amet
         </Paragraph>
       </ChoiceContainer>
-      <Spacer verticalSpace={16} />
-
-      <Spacer verticalSpace={32} />
+      <Spacer verticalSpace={48} />
 
       <HorizontalContent>
 
@@ -157,16 +165,14 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
           <ButtonSpacer />
         </Render>
 
-        <Render if={progress < maxProgress}>
-          <ButtonContainer>
-            <Button 
-              text="Avançar" 
-              bgColor="blue" 
-              color="white" 
-              onPress={doSurveyAdvance}
-            />
-          </ButtonContainer>
-        </Render>
+        <ButtonContainer>
+          <Button
+            text={progress == maxProgress ? "Finalizar" : "Avançar"}
+            onPress={progress == maxProgress ? doSurveyFinish : doSurveyAdvance}
+            bgColor="blue"
+            color="white"
+          />
+        </ButtonContainer>
 
       </HorizontalContent>
 

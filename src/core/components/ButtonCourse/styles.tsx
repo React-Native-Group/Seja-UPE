@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { FontAwesome5 } from '@expo/vector-icons';
 import Ripple from 'react-native-material-ripple';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { ThemeValue } from "../../providers";
 
 export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeValue>`
@@ -13,10 +13,6 @@ export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeV
   height: 73px;
   elevation: 3;
   background-color: ${props => props.white};
-`;
-
-export const Banner = styled.Image`
-  height: 100%;
 `;
 
 export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`

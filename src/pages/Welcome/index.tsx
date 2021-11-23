@@ -1,8 +1,16 @@
 import React, { FunctionComponent, useState } from 'react';
+import { ImageSourcePropType } from 'react-native';
 
 import { Container } from './styles';
-import { AssetRobotNormalIcon } from '../../assets';
 import { OAuth2LoginAsync } from '../../core/services';
+
+import {
+  AssetRobotKindIcon,
+  AssetRobotQuestionsIcon,
+  AssetRobotSmileDownIcon,
+  AssetRobotSmileIcon
+} from '../../assets';
+
 import {
   Avatar,
   ButtonGoogle,
@@ -37,6 +45,14 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
     return true;
   }
 
+  function getRobotIcon(): ImageSourcePropType {
+    if (step == 0) return AssetRobotSmileDownIcon;
+    if (step == 1) return AssetRobotKindIcon;
+    if (step == 2) return AssetRobotSmileDownIcon;
+    if (step == 3) return AssetRobotQuestionsIcon;
+    return AssetRobotSmileIcon;
+  }
+
   return (
     <PageLayout 
       showHeader
@@ -47,10 +63,10 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
       <Container>
         <Spacer verticalSpace={16} />
 
-        <Avatar 
-          source={AssetRobotNormalIcon} 
-          diameter={256} 
-          padding={16} 
+        <Avatar
+          source={getRobotIcon()}
+          diameter={256}
+          padding={16}
         />
 
         <Spacer verticalSpace={16} />

@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import { GestureResponderEvent } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-import { AssetBookIcon } from '../../../assets';
 import { useTheme } from '../../hooks';
-import { Banner, Container, Icon, Title } from './styles';
+import { Container, Icon, Title } from './styles';
 
 export interface ButtonCourseProps {
-  onPress?: (e: GestureResponderEvent) => void,
-  title: string
+  onPress?: (e: GestureResponderEvent) => void;
+  title: string;
 }
 
 export const ButtonCourse: FunctionComponent<ButtonCourseProps> = ({ onPress, title }) => {
@@ -15,7 +15,7 @@ export const ButtonCourse: FunctionComponent<ButtonCourseProps> = ({ onPress, ti
 
   return (
     <Container {...theme} onPress={onPress ?? (() => {})}>
-      <Banner resizeMode="contain" source={AssetBookIcon} />
+      <FontAwesome5 name="book" size={38} color={theme.blueNeon} />
       <Title {...theme} numberOfLines={1}>{title}</Title>
       <Icon name="link" size={20} color={theme.gray} />
     </Container>

@@ -1,8 +1,10 @@
 
 export const Pallete = {
   blue:                   '#324A76',
+  blueNeon:               '#1ED8D8',
   red:                    '#ED3237',
   black:                  '#252525',
+  yellow:                 '#FFE60A',
   gray:                   '#C4C4C4',
   white:                  '#FFFFFF',
   whiteSmoke:             '#F4F5F8',

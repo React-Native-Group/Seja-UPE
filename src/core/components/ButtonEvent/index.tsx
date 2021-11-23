@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { GestureResponderEvent } from 'react-native';
-import { AssetStarIcon } from '../../../assets';
+import { FontAwesome } from '@expo/vector-icons';
+
 import { useTheme } from '../../hooks';
-import { Banner, Container, Icon, Title } from './styles';
+import { Container, Icon, Title } from './styles';
 
 export interface ButtonEventProps {
   onPress?: (e: GestureResponderEvent) => void,
@@ -14,9 +15,9 @@ export const ButtonEvent: FunctionComponent<ButtonEventProps> = ({ onPress, titl
   
   return (
     <Container {...theme} onPress={onPress ?? (() => {})}>
-      <Banner resizeMode="contain" source={AssetStarIcon} />
+      <FontAwesome name="star" size={38} color={theme.yellow} />
       <Title {...theme} numberOfLines={1}>{title}</Title>
-      <Icon name="link" size={20} color="#C4C4C4" />
+      <Icon name="link" size={20} color={theme.gray} />
     </Container>
   );
 }

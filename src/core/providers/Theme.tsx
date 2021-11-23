@@ -7,8 +7,10 @@ export interface ThemeProps {
 
 export interface ThemeValue {
   blue: string;
+  blueNeon: string;
   red: string;
   black: string;
+  yellow: string;
   gray: string;
   white: string;
   whiteSmoke: string;
