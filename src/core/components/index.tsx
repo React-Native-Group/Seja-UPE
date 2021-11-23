@@ -24,6 +24,7 @@ export * from './Header';
 export * from './HorizontalContent';
 export * from './MapView';
 export * from './Messages';
+export * from './ModalWebView';
 export * from './MultiSlider';
 export * from './PageLayout';
 export * from './Paragraph';
