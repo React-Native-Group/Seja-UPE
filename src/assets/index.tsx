@@ -3,7 +3,6 @@ export const AssetGoogleLogo                = require('./res_google_logo.png');
 export const AssetUpeWhiteLogo              = require('./res_upe_white_logo.png');
 export const AssetSisuWhiteLogo             = require('./res_sisu_white_logo.png');
 export const AssetLattesWhiteLogo           = require('./res_lattes_white_logo.png');
-export const AssetBookIcon                  = require('./res_book_icon.png');
 export const AssetTriangleLeftIcon          = require('./res_triangle_left_icon.png');
 export const AssetTriangleRightIcon         = require('./res_triangle_right_icon.png');
 export const AssetTriangleTopIcon           = require('./res_triangle_top_icon.png');
