@@ -1,7 +1,7 @@
 name: Expo Automatic Deploy
 on:
   push:
-    branches: [release]
+    branches: [release, main]
 jobs:
   publish:
     name: Automatic deploy in Expo
