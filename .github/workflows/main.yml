@@ -1,0 +1,19 @@
+name: Expo Automatic Deploy
+on:
+  push:
+    branches: [release, main]
+jobs:
+  publish:
+    name: Automatic deploy in Expo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with: 
+          node-version: 14.x
+      - uses: expo/expo-github-action@v6
+        with:
+          expo-version: 4.x
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: npm install
+      - run: expo publish
