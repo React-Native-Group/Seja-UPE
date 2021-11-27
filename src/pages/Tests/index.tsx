@@ -6,7 +6,8 @@ import {
   ButtonLink,
   PageLayout,
   Spacer,
-  TitleOutline
+  TitleOutline,
+  ToggleView
 } from '../../core/components';
 
 export interface TestsProps { }
@@ -111,6 +112,11 @@ export const Tests: FunctionComponent<TestsProps> = () => {
         onPress={() => navigate('CourseProfessor')} 
       />
       <Spacer verticalSpace={10} />
+
+      <ToggleView 
+        onToggle={console.log}
+        initial="vertical"
+      />
 
     </PageLayout>
   );

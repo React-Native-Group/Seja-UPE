@@ -36,4 +36,5 @@ export * from './Spacer';
 export * from './Title';
 export * from './TitleOutline';
 export * from './ToggleGroup';
+export * from './ToggleView';
 export * from './VerticalContent';
