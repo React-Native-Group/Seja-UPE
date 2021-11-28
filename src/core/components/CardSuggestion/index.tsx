@@ -19,7 +19,7 @@ export const CardSuggestion: FunctionComponent<CardSuggestionProps> = ({ title, 
   return (
     <Container {...theme} activeOpacity={0.7}>
       <Header {...theme}>
-        <Title {...theme}>{title}</Title>
+        <Title {...theme} numberOfLines={1}>{title}</Title>
       </Header>
       <Body>
         <Icon source={AssetCapIcon} />

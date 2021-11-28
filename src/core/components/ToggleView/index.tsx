@@ -15,7 +15,7 @@ export const ToggleView: FunctionComponent<ToggleViewProps> = ({ initial, onTogg
   const [toggle, setToggle] = useState(initial);
 
   function onPress(){
-    let newValue: ToggleType = toggle == 'horizontal' ? 'vertical' : 'horizontal';
+    let newValue: ToggleType = (toggle == 'horizontal' ? 'vertical' : 'horizontal');
     setToggle(newValue);
     onToggle(newValue);
   }

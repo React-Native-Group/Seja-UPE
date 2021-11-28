@@ -113,11 +113,6 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       />
       <Spacer verticalSpace={10} />
 
-      <ToggleView 
-        onToggle={console.log}
-        initial="vertical"
-      />
-
     </PageLayout>
   );
 }

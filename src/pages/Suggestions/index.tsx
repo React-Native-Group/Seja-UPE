@@ -1,6 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import { FlatList } from 'react-native';
 
+import { useTheme } from '../../core/hooks';
+import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
+
 import {
   Avatar,
   Badge,
@@ -19,18 +22,20 @@ import {
   Spacer,
   TitleOutline,
   ToggleGroup,
-  VerticalContent
+  ToggleType,
+  ToggleView,
+  VerticalContent,
+  ButtonSuggestion
 } from '../../core/components';
 
-import { useTheme } from '../../core/hooks';
-import { AssetRobotAskingIcon } from '../../assets';
-
 import {
+  ResultsTitleContainer,
   RobotContainer,
   RobotContainerRow,
   SearchButtonSpacer,
   SliderTitle,
-  SurveyButtonContainer
+  SurveyButtonContainer,
+  ListItemContainer
 } from './styles';
 
 export interface SuggestionsProps { }
@@ -41,22 +46,23 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [tab, setTab] = useState<'search' | 'suggestions'>('search');
   const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
   const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
-  const [surveyDone, setSurveyDone] = useState(false);
+  const [surveyDone, setSurveyDone] = useState(true);
+  const [viewType, setViewType] = useState<ToggleType>('horizontal');
 
   function onSurveyButtonClick(isSurveyDone: boolean) {
     console.log(isSurveyDone)
   }
 
   function onCourseClick(courseData: any) {
-
+    console.log(courseData)
   }
 
   function onCampusSelected(campus: SelectOption){
-
+    console.log(campus)
   }
 
   function onCourseSelected(course: SelectOption){
-
+    console.log(course)
   }
 
   const campusList = [
@@ -150,7 +156,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         <Render if={surveyDone}>
 
           <RobotContainer>
-            <Avatar source={AssetRobotAskingIcon} diameter={96} padding={8} />
+            <Avatar source={AssetRobotKindIcon} diameter={96} padding={8} />
 
             <CardBaloon direction="left">
               <Paragraph
@@ -181,28 +187,45 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
           <Spacer verticalSpace={32} />
 
-          <TitleOutline title="Campus Garanhuns" bold={false} />
-          <Spacer verticalSpace={16} />
+          <ResultsTitleContainer>
+            <TitleOutline title="Cursos encontrados" />
+            <ToggleView
+              onToggle={setViewType}
+              initial="horizontal"
+            />
+          </ResultsTitleContainer>
+          <Spacer verticalSpace={32} />
 
-          <FlatList
-            data={[]}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            alwaysBounceHorizontal={false}
-            renderItem={({ item }) => (
-              <CardSuggestion
-                title={''}
-                progress={''}
-                onPress={() => onCourseClick(item)}
-              />
-            )}
-          />
+          <Render if={viewType == 'horizontal'}>
 
-          <TitleOutline title="Campus Serra Talhada" bold={false} />
-          <Spacer verticalSpace={16} />
+            {/* Percorrer num loop e renderizar os resultados */}
+            <TitleOutline title="Campus Garanhuns" bold={false} />
+            <Spacer verticalSpace={16} />
+            <FlatList
+              data={[{}, {}, {}, {}, {}]}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              style={{ width: '100%'}}
+              alwaysBounceHorizontal={false}
+              renderItem={({ item }) => (
+                <ListItemContainer>
+                  <CardSuggestion
+                    title="hfgjffdsfsdfsdfjdskfksdjfksjdfjksjdkfkjsdgj"
+                    progress="100"
+                    onPress={() => onCourseClick(item)}
+                  />
+                </ListItemContainer>
+              )}
+            />
 
-          <TitleOutline title="Campus Salgueiro" bold={false} />
-          <Spacer verticalSpace={24} />
+          </Render>
+
+          <Render if={viewType == 'vertical'}>
+
+            {/* Percorrer num loop e renderizar os resultados */}
+            <ButtonSuggestion title="Engenharia de Software" progress="10"/>
+
+          </Render>
 
         </Render>
 

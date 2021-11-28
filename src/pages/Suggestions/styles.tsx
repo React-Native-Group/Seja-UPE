@@ -32,3 +32,14 @@ export const SliderTitle = styled.Text.attrs<ThemeValue>(props => props)<ThemeVa
 export const SearchButtonSpacer = styled.View`
   width: 20%;
 `;
+
+export const ResultsTitleContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ListItemContainer = styled.View`
+  padding: 12px;
+`;

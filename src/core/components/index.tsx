@@ -9,6 +9,7 @@ export * from './ButtonLattes';
 export * from './ButtonLink';
 export * from './ButtonSocial';
 export * from './ButtonStep';
+export * from './ButtonSuggestion';
 export * from './ButtonWidget';
 export * from './CardBaloon';
 export * from './CardBaloonBottom';
