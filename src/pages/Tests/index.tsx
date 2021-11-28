@@ -22,7 +22,6 @@ export const Tests: FunctionComponent<TestsProps> = () => {
     <PageLayout 
       showFab
       showHeader
-      canScroll
       canGoBack
     >
       <TitleOutline title="Layouts de telas prontos" />
@@ -46,6 +45,13 @@ export const Tests: FunctionComponent<TestsProps> = () => {
         text="Início > Teste Vocacional > Sugestões de Cursos" 
         iconName="share" 
         onPress={() => navigate('Suggestions')} 
+      />
+      <Spacer verticalSpace={10} />
+
+      <ButtonLink 
+        text="Início > Teste Vocacional > Resultados de Pesquisa" 
+        iconName="share" 
+        onPress={() => navigate('SearchResults')} 
       />
       <Spacer verticalSpace={10} />
 

@@ -14,7 +14,6 @@ export const CampusContact: FunctionComponent<CampusContactProps> = () => {
     <PageLayout 
       showHeader
       canGoBack
-      canScroll
     >
       <TitleOutline title="Contatos" icon={AssetWidgetContactIcon} />
       <Spacer verticalSpace={32} />

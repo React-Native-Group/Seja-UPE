@@ -42,7 +42,6 @@ export const Campus: FunctionComponent<CampusProps> = () => {
     <PageLayout 
       showHeader
       canGoBack
-      canScroll
     >
       
       <TitleOutline title="Sobre o Campus" icon={AssetWidgetCampusIcon} />

@@ -9,7 +9,6 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
     <PageLayout 
       showHeader
       canGoBack
-      canScroll
     >
       <TitleOutline title="Notas de Corte" icon={AssetWidgetClassificationIcon} />
       <Spacer verticalSpace={48} />

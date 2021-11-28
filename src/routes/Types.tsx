@@ -11,6 +11,7 @@ export type RoutesParamList = {
   CoursePlanning: undefined;
   CourseProfessor: undefined;
   CourseProfessors: undefined;
+  SearchResults: undefined;
   Suggestions: undefined;
   Survey: undefined;
   Welcome: undefined;
@@ -28,6 +29,7 @@ export type CourseConcurrencyNavigationProp = ParameterizedRoute<'CourseConcurre
 export type CoursePlanningNavigationProp    = ParameterizedRoute<'CoursePlanning'>;
 export type CourseProfessorNavigationProp   = ParameterizedRoute<'CourseProfessor'>;
 export type CourseProfessorsNavigationProp  = ParameterizedRoute<'CourseProfessors'>;
+export type SearchResultsNavigationProp     = ParameterizedRoute<'SearchResults'>;
 export type SuggestionsNavigationProp       = ParameterizedRoute<'Suggestions'>;
 export type SurveyNavigationProp            = ParameterizedRoute<'Survey'>;
 export type WelcomeNavigationProp           = ParameterizedRoute<'Welcome'>;

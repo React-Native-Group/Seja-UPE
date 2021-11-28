@@ -19,7 +19,6 @@ export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
     <PageLayout 
       showHeader
       canGoBack
-      canScroll
     >
       <TitleOutline title="Principais Eventos" icon={AssetWidgetEventsIcon} />
       <Spacer verticalSpace={32} />

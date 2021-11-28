@@ -44,7 +44,6 @@ export const Course: FunctionComponent<CourseProps> = () => {
     <PageLayout
       showHeader
       canGoBack
-      canScroll
     >
 
       <CardCourse text="Engenharia de Software" banner={AssetCardCourseLogo} />

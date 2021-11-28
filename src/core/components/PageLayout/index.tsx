@@ -1,19 +1,20 @@
 import React, { Fragment, FunctionComponent, useEffect } from 'react';
+import { ActivityIndicator, BackHandler, Dimensions  } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 import Fab from 'react-native-fab';
 
 import { Header } from '../Header';
 import { Render } from '../Render';
 import { useTheme } from '../../hooks';
-import { AreaView, Container, ScrollableContainer } from './styles';
-import { BackHandler } from 'react-native';
+import { AreaView, Center, ScrollableContainer } from './styles';
 
 export interface PageLayoutProps {
-  canScroll?: boolean;
   canGoBack?: boolean;
   showHeader?: boolean;
   showFab?: boolean;
   showTabs?: boolean;
+  showSpinner?: boolean;
   fabIcon?: keyof typeof FontAwesome.glyphMap;
   onFabClick?: () => void;
   onTabClick?: (e: 'suggestions' | 'search') => void;
@@ -24,10 +25,17 @@ export interface PageLayoutProps {
 export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
   const [ theme ] = useTheme();
 
-  const { canGoBack, canScroll, showHeader } = props;
-  const { showFab, showTabs, fabIcon } = props;
-  const { onFabClick, onTabClick, children } = props;
-  const { onBackPressed } = props;
+  const { onFabClick, onTabClick, onBackPressed } = props;
+  const { showFab, showTabs, fabIcon, showSpinner } = props;
+  const { showHeader, canGoBack, children } = props;
+
+  const { height } = Dimensions.get('window');
+
+  function getPageHeight(){
+    if (!!showHeader)
+      return height - (Constants.statusBarHeight + (!!showTabs ? 102 : 51));
+    return height;
+  }
 
   useEffect(() => {
     function backButtonHandler() {
@@ -39,43 +47,50 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
 
   return (
     <Fragment>
-      <Render if={!!canScroll}>
+
+      <Render if={!!showSpinner}>
         <ScrollableContainer nestedScrollEnabled>
           <Render if={!!showHeader}>
-            <Header 
-              canGoBack={!!canGoBack} 
-              showTabs={showTabs} 
+            <Header
+              canGoBack={!!canGoBack}
+              showTabs={showTabs}
               onTabClick={onTabClick}
               onBackPressed={onBackPressed}
             />
           </Render>
+          <Center style={{ height: getPageHeight() }}>
+            <ActivityIndicator color={theme.red} size={48} />
+          </Center>
+        </ScrollableContainer>
+      </Render>
+
+      <Render if={!showSpinner}>
+        <ScrollableContainer nestedScrollEnabled>
+          <Render if={!!showHeader}>
+            <Header
+              canGoBack={!!canGoBack}
+              showTabs={showTabs}
+              onTabClick={onTabClick}
+              onBackPressed={onBackPressed}
+            />
+          </Render>
+
           <AreaView>
             {children}
           </AreaView>
         </ScrollableContainer>
       </Render>
-      <Render if={!canScroll}>
-        <Container>
-          <Render if={!!showHeader}>
-            <Header 
-              canGoBack={!!canGoBack} 
-              showTabs={showTabs} 
-              onTabClick={onTabClick}
-              onBackPressed={onBackPressed}
-            />
-          </Render>
-          <AreaView>
-            {children}
-          </AreaView>
-        </Container>
+
+      <Render if={!showSpinner}>
+        <Fab
+          buttonColor={theme.white}
+          iconTextColor={theme.blue}
+          onClickAction={onFabClick ?? (() => {})}
+          visible={!!showFab}
+          iconTextComponent={<FontAwesome name={fabIcon ?? "comments"} size={24} />}
+        />
       </Render>
-      <Fab
-        buttonColor={theme.white}
-        iconTextColor={theme.blue}
-        onClickAction={onFabClick ?? (() => {})}
-        visible={!!showFab}
-        iconTextComponent={<FontAwesome name={fabIcon ?? "comments"} size={24} />}
-      />
+
     </Fragment>
   );
 }
