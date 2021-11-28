@@ -56,7 +56,6 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   return (
     <PageLayout 
       showHeader
-      canScroll
       canGoBack
       onBackPressed={customBackHandler}
     >

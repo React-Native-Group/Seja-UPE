@@ -7,10 +7,9 @@ import Fab from 'react-native-fab';
 import { Header } from '../Header';
 import { Render } from '../Render';
 import { useTheme } from '../../hooks';
-import { AreaView, Center, Container, ScrollableContainer } from './styles';
+import { AreaView, Center, ScrollableContainer } from './styles';
 
 export interface PageLayoutProps {
-  canScroll?: boolean;
   canGoBack?: boolean;
   showHeader?: boolean;
   showFab?: boolean;
@@ -28,11 +27,11 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
 
   const { onFabClick, onTabClick, onBackPressed } = props;
   const { showFab, showTabs, fabIcon, showSpinner } = props;
-  const { showHeader, canGoBack, canScroll, children } = props;
+  const { showHeader, canGoBack, children } = props;
 
   const { height } = Dimensions.get('window');
 
-  function getSpinnerHeight(){
+  function getPageHeight(){
     if (!!showHeader)
       return height - (Constants.statusBarHeight + (!!showTabs ? 102 : 51));
     return height;
@@ -59,46 +58,27 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
               onBackPressed={onBackPressed}
             />
           </Render>
-          <Center style={{ height: getSpinnerHeight() }}>
+          <Center style={{ height: getPageHeight() }}>
             <ActivityIndicator color={theme.red} size={48} />
           </Center>
         </ScrollableContainer>
       </Render>
 
       <Render if={!showSpinner}>
-        <Render if={!!canScroll}>
-          <ScrollableContainer nestedScrollEnabled>
-            <Render if={!!showHeader}>
-              <Header 
-                canGoBack={!!canGoBack} 
-                showTabs={showTabs} 
-                onTabClick={onTabClick}
-                onBackPressed={onBackPressed}
-              />
-            </Render>
+        <ScrollableContainer nestedScrollEnabled>
+          <Render if={!!showHeader}>
+            <Header
+              canGoBack={!!canGoBack}
+              showTabs={showTabs}
+              onTabClick={onTabClick}
+              onBackPressed={onBackPressed}
+            />
+          </Render>
 
-            <AreaView>
-              {children}
-            </AreaView>
-          </ScrollableContainer>
-        </Render>
-
-        <Render if={!canScroll}>
-          <Container>
-            <Render if={!!showHeader}>
-              <Header 
-                canGoBack={!!canGoBack} 
-                showTabs={showTabs} 
-                onTabClick={onTabClick}
-                onBackPressed={onBackPressed}
-              />
-            </Render>
-            
-            <AreaView>
-              {children}
-            </AreaView>
-          </Container>
-        </Render>
+          <AreaView>
+            {children}
+          </AreaView>
+        </ScrollableContainer>
       </Render>
 
       <Render if={!showSpinner}>

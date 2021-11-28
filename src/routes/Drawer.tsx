@@ -10,6 +10,7 @@ import {
   CoursePlanning,
   CourseProfessor,
   CourseProfessors,
+  SearchResults,
   Suggestions,
   Survey,
   Tests,
@@ -69,6 +70,10 @@ export const DrawerRoutes: FunctionComponent<DrawerRoutesProps> = () => {
       <Drawer.Screen 
         name="CourseProfessors" 
         component={CourseProfessors} 
+      />
+      <Drawer.Screen 
+        name="SearchResults" 
+        component={SearchResults} 
       />
       <Drawer.Screen 
         name="Suggestions" 

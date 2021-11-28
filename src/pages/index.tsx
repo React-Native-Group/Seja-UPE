@@ -7,6 +7,7 @@ export * from './CourseConcurrency';
 export * from './CoursePlanning';
 export * from './CourseProfessor';
 export * from './CourseProfessors';
+export * from './SearchResults';
 export * from './Suggestions';
 export * from './Survey';
 export * from './Welcome';

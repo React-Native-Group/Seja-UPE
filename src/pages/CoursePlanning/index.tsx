@@ -22,7 +22,6 @@ export const CoursePlanning: FunctionComponent<CoursePlanningProps> = () => {
     <PageLayout 
       showHeader
       canGoBack
-      canScroll
     >
       <TitleOutline title="Projeto Pedagógico" icon={AssetWidgetPlanningIcon} />
       <Spacer verticalSpace={32} />

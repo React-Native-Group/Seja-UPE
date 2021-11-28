@@ -23,8 +23,7 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
   return (
     <PageLayout 
       showHeader
-      canGoBack
-      canScroll
+      canGoBack      
     >
       <TitleOutline title="Cursos" icon={AssetWidgetCoursesIcon} />
       <Spacer verticalSpace={32} />

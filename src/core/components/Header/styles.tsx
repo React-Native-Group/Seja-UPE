@@ -10,6 +10,7 @@ export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValu
   flex: 1;
   flex-direction: row;
   height: 51px;
+  max-height: 51px;
   elevation: 5;
   background-color: ${props => props.white};
   justify-content: center;
@@ -38,6 +39,7 @@ export const TabsContainer = styled.View.attrs<ThemeValue>(props => props)<Theme
 export const Tab = styled(Ripple).attrs<TabProps>(props => props)<TabProps>`
   flex: 1;
   height: 51px;
+  max-height: 51px;
   justify-content: center;
   align-items: center;
   border-color: ${props => props.blue};

@@ -50,7 +50,6 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   return (
     <PageLayout 
       showHeader
-      canScroll
     >
       <Progress value={progress} maxValue={maxProgress} />
       <Spacer verticalSpace={16} />

@@ -86,7 +86,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
       showHeader
       showTabs
       canGoBack
-      canScroll
       onTabClick={setTab}
     >
 

@@ -15,7 +15,6 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
     <PageLayout 
       showHeader
       canGoBack
-      canScroll
     >
       <TitleOutline title="Corpo docente" icon={AssetWidgetProfessorsIcon} />
       <Spacer verticalSpace={32} />

@@ -17,7 +17,6 @@ export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
     <PageLayout 
       showHeader
       canGoBack
-      canScroll
     >
       <AvatarRow>
         <Avatar source={{uri: photo}} diameter={220} />
