@@ -1,57 +1,28 @@
-import * as Google from 'expo-google-app-auth';
+import { GoogleUser, logInAsync } from 'expo-google-app-auth';
 import Constants, { AppOwnership } from 'expo-constants';
 
-import { get } from './Http';
 import { ExpoClientId, RealClientId } from '../config';
 
-export type OAuth2Result = {
-  token: string,
-  idToken: string,
-  user: any,
-  error: boolean,
-  cancelled: boolean
-}
+export type OAuth2Payload = {
+  accessToken: string | null;
+  idToken: string | null;
+  refreshToken: string | null;
+  user: GoogleUser;
+};
+
+export type OAuth2Result = [boolean, OAuth2Payload | undefined];
 
 export async function OAuth2LoginAsync(): Promise<OAuth2Result> {
   try {
     let isRunningOnExpo = Constants.appOwnership == AppOwnership.Expo;
-    const result = await Google.logInAsync({
+    const result = await logInAsync({
       androidClientId: isRunningOnExpo ? ExpoClientId : RealClientId,
       androidStandaloneAppClientId: isRunningOnExpo ? ExpoClientId : RealClientId,
-      scopes: ['profile', 'email'],
+      scopes: ['profile', 'email']
     });
-
-    if (result.type === 'success') {
-      return { 
-        cancelled: false, 
-        token: result.accessToken || '', 
-        idToken: result.idToken || '',
-        user: result.user,
-        error: false 
-      };
-    }
-    return {
-      cancelled: true,
-      token: '',
-      idToken: '',
-      user: null,
-      error: false
-    };
+    return (result.type === 'success') ? [true, result] : [false, undefined];
   } catch (e: any) {
-    return { 
-      cancelled: false, 
-      token: '', 
-      idToken: '',
-      user: null,
-      error: true 
-    };
+    return [false, undefined];
   }
-}
-
-export async function OAuth2FetchUserAsync(accessToken: string) {
-  return await get<any>({
-    url:'https://www.googleapis.com/userinfo/v2/me',
-    headers: { Authorization: `Bearer ${accessToken}` }
-  });
 }
 
