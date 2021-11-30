@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useState } from 'react';
 import { ImageSourcePropType } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 import { Container } from './styles';
 import { useGoogleAuth } from '../../core/hooks';
 import { OAuth2Payload } from '../../core/services';
+import { SuggestionsNavigationProp } from '../../routes';
 
 import {
   AssetRobotKindIcon,
@@ -27,12 +29,15 @@ import {
 export interface WelcomeProps { }
 
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
+  const navigation = useNavigation<SuggestionsNavigationProp>();
+
   const [step, setStep] = useState(0);
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
 
   function onGoogleResponse(user: OAuth2Payload | undefined, isAuthenticated: boolean){
     if (isAuthenticated){
       //Login bem-sucedido!
+      navigation.navigate('Suggestions');
       console.log(user);
     } else {
       //Login mal-sucedido!
