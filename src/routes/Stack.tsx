@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   Campus,
   CampusContact,
@@ -19,74 +19,70 @@ import {
 
 import { RoutesParamList } from './Types';
 
-const Drawer = createDrawerNavigator<RoutesParamList>();
+const Stack = createStackNavigator<RoutesParamList>();
 
-export interface DrawerRoutesProps { }
+export interface StackRoutesProps { }
  
-export const DrawerRoutes: FunctionComponent<DrawerRoutesProps> = () => {
+export const StackRoutes: FunctionComponent<StackRoutesProps> = () => {
   return (
-    <Drawer.Navigator
+    <Stack.Navigator
+      initialRouteName="Welcome"
       screenOptions={{
-        headerShown: false,
-        swipeEnabled: false
+        headerShown: false
       }}
     >
-      <Drawer.Screen 
-        name="Tests" 
-        component={Tests} 
-      />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="Campus" 
         component={Campus} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="CampusContact" 
         component={CampusContact} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="CampusCourses" 
         component={CampusCourses} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="CampusEvents" 
         component={CampusEvents} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="Course" 
         component={Course} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="CourseConcurrency" 
         component={CourseConcurrency} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="CoursePlanning" 
         component={CoursePlanning} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="CourseProfessor" 
         component={CourseProfessor} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="CourseProfessors" 
         component={CourseProfessors} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="SearchResults" 
         component={SearchResults} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="Suggestions" 
         component={Suggestions} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="Survey" 
         component={Survey} 
       />
-      <Drawer.Screen 
+      <Stack.Screen 
         name="Welcome" 
         component={Welcome} 
       />
-    </Drawer.Navigator>
+    </Stack.Navigator>
   );
 }

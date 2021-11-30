@@ -1,8 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
 import { ImageSourcePropType } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 import { Container } from './styles';
 import { OAuth2LoginAsync } from '../../core/services';
+import { SuggestionsNavigationProp } from '../../routes';
 
 import {
   AssetRobotKindIcon,
@@ -26,12 +28,15 @@ import {
 export interface WelcomeProps { }
 
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
+  const navigation = useNavigation<SuggestionsNavigationProp>();
+
   const [step, setStep] = useState(0);
 
   async function OAuth2DoLogin(){
     let { error, cancelled, token, idToken, user } = await OAuth2LoginAsync();
     if (!error && !cancelled){
       //Login bem-sucedido!
+      navigation.navigate('Suggestions');
       console.log(user, token, idToken);
     } else {
       //Login mal-sucedido!

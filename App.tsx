@@ -4,7 +4,7 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { DrawerRoutes } from './src/routes';
+import { StackRoutes } from './src/routes';
 import { SentryDsn } from './src/core/config';
 import { GlobalProvider, ThemeProvider } from './src/core/providers';
 
@@ -20,7 +20,7 @@ export default function App() {
       <ThemeProvider>
         <StatusBar hidden={false} />
         <NavigationContainer>
-          <DrawerRoutes />
+          <StackRoutes />
         </NavigationContainer>
       </ThemeProvider>
     </GlobalProvider>
