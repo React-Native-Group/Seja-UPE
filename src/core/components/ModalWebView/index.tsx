@@ -9,15 +9,17 @@ import { CloseButton, Header, HeaderDivider, ModalContainer, ViewContainer } fro
 export interface ModalWebViewProps {
   link: string;
   isOpen: boolean;
+  onClose: () => void;
 }
 
-export const ModalWebView: FunctionComponent<ModalWebViewProps> = ({ link, isOpen = false }) => {
+export const ModalWebView: FunctionComponent<ModalWebViewProps> = ({ link, isOpen = false, onClose }) => {
   const [theme] = useTheme();
   const [isOpenLink, setOpenLink] = useState(isOpen);
   const {height} = Dimensions.get('window');
 
   function closeModal(){
     setOpenLink(false);
+    onClose();
   }
 
   useEffect(() => {
