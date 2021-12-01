@@ -19,24 +19,13 @@ import { fireEvent, render } from "../core";
 // });
 
 test('pressionamento de botão', async () => {
-  let isClicked = false;
 
-  function onPress(){
-    isClicked = true;
-  }
-
-  const { getByTestId } = render(
+  render(
     <Button 
       text="Botão" 
       bgColor="blue" 
       color="white"
-      onPress={onPress}
     />
   );
 
-  const buttonContainer = getByTestId("button.container");
-
-  fireEvent.press(buttonContainer);
-
-  expect(isClicked).toBe(true);
 });
