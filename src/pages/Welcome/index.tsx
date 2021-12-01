@@ -1,8 +1,11 @@
 import React, { FunctionComponent, useState } from 'react';
 import { ImageSourcePropType } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 import { Container } from './styles';
-import { OAuth2LoginAsync } from '../../core/services';
+import { useGoogleAuth } from '../../core/hooks';
+import { OAuth2Payload } from '../../core/services';
+import { SuggestionsNavigationProp } from '../../routes';
 
 import {
   AssetRobotKindIcon,
@@ -26,13 +29,16 @@ import {
 export interface WelcomeProps { }
 
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
-  const [step, setStep] = useState(0);
+  const navigation = useNavigation<SuggestionsNavigationProp>();
 
-  async function OAuth2DoLogin(){
-    let { error, cancelled, token, idToken, user } = await OAuth2LoginAsync();
-    if (!error && !cancelled){
+  const [step, setStep] = useState(0);
+  const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
+
+  function onGoogleResponse(user: OAuth2Payload | undefined, isAuthenticated: boolean){
+    if (isAuthenticated){
       //Login bem-sucedido!
-      console.log(user, token, idToken);
+      navigation.navigate('Suggestions');
+      console.log(user);
     } else {
       //Login mal-sucedido!
       console.log('Error while logging in Google Account.');
@@ -46,11 +52,12 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   }
 
   function getRobotIcon(): ImageSourcePropType {
-    if (step == 0) return AssetRobotSmileDownIcon;
-    if (step == 1) return AssetRobotKindIcon;
-    if (step == 2) return AssetRobotSmileDownIcon;
-    if (step == 3) return AssetRobotQuestionsIcon;
-    return AssetRobotSmileIcon;
+    return [
+      AssetRobotSmileDownIcon,
+      AssetRobotKindIcon,
+      AssetRobotSmileDownIcon,
+      AssetRobotQuestionsIcon
+    ][step] ?? AssetRobotSmileIcon;
   }
 
   return (
@@ -93,14 +100,14 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
         <Spacer verticalSpace={8} />
 
         <Render if={step == 0}>
-          <Paragraph justify >
+          <Paragraph justify>
             Eu sou o UPerson, daqui pra frente vou  ajudar você a decidir seu tão sonhado 
             curso ❤️!
           </Paragraph>
         </Render>
 
         <Render if={step == 1}>
-          <Paragraph justify >
+          <Paragraph justify>
             Nosso objetivo não é decidir o curso por você, mas fornecer informações que te 
             possibilitem identificar seus pontos fortes.
           </Paragraph>
@@ -141,7 +148,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
 
         <Render if={step == 4}>
           <Spacer verticalSpace={24} />
-          <ButtonGoogle onPress={() => OAuth2DoLogin()} text="Entrar com Google" />
+          <ButtonGoogle onPress={doLogin} text="Entrar com Google" />
         </Render>
 
       </Container>

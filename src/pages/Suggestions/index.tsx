@@ -1,8 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
+import { useNavigation } from '@react-navigation/core';
 import { FlatList } from 'react-native';
 
 import { useTheme } from '../../core/hooks';
 import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
+import { CourseNavigationProp, SearchResultsNavigationProp } from '../../routes';
 
 import {
   Avatar,
@@ -41,6 +43,8 @@ import {
 export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
+  const navigation = useNavigation<SearchResultsNavigationProp | CourseNavigationProp>();
+
   const [theme] = useTheme();
 
   const [tab, setTab] = useState<'search' | 'suggestions'>('search');
@@ -54,6 +58,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   }
 
   function onCourseClick(courseData: any) {
+    navigation.navigate('Course');
     console.log(courseData)
   }
 
@@ -63,6 +68,10 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
   function onCourseSelected(course: SelectOption){
     console.log(course)
+  }
+
+  function onSearchClick(){
+    navigation.navigate('SearchResults');
   }
 
   const campusList = [
@@ -142,6 +151,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             text="Pesquisar"
             bgColor="blue"
             color="white"
+            onPress={onSearchClick}
           />
           <SearchButtonSpacer />
         </HorizontalContent>
@@ -209,21 +219,26 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
               renderItem={({ item }) => (
                 <ListItemContainer>
                   <CardSuggestion
-                    title="hfgjffdsfsdfsdfjdskfksdjfksjdfjksjdkfkjsdgj"
+                    title="Nome do Curso"
                     progress="100"
                     onPress={() => onCourseClick(item)}
                   />
                 </ListItemContainer>
               )}
+              keyExtractor={() => String(Math.random() * 1000)}
             />
 
           </Render>
 
           <Render if={viewType == 'vertical'}>
-
             {/* Percorrer num loop e renderizar os resultados */}
-            <ButtonSuggestion title="Engenharia de Software" progress="10"/>
-
+            <ButtonSuggestion title="Engenharia de Software" onPress={() => onCourseClick({})} progress="10"/>
+            <Spacer verticalSpace={18} />
+            <ButtonSuggestion title="Medicina" onPress={() => onCourseClick({})} progress="10"/>
+            <Spacer verticalSpace={18} />
+            <ButtonSuggestion title="Ciências Biológicas" onPress={() => onCourseClick({})} progress="10"/>
+            <Spacer verticalSpace={18} />
+            <ButtonSuggestion title="Matemática" onPress={() => onCourseClick({})} progress="10"/>
           </Render>
 
         </Render>
