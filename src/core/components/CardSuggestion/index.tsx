@@ -17,7 +17,7 @@ export const CardSuggestion: FunctionComponent<CardSuggestionProps> = ({ title, 
 
   progress = progress.length > 3 ? progress.substring(0, 3) : progress;
   return (
-    <Container {...theme} activeOpacity={0.7}>
+    <Container {...theme} onPress={onPress ?? (() => {})} activeOpacity={0.7}>
       <Header {...theme}>
         <Title {...theme} numberOfLines={1}>{title}</Title>
       </Header>

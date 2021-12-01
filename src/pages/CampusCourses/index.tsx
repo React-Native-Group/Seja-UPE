@@ -1,5 +1,7 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent } from 'react';
 
+import { CourseNavigationProp } from '../../routes';
 import {
   AssetWidgetCoursesIcon,
   AssetRobotNormalIcon
@@ -20,6 +22,12 @@ import { RobotContainer } from './styles';
 export interface CampusCoursesProps { }
 
 export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
+  const navigation = useNavigation<CourseNavigationProp>();
+
+  function onCourseClick(courseData: any){
+    navigation.navigate('Course');
+  }
+
   return (
     <PageLayout 
       showHeader
@@ -48,25 +56,25 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
 
       <Spacer verticalSpace={32} />
 
-      <ButtonCourse title="Medicina" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Medicina" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Engenharia de Software" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Engenharia de Software" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Psicologia" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Psicologia" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Letras" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Letras" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Pedagogia" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Pedagogia" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Geografia" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Geografia" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Matemática" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Matemática" />
       <Spacer verticalSpace={18} />
 
     </PageLayout>

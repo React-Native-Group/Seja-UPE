@@ -2,12 +2,20 @@ import React, { Fragment, FunctionComponent } from 'react';
 import { AssetRobotKindIcon } from '../../assets';
 import { Avatar, Badge, ButtonCourse, CardBaloon, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
 import { RobotContainer, RobotContainerRow } from './styles';
+import { useNavigation } from '@react-navigation/core';
+import { CourseNavigationProp } from '../../routes';
 
 export interface SearchResultsProps {
 
 }
 
 export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
+  const navigation = useNavigation<CourseNavigationProp>();
+
+  function onCourseClick(courseData: any){
+    navigation.navigate('Course');
+  }
+
   return (
     <PageLayout
       showHeader
@@ -34,16 +42,16 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
 
       <Spacer verticalSpace={32} />
 
-      <ButtonCourse title="Medicina" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Medicina" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Engenharia de Software" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Engenharia de Software" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Psicologia" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Psicologia" />
       <Spacer verticalSpace={18} />
 
-      <ButtonCourse title="Letras" />
+      <ButtonCourse onPress={() => onCourseClick({})} title="Letras" />
       <Spacer verticalSpace={18} />
 
     </PageLayout>

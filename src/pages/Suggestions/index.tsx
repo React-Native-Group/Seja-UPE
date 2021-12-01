@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 
 import { useTheme } from '../../core/hooks';
 import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
-import { SearchResultsNavigationProp } from '../../routes';
+import { CourseNavigationProp, SearchResultsNavigationProp } from '../../routes';
 
 import {
   Avatar,
@@ -43,7 +43,7 @@ import {
 export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
-  const navigation = useNavigation<SearchResultsNavigationProp>();
+  const navigation = useNavigation<SearchResultsNavigationProp | CourseNavigationProp>();
 
   const [theme] = useTheme();
 
@@ -58,6 +58,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   }
 
   function onCourseClick(courseData: any) {
+    navigation.navigate('Course');
     console.log(courseData)
   }
 
@@ -230,10 +231,14 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           </Render>
 
           <Render if={viewType == 'vertical'}>
-
             {/* Percorrer num loop e renderizar os resultados */}
-            <ButtonSuggestion title="Engenharia de Software" progress="10"/>
-
+            <ButtonSuggestion title="Engenharia de Software" onPress={() => onCourseClick({})} progress="10"/>
+            <Spacer verticalSpace={18} />
+            <ButtonSuggestion title="Medicina" onPress={() => onCourseClick({})} progress="10"/>
+            <Spacer verticalSpace={18} />
+            <ButtonSuggestion title="Ciências Biológicas" onPress={() => onCourseClick({})} progress="10"/>
+            <Spacer verticalSpace={18} />
+            <ButtonSuggestion title="Matemática" onPress={() => onCourseClick({})} progress="10"/>
           </Render>
 
         </Render>
