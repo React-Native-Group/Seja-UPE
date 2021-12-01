@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, useRef, useState } from 'react';
 import { AssetRobotNormalIcon } from '../../assets';
 
@@ -14,6 +15,7 @@ import {
   Spacer,
   useRadioGroup
 } from '../../core/components';
+import { WelcomeNavigationProp } from '../../routes';
 
 import {
   ButtonContainer,
@@ -26,6 +28,7 @@ import {
 export interface SurveyProps { }
 
 export const Survey: FunctionComponent<SurveyProps> = () => {
+  const navigation = useNavigation<WelcomeNavigationProp>();
   const maxProgress = 15;
   const [progress, setProgress] = useState(1);
   const [group, setGroup] = useRadioGroup(5);
@@ -44,7 +47,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   }
 
   function doSurveyFinish(){
-
+    navigation.navigate('Suggestions');
   }
 
   return (
