@@ -1,5 +1,8 @@
 import React, { Fragment, FunctionComponent, useState } from 'react';
+import { useNavigation } from '@react-navigation/core';
 import { FlatList, ImageSourcePropType } from 'react-native';
+
+import { CampusNavigationProp, CourseProfessorNavigationProp, CoursePlanningNavigationProp, CourseConcurrencyNavigationProp } from '../../routes';
 
 import {
   AssetCardCourseLogo,
@@ -29,9 +32,15 @@ type WidgetData = {
   params: any;
 }
 
+type NavigationProps =  CampusNavigationProp 
+                      | CourseProfessorNavigationProp 
+                      | CoursePlanningNavigationProp 
+                      | CourseConcurrencyNavigationProp
+
 export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
+  const navigation = useNavigation<NavigationProps>();
 
   const [widgets, setWidgets] = useState<WidgetData[]>([
     { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon, params: {} }, 
@@ -39,6 +48,10 @@ export const Course: FunctionComponent<CourseProps> = () => {
     { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon, params: {} }, 
     { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon, params: {} }
   ]);
+
+  function onWidgetClick(item: WidgetData){
+    navigation.navigate(item.route);
+  }
 
   return (
     <PageLayout
@@ -53,7 +66,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
         data={widgets}
         renderItem={({ item }) => (
           <Fragment>
-            <ButtonWidget legend={item.title} banner={item.icon} />
+            <ButtonWidget legend={item.title} banner={item.icon} onPress={() => onWidgetClick(item)} />
           </Fragment>
         )}
         horizontal={true}
