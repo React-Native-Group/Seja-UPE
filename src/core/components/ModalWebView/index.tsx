@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Dimensions, Modal } from 'react-native';
 import { WebView } from 'react-native-webview';
 
@@ -8,16 +8,21 @@ import { CloseButton, Header, HeaderDivider, ModalContainer, ViewContainer } fro
 
 export interface ModalWebViewProps {
   link: string;
+  isOpen: boolean;
 }
 
-export const ModalWebView: FunctionComponent<ModalWebViewProps> = ({ link }) => {
+export const ModalWebView: FunctionComponent<ModalWebViewProps> = ({ link, isOpen = false }) => {
   const [theme] = useTheme();
-  const [isOpenLink, setOpenLink] = useState(true);
+  const [isOpenLink, setOpenLink] = useState(isOpen);
   const {height} = Dimensions.get('window');
 
   function closeModal(){
     setOpenLink(false);
   }
+
+  useEffect(() => {
+    setOpenLink(isOpen);
+  }, [isOpen]);
 
   return (
     <Modal 
