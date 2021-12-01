@@ -32,6 +32,10 @@ export const StackRoutes: FunctionComponent<StackRoutesProps> = () => {
       }}
     >
       <Stack.Screen 
+        name="Tests" 
+        component={Tests} 
+      />
+      <Stack.Screen 
         name="Campus" 
         component={Campus} 
       />
