@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import {
   Avatar,
   ButtonEvent,
   CardBaloon,
+  ModalWebView,
   PageLayout,
   Paragraph,
   Spacer,
@@ -15,6 +16,14 @@ import { AssetWidgetEventsIcon, AssetRobotNormalIcon } from '../../assets';
 export interface CampusEventsProps { }
 
 export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [link, setLink] = useState('about:blank');
+
+  function onOpenModal(source:string) {
+    setLink(source);
+    setIsModalOpen(true);
+  }
+
   return (
     <PageLayout 
       showHeader
@@ -44,20 +53,22 @@ export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
 
       <Spacer verticalSpace={32} />
 
-      <ButtonEvent title="SECAP" />
+      <ButtonEvent title="SECAP" onPress={() => onOpenModal("https://doity.com.br/secap")}/>
       <Spacer verticalSpace={18} />
 
-      <ButtonEvent title="SINPE" />
+      <ButtonEvent title="SINPE" onPress={() => onOpenModal("https://secap.com.br/2021/")}/>
       <Spacer verticalSpace={18} />
 
-      <ButtonEvent title="ENCUPE" />
+      <ButtonEvent title="ENCUPE" onPress={() => onOpenModal("http://www.upe.br/garanhuns/3a-edicao-do-encupe/")}/>
       <Spacer verticalSpace={18} />
 
-      <ButtonEvent title="Jogos Multicampi" />
+      <ButtonEvent title="Jogos Multicampi" onPress={() => onOpenModal("http://www.upe.br/garanhuns/ii-jogos-multicampi/")}/>
       <Spacer verticalSpace={18} />
 
-      <ButtonEvent title="Jornal Extensionista" />
+      <ButtonEvent title="Jornal Extensionista" onPress={() => onOpenModal("http://www.upe.br/garanhuns/jornal-extensionista/")}/>
       <Spacer verticalSpace={18} />
+
+      <ModalWebView link={link} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
 
     </PageLayout>
   );
