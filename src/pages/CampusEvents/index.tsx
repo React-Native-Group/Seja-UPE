@@ -11,7 +11,7 @@ import {
   TitleOutline
 } from '../../core/components';
 import { RobotContainer } from './styles';
-import { AssetWidgetEventsIcon, AssetRobotNormalIcon } from '../../assets';
+import { AssetWidgetEventsIcon, AssetRobotNormalIcon, AssetRobotSmileIcon } from '../../assets';
 
 export interface CampusEventsProps { }
 
@@ -34,7 +34,7 @@ export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
 
       <RobotContainer>
 
-        <Avatar source={AssetRobotNormalIcon} diameter={80} padding={16} />
+        <Avatar source={AssetRobotSmileIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
           <Paragraph
             paddingLeft="8px"

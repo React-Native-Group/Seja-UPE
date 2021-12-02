@@ -32,6 +32,10 @@ export const BannerContainer = styled.View`
   border-radius: 8px;
   justify-content: center;
   align-items: center;
+  padding: 12px;
 `;
 
-export const Banner = styled.Image``;
+export const Banner = styled.Image`
+  width: 100%;
+  height: 100%;
+`;
