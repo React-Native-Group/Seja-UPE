@@ -1,6 +1,6 @@
+import React from 'react';
 import { Accordion } from "../../src/core/components";
 import { render } from "../core";
-
 
 test('render of Acorddion', async () => {
 
