@@ -6,17 +6,17 @@ test('render of Badge', async () => {
 
   render(
     <Badge
-      bgColor= 'white'
-      color= 'black'
+      bgColor= "white"
+      color= "black"
       numberOfLines= {1}
-      borderRadius= '10px'
-      width= '100px'
-      maxWidth= '100px'
+      borderRadius= "10px"
+      width= "100px"
+      maxWidth= "100px"
       animated= {false}
       bold= {false}
-      fontSize= '20px'
+      fontSize= "20px"
       hasShadow= {false}
-      text= 'text'
+      text= "text"
     />
   );
 
