@@ -3,6 +3,7 @@ import { render, RenderOptions } from '@testing-library/react-native'
 import React, { ReactElement, JSXElementConstructor, FunctionComponent } from 'react';
 
 import { GlobalProvider, ThemeProvider } from '../../src/core/providers';
+import { NavigationContainer } from '@react-navigation/native';
 
 interface ProviderContextProps {
   children?: React.ReactNode;
@@ -13,7 +14,9 @@ const ProviderContext: FunctionComponent<ProviderContextProps> = ({ children }) 
     <GlobalProvider>
       <ThemeProvider>
         <StatusBar hidden={false} />
-        {children}
+        <NavigationContainer>
+          {children}
+        </NavigationContainer> 
       </ThemeProvider>
     </GlobalProvider>
   )
