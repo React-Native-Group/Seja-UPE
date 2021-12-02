@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { AssetRobotNormalIcon, AssetWidgetProfessorsIcon } from '../../assets';
+import { AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
 import { Avatar, CardBaloon, CardProfessor, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
 import { RobotContainer } from './styles';
 
@@ -21,9 +21,9 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
 
       <RobotContainer>
 
-        <Avatar source={AssetRobotNormalIcon} diameter={80} padding={16} />
+        <Avatar source={AssetRobotKindIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
-          <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px" paddingBottom="16px">
+          <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px" paddingBottom="16px" justify>
             Atualmente no curso de Engenharia de Software, 
             possuímos 33 professores.
           </Paragraph>
@@ -65,6 +65,7 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
         photo={{ uri: photo }} 
         shortbio={shortbio} 
         areas={areas} 
+
       />
 
       <Spacer verticalSpace={16} />
