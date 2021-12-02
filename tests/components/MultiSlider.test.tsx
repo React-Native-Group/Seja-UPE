@@ -9,5 +9,5 @@ test('render of MultiSlider', async () => {
       maxValue={100}
       minDistance={10}
     />
-  )
+  );
 });
