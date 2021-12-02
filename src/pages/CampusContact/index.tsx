@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 
+import { AccordionBody } from './styles';
 import { useTheme } from '../../core/hooks';
 import { AssetWidgetContactIcon } from '../../assets';
 import { Accordion, ButtonLink, PageLayout, Spacer, TitleOutline } from '../../core/components';
-import { AccordionBody } from './styles';
 
 export interface CampusContactProps { }
 

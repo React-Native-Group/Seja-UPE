@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, useRef, useState } from 'react';
-import { AssetRobotNormalIcon } from '../../assets';
 
+import { AssetRobotNormalIcon } from '../../assets';
+import { WelcomeNavigationProp } from '../../routes';
 import {
   Avatar,
   Button,
@@ -15,7 +16,6 @@ import {
   Spacer,
   useRadioGroup
 } from '../../core/components';
-import { WelcomeNavigationProp } from '../../routes';
 
 import {
   ButtonContainer,

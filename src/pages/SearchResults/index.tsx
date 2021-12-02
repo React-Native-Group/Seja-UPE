@@ -1,9 +1,20 @@
-import React, { Fragment, FunctionComponent } from 'react';
-import { AssetRobotKindIcon } from '../../assets';
-import { Avatar, Badge, ButtonCourse, CardBaloon, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
-import { RobotContainer, RobotContainerRow } from './styles';
+import React, { FunctionComponent } from 'react';
 import { useNavigation } from '@react-navigation/core';
+
+import { RobotContainer } from './styles';
+
+import { AssetRobotKindIcon } from '../../assets';
 import { CourseNavigationProp } from '../../routes';
+
+import {
+  Avatar,
+  ButtonCourse,
+  CardBaloon,
+  PageLayout,
+  Paragraph,
+  Spacer,
+  TitleOutline
+} from '../../core/components';
 
 export interface SearchResultsProps {
 

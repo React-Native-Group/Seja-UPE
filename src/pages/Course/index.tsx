@@ -1,8 +1,15 @@
 import React, { Fragment, FunctionComponent, useState } from 'react';
-import { useNavigation } from '@react-navigation/core';
 import { FlatList, ImageSourcePropType } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
-import { CampusNavigationProp, CourseProfessorNavigationProp, CoursePlanningNavigationProp, CourseConcurrencyNavigationProp } from '../../routes';
+import { RoutesParamList } from '../../routes';
+
+import {
+  CampusNavigationProp,
+  CourseProfessorNavigationProp,
+  CoursePlanningNavigationProp,
+  CourseConcurrencyNavigationProp
+} from '../../routes';
 
 import {
   AssetCardCourseLogo,
@@ -21,8 +28,6 @@ import {
   Spacer,
   TitleOutline
 } from '../../core/components';
-
-import { RoutesParamList } from '../../routes';
 
 type WidgetData = {
   key: string;

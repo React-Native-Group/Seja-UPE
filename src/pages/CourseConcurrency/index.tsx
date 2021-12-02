@@ -1,6 +1,15 @@
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { AssetWidgetClassificationIcon } from '../../assets';
-import { CardConcurrency, CardVacancy, Chart, DividerConcurrency, PageLayout, Spacer, TitleOutline } from '../../core/components';
+
+import {
+  CardConcurrency,
+  CardVacancy,
+  Chart,
+  DividerConcurrency,
+  PageLayout,
+  Spacer,
+  TitleOutline
+} from '../../core/components';
 
 export interface CourseConcurrencyProps { }
 

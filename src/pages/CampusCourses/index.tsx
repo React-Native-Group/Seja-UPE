@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent } from 'react';
 
-import { CourseNavigationProp } from '../../routes';
 import {
   AssetWidgetCoursesIcon,
   AssetRobotNormalIcon
@@ -17,6 +16,7 @@ import {
   TitleOutline
 } from '../../core/components';
 
+import { CourseNavigationProp } from '../../routes';
 import { RobotContainer } from './styles';
 
 export interface CampusCoursesProps { }

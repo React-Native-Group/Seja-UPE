@@ -1,5 +1,5 @@
-import React, {  Fragment, FunctionComponent, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import React, { FunctionComponent, useState } from 'react';
+import { FlatList } from 'react-native';
 
 import { useTheme } from '../../core/hooks';
 import { AvatarRow, BadgeContainer, NameContainer, NameText } from './styles';

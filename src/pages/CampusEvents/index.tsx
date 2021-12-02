@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
 
+import { RobotContainer } from './styles';
+import { AssetWidgetEventsIcon, AssetRobotSmileIcon } from '../../assets';
+
 import {
   Avatar,
   ButtonEvent,
@@ -10,8 +13,6 @@ import {
   Spacer,
   TitleOutline
 } from '../../core/components';
-import { RobotContainer } from './styles';
-import { AssetWidgetEventsIcon, AssetRobotNormalIcon, AssetRobotSmileIcon } from '../../assets';
 
 export interface CampusEventsProps { }
 

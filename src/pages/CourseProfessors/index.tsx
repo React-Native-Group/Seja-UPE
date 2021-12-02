@@ -1,9 +1,20 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent } from 'react';
-import { AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
-import { Avatar, CardBaloon, CardProfessor, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
-import { CourseProfessorNavigationProp } from '../../routes';
+
 import { RobotContainer } from './styles';
+
+import {
+  Avatar,
+  CardBaloon,
+  CardProfessor,
+  PageLayout,
+  Paragraph,
+  Spacer,
+  TitleOutline
+} from '../../core/components';
+
+import { CourseProfessorNavigationProp } from '../../routes';
+import { AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
 
 export interface CourseProfessorsProps { }
 
