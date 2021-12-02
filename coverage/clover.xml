@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1638402979243" clover="3.2.0">
+  <project timestamp="1638402979243" name="All files">
+    <metrics statements="549" coveredstatements="245" conditionals="195" coveredconditionals="1" methods="269" coveredmethods="10" elements="1013" coveredelements="256" complexity="0" loc="549" ncloc="549" packages="49" files="126" classes="126"/>
+    <package name="src.assets">
+      <metrics statements="56" coveredstatements="56" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\index.tsx">
+        <metrics statements="28" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+      </file>
+      <file name="res_cap_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_cap_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_card_course_logo.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_card_course_logo.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_google_logo.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_google_logo.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_header_logo.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_header_logo.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_lattes_white_logo.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_lattes_white_logo.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_robot_asking_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_robot_asking_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_robot_kind_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_robot_kind_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_robot_normal_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_robot_normal_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_robot_questions_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_robot_questions_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_robot_smile_down_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_robot_smile_down_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_robot_smile_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_robot_smile_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_sisu_white_logo.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_sisu_white_logo.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_social_facebook_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_social_facebook_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_social_instagram_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_social_instagram_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_social_twitter_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_social_twitter_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_social_youtube_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_social_youtube_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_triangle_left_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_triangle_left_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_triangle_right_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_triangle_right_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_triangle_top_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_triangle_top_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_upe_white_logo.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_upe_white_logo.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_campus_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_campus_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_classification_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_classification_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_contact_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_contact_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_courses_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_courses_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_events_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_events_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_planning_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_planning_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_professors_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_professors_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="res_widget_sample_icon.png" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\res_widget_sample_icon.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\index.tsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.core.components.Accordion">
+      <metrics statements="25" coveredstatements="6" conditionals="11" coveredconditionals="0" methods="16" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Accordion\index.tsx">
+        <metrics statements="11" coveredstatements="1" conditionals="9" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="16" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Accordion\styles.tsx">
+        <metrics statements="14" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="14" coveredmethods="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Avatar">
+      <metrics statements="12" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="10" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Avatar\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="13" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Avatar\styles.tsx">
+        <metrics statements="9" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Badge">
+      <metrics statements="18" coveredstatements="3" conditionals="23" coveredconditionals="0" methods="12" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Badge\index.tsx">
+        <metrics statements="8" coveredstatements="1" conditionals="19" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Badge\styles.tsx">
+        <metrics statements="10" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="src.core.components.Button">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Button\index.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Button\styles.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonCourse">
+      <metrics statements="8" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonCourse\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonCourse\styles.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonEvent">
+      <metrics statements="8" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonEvent\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonEvent\styles.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonGoogle">
+      <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonGoogle\index.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonGoogle\styles.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonLattes">
+      <metrics statements="6" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonLattes\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonLattes\styles.tsx">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonLink">
+      <metrics statements="7" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonLink\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonLink\styles.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonSocial">
+      <metrics statements="6" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonSocial\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonSocial\styles.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonStep">
+      <metrics statements="6" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonStep\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="12" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonStep\styles.tsx">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonSuggestion">
+      <metrics statements="11" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="10" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonSuggestion\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonSuggestion\styles.tsx">
+        <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ButtonWidget">
+      <metrics statements="9" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonWidget\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ButtonWidget\styles.tsx">
+        <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.CardBaloon">
+      <metrics statements="10" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardBaloon\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardBaloon\styles.tsx">
+        <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.CardBaloonBottom">
+      <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardBaloonBottom\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardBaloonBottom\styles.tsx">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.CardConcurrency">
+      <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardConcurrency\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardConcurrency\styles.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.CardCourse">
+      <metrics statements="11" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardCourse\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardCourse\styles.tsx">
+        <metrics statements="8" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.CardProfessor">
+      <metrics statements="20" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="12" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardProfessor\index.tsx">
+        <metrics statements="5" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardProfessor\styles.tsx">
+        <metrics statements="15" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.CardSuggestion">
+      <metrics statements="15" coveredstatements="8" conditionals="6" coveredconditionals="0" methods="11" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardSuggestion\index.tsx">
+        <metrics statements="4" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardSuggestion\styles.tsx">
+        <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.CardVacancy">
+      <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardVacancy\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\CardVacancy\styles.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Carousel">
+      <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Carousel\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Chart">
+      <metrics statements="14" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Chart\index.tsx">
+        <metrics statements="13" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Chart\styles.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.DividerConcurrency">
+      <metrics statements="12" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\DividerConcurrency\index.tsx">
+        <metrics statements="7" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\DividerConcurrency\styles.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Header">
+      <metrics statements="27" coveredstatements="8" conditionals="10" coveredconditionals="0" methods="14" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Header\index.tsx">
+        <metrics statements="15" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Header\styles.tsx">
+        <metrics statements="12" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.HorizontalContent">
+      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\HorizontalContent\index.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\HorizontalContent\styles.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.MapView">
+      <metrics statements="8" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="custom.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\MapView\custom.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\MapView\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\MapView\styles.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Messages">
+      <metrics statements="14" coveredstatements="7" conditionals="12" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Messages\index.tsx">
+        <metrics statements="4" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Messages\styles.tsx">
+        <metrics statements="10" coveredstatements="6" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ModalWebView">
+      <metrics statements="16" coveredstatements="6" conditionals="1" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ModalWebView\index.tsx">
+        <metrics statements="9" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="15" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ModalWebView\styles.tsx">
+        <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.MultiSlider">
+      <metrics statements="25" coveredstatements="4" conditionals="10" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\MultiSlider\index.tsx">
+        <metrics statements="20" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\MultiSlider\styles.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.PageLayout">
+      <metrics statements="17" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\PageLayout\index.tsx">
+        <metrics statements="14" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\PageLayout\styles.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Paragraph">
+      <metrics statements="11" coveredstatements="2" conditionals="13" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Paragraph\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="16" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Paragraph\styles.tsx">
+        <metrics statements="8" coveredstatements="1" conditionals="12" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="src.core.components.Progress">
+      <metrics statements="13" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Progress\index.tsx">
+        <metrics statements="8" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Progress\styles.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Radio">
+      <metrics statements="16" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Radio\index.tsx">
+        <metrics statements="12" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Radio\styles.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Render">
+      <metrics statements="2" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Render\index.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="src.core.components.Select">
+      <metrics statements="7" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Select\index.tsx">
+        <metrics statements="7" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Spacer">
+      <metrics statements="5" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Spacer\index.tsx">
+        <metrics statements="5" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.Title">
+      <metrics statements="7" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Title\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\Title\styles.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.TitleOutline">
+      <metrics statements="11" coveredstatements="6" conditionals="5" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\TitleOutline\index.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="15" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\TitleOutline\styles.tsx">
+        <metrics statements="8" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.ToggleGroup">
+      <metrics statements="14" coveredstatements="4" conditionals="10" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ToggleGroup\index.tsx">
+        <metrics statements="9" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ToggleGroup\styles.tsx">
+        <metrics statements="5" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="src.core.components.ToggleView">
+      <metrics statements="9" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ToggleView\index.tsx">
+        <metrics statements="7" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ToggleView\styles.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.components.VerticalContent">
+      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\VerticalContent\index.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+      </file>
+      <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\VerticalContent\styles.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.core.config">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Api.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\config\Api.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+      <file name="App.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\config\App.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="OAuth2.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\config\OAuth2.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\config\index.tsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.core.hooks">
+      <metrics statements="11" coveredstatements="4" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="1"/>
+      <file name="Global.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\hooks\Global.tsx">
+        <metrics statements="4" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+      <file name="Google.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\hooks\Google.tsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="Theme.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\hooks\Theme.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\hooks\index.tsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.core.providers">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="Global.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\providers\Global.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+      </file>
+      <file name="Theme.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\providers\Theme.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\providers\index.tsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.core.services">
+      <metrics statements="22" coveredstatements="1" conditionals="22" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="Http.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\services\Http.tsx">
+        <metrics statements="17" coveredstatements="1" conditionals="16" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+      </file>
+      <file name="OAuth2.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\services\OAuth2.tsx">
+        <metrics statements="5" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\services\index.tsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.core.themes">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\themes\index.tsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="palette.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\themes\palette.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.core">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\tests\core\index.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
