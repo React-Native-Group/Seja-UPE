@@ -12,7 +12,7 @@ export type WebClientCacheEntry<T> = {
 }
 
 export type WebClientResponse<T> = {
-  data: T | any;
+  data: T;
   status: number;
 }
 
@@ -23,16 +23,16 @@ function isRequestCached<T>(request: Request, cache: WebClientCacheEntry<T>[]): 
   return cacheEntry !== undefined ? cacheEntry : false;
 }
 
-export function useRequest<T>(event: WebClientCallback<T | any>, cacheable: boolean, hookOptions?: Request)
+export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, hookOptions?: Request)
 {
-  const [response, setResponse] = useState<WebClientResponse<T | any> | undefined>({ data: {}, status: 0 });
+  const [response, setResponse] = useState<WebClientResponse<T> | undefined>();
   const [success, setSuccess] = useState<boolean | undefined>(undefined);
 
   const cache = useRef<WebClientCacheEntry<T>[]>([]);
 
-  async function doRequest(method: WebClientMethods)
+  async function doRequest(method: WebClientMethods, options?: Request)
   {
-    let request = hookOptions ?? { url: '' };
+    let request = hookOptions ?? options ?? { url: '' };
     let cached = isRequestCached(request, cache.current);
 
     if (!cached){
