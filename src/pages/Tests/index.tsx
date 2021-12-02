@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, useEffect } from 'react';
 
+import { useRequest, WebClientResponse } from '../../core/hooks';
 import { CampusNavigationProp, RoutesParamList } from '../../routes';
 import {
   ButtonLink,
@@ -8,7 +9,6 @@ import {
   Spacer,
   TitleOutline
 } from '../../core/components';
-import { useRequest, WebClientResponse } from '../../core/hooks';
 
 export interface TestsProps { }
 
