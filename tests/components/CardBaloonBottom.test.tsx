@@ -2,7 +2,7 @@ import React from 'react';
 import { CardBaloonBottom, Paragraph } from '../../src/core/components';
 import { render } from "../core";
 
-test('exibição do card balão', async () => {
+test('render of CardBaloonBottom', async () => {
 
   render(
     <CardBaloonBottom>
