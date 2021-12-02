@@ -7,8 +7,9 @@ test('render of PageLayout', async () => {
     <PageLayout
       canGoBack
       showFab
-      showSpinner
-      children={<Spacer/>} 
-    />
+      showSpinner 
+    >
+      <Spacer/>
+    </PageLayout>
   );
 });

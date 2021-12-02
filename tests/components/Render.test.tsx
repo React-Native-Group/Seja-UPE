@@ -4,7 +4,9 @@ import { render } from "../core";
 
 test('render of Render', () => {
   render(
-    <Render if={false}>
+    <Render 
+      if={false}
+    >
       <Paragraph>
         Hello!
       </Paragraph>
