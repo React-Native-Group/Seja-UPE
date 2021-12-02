@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 
+import { useRequest, WebClientResponse } from '../../core/hooks';
 import { CampusNavigationProp, RoutesParamList } from '../../routes';
 import {
   ButtonLink,
@@ -13,6 +14,16 @@ export interface TestsProps { }
 
 export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
+
+  const { request } = useRequest(onResponse, true, { url: 'https://google.com' });
+
+  function onResponse(success: boolean, response: WebClientResponse<any>){
+    console.log(response.status)
+  }
+
+  useEffect(() => {
+    request('GET')
+  }, []);
 
   function navigate(route: keyof RoutesParamList){
     navigation.navigate(route);
