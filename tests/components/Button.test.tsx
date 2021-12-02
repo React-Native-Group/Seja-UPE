@@ -21,7 +21,7 @@ test('press Button', async () => {
       text="button" 
       bgColor="blue" 
       color="white"
-      onPress={() => { console.log('a'.repeat(900)) }}
+      onPress={() => {}}
     />
   );
 
