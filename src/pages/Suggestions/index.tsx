@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 
 import { useTheme } from '../../core/hooks';
 import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
-import { CourseNavigationProp, SearchResultsNavigationProp } from '../../routes';
+import { CourseNavigationProp, SearchResultsNavigationProp, SurveyNavigationProp } from '../../routes';
 
 import {
   Avatar,
@@ -43,7 +43,7 @@ import {
 export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
-  const navigation = useNavigation<SearchResultsNavigationProp | CourseNavigationProp>();
+  const navigation = useNavigation<SearchResultsNavigationProp | CourseNavigationProp | SurveyNavigationProp>();
 
   const [theme] = useTheme();
 
@@ -54,6 +54,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [viewType, setViewType] = useState<ToggleType>('horizontal');
 
   function onSurveyButtonClick(isSurveyDone: boolean) {
+    navigation.navigate('Survey');
     console.log(isSurveyDone)
   }
 
