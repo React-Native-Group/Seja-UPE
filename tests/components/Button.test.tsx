@@ -18,11 +18,11 @@ import { fireEvent, render } from "../core";
 //   expect(toJSON()).toMatchSnapshot();
 // });
 
-test('pressionamento de botão', async () => {
+test('render of Button', async () => {
 
   render(
     <Button 
-      text="Botão" 
+      text="button" 
       bgColor="blue" 
       color="white"
     />
