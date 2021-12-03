@@ -119,12 +119,6 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       />
       <Spacer verticalSpace={10} />
 
-      <ModalEvaluation 
-        type="rating" 
-        isOpen={true} 
-        onResult={console.log} 
-      />
-
     </PageLayout>
   );
 }

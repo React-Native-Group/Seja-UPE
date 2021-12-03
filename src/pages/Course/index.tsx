@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, useState } from 'react';
+import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
 import { FlatList, ImageSourcePropType } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
@@ -23,6 +23,7 @@ import {
   Accordion,
   ButtonWidget,
   CardCourse,
+  ModalEvaluation,
   PageLayout,
   Paragraph,
   Spacer,
@@ -46,6 +47,7 @@ export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
   const navigation = useNavigation<NavigationProps>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [widgets, setWidgets] = useState<WidgetData[]>([
     { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon, params: {} }, 
@@ -53,6 +55,10 @@ export const Course: FunctionComponent<CourseProps> = () => {
     { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon, params: {} }, 
     { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon, params: {} }
   ]);
+
+  useEffect(() => {
+    setTimeout(() => setIsModalOpen(true), 5000);
+  }, []);
 
   function onWidgetClick(item: WidgetData){
     navigation.navigate(item.route);
@@ -134,6 +140,12 @@ export const Course: FunctionComponent<CourseProps> = () => {
           when an unknown printer took a galley of type and scrambled it to make a type specimen book.
         </Paragraph>
       </Accordion>
+
+      <ModalEvaluation 
+        type="popularity" 
+        isOpen={isModalOpen} 
+        onResult={console.log} 
+      />
 
     </PageLayout>
   );

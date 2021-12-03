@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useRef, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { Modal } from 'react-native';
 
 import { Render } from '../Render';
 import { Spacer } from '../Spacer';
 import { useTheme } from '../../hooks';
-import { AssetRobotAskingIcon, AssetRobotSmileDownIcon } from '../../../assets';
+import { AssetRobotAskingIcon, AssetRobotKindIcon, AssetRobotSmileIcon } from '../../../assets';
 
 import {
   ButtonsRow,
@@ -34,6 +34,8 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
   const [thanks, setThanks] = useState(false);
 
   const mutex = useRef(false);
+
+  useEffect(() => setOpenModal(isOpen), [isOpen]);
 
   function onPopularityChoosed(result: 'like' | 'dislike'){
     if (!mutex.current){
@@ -70,7 +72,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
               <RobotBanner 
                 {...theme} 
                 resizeMode="contain" 
-                source={AssetRobotSmileDownIcon} 
+                source={AssetRobotKindIcon} 
               />
               <Spacer verticalSpace={18} />
 
@@ -147,7 +149,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
               <RobotBanner
                 {...theme}
                 resizeMode="contain"
-                source={AssetRobotSmileDownIcon}
+                source={AssetRobotSmileIcon}
               />
               <Spacer verticalSpace={18} />
 

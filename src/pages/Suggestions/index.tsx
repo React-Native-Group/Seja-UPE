@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { FlatList } from 'react-native';
 
@@ -27,7 +27,8 @@ import {
   ToggleType,
   ToggleView,
   VerticalContent,
-  ButtonSuggestion
+  ButtonSuggestion,
+  ModalEvaluation
 } from '../../core/components';
 
 import {
@@ -52,6 +53,12 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
   const [surveyDone, setSurveyDone] = useState(false);
   const [viewType, setViewType] = useState<ToggleType>('horizontal');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (tab == 'suggestions')
+      setTimeout(() => setIsModalOpen(true), 5000);
+  }, [tab]);
 
   function onSurveyButtonClick(isSurveyDone: boolean) {
     navigation.navigate('Survey');
@@ -305,6 +312,12 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
       </Render>
 
+      <ModalEvaluation 
+        type="rating" 
+        isOpen={isModalOpen} 
+        onResult={console.log} 
+      />
+      
     </PageLayout>
   );
 }
