@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, useEffect } from 'react';
+import React, { Fragment, FunctionComponent } from 'react';
 import { ActivityIndicator, BackHandler, Dimensions  } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
@@ -6,7 +6,7 @@ import Fab from 'react-native-fab';
 
 import { Header } from '../Header';
 import { Render } from '../Render';
-import { useTheme } from '../../hooks';
+import { useEnterScreen, useTheme } from '../../hooks';
 import { AreaView, Center, ScrollableContainer } from './styles';
 
 export interface PageLayoutProps {
@@ -37,13 +37,13 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
     return height;
   }
 
-  useEffect(() => {
+  useEnterScreen(() => {
     function backButtonHandler() {
       return !canGoBack;
     }
     BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
     return () => BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
-  }, []);
+  });
 
   return (
     <Fragment>
