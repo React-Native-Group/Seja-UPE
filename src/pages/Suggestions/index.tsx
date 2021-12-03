@@ -50,11 +50,14 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [tab, setTab] = useState<'search' | 'suggestions'>('search');
   const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
   const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
-  const [surveyDone, setSurveyDone] = useState(true);
+  const [surveyDone, setSurveyDone] = useState(false);
   const [viewType, setViewType] = useState<ToggleType>('horizontal');
 
   function onSurveyButtonClick(isSurveyDone: boolean) {
     navigation.navigate('Survey');
+    if (!isSurveyDone){
+      setSurveyDone(true);
+    }
     console.log(isSurveyDone)
   }
 

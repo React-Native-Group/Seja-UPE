@@ -31,6 +31,7 @@ export interface WelcomeProps { }
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const navigation = useNavigation<SuggestionsNavigationProp>();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
 
@@ -43,6 +44,12 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
       //Login mal-sucedido!
       console.log('Error while logging in Google Account.');
     }
+    setIsLoading(false);
+  }
+
+  function onGoogleButtonClick(){
+    setIsLoading(true);
+    doLogin();
   }
 
   function customBackHandler() {
@@ -63,6 +70,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   return (
     <PageLayout 
       showHeader
+      showSpinner={isLoading}
       canGoBack
       onBackPressed={customBackHandler}
     >
@@ -148,7 +156,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
 
         <Render if={step == 4}>
           <Spacer verticalSpace={24} />
-          <ButtonGoogle onPress={doLogin} text="Entrar com Google" />
+          <ButtonGoogle onPress={onGoogleButtonClick} text="Entrar com Google" />
         </Render>
 
       </Container>
