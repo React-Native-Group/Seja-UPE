@@ -1,8 +1,10 @@
 import styled from 'styled-components/native';
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+
 import { ThemeValue } from '../../providers';
 import { VerticalContent } from '../VerticalContent';
 import { HorizontalContent } from '../HorizontalContent';
-import { AntDesign } from '@expo/vector-icons';
 
 export const ModalContainer = styled.TouchableOpacity`
   flex: 1;
@@ -52,10 +54,18 @@ export const Dislike = styled(AntDesign)`
   margin-left: 4px;
 `;
 
+export const Star = styled(FontAwesome)`
+  margin-left: 4px;
+  margin-right: 4px;
+`;
+
 export const Clickable = styled.TouchableOpacity``;
 
 export const RobotText = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 18px;
   font-weight: bold;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
   color: ${props => props.blue};
 `;

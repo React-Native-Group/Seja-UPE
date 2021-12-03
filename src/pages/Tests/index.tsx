@@ -120,7 +120,7 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       <Spacer verticalSpace={10} />
 
       <ModalEvaluation 
-        type="popularity" 
+        type="rating" 
         isOpen={true} 
         onResult={console.log} 
       />
