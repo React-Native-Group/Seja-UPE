@@ -95,7 +95,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     <PageLayout
       showHeader
       showTabs
-      canGoBack
       onTabClick={setTab}
     >
 
@@ -212,7 +211,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             <TitleOutline title="Campus Garanhuns" bold={false} />
             <Spacer verticalSpace={16} />
             <FlatList
-              data={[{}, {}, {}, {}, {}]}
+              data={["Engenharia de Software", "Medicina", "Ciências Biológicas", "Matemática"]}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               style={{ width: '100%'}}
@@ -220,7 +219,29 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
               renderItem={({ item }) => (
                 <ListItemContainer>
                   <CardSuggestion
-                    title="Nome do Curso"
+                    title={item}
+                    progress="100"
+                    onPress={() => onCourseClick(item)}
+                  />
+                </ListItemContainer>
+              )}
+              keyExtractor={() => String(Math.random() * 1000)}
+            />
+            <Spacer verticalSpace={16} />
+
+            {/* Percorrer num loop e renderizar os resultados */}
+            <TitleOutline title="Campus Arcoverde" bold={false} />
+            <Spacer verticalSpace={16} />
+            <FlatList
+              data={["Engenharia de Software", "Medicina", "Ciências Biológicas", "Matemática"]}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              style={{ width: '100%'}}
+              alwaysBounceHorizontal={false}
+              renderItem={({ item }) => (
+                <ListItemContainer>
+                  <CardSuggestion
+                    title={item}
                     progress="100"
                     onPress={() => onCourseClick(item)}
                   />
