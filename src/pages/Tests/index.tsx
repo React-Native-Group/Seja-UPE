@@ -4,6 +4,7 @@ import React, { FunctionComponent, useEffect } from 'react';
 import { CampusNavigationProp, RoutesParamList } from '../../routes';
 import {
   ButtonLink,
+  ModalEvaluation,
   PageLayout,
   Spacer,
   TitleOutline
@@ -117,6 +118,12 @@ export const Tests: FunctionComponent<TestsProps> = () => {
         onPress={() => navigate('CourseProfessor')} 
       />
       <Spacer verticalSpace={10} />
+
+      <ModalEvaluation 
+        type="popularity" 
+        isOpen={true} 
+        onResult={console.log} 
+      />
 
     </PageLayout>
   );

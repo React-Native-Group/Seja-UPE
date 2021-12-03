@@ -26,7 +26,7 @@ export interface StackRoutesProps { }
 export const StackRoutes: FunctionComponent<StackRoutesProps> = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Welcome"
+      initialRouteName="Tests"
       screenOptions={{
         headerShown: false
       }}

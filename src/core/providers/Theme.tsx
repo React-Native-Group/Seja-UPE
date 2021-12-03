@@ -14,6 +14,7 @@ export interface ThemeValue {
   gray: string;
   white: string;
   whiteSmoke: string;
+  evaluationColor: string;
   concurrencyGreen: string;
   concurrencyRed: string;
   chartDatasetColor: string;
