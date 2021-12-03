@@ -82,7 +82,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
       <TitleOutline title="Detalhes do Curso" />
       <Spacer verticalSpace={32} />
 
-      <Accordion title="Sobre o Curso">
+      <Accordion title="Sobre o Curso" beginOpen>
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,

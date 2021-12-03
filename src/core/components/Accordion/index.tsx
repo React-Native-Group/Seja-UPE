@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons'; 
 
 import { Render } from '../Render';
@@ -10,10 +10,11 @@ export interface AccordionProps {
   title: string;
   body?: string;
   bold?: boolean;
+  beginOpen?: boolean;
   children?: ReactNode;
 }
 
-export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, body, bold = false, children }) => {
+export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, body, bold = false, beginOpen = false, children }) => {
   const [theme] = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,11 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
     setBorderRadius(!isOpen ? 0 : 8);
     setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    if (beginOpen)
+      toggle();
+  }, []);
 
   return (
     <Container {...theme} paddingBottom={paddingBottom}>
