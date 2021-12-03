@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { OAuth2LoginAsync, OAuth2Payload } from '../services';
 
 export type GoogleAuthHook = [() => void];

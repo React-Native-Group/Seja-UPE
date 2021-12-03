@@ -8,3 +8,11 @@ export function useEnterScreen(effect: EffectCallback, ...deps: DependencyList){
       return effect();
   }, [isFocused, ...deps]);
 }
+
+export function useLeaveScreen(effect: EffectCallback, ...deps: DependencyList){
+  const isFocused = useIsFocused();
+  useEffect(() => {
+    if (!isFocused)
+      return effect();
+  }, [isFocused, ...deps]);
+}
