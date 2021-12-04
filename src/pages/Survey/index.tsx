@@ -3,6 +3,7 @@ import React, { FunctionComponent, useRef, useState } from 'react';
 
 import { AssetRobotNormalIcon } from '../../assets';
 import { WelcomeNavigationProp } from '../../routes';
+import { useCampus, useEnterScreen } from '../../core/hooks';
 import {
   Avatar,
   Button,
@@ -34,6 +35,14 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   const [group, setGroup] = useRadioGroup(5);
   const responses = useRef([]);
 
+  const [response, success, getCampus] = useCampus(() => {
+    console.log(response?.status)
+  });
+
+  useEnterScreen(() => {
+    getCampus();
+  });
+  
   function choiceChanged(e: number){
     console.log('Escolhido: ' + e)
   }

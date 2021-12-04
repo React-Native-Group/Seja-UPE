@@ -181,12 +181,10 @@ export function useAuthorize(event: ApiEventResponse<AuthorizeResponse>): Author
 
   const { response, success, request } = useRequest<ApiDefaultResponse<AuthorizeResponse>>(onResponse, false);
 
-  const run = (idToken: string) => {
-    request('POST', {
-      url: '/auth/authorize',
-      body: { idToken }
-    });
-  }
+  const run = (idToken: string) => request('POST', {
+    url: '/auth/authorize',
+    body: { idToken }
+  });
 
   return [ response, success, run ];
 }

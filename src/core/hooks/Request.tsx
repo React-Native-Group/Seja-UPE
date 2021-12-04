@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { del, get, post, put, Request } from "../services";
-import { useSession } from "./Session";
+import { useSession, useIsSessionActive } from "./Session";
 
 export type WebClientMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -24,16 +24,16 @@ function isRequestCached<T>(request: Request, method: WebClientMethods, cache: W
   return cacheEntry !== undefined ? cacheEntry : false;
 }
 
-export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, hookOptions?: Request)
+export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean)
 {
   const [response, setResponse] = useState<WebClientResponse<T> | undefined>();
   const [success, setSuccess] = useState<boolean | undefined>(undefined);
 
   const cache = useRef<WebClientCacheEntry<T>[]>([]);
 
-  async function doRequest(method: WebClientMethods, options?: Request)
+  async function doRequest(method: WebClientMethods, options: Request)
   {
-    let request = hookOptions ?? options ?? { url: '' };
+    let request = options;
     let cached = isRequestCached(request, method, cache.current);
 
     if (!cached){
@@ -73,19 +73,32 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, h
   return { response, success, request: doRequest };
 }
 
-export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: boolean, hookOptions?: Request)
+export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: boolean)
 {
-  const [{ session }] = useSession();
-  const Authorization = { Authorization: !!session ? 'Bearer ' + String(session) : '' };
+  const [data] = useSession();
+  const isAuthenticated = useIsSessionActive();
+  const [canRequest, setCanRequest] = useState(false);
+  const [requestOptions, setRequestOptions] = useState<[WebClientMethods, Request] | undefined>(undefined);
 
-  function doRequest(method: WebClientMethods, options?: Request){
-    if (!!options)
-      return request(method, {...options, headers: {...options.headers, ...Authorization}});
+  useEffect(() => {
+
+    if (canRequest && isAuthenticated && !!requestOptions){
+      const [method, options] = requestOptions;
+      const Authorization = { Authorization: 'Bearer ' + data.session ?? '' };
+      if (!!options)
+        request(method, { ...options, headers: { ...options.headers, ...Authorization } });
+      setCanRequest(false);
+      setRequestOptions(undefined);
+    }
+
+  }, [data, canRequest, requestOptions, isAuthenticated]);
+
+  function doRequest(method: WebClientMethods, options: Request){
+    setRequestOptions([method, options]);
+    setCanRequest(true);
   }
 
-  const { request, ...rest } = !!hookOptions ? 
-    useRequest<T>(event, cacheable, {...hookOptions, headers: {...hookOptions.headers, ...Authorization}}) : 
-    useRequest<T>(event, cacheable);
+  const { request, ...rest } = useRequest<T>(event, cacheable);
 
   return { request: doRequest, ...rest };
 }

@@ -11,7 +11,7 @@ export function useSession(): SessionHook
 
   function authorize(bearer: string){
     setData({...data, session: bearer});
-    AsyncStorage.setItem("@session", JSON.stringify({...data, session: bearer}), (error?: Error) => {});
+    AsyncStorage.setItem("@session", JSON.stringify({...data, session: bearer}), (_?: Error) => {});
   }
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export function useSession(): SessionHook
   return [data, setData, authorize];
 }
 
-export function useIsAuthenticated(): boolean
+export function useIsSessionActive(): boolean
 {
   const [data] = useSession();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
