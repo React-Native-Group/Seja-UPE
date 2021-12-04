@@ -2406,31 +2406,296 @@ export const Survey = [
       {
         Text: "Não. Me considero mais individualista.",
         Values: [
-          [10 /* O peso (valor) da escolha */, 1 /* O ID do curso */],
+          [20, 1], //Bacharelado em Enfermagem
+          [20, 2], //Bacharelado em Fisioterapia
+          [20, 3], //Bacharelado em Nutrição
+          [10, 4], //Licenciatura em Ciências Biológicas
+          [10, 5], //Licenciatura em Geografia
+          [10, 6], //Licenciatura em História
+          [10, 7], //Licenciatura em Letras Português/Espanhol
+          [10, 8], //Licenciatura em Letras Português/Inglês
+          [10, 9], //Licenciatura em Matemática
+          [10, 10], //Licenciatura em Pedagogia
+          [10, 11], //Licenciatura em História
+          [10, 12], //Licenciatura em Geografia
+          [10, 13], //Licenciatura em Matemática
+          [10, 14], //Licenciatura em Ciências Biológicas
+          [10, 15], //Licenciatura em Letras Português/Inglês
+          [10, 16], //Licenciatura em Letras Português/Espanhol
+          [10, 17], //Licenciatura em Pedagogia
+          [30, 18], //Superior de Tecnologia em Logística
+          [30, 19], //Bacharelado em Engenharia de Software
+          [20, 20], //Bacharelado em Medicina
+          [10, 21], //Bacharelado em Psicologia
+          [20, 22], //Licenciatura em Ciências Biológicas
+          [30, 23], //Licenciatura em Computação
+          [10, 24], //Licenciatura em Geografia
+          [10, 25], //Licenciatura em História
+          [10, 26], //Licenciatura em Letras (Português e suas Literaturas)
+          [10, 27], //Licenciatura em Matemática
+          [10, 28], //Licenciatura em Pedagogia
+          [30, 29], //Superior de Tecnologia em Logística
+          [20, 30], //Bacharelado em Serviços Sociais
+          [20, 31], //Bacharelado em Direito
+          [20, 32], //Bacharelado em Odontologia
+          [20, 33], //Bacharelado em Administração
+          [20, 34], //Bacharelado em Medicina
+          [20, 35], //Bacharelado em Engenharia Civil
+          [30, 36], //Bacharelado em Engenharia da Computação
+          [30, 37], //Bacharelado em Engenharia de Controle e Automação
+          [30, 38], //Bacharelado em Engenharia Elétrica - Eletrônica
+          [30, 39], //Bacharelado em Engenharia Elétrica - Eletrotécnica
+          [30, 40], //Bacharelado em Engenharia - Telecomunicações
+          [30, 41], //Bacharelado em Física de Materiais
+          [40, 42], //Bacharelado em Mecânica Industrial
+          [20, 43], //Bacharelado em Administração de Empresas
+          [20, 44], //Bacharelado em Direito
+          [20, 45], //Bacharelado em Odontologia
+          [30, 46], //Bacharelado em Sistemas de Informação
+          [20, 47], //Bacharelado em Administração
+          [20, 48], //Bacharelado em Medicina
+          [20, 49], //Bacharelado em Saúde Coletiva
+          [10, 50], //Licenciatura em Educação Física
+          [20, 51], //Bacharelado em Educação Física
+          [20, 52], //Bacharelado em Ciências Biológicas
+          [20, 53], //Bacharelado em Enfermagem
+          [10, 54] //Licenciatura em Ciências Sociais
         ]
       },
       {
         Text: "Não. Até gosto de interagir mas não tenho interesse em ampliar suas capacidades.",
         Values: [
-          [10 /* O peso (valor) da escolha */, 1 /* O ID do curso */],
+          [40, 1], //Bacharelado em Enfermagem
+          [40, 2], //Bacharelado em Fisioterapia
+          [40, 3], //Bacharelado em Nutrição
+          [10, 4], //Licenciatura em Ciências Biológicas
+          [10, 5], //Licenciatura em Geografia
+          [10, 6], //Licenciatura em História
+          [10, 7], //Licenciatura em Letras Português/Espanhol
+          [10, 8], //Licenciatura em Letras Português/Inglês
+          [10, 9], //Licenciatura em Matemática
+          [10, 10], //Licenciatura em Pedagogia
+          [10, 11], //Licenciatura em História
+          [10, 12], //Licenciatura em Geografia
+          [10, 13], //Licenciatura em Matemática
+          [10, 14], //Licenciatura em Ciências Biológicas
+          [10, 15], //Licenciatura em Letras Português/Inglês
+          [10, 16], //Licenciatura em Letras Português/Espanhol
+          [10, 17], //Licenciatura em Pedagogia
+          [40, 18], //Superior de Tecnologia em Logística
+          [50, 19], //Bacharelado em Engenharia de Software
+          [40, 20], //Bacharelado em Medicina
+          [30, 21], //Bacharelado em Psicologia
+          [10, 22], //Licenciatura em Ciências Biológicas
+          [10, 23], //Licenciatura em Computação
+          [10, 24], //Licenciatura em Geografia
+          [10, 25], //Licenciatura em História
+          [10, 26], //Licenciatura em Letras (Português e suas Literaturas)
+          [10, 27], //Licenciatura em Matemática
+          [10, 28], //Licenciatura em Pedagogia
+          [40, 29], //Superior de Tecnologia em Logística
+          [30, 30], //Bacharelado em Serviços Sociais
+          [40, 31], //Bacharelado em Direito
+          [40, 32], //Bacharelado em Odontologia
+          [40, 33], //Bacharelado em Administração
+          [40, 34], //Bacharelado em Medicina
+          [40, 35], //Bacharelado em Engenharia Civil
+          [50, 36], //Bacharelado em Engenharia da Computação
+          [50, 37], //Bacharelado em Engenharia de Controle e Automação
+          [50, 38], //Bacharelado em Engenharia Elétrica - Eletrônica
+          [50, 39], //Bacharelado em Engenharia Elétrica - Eletrotécnica
+          [50, 40], //Bacharelado em Engenharia - Telecomunicações
+          [50, 41], //Bacharelado em Física de Materiais
+          [50, 42], //Bacharelado em Mecânica Industrial
+          [40, 43], //Bacharelado em Administração de Empresas
+          [40, 44], //Bacharelado em Direito
+          [40, 45], //Bacharelado em Odontologia
+          [50, 46], //Bacharelado em Sistemas de Informação
+          [40, 47], //Bacharelado em Administração
+          [40, 48], //Bacharelado em Medicina
+          [40, 49], //Bacharelado em Saúde Coletiva
+          [10, 50], //Licenciatura em Educação Física
+          [30, 51], //Bacharelado em Educação Física
+          [40, 52], //Bacharelado em Ciências Biológicas
+          [40, 53], //Bacharelado em Enfermagem
+          [10, 54] //Licenciatura em Ciências Sociais
         ]
       },
       {
         Text: "Não. Pretendo estudar outra coisa no momento.",
         Values: [
-          [10 /* O peso (valor) da escolha */, 1 /* O ID do curso */],
+          [30, 1], //Bacharelado em Enfermagem
+          [30, 2], //Bacharelado em Fisioterapia
+          [30, 3], //Bacharelado em Nutrição
+          [10, 4], //Licenciatura em Ciências Biológicas
+          [10, 5], //Licenciatura em Geografia
+          [10, 6], //Licenciatura em História
+          [10, 7], //Licenciatura em Letras Português/Espanhol
+          [10, 8], //Licenciatura em Letras Português/Inglês
+          [10, 9], //Licenciatura em Matemática
+          [10, 10], //Licenciatura em Pedagogia
+          [10, 11], //Licenciatura em História
+          [10, 12], //Licenciatura em Geografia
+          [10, 13], //Licenciatura em Matemática
+          [10, 14], //Licenciatura em Ciências Biológicas
+          [10, 15], //Licenciatura em Letras Português/Inglês
+          [10, 16], //Licenciatura em Letras Português/Espanhol
+          [10, 17], //Licenciatura em Pedagogia
+          [40, 18], //Superior de Tecnologia em Logística
+          [40, 19], //Bacharelado em Engenharia de Software
+          [30, 20], //Bacharelado em Medicina
+          [20, 21], //Bacharelado em Psicologia
+          [10, 22], //Licenciatura em Ciências Biológicas
+          [10, 23], //Licenciatura em Computação
+          [10, 24], //Licenciatura em Geografia
+          [10, 25], //Licenciatura em História
+          [10, 26], //Licenciatura em Letras (Português e suas Literaturas)
+          [10, 27], //Licenciatura em Matemática
+          [10, 28], //Licenciatura em Pedagogia
+          [40, 29], //Superior de Tecnologia em Logística
+          [30, 30], //Bacharelado em Serviços Sociais
+          [30, 31], //Bacharelado em Direito
+          [30, 32], //Bacharelado em Odontologia
+          [30, 33], //Bacharelado em Administração
+          [30, 34], //Bacharelado em Medicina
+          [40, 35], //Bacharelado em Engenharia Civil
+          [40, 36], //Bacharelado em Engenharia da Computação
+          [40, 37], //Bacharelado em Engenharia de Controle e Automação
+          [40, 38], //Bacharelado em Engenharia Elétrica - Eletrônica
+          [40, 39], //Bacharelado em Engenharia Elétrica - Eletrotécnica
+          [40, 40], //Bacharelado em Engenharia - Telecomunicações
+          [40, 41], //Bacharelado em Física de Materiais
+          [40, 42], //Bacharelado em Mecânica Industrial
+          [30, 43], //Bacharelado em Administração de Empresas
+          [30, 44], //Bacharelado em Direito
+          [30, 45], //Bacharelado em Odontologia
+          [40, 46], //Bacharelado em Sistemas de Informação
+          [30, 47], //Bacharelado em Administração
+          [30, 48], //Bacharelado em Medicina
+          [30, 49], //Bacharelado em Saúde Coletiva
+          [10, 50], //Licenciatura em Educação Física
+          [20, 51], //Bacharelado em Educação Física
+          [30, 52], //Bacharelado em Ciências Biológicas
+          [30, 53], //Bacharelado em Enfermagem
+          [10, 54] //Licenciatura em Ciências Sociais
         ]
       },
       {
         Text: "Sim. Gosto muito disso.",
         Values: [
-          [10 /* O peso (valor) da escolha */, 1 /* O ID do curso */],
+          [50, 1], //Bacharelado em Enfermagem
+          [50, 2], //Bacharelado em Fisioterapia
+          [50, 3], //Bacharelado em Nutrição
+          [90, 4], //Licenciatura em Ciências Biológicas
+          [90, 5], //Licenciatura em Geografia
+          [90, 6], //Licenciatura em História
+          [90, 7], //Licenciatura em Letras Português/Espanhol
+          [90, 8], //Licenciatura em Letras Português/Inglês
+          [90, 9], //Licenciatura em Matemática
+          [90, 10], //Licenciatura em Pedagogia
+          [90, 11], //Licenciatura em História
+          [90, 12], //Licenciatura em Geografia
+          [90, 13], //Licenciatura em Matemática
+          [90, 14], //Licenciatura em Ciências Biológicas
+          [90, 15], //Licenciatura em Letras Português/Inglês
+          [90, 16], //Licenciatura em Letras Português/Espanhol
+          [90, 17], //Licenciatura em Pedagogia
+          [30, 18], //Superior de Tecnologia em Logística
+          [30, 19], //Bacharelado em Engenharia de Software
+          [50, 20], //Bacharelado em Medicina
+          [60, 21], //Bacharelado em Psicologia
+          [90, 22], //Licenciatura em Ciências Biológicas
+          [90, 23], //Licenciatura em Computação
+          [90, 24], //Licenciatura em Geografia
+          [90, 25], //Licenciatura em História
+          [90, 26], //Licenciatura em Letras (Português e suas Literaturas)
+          [90, 27], //Licenciatura em Matemática
+          [90, 28], //Licenciatura em Pedagogia
+          [30, 29], //Superior de Tecnologia em Logística
+          [50, 30], //Bacharelado em Serviços Sociais
+          [40, 31], //Bacharelado em Direito
+          [50, 32], //Bacharelado em Odontologia
+          [40, 33], //Bacharelado em Administração
+          [50, 34], //Bacharelado em Medicina
+          [40, 35], //Bacharelado em Engenharia Civil
+          [30, 36], //Bacharelado em Engenharia da Computação
+          [30, 37], //Bacharelado em Engenharia de Controle e Automação
+          [30, 38], //Bacharelado em Engenharia Elétrica - Eletrônica
+          [30, 39], //Bacharelado em Engenharia Elétrica - Eletrotécnica
+          [30, 40], //Bacharelado em Engenharia - Telecomunicações
+          [20, 41], //Bacharelado em Física de Materiais
+          [30, 42], //Bacharelado em Mecânica Industrial
+          [40, 43], //Bacharelado em Administração de Empresas
+          [50, 44], //Bacharelado em Direito
+          [50, 45], //Bacharelado em Odontologia
+          [30, 46], //Bacharelado em Sistemas de Informação
+          [50, 47], //Bacharelado em Administração
+          [50, 48], //Bacharelado em Medicina
+          [50, 49], //Bacharelado em Saúde Coletiva
+          [90, 50], //Licenciatura em Educação Física
+          [60, 51], //Bacharelado em Educação Física
+          [50, 52], //Bacharelado em Ciências Biológicas
+          [50, 53], //Bacharelado em Enfermagem
+          [90, 54] //Licenciatura em Ciências Sociais
         ]
       },
       {
         Text: "Sim. Porém tenho dificuldades quanto a isto.",
         Values: [
-          [10 /* O peso (valor) da escolha */, 1 /* O ID do curso */],
+          [40, 1], //Bacharelado em Enfermagem
+          [40, 2], //Bacharelado em Fisioterapia
+          [40, 3], //Bacharelado em Nutrição
+          [70, 4], //Licenciatura em Ciências Biológicas
+          [70, 5], //Licenciatura em Geografia
+          [70, 6], //Licenciatura em História
+          [70, 7], //Licenciatura em Letras Português/Espanhol
+          [70, 8], //Licenciatura em Letras Português/Inglês
+          [70, 9], //Licenciatura em Matemática
+          [70, 10], //Licenciatura em Pedagogia
+          [70, 11], //Licenciatura em História
+          [70, 12], //Licenciatura em Geografia
+          [70, 13], //Licenciatura em Matemática
+          [70, 14], //Licenciatura em Ciências Biológicas
+          [70, 15], //Licenciatura em Letras Português/Inglês
+          [70, 16], //Licenciatura em Letras Português/Espanhol
+          [70, 17], //Licenciatura em Pedagogia
+          [40, 18], //Superior de Tecnologia em Logística
+          [40, 19], //Bacharelado em Engenharia de Software
+          [40, 20], //Bacharelado em Medicina
+          [50, 21], //Bacharelado em Psicologia
+          [70, 22], //Licenciatura em Ciências Biológicas
+          [70, 23], //Licenciatura em Computação
+          [70, 24], //Licenciatura em Geografia
+          [70, 25], //Licenciatura em História
+          [70, 26], //Licenciatura em Letras (Português e suas Literaturas)
+          [70, 27], //Licenciatura em Matemática
+          [70, 28], //Licenciatura em Pedagogia
+          [40, 29], //Superior de Tecnologia em Logística
+          [40, 30], //Bacharelado em Serviços Sociais
+          [40, 31], //Bacharelado em Direito
+          [40, 32], //Bacharelado em Odontologia
+          [40, 33], //Bacharelado em Administração
+          [40, 34], //Bacharelado em Medicina
+          [40, 35], //Bacharelado em Engenharia Civil
+          [40, 36], //Bacharelado em Engenharia da Computação
+          [40, 37], //Bacharelado em Engenharia de Controle e Automação
+          [40, 38], //Bacharelado em Engenharia Elétrica - Eletrônica
+          [40, 39], //Bacharelado em Engenharia Elétrica - Eletrotécnica
+          [40, 40], //Bacharelado em Engenharia - Telecomunicações
+          [30, 41], //Bacharelado em Física de Materiais
+          [40, 42], //Bacharelado em Mecânica Industrial
+          [40, 43], //Bacharelado em Administração de Empresas
+          [40, 44], //Bacharelado em Direito
+          [40, 45], //Bacharelado em Odontologia
+          [40, 46], //Bacharelado em Sistemas de Informação
+          [40, 47], //Bacharelado em Administração
+          [40, 48], //Bacharelado em Medicina
+          [40, 49], //Bacharelado em Saúde Coletiva
+          [70, 50], //Licenciatura em Educação Física
+          [50, 51], //Bacharelado em Educação Física
+          [40, 52], //Bacharelado em Ciências Biológicas
+          [40, 53], //Bacharelado em Enfermagem
+          [70, 54] //Licenciatura em Ciências Sociais
         ]
       }
     ]
