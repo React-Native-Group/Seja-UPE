@@ -1,18 +1,16 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { ImageSourcePropType } from 'react-native';
+import { Alert, ImageSourcePropType } from 'react-native';
 
 import { Container } from './styles';
 import { OAuth2Payload } from '../../core/services';
 import { SuggestionsNavigationProp } from '../../routes';
 
 import {
-  ApiDefaultResponse,
+  ApiResponse,
   AuthorizeResponse,
   useAuthorize,
   useGoogleAuth,
-  useIsAuthenticated,
-  WebClientResponse
 } from '../../core/hooks';
 
 import {
@@ -45,26 +43,21 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
   const [response, success, run] = useAuthorize(onAuthorizeResponse);
 
-  const isAuthenticated = useIsAuthenticated();
-
-  useEffect(() => {
-    console.log(isAuthenticated)
-  }, [isAuthenticated]);
-
-  function onAuthorizeResponse(succ: boolean, res: WebClientResponse<ApiDefaultResponse<AuthorizeResponse>>) {
-    navigation.navigate('Suggestions');
-    //console.log(response);
+  function onAuthorizeResponse() {
+    if (success && !response?.data.error){
+      navigation.navigate('Suggestions');
+      setTimeout(() => setIsLoading(false), 1000);
+    }
   }
 
   function onGoogleResponse(user: OAuth2Payload | undefined, isAuthenticated: boolean){
     if (isAuthenticated){
-      //Login bem-sucedido!
       run(String(user?.idToken));
     } else {
-      //Login mal-sucedido!
-      console.log('Error while logging in Google Account.');
+      Alert.alert('Erro ao acessar conta Google', 
+        'Não foi possível acessar sua conta Google, ' + 
+        'você cancelou o procedimento? Tente novamente.');
     }
-    setIsLoading(false);
   }
 
   function onGoogleButtonClick(){
