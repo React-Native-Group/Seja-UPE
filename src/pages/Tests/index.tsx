@@ -5,6 +5,7 @@ import { useChatWebSocket, useEnterScreen } from '../../core/hooks';
 import { CampusNavigationProp, RoutesParamList } from '../../routes';
 import {
   ButtonLink,
+  ModalChat,
   PageLayout,
   Spacer,
   TitleOutline
@@ -126,6 +127,8 @@ export const Tests: FunctionComponent<TestsProps> = () => {
         onPress={() => navigate('CourseProfessor')} 
       />
       <Spacer verticalSpace={10} />
+
+      <ModalChat isOpen={true} />
 
     </PageLayout>
   );
