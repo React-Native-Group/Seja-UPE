@@ -18,8 +18,9 @@ export type WebClientResponse<T> = {
 
 export type WebClientCallback<T> = (success: boolean, response: WebClientResponse<T>) => void;
 
-function isRequestCached<T>(request: Request, cache: WebClientCacheEntry<T>[]): false | WebClientCacheEntry<T> {
-  let [cacheEntry] = cache.filter(v => v.key == request.url);
+function isRequestCached<T>(request: Request, method: WebClientMethods, cache: WebClientCacheEntry<T>[]): false | WebClientCacheEntry<T> 
+{
+  let [cacheEntry] = cache.filter(v => v.key == request.url && v.method == method);
   return cacheEntry !== undefined ? cacheEntry : false;
 }
 
@@ -33,7 +34,7 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, h
   async function doRequest(method: WebClientMethods, options?: Request)
   {
     let request = hookOptions ?? options ?? { url: '' };
-    let cached = isRequestCached(request, cache.current);
+    let cached = isRequestCached(request, method, cache.current);
 
     if (!cached){
       setResponse(undefined);
@@ -50,10 +51,10 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, h
       setSuccess(isSuccess);
       setResponse({ data: res.data, status: res.status });
 
-      if (cacheable && !isRequestCached(request, cache.current)){
+      if (cacheable && !isRequestCached(request, method, cache.current)){
         cache.current.push({
           key: request.url,
-          method: 'GET',
+          method: method,
           success: isSuccess,
           response: { data: res.data, status: res.status }
         });
