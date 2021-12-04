@@ -17,9 +17,9 @@ export function useChatWebSocket<T>(): ChatWebSocketHook<T>
     onClose: () => setIsOpen(true),
     onMessage: (event: WebSocketMessageEvent) => {
       subscribers.current.map(subscriber => {
-        // try{
+        try{
           if (!!subscriber) subscriber(JSON.parse(event.data));
-        // } catch(e){}
+        } catch(e){}
       });
     }
   });
