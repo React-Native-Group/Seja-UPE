@@ -3,7 +3,7 @@ import { ImageSourcePropType } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
 import { Container } from './styles';
-import { useGoogleAuth } from '../../core/hooks';
+import { ApiDefaultResponse, AuthorizeResponse, useAuthorize, useGoogleAuth, WebClientResponse } from '../../core/hooks';
 import { OAuth2Payload } from '../../core/services';
 import { SuggestionsNavigationProp } from '../../routes';
 
@@ -33,13 +33,19 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
+  
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
+  const {response, success, run} = useAuthorize(onAuthorizeResponse);
+
+  function onAuthorizeResponse(a: boolean, b: WebClientResponse<ApiDefaultResponse<AuthorizeResponse>>) {
+    navigation.navigate('Suggestions');
+    console.log(response,success);
+  }
 
   function onGoogleResponse(user: OAuth2Payload | undefined, isAuthenticated: boolean){
     if (isAuthenticated){
       //Login bem-sucedido!
-      navigation.navigate('Suggestions');
-      console.log(user);
+      run(String(user?.idToken));
     } else {
       //Login mal-sucedido!
       console.log('Error while logging in Google Account.');
