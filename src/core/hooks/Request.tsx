@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { del, get, post, put, Request } from "../services";
-import { useGlobal } from "./Global";
+import { useSession } from "./Session";
 
 export type WebClientMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -75,7 +75,7 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, h
 
 export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: boolean, hookOptions?: Request)
 {
-  const [{ session }] = useGlobal();
+  const [{ session }] = useSession();
   const Authorization = { Authorization: !!session ? 'Bearer ' + String(session) : '' };
 
   function doRequest(method: WebClientMethods, options?: Request){

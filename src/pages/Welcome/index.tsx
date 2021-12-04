@@ -1,11 +1,19 @@
-import React, { FunctionComponent, useState } from 'react';
-import { ImageSourcePropType } from 'react-native';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
+import { ImageSourcePropType } from 'react-native';
 
 import { Container } from './styles';
-import { ApiDefaultResponse, AuthorizeResponse, useAuthorize, useGoogleAuth, WebClientResponse } from '../../core/hooks';
 import { OAuth2Payload } from '../../core/services';
 import { SuggestionsNavigationProp } from '../../routes';
+
+import {
+  ApiDefaultResponse,
+  AuthorizeResponse,
+  useAuthorize,
+  useGoogleAuth,
+  useIsAuthenticated,
+  WebClientResponse
+} from '../../core/hooks';
 
 import {
   AssetRobotKindIcon,
@@ -35,11 +43,17 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const [step, setStep] = useState(0);
   
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
-  const {response, success, run} = useAuthorize(onAuthorizeResponse);
+  const [response, success, run] = useAuthorize(onAuthorizeResponse);
 
-  function onAuthorizeResponse(a: boolean, b: WebClientResponse<ApiDefaultResponse<AuthorizeResponse>>) {
+  const isAuthenticated = useIsAuthenticated();
+
+  useEffect(() => {
+    console.log(isAuthenticated)
+  }, [isAuthenticated]);
+
+  function onAuthorizeResponse(succ: boolean, res: WebClientResponse<ApiDefaultResponse<AuthorizeResponse>>) {
     navigation.navigate('Suggestions');
-    console.log(response,success);
+    //console.log(response);
   }
 
   function onGoogleResponse(user: OAuth2Payload | undefined, isAuthenticated: boolean){
