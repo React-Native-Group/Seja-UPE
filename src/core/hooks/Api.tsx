@@ -153,18 +153,18 @@ export type ProfessorRefResponse = Professor;
 export type CoursesResponse = CampusCourse[];
 export type CourseProfessorsResponse = Professor[];
 
-export type AuthorizeHook         = [Optional<ApiResponse<AuthorizeResponse>>,        Optional<boolean>, (idToken: string) => void];
-export type CampusHook            = [Optional<ApiResponse<CampusResponse>>,           Optional<boolean>, () => void];
-export type CampusRefHook         = [Optional<ApiResponse<CampusRefResponse>>,        Optional<boolean>, (campusId: number) => void];
-export type CampusCoursesHook     = [Optional<ApiResponse<CampusCoursesResponse>>,    Optional<boolean>, (campusId: number) => void];
-export type CampusEventsHook      = [Optional<ApiResponse<CampusEventsResponse>>,     Optional<boolean>, (campusId: number) => void];
-export type CampusContactsHook    = [Optional<ApiResponse<CampusContactsResponse>>,   Optional<boolean>, (campusId: number) => void];
-export type RatingSurveyHook      = [Optional<ApiResponse<RatingResponse>>,           Optional<boolean>, (note: number) => void];
-export type PopularityCourseHook  = [Optional<ApiResponse<PopularityResponse>>,       Optional<boolean>, (courseId: number, note: PopularityNote) => void];
-export type ProfessorsHook        = [Optional<ApiResponse<ProfessorsResponse>>,       Optional<boolean>, () => void];
-export type ProfessorRefHook      = [Optional<ApiResponse<ProfessorRefResponse>>,     Optional<boolean>, (professorId: number) => void];
-export type CoursesHook           = [Optional<ApiResponse<CoursesResponse>>,          Optional<boolean>, (campusId: number) => void];
-export type CourseProfessorsHook  = [Optional<ApiResponse<CourseProfessorsResponse>>, Optional<boolean>, (courseId: number) => void];
+export type AuthorizeHook         = [Optional<ApiResponse<AuthorizeResponse>>,        Optional<boolean>, (idToken: string)                        => void ];
+export type CampusHook            = [Optional<ApiResponse<CampusResponse>>,           Optional<boolean>, ()                                       => void ];
+export type CampusRefHook         = [Optional<ApiResponse<CampusRefResponse>>,        Optional<boolean>, (campusId: number)                       => void ];
+export type CampusCoursesHook     = [Optional<ApiResponse<CampusCoursesResponse>>,    Optional<boolean>, (campusId: number)                       => void ];
+export type CampusEventsHook      = [Optional<ApiResponse<CampusEventsResponse>>,     Optional<boolean>, (campusId: number)                       => void ];
+export type CampusContactsHook    = [Optional<ApiResponse<CampusContactsResponse>>,   Optional<boolean>, (campusId: number)                       => void ];
+export type RatingSurveyHook      = [Optional<ApiResponse<RatingResponse>>,           Optional<boolean>, (note: number)                           => void ];
+export type PopularityCourseHook  = [Optional<ApiResponse<PopularityResponse>>,       Optional<boolean>, (courseId: number, note: PopularityNote) => void ];
+export type ProfessorsHook        = [Optional<ApiResponse<ProfessorsResponse>>,       Optional<boolean>, ()                                       => void ];
+export type ProfessorRefHook      = [Optional<ApiResponse<ProfessorRefResponse>>,     Optional<boolean>, (professorId: number)                    => void ];
+export type CoursesHook           = [Optional<ApiResponse<CoursesResponse>>,          Optional<boolean>, (campusId: number)                       => void ];
+export type CourseProfessorsHook  = [Optional<ApiResponse<CourseProfessorsResponse>>, Optional<boolean>, (courseId: number)                       => void ];
 
 
 export function useAuthorize(event: ApiEventResponse<AuthorizeResponse>): AuthorizeHook
