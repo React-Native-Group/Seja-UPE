@@ -1,3 +1,5 @@
+import { WebClientResponse } from ".";
+import { useGlobal } from "./Global";
 import { useRequest, useAuthorizedRequest, WebClientCallback } from "./Request";
 
 export type ApiDefaultResponse<T> = {
@@ -9,7 +11,25 @@ export type ApiDefaultResponse<T> = {
   response: T;
 }
 
-export type AuthorizeResponse = {}
+export type AuthorizeResponse = {
+  bearer: string,
+  payload: {
+    iss?: string,
+    azp?: string,
+    aud?: string,
+    sub?: string,
+    email?: string,
+    email_verified?: true,
+    at_hash?: string,
+    name?: string,
+    picture?: string,
+    given_name?: string,
+    family_name?: string,
+    locale?: string,
+    iat?: number,
+    exp?: number
+  }
+}
 
 export type CampusResponse = {}
 
@@ -36,12 +56,22 @@ export type CourseProfessor = {}
 
 export function useAuthorize(event: WebClientCallback<ApiDefaultResponse<AuthorizeResponse>>)
 {
-  const { request, ...props } = useRequest<ApiDefaultResponse<AuthorizeResponse>>(event, false);
+  const [ data, setData ] = useGlobal();
 
-  const run = (idToken: string) => request('POST', {
-    url: '/auth/authorize',
-    body: { idToken }
-  });
+  function onResponse(success: boolean, response: WebClientResponse<ApiDefaultResponse<AuthorizeResponse>>){
+    if (success)
+      setData({ ...data, session: response.data.response.bearer, user: response.data.response.payload });
+    event(success, response);
+  }
+
+  const { request, ...props } = useRequest<ApiDefaultResponse<AuthorizeResponse>>(onResponse, false);
+
+  const run = (idToken: string) => {
+    request('POST', {
+      url: '/auth/authorize',
+      body: { idToken }
+    });
+  }
 
   return { ...props, run };
 }

@@ -23,8 +23,7 @@ export async function get<T>({ url, params, headers }: Request): Promise<[boolea
 
 export async function post<T>({ url, params, body, headers }: Request): Promise<[boolean, AxiosResponse<T>]> {
   return new Promise((resolve, _) => {
-    Client.post<T>(url, body, { headers, params }).then(res => resolve([true, res]));
-    Client.get<T>(url, { headers, params })
+    Client.post<T>(url, body, { headers, params })
       .then(res => resolve([true, res]))
       .catch(error => resolve([false, error.response]));
   });
