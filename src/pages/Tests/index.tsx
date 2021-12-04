@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
 
+import { useChatWebSocket, useEnterScreen } from '../../core/hooks';
 import { CampusNavigationProp, RoutesParamList } from '../../routes';
 import {
   ButtonLink,
-  ModalEvaluation,
   PageLayout,
   Spacer,
   TitleOutline
@@ -14,6 +14,14 @@ export interface TestsProps { }
 
 export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
+
+  const [isOpen, sendMessage, subscribe, unsubscribe] = useChatWebSocket<any>();
+
+  useEnterScreen(() => {
+    sendMessage('Exemplo de mensagem no Chat')
+    let id = subscribe((e) => console.log(e))
+    return () => unsubscribe(id);
+  });
 
   function navigate(route: keyof RoutesParamList){
     navigation.navigate(route);
