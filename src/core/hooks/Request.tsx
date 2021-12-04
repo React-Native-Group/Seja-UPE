@@ -1,6 +1,6 @@
-import { AxiosResponse } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { del, get, post, put, Request } from "../services";
+import { useGlobal } from "./Global";
 
 export type WebClientMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -70,4 +70,21 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, h
   }, [response, success]);
 
   return { response, success, request: doRequest };
+}
+
+export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: boolean, hookOptions?: Request)
+{
+  const [{ session }] = useGlobal();
+  const Authorization = { Authorization: !!session ? String(session) : '' }
+
+  function doRequest(method: WebClientMethods, options?: Request){
+    if (!!options)
+      return request(method, {...options, headers: {...options.headers, ...Authorization}});
+  }
+
+  const { request, ...rest } = !!hookOptions ? 
+    useRequest<T>(event, cacheable, {...hookOptions, headers: {...hookOptions.headers, ...Authorization}}) : 
+    useRequest<T>(event, cacheable);
+
+  return { request: doRequest, ...rest };
 }
