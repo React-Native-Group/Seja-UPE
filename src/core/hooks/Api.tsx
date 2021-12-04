@@ -1,6 +1,5 @@
-import { WebClientResponse } from ".";
 import { useGlobal } from "./Global";
-import { useRequest, useAuthorizedRequest, WebClientCallback } from "./Request";
+import { useRequest, useAuthorizedRequest, WebClientCallback, WebClientResponse } from "./Request";
 
 export type ApiDefaultResponse<T> = {
   timestamp: number;
