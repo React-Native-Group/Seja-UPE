@@ -75,7 +75,7 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean, h
 export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: boolean, hookOptions?: Request)
 {
   const [{ session }] = useGlobal();
-  const Authorization = { Authorization: !!session ? String(session) : '' }
+  const Authorization = { Authorization: !!session ? 'Bearer ' + String(session) : '' };
 
   function doRequest(method: WebClientMethods, options?: Request){
     if (!!options)
