@@ -150,6 +150,7 @@ export type PopularityResponse = {
 
 export type ProfessorsResponse = Professor[];
 export type ProfessorRefResponse = Professor;
+export type AllCoursesResponse = CampusCourse[];
 export type CoursesResponse = CampusCourse[];
 export type CourseProfessorsResponse = Professor[];
 
@@ -163,6 +164,7 @@ export type RatingSurveyHook      = [Optional<ApiResponse<RatingResponse>>,     
 export type PopularityCourseHook  = [Optional<ApiResponse<PopularityResponse>>,       Optional<boolean>, (courseId: number, note: PopularityNote) => void ];
 export type ProfessorsHook        = [Optional<ApiResponse<ProfessorsResponse>>,       Optional<boolean>, ()                                       => void ];
 export type ProfessorRefHook      = [Optional<ApiResponse<ProfessorRefResponse>>,     Optional<boolean>, (professorId: number)                    => void ];
+export type AllCoursesHook        = [Optional<ApiResponse<AllCoursesResponse>>,       Optional<boolean>, ()                                       => void ];
 export type CoursesHook           = [Optional<ApiResponse<CoursesResponse>>,          Optional<boolean>, (campusId: number)                       => void ];
 export type CourseProfessorsHook  = [Optional<ApiResponse<CourseProfessorsResponse>>, Optional<boolean>, (courseId: number)                       => void ];
 
@@ -281,6 +283,15 @@ export function useProfessorRef(event: ApiEventResponse<ProfessorRefResponse>): 
   const run = (professorId: number) => request('GET', { 
     url: '/professors/' + encodeURIComponent(professorId) 
   });
+
+  return [ response, success, run ];
+}
+
+export function useAllCourses(event: ApiEventResponse<AllCoursesResponse>): AllCoursesHook 
+{
+  const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<AllCoursesResponse>>(event, true);
+
+  const run = () => request('GET', { url: '/courses' });
 
   return [ response, success, run ];
 }
