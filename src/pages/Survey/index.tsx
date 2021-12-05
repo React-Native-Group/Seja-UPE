@@ -1,9 +1,10 @@
+import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import React, { FunctionComponent, useRef, useState } from 'react';
+import React, { Fragment, FunctionComponent, useRef, useState } from 'react';
 
 import { AssetRobotNormalIcon } from '../../assets';
 import { WelcomeNavigationProp } from '../../routes';
-import { useCampus, useEnterScreen } from '../../core/hooks';
+import { Survey as SurveyConfig, SurveyChoices, SurveyType } from '../../core/config';
 import {
   Avatar,
   Button,
@@ -25,38 +26,49 @@ import {
   RadioContainer,
   RobotContainer
 } from './styles';
+import { getSurveyResults } from '../../core/services';
 
 export interface SurveyProps { }
 
 export const Survey: FunctionComponent<SurveyProps> = () => {
   const navigation = useNavigation<WelcomeNavigationProp>();
-  const maxProgress = 15;
+
+  const maxProgress = SurveyConfig.length;
+
   const [progress, setProgress] = useState(1);
-  const [group, setGroup] = useRadioGroup(5);
-  const responses = useRef([]);
+  const [questions] = useState<SurveyType>(SurveyConfig);
+  const [group, setGroup, clearGroup] = useRadioGroup(5);
+  const choices = useRef<SurveyChoices>([]);
+  const choiceId = useRef<number>(-1);
 
-  const [response, success, getCampus] = useCampus(() => {
-    console.log(response?.status)
-  });
-
-  useEnterScreen(() => {
-    getCampus();
-  });
-  
-  function choiceChanged(e: number){
-    console.log('Escolhido: ' + e)
+  function onChoiceChanged(e: number){
+    choiceId.current = e;
   }
 
   function doSurveyBack(){
-    setProgress(progress-1)
+    choiceId.current = -1;
+    setProgress(progress-1);
+    clearGroup();
   }
 
-  function doSurveyAdvance(){
-    setProgress(progress+1)
-  }
-
-  function doSurveyFinish(){
-    navigation.navigate('Suggestions');
+  function doSurveyAdvance(isFinished: boolean){    
+    if ((choiceId.current != -1) && !isFinished){
+      choices.current.push(questions[progress - 1].Options[choiceId.current]);
+      choiceId.current = -1;
+      setProgress(progress+1);
+      clearGroup();
+    } else {
+      Alert.alert(
+        'Precisamos da sua resposta', 
+        'Para prosseguir e visualizar a próxima ' + 
+        'pergunta, responda esta primeiro e marque ' +
+        'uma das opções que mais corresponde a você.'
+      );
+    }
+    if (isFinished){
+      console.log(getSurveyResults(choices.current))
+      navigation.navigate('Suggestions');
+    }
   }
 
   return (
@@ -80,86 +92,31 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
           paddingTop="8px" 
           paddingBottom="8px"
         >
-          Você gosta de disciplinas como Matemática, Física, Química? Que tal cálculos?
+          {questions[progress-1].Question}
         </Paragraph>
       </CardBaloonBottom>
 
       <Spacer verticalSpace={32} />
 
-      <ChoiceContainer>
-        <RadioContainer>
-          <Radio 
-            reference={group[0]} 
-            group={group} 
-            onPress={choiceChanged} 
-            onHandle={setGroup} 
-          />
-        </RadioContainer>
-        <Paragraph>
-          Lorem ipsum dolor sit amet
-        </Paragraph>
-      </ChoiceContainer>
-      <Spacer verticalSpace={16} />
-
-      <ChoiceContainer>
-        <RadioContainer>
-          <Radio 
-            reference={group[1]} 
-            group={group} 
-            onPress={choiceChanged} 
-            onHandle={setGroup} 
-          />
-        </RadioContainer>
-        <Paragraph>
-          Lorem ipsum dolor sit amet
-        </Paragraph>
-      </ChoiceContainer>
-      <Spacer verticalSpace={16} />
-
-      <ChoiceContainer>
-        <RadioContainer>
-          <Radio 
-            reference={group[2]} 
-            group={group} 
-            onPress={choiceChanged} 
-            onHandle={setGroup} 
-          />
-        </RadioContainer>
-        <Paragraph>
-          Lorem ipsum dolor sit amet
-        </Paragraph>
-      </ChoiceContainer>
-      <Spacer verticalSpace={16} />
-
-      <ChoiceContainer>
-        <RadioContainer>
-          <Radio 
-            reference={group[3]} 
-            group={group} 
-            onPress={choiceChanged} 
-            onHandle={setGroup} 
-          />
-        </RadioContainer>
-        <Paragraph>
-          Lorem ipsum dolor sit amet
-        </Paragraph>
-      </ChoiceContainer>
-      <Spacer verticalSpace={16} />
-
-      <ChoiceContainer>
-        <RadioContainer>
-          <Radio 
-            reference={group[4]} 
-            group={group} 
-            onPress={choiceChanged} 
-            onHandle={setGroup} 
-          />
-        </RadioContainer>
-        <Paragraph>
-          Lorem ipsum dolor sit amet
-        </Paragraph>
-      </ChoiceContainer>
-      <Spacer verticalSpace={48} />
+      {questions[progress - 1].Options.map((option, i) => (
+        <Fragment key={String(i)}>
+          <ChoiceContainer>
+            <RadioContainer>
+              <Radio
+                reference={group[i]}
+                group={group}
+                onPress={onChoiceChanged}
+                onHandle={setGroup}
+              />
+            </RadioContainer>
+            <Paragraph>
+              {option.Text} 
+            </Paragraph>
+          </ChoiceContainer>
+          <Spacer verticalSpace={16} />
+        </Fragment>
+      ))}
+      <Spacer verticalSpace={32} />
 
       <HorizontalContent>
 
@@ -179,14 +136,13 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
         <ButtonContainer>
           <Button
             text={progress == maxProgress ? "Finalizar" : "Avançar"}
-            onPress={progress == maxProgress ? doSurveyFinish : doSurveyAdvance}
+            onPress={() => doSurveyAdvance(progress == maxProgress)}
             bgColor="blue"
             color="white"
           />
         </ButtonContainer>
 
       </HorizontalContent>
-
 
     </PageLayout>
   );
