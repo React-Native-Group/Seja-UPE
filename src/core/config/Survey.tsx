@@ -1,5 +1,20 @@
+export type SurveyValue = [number, number];
 
-export const Survey = [
+export type SurveyOption = {
+  Text: string;
+  Values: SurveyValue[];
+}
+
+export type SurveyChoices = SurveyOption[];
+
+export type SurveyQuestion = {
+  Question: string;
+  Options: SurveyOption[];
+};
+
+export type SurveyType = SurveyQuestion[];
+
+export const Survey: SurveyType = [
   {
     Question: "Você lida bem com números e símbolos e suas manipulações?",
     Options: [

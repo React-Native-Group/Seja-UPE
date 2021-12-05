@@ -128,8 +128,6 @@ export const Tests: FunctionComponent<TestsProps> = () => {
       />
       <Spacer verticalSpace={10} />
 
-      <ModalChat isOpen={true} />
-
     </PageLayout>
   );
 }
