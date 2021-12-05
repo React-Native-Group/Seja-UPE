@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "./Session";
 import { useRequest, useAuthorizedRequest, WebClientCallback, WebClientResponse } from "./Request";
 
@@ -13,8 +14,8 @@ export type ApiDefaultResponse<T> = {
 }
 
 export type ApiResponse<T> = WebClientResponse<ApiDefaultResponse<T>>;
-
 export type ApiEventResponse<T> = WebClientCallback<ApiDefaultResponse<T>>;
+export type ApiEventOptionalResponse<T> = Optional<WebClientCallback<ApiDefaultResponse<T>>>;
 
 export type AuthorizeResponse = {
   bearer: string,
@@ -122,6 +123,7 @@ export type Campus = {
   description: string;
   latitude: string;
   longitude: string;
+  courses: Optional<Partial<CampusCourse[]>>;
   events: CampusEvent[];
   contacts: CampusContact[];
   socialNetworks: CampusSocialNetwork[];
@@ -154,20 +156,20 @@ export type AllCoursesResponse = CampusCourse[];
 export type CoursesResponse = CampusCourse[];
 export type CourseProfessorsResponse = Professor[];
 
-export type AuthorizeHook         = [Optional<ApiResponse<AuthorizeResponse>>,        Optional<boolean>, (idToken: string)                        => void ];
-export type CampusHook            = [Optional<ApiResponse<CampusResponse>>,           Optional<boolean>, ()                                       => void ];
-export type CampusRefHook         = [Optional<ApiResponse<CampusRefResponse>>,        Optional<boolean>, (campusId: number)                       => void ];
-export type CampusCoursesHook     = [Optional<ApiResponse<CampusCoursesResponse>>,    Optional<boolean>, (campusId: number)                       => void ];
-export type CampusEventsHook      = [Optional<ApiResponse<CampusEventsResponse>>,     Optional<boolean>, (campusId: number)                       => void ];
-export type CampusContactsHook    = [Optional<ApiResponse<CampusContactsResponse>>,   Optional<boolean>, (campusId: number)                       => void ];
-export type RatingSurveyHook      = [Optional<ApiResponse<RatingResponse>>,           Optional<boolean>, (note: number)                           => void ];
-export type PopularityCourseHook  = [Optional<ApiResponse<PopularityResponse>>,       Optional<boolean>, (courseId: number, note: PopularityNote) => void ];
-export type ProfessorsHook        = [Optional<ApiResponse<ProfessorsResponse>>,       Optional<boolean>, ()                                       => void ];
-export type ProfessorRefHook      = [Optional<ApiResponse<ProfessorRefResponse>>,     Optional<boolean>, (professorId: number)                    => void ];
-export type AllCoursesHook        = [Optional<ApiResponse<AllCoursesResponse>>,       Optional<boolean>, ()                                       => void ];
-export type CoursesHook           = [Optional<ApiResponse<CoursesResponse>>,          Optional<boolean>, (campusId: number)                       => void ];
-export type CourseProfessorsHook  = [Optional<ApiResponse<CourseProfessorsResponse>>, Optional<boolean>, (courseId: number)                       => void ];
-
+export type AuthorizeHook         = [Optional<ApiResponse<AuthorizeResponse>>,          Optional<boolean>, (idToken: string)                        => void ];
+export type CampusHook            = [Optional<ApiResponse<CampusResponse>>,             Optional<boolean>, ()                                       => void ];
+export type CampusRefHook         = [Optional<ApiResponse<CampusRefResponse>>,          Optional<boolean>, (campusId: number)                       => void ];
+export type CampusCoursesHook     = [Optional<ApiResponse<CampusCoursesResponse>>,      Optional<boolean>, (campusId: number)                       => void ];
+export type CampusEventsHook      = [Optional<ApiResponse<CampusEventsResponse>>,       Optional<boolean>, (campusId: number)                       => void ];
+export type CampusContactsHook    = [Optional<ApiResponse<CampusContactsResponse>>,     Optional<boolean>, (campusId: number)                       => void ];
+export type CampusWithCoursesHook = [Optional<ApiResponse<CampusResponse>>,             Optional<boolean>, ()                                       => void ];
+export type RatingSurveyHook      = [Optional<ApiResponse<RatingResponse>>,             Optional<boolean>, (note: number)                           => void ];
+export type PopularityCourseHook  = [Optional<ApiResponse<PopularityResponse>>,         Optional<boolean>, (courseId: number, note: PopularityNote) => void ];
+export type ProfessorsHook        = [Optional<ApiResponse<ProfessorsResponse>>,         Optional<boolean>, ()                                       => void ];
+export type ProfessorRefHook      = [Optional<ApiResponse<ProfessorRefResponse>>,       Optional<boolean>, (professorId: number)                    => void ];
+export type AllCoursesHook        = [Optional<ApiResponse<AllCoursesResponse>>,         Optional<boolean>, ()                                       => void ];
+export type CoursesHook           = [Optional<ApiResponse<CoursesResponse>>,            Optional<boolean>, (campusId: number)                       => void ];
+export type CourseProfessorsHook  = [Optional<ApiResponse<CourseProfessorsResponse>>,   Optional<boolean>, (courseId: number)                       => void ];
 
 export function useAuthorize(event: ApiEventResponse<AuthorizeResponse>): AuthorizeHook
 {
@@ -242,6 +244,47 @@ export function useCampusContacts(event: ApiEventResponse<CampusContactsResponse
   });
 
   return [ response, success, run ];
+}
+
+export function useCampusWithCourses(event: ApiEventOptionalResponse<CampusResponse>): CampusWithCoursesHook
+{
+  const [results, setResults] = useState<Optional<ApiResponse<CampusResponse>>>(undefined);
+  const [isSuccess, setSuccess] = useState<boolean>(false);
+  const bufferCourses = useRef<CampusCoursesResponse[]>([]);
+
+  const [,,getCampusCourses] = useCampusCourses((success: boolean, courses: ApiResponse<CampusCoursesResponse>) => {
+    if (!success) return setSuccess(false)
+    bufferCourses.current.push(courses.data.response);
+    console.log('Curso> ', courses.data.response.length);
+  });
+
+  const [allCampus,,getCampus] = useCampus((success: boolean) => {
+    if (!success) return setSuccess(false)
+    console.log('Campus> ', allCampus?.data.response.length)
+    //allCampus?.data.response.map(campus => getCampusCourses(campus.id));
+  });
+
+  useEffect(() => {
+    if (!isSuccess){
+      return event(false, undefined);
+    }
+    if ((bufferCourses.current.length == allCampus?.data.response.length)){
+      const result = allCampus;
+      result.data.response = result.data.response.map((campus: Campus, i: number) => {
+        return { 
+          ...campus, 
+          courses: bufferCourses.current[i] 
+        }
+      });
+
+      setResults(result);
+      setSuccess(true);
+      event(true, result);
+
+    }
+  }, [isSuccess, bufferCourses]);
+
+  return [results, isSuccess, getCampus];
 }
 
 export function useRatingSurvey(event: ApiEventResponse<RatingResponse>): RatingSurveyHook
