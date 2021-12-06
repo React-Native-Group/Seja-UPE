@@ -45,7 +45,7 @@ export const Campus: FunctionComponent<CampusProps> = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   function onWidgetClick(item: WidgetData){
-    navigation.navigate(item.route);
+    navigation.navigate(item.route, item.params);
   }
 
   useEffect(() => {

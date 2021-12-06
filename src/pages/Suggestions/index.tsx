@@ -135,7 +135,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         Campus: campusInfo[0],
         Course: courseData
       });
-      console.log(courseData)
     }
   }
 
