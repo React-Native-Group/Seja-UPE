@@ -3,7 +3,7 @@ import { CampusCourse, CampusWithCourse, Professor } from "../core/hooks";
 
 export type RoutesParamList = {
   Tests: undefined;
-  Campus: any;
+  Campus: CampusWithCourse;
   CampusContact: any;
   CampusCourses: any;
   CampusEvents: any;

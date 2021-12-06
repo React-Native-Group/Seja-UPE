@@ -1,5 +1,5 @@
-import { NavigationProp, useNavigation } from '@react-navigation/core';
-import React, { Fragment, FunctionComponent, useState } from 'react';
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
 import { FlatList, ImageSourcePropType } from 'react-native';
 
 import {
@@ -19,6 +19,7 @@ import {
   Spacer,
   TitleOutline
 } from '../../core/components';
+import { CampusSocialNetwork, useEnterScreen, useLeaveScreen } from '../../core/hooks';
 
 import { CampusContactNavigationProp, CampusCoursesNavigationProp, CampusEventsNavigationProp, RoutesParamList } from '../../routes';
 
@@ -38,20 +39,35 @@ export interface CampusProps { }
 
 export const Campus: FunctionComponent<CampusProps> = () => {
   const navigation = useNavigation<NavigationProps>();
+  const route = useRoute<RouteProp<RoutesParamList, 'Campus'>>();
 
-  const [widgets, setWidgets] = useState<WidgetData[]>([
-    { key: '0', title: 'Principais Eventos', route: 'CampusEvents', icon: AssetWidgetEventsIcon, params: {} }, 
-    { key: '1', title: 'Contatos', route: 'CampusContact', icon: AssetWidgetContactIcon, params: {} }, 
-    { key: '2', title: 'Cursos', route: 'CampusCourses', icon: AssetWidgetCoursesIcon, params: {} }
-  ]);
+  const [widgets, setWidgets] = useState<WidgetData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function onWidgetClick(item: WidgetData){
     navigation.navigate(item.route);
   }
 
+  useEffect(() => {
+    setWidgets([
+      { key: '0', title: 'Principais Eventos',  route: 'CampusEvents',  icon: AssetWidgetEventsIcon,  params: route.params.events }, 
+      { key: '1', title: 'Contatos',            route: 'CampusContact', icon: AssetWidgetContactIcon, params: route.params.contacts }, 
+      { key: '2', title: 'Cursos',              route: 'CampusCourses', icon: AssetWidgetCoursesIcon, params: route.params.courses }
+    ]);
+  }, [route]);
+
+  useEnterScreen(() => {
+    setTimeout(() => setIsLoading(false), 1000);
+  });
+
+  useLeaveScreen(() => {
+    setIsLoading(true);
+  });
+
   return (
     <PageLayout 
       showHeader
+      showSpinner={isLoading}
       canGoBack
     >
       
@@ -73,17 +89,9 @@ export const Campus: FunctionComponent<CampusProps> = () => {
       <TitleOutline title="Detalhes do Campus" />
       <Spacer verticalSpace={24} />
 
-      <Accordion title="Descrição">
-        <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      <Accordion title="Descrição" beginOpen>
+        <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px" justify>
+          {route.params.description}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
@@ -94,18 +102,18 @@ export const Campus: FunctionComponent<CampusProps> = () => {
       <MapView 
         height="200px"
         region={{
-          latitude: -8.8833723,
-          longitude: -36.4970813,
+          latitude: Number(route.params.latitude),
+          longitude: Number(route.params.longitude),
           latitudeDelta: 0.003,
           longitudeDelta: 0.003,
         }}
         points={[
           {
             title: 'Universidade de Pernambuco',
-            description: 'Campus Garanhuns',
+            description: route.params.name,
             coords: {
-              latitude: -8.8833723,
-              longitude: -36.4970813
+              latitude: Number(route.params.latitude),
+              longitude: Number(route.params.longitude)
             }
           }
         ]}        
@@ -115,14 +123,12 @@ export const Campus: FunctionComponent<CampusProps> = () => {
       <TitleOutline title="Redes Sociais" />
       <Spacer verticalSpace={24} />
 
-      <ButtonSocial text="Instagram" type="instagram" />
-      <Spacer verticalSpace={16} />
-
-      <ButtonSocial text="Facebook" type="facebook" />
-      <Spacer verticalSpace={16} />
-
-      <ButtonSocial text="Youtube" type="youtube" />
-      <Spacer verticalSpace={16} />
+      {route.params.socialNetworks.map((social: CampusSocialNetwork) => (
+        <Fragment key={String(social.id)}>
+          <ButtonSocial text={social.value} type={social.name} />
+          <Spacer verticalSpace={16} />
+        </Fragment>
+      ))}
 
     </PageLayout>
   );

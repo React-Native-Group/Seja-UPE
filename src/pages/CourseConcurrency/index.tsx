@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/core';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 
+import { RoutesParamList } from '../../routes';
 import { AssetWidgetClassificationIcon } from '../../assets';
 import { SisuGrade, SsaGrade, useEnterScreen, useLeaveScreen } from '../../core/hooks';
-import { RoutesParamList } from '../../routes';
 
 import {
   CardConcurrency,

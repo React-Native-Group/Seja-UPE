@@ -110,7 +110,7 @@ export type CampusSocialNetwork = {
   createdAt: number;
   updatedAt: number | null;
   id: number;
-  name: string;
+  name: 'instagram' | 'twitter' | 'youtube' | 'facebook';
   value: string;
 }
 
