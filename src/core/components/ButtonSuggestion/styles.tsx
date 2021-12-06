@@ -16,7 +16,7 @@ export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeV
 
 export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   padding-left: 16px;
-  padding-right: 16px;
+  padding-right: 32px;
   font-size: 18px;  
   font-weight: bold;
   color: ${props => props.blue};
