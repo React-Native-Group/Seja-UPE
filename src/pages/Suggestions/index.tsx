@@ -285,24 +285,24 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
             {/* Percorrer num loop e renderizar os resultados */}
             {campusSuggestions.map((suggestion: CampusSuggestionType) => (
-              <Fragment key={suggestion.Campus.id + '1'}>
+              <Fragment key={String(suggestion.Campus.id)}>
                 <TitleOutline 
-                  key={suggestion.Campus.id  + '1'} 
+                  key={String(suggestion.Campus.id)} 
                   title={suggestion.Campus.name} 
                   bold={false} 
                 />
                 <Spacer verticalSpace={16} />
                 <FlatList
-                  key={suggestion.Campus.id  + '1'}
+                  keyExtractor={(item) => String(item.Campus.id)}
                   data={suggestion.CourseSuggestions}
                   horizontal={true}
                   style={{ width: '100%'}}
                   alwaysBounceHorizontal={false}
                   showsHorizontalScrollIndicator={false}
                   renderItem={({ item }) => (
-                    <ListItemContainer key={item.Course.id}>
+                    <ListItemContainer key={String(item.Course.id)}>
                       <CardSuggestion
-                        key={item.Course.id}
+                        key={String(item.Course.id)}
                         title={item.Course.name}
                         progress={String(item.Score)}
                         onPress={() => onCourseClick(item.Course)}
@@ -321,7 +321,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             {/* Percorrer num loop e renderizar os resultados */}
             {courseSuggestions.map((item: CourseSuggestionType) => {
               return (
-              <Fragment key={item.Course.id}>
+              <Fragment key={String(item.Course.id)}>
                 <ButtonSuggestion 
                   key={item.Course.id}
                   title={item.Course.name} 
