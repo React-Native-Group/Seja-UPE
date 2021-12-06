@@ -293,7 +293,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                 />
                 <Spacer verticalSpace={16} />
                 <FlatList
-                  keyExtractor={(item) => String(item.Campus.id)}
+                  keyExtractor={() => String(Math.floor(Math.random() * 10000))}
                   data={suggestion.CourseSuggestions}
                   horizontal={true}
                   style={{ width: '100%'}}
