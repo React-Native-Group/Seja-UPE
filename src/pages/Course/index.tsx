@@ -30,6 +30,8 @@ import {
   TitleOutline
 } from '../../core/components';
 
+import { CampusCourse, Optional, useCampusData, useEnterScreen, useLeaveScreen } from '../../core/hooks';
+
 type WidgetData = {
   key: string;
   title: string;
@@ -47,7 +49,11 @@ export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
   const navigation = useNavigation<NavigationProps>();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [campusData] = useCampusData();
 
   const [widgets, setWidgets] = useState<WidgetData[]>([
     { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon, params: {} }, 
@@ -56,9 +62,21 @@ export const Course: FunctionComponent<CourseProps> = () => {
     { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon, params: {} }
   ]);
 
-  useEffect(() => {
-    setTimeout(() => setIsModalOpen(true), 5000);
-  }, []);
+  function course(): Optional<CampusCourse> {
+    if (!!campusData){
+      let courses = campusData[0].courses;
+      if (!!courses) return courses[0];
+    }
+  }
+
+  useEnterScreen(() => {
+    setIsLoading(false);
+    setTimeout(() => setIsModalOpen(true), 6000);
+  });
+
+  useLeaveScreen(() => {
+    setIsLoading(true);
+  });
 
   function onWidgetClick(item: WidgetData){
     navigation.navigate(item.route);
@@ -67,10 +85,11 @@ export const Course: FunctionComponent<CourseProps> = () => {
   return (
     <PageLayout
       showHeader
+      showSpinner={isLoading}
       canGoBack
     >
 
-      <CardCourse text="Engenharia de Software" banner={AssetCardCourseLogo} />
+      <CardCourse text={course()?.name ?? ""} banner={AssetCardCourseLogo} />
       <Spacer verticalSpace={32} />
 
       <FlatList
@@ -90,54 +109,42 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
       <Accordion title="Sobre o Curso" beginOpen>
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          {course()?.about ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Perfil do Curso">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          {course()?.profile ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Contexto Histórico">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          {course()?.history ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Áreas de Atuação">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          {course()?.expertiseAreas ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Mercado de Trabalho">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          {course()?.jobMarket ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Como Ingressar">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          {course()?.ingress ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
 
