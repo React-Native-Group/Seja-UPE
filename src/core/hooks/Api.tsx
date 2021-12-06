@@ -15,7 +15,6 @@ export type ApiDefaultResponse<T> = {
 
 export type ApiResponse<T> = WebClientResponse<ApiDefaultResponse<T>>;
 export type ApiEventResponse<T> = WebClientCallback<ApiDefaultResponse<T>>;
-export type ApiEventOptionalResponse<T> = Optional<WebClientCallback<ApiDefaultResponse<T>>>;
 
 export type AuthorizeResponse = {
   bearer: string,
@@ -246,45 +245,13 @@ export function useCampusContacts(event: ApiEventResponse<CampusContactsResponse
   return [ response, success, run ];
 }
 
-export function useCampusWithCourses(event: ApiEventOptionalResponse<CampusResponse>): CampusWithCoursesHook
+export function useCampusWithCourses(event: ApiEventResponse<CampusResponse>): CampusWithCoursesHook
 {
-  const [results, setResults] = useState<Optional<ApiResponse<CampusResponse>>>(undefined);
-  const [isSuccess, setSuccess] = useState<boolean>(false);
-  const bufferCourses = useRef<CampusCoursesResponse[]>([]);
+  const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusResponse>>(event, true);
 
-  const [,,getCampusCourses] = useCampusCourses((success: boolean, courses: ApiResponse<CampusCoursesResponse>) => {
-    if (!success) return setSuccess(false)
-    bufferCourses.current.push(courses.data.response);
-    console.log('Curso> ', courses.data.response.length);
-  });
+  const run = () => request('GET', { url: '/campus/courses' });
 
-  const [allCampus,,getCampus] = useCampus((success: boolean) => {
-    if (!success) return setSuccess(false)
-    console.log('Campus> ', allCampus?.data.response.length)
-    //allCampus?.data.response.map(campus => getCampusCourses(campus.id));
-  });
-
-  useEffect(() => {
-    if (!isSuccess){
-      return event(false, undefined);
-    }
-    if ((bufferCourses.current.length == allCampus?.data.response.length)){
-      const result = allCampus;
-      result.data.response = result.data.response.map((campus: Campus, i: number) => {
-        return { 
-          ...campus, 
-          courses: bufferCourses.current[i] 
-        }
-      });
-
-      setResults(result);
-      setSuccess(true);
-      event(true, result);
-
-    }
-  }, [isSuccess, bufferCourses]);
-
-  return [results, isSuccess, getCampus];
+  return [ response, success, run ];
 }
 
 export function useRatingSurvey(event: ApiEventResponse<RatingResponse>): RatingSurveyHook
