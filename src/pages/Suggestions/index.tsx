@@ -1,11 +1,12 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { FlatList } from 'react-native';
 
-import { useTheme } from '../../core/hooks';
 import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
 import { CourseNavigationProp, SearchResultsNavigationProp, SurveyNavigationProp } from '../../routes';
+import { CampusCourse, CampusWithCourse, useCampusData, useSurveyResults, useTheme } from '../../core/hooks';
 
+import { SurveyValue } from '../../core/config';
 import {
   Avatar,
   Badge,
@@ -41,6 +42,17 @@ import {
   ListItemContainer
 } from './styles';
 
+type CourseSuggestionType = {
+  Campus: CampusWithCourse;
+  Course: CampusCourse;
+  Score: number;
+}
+
+type CampusSuggestionType = {
+  Campus: CampusWithCourse;
+  CourseSuggestions: CourseSuggestionType[];
+}
+
 export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
@@ -51,14 +63,63 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [tab, setTab] = useState<'search' | 'suggestions'>('search');
   const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
   const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
-  const [surveyDone, setSurveyDone] = useState(false);
+  const [surveyDone, setSurveyDone] = useState(true);
   const [viewType, setViewType] = useState<ToggleType>('horizontal');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [courseSuggestions, setCourseSuggestions] = useState<CourseSuggestionType[]>([]);
+  const [campusSuggestions, setCampusSuggestions] = useState<CampusSuggestionType[]>([]);
+  
+  const [campusInfo] = useCampusData();
+  const [surveyResults] = useSurveyResults();
 
   useEffect(() => {
-    if (tab == 'suggestions')
-      setTimeout(() => setIsModalOpen(true), 5000);
+    // if (tab == 'suggestions')
+    //   setTimeout(() => setIsModalOpen(true), 5000);
   }, [tab]);
+
+  useEffect(() => {
+    if ((surveyResults.length > 0) && !!campusInfo){
+      
+      let buffer = campusInfo.map((campus: CampusWithCourse) => {
+        
+        let courseSuggestions: CourseSuggestionType[] = [];
+        let totalCourses = campus.courses?.length ?? 0;
+
+        for (let k = 0; k < totalCourses; k++) {
+          let course = campus.courses[k];
+
+          if (!!course) {
+            let [courseScore] = surveyResults.filter(([_, id]: SurveyValue) => course?.id == id);
+
+            courseSuggestions.push({
+              Campus: campus,
+              Course: course,
+              Score: Number((courseScore[0] / 15).toFixed(0))
+            });
+          }
+        }
+
+        return courseSuggestions;
+      });
+
+      let scores: CourseSuggestionType[] = [];
+
+      for (let k = 0; k < buffer.length; k++){
+        scores = scores.concat(buffer[k]);
+      }
+
+      setCourseSuggestions(scores);
+      setCampusSuggestions(campusInfo.map((campus: CampusWithCourse) => {
+        let x = scores.filter((suggestion: CourseSuggestionType) => suggestion.Campus.id == campus.id);
+        return {
+          Campus: campus,
+          CourseSuggestions: x
+        }
+      }));
+
+    }
+  }, [campusInfo, surveyResults]);
+
 
   function onSurveyButtonClick(isSurveyDone: boolean) {
     navigation.navigate('Survey');
@@ -68,9 +129,14 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     console.log(isSurveyDone)
   }
 
-  function onCourseClick(courseData: any) {
-    navigation.navigate('Course');
-    console.log(courseData)
+  function onCourseClick(courseData: CampusCourse) {
+    if (!!campusInfo){
+      navigation.navigate('Course', { 
+        Campus: campusInfo[0],
+        Course: courseData
+      });
+      console.log(courseData)
+    }
   }
 
   function onCampusSelected(campus: SelectOption){
@@ -218,59 +284,54 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           <Render if={viewType == 'horizontal'}>
 
             {/* Percorrer num loop e renderizar os resultados */}
-            <TitleOutline title="Campus Garanhuns" bold={false} />
-            <Spacer verticalSpace={16} />
-            <FlatList
-              data={["Engenharia de Software", "Medicina", "Ciências Biológicas", "Matemática"]}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              style={{ width: '100%'}}
-              alwaysBounceHorizontal={false}
-              renderItem={({ item }) => (
-                <ListItemContainer>
-                  <CardSuggestion
-                    title={item}
-                    progress="100"
-                    onPress={() => onCourseClick(item)}
-                  />
-                </ListItemContainer>
-              )}
-              keyExtractor={() => String(Math.random() * 1000)}
-            />
-            <Spacer verticalSpace={16} />
+            {campusSuggestions.map((suggestion: CampusSuggestionType) => (
+              <Fragment key={suggestion.Campus.id + '1'}>
+                <TitleOutline 
+                  key={suggestion.Campus.id  + '1'} 
+                  title={suggestion.Campus.name} 
+                  bold={false} 
+                />
+                <Spacer verticalSpace={16} />
+                <FlatList
+                  key={suggestion.Campus.id  + '1'}
+                  data={suggestion.CourseSuggestions}
+                  horizontal={true}
+                  style={{ width: '100%'}}
+                  alwaysBounceHorizontal={false}
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item }) => (
+                    <ListItemContainer key={item.Course.id}>
+                      <CardSuggestion
+                        key={item.Course.id}
+                        title={item.Course.name}
+                        progress={String(item.Score)}
+                        onPress={() => onCourseClick(item.Course)}
+                      />
+                    </ListItemContainer>
+                  )}
+                />
+                <Spacer verticalSpace={16} />
+              </Fragment>
+            ))}
 
-            {/* Percorrer num loop e renderizar os resultados */}
-            <TitleOutline title="Campus Arcoverde" bold={false} />
-            <Spacer verticalSpace={16} />
-            <FlatList
-              data={["Engenharia de Software", "Medicina", "Ciências Biológicas", "Matemática"]}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              style={{ width: '100%'}}
-              alwaysBounceHorizontal={false}
-              renderItem={({ item }) => (
-                <ListItemContainer>
-                  <CardSuggestion
-                    title={item}
-                    progress="100"
-                    onPress={() => onCourseClick(item)}
-                  />
-                </ListItemContainer>
-              )}
-              keyExtractor={() => String(Math.random() * 1000)}
-            />
 
           </Render>
 
           <Render if={viewType == 'vertical'}>
             {/* Percorrer num loop e renderizar os resultados */}
-            <ButtonSuggestion title="Engenharia de Software" onPress={() => onCourseClick({})} progress="10"/>
-            <Spacer verticalSpace={18} />
-            <ButtonSuggestion title="Medicina" onPress={() => onCourseClick({})} progress="10"/>
-            <Spacer verticalSpace={18} />
-            <ButtonSuggestion title="Ciências Biológicas" onPress={() => onCourseClick({})} progress="10"/>
-            <Spacer verticalSpace={18} />
-            <ButtonSuggestion title="Matemática" onPress={() => onCourseClick({})} progress="10"/>
+            {courseSuggestions.map((item: CourseSuggestionType) => {
+              return (
+              <Fragment key={item.Course.id}>
+                <ButtonSuggestion 
+                  key={item.Course.id}
+                  title={item.Course.name} 
+                  onPress={() => onCourseClick(item.Course)} 
+                  progress={String(item.Score)}
+                />
+                <Spacer verticalSpace={18} />
+              </Fragment>
+              )
+            })}
           </Render>
 
         </Render>

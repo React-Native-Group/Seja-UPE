@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { useSession } from "./Session";
 import { useRequest, useAuthorizedRequest, WebClientCallback, WebClientResponse } from "./Request";
 
@@ -123,7 +122,20 @@ export type Campus = {
   description: string;
   latitude: string;
   longitude: string;
-  courses: Optional<Partial<CampusCourse[]>>;
+  events: CampusEvent[];
+  contacts: CampusContact[];
+  socialNetworks: CampusSocialNetwork[];
+}
+
+export type CampusWithCourse = {
+  createdAt: number;
+  updatedAt: number | null;
+  id: number;
+  name: string;
+  description: string;
+  latitude: string;
+  longitude: string;
+  courses: Partial<CampusCourse[]>;
   events: CampusEvent[];
   contacts: CampusContact[];
   socialNetworks: CampusSocialNetwork[];
@@ -134,6 +146,8 @@ export type CampusRefResponse = CampusResponse[];
 export type CampusCoursesResponse = CampusCourse[];
 export type CampusEventsResponse = CampusEvent[];
 export type CampusContactsResponse = CampusContact[];
+
+export type CampusWithCourseResponse = CampusWithCourse[];
 
 export type RatingResponse = {
   createdAt: number;
@@ -246,9 +260,9 @@ export function useCampusContacts(event: ApiEventResponse<CampusContactsResponse
   return [ response, success, run ];
 }
 
-export function useCampusWithCourses(event: ApiEventResponse<CampusResponse>): CampusWithCoursesHook
+export function useCampusWithCourses(event: ApiEventResponse<CampusWithCourseResponse>): CampusWithCoursesHook
 {
-  const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusResponse>>(event, true);
+  const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusWithCourseResponse>>(event, true);
 
   const run = () => request('GET', { url: '/campus/courses' });
 

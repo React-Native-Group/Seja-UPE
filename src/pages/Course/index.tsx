@@ -1,6 +1,6 @@
-import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
+import React, { Fragment, FunctionComponent, useState } from 'react';
 import { FlatList, ImageSourcePropType } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 
 import { RoutesParamList } from '../../routes';
 
@@ -30,7 +30,7 @@ import {
   TitleOutline
 } from '../../core/components';
 
-import { CampusCourse, Optional, useCampusData, useEnterScreen, useLeaveScreen } from '../../core/hooks';
+import { useEnterScreen, useLeaveScreen } from '../../core/hooks';
 
 type WidgetData = {
   key: string;
@@ -43,31 +43,24 @@ type WidgetData = {
 type NavigationProps =  CampusNavigationProp 
                       | CourseProfessorNavigationProp 
                       | CoursePlanningNavigationProp 
-                      | CourseConcurrencyNavigationProp
+                      | CourseConcurrencyNavigationProp;
 
 export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
+
   const navigation = useNavigation<NavigationProps>();
+  const route = useRoute<RouteProp<RoutesParamList, 'Course'>>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [campusData] = useCampusData();
-
   const [widgets, setWidgets] = useState<WidgetData[]>([
-    { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon, params: {} }, 
-    { key: '1', title: 'Corpo docente',       route: 'CourseProfessors',  icon: AssetWidgetProfessorsIcon, params: {} }, 
-    { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon, params: {} }, 
-    { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon, params: {} }
+    { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon,          params: route.params.Campus }, 
+    { key: '1', title: 'Corpo docente',       route: 'CourseProfessors',  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
+    { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
+    { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon,  params: route.params.Course }
   ]);
-
-  function course(): Optional<CampusCourse> {
-    if (!!campusData){
-      let courses = campusData[0].courses;
-      if (!!courses) return courses[0];
-    }
-  }
 
   useEnterScreen(() => {
     setIsLoading(false);
@@ -79,7 +72,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
   });
 
   function onWidgetClick(item: WidgetData){
-    navigation.navigate(item.route);
+    navigation.navigate(item.route, );
   }
 
   return (
@@ -89,7 +82,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
       canGoBack
     >
 
-      <CardCourse text={course()?.name ?? ""} banner={AssetCardCourseLogo} />
+      <CardCourse text={route.params.Course.name ?? ""} banner={AssetCardCourseLogo} />
       <Spacer verticalSpace={32} />
 
       <FlatList
@@ -109,42 +102,42 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
       <Accordion title="Sobre o Curso" beginOpen>
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          {course()?.about ?? "Informação indisponível para este curso."}
+          {route.params.Course.about ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Perfil do Curso">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          {course()?.profile ?? "Informação indisponível para este curso."}
+          {route.params.Course.profile ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Contexto Histórico">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          {course()?.history ?? "Informação indisponível para este curso."}
+          {route.params.Course.history ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Áreas de Atuação">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          {course()?.expertiseAreas ?? "Informação indisponível para este curso."}
+          {route.params.Course.expertiseAreas ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Mercado de Trabalho">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          {course()?.jobMarket ?? "Informação indisponível para este curso."}
+          {route.params.Course.jobMarket ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
       <Spacer verticalSpace={24} />
 
       <Accordion title="Como Ingressar">
         <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px">
-          {course()?.ingress ?? "Informação indisponível para este curso."}
+          {route.params.Course.ingress ?? "Informação indisponível para este curso."}
         </Paragraph>
       </Accordion>
 

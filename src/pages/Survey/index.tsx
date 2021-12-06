@@ -27,6 +27,7 @@ import {
   RobotContainer
 } from './styles';
 import { getSurveyResults } from '../../core/services';
+import { useSurveyResults } from '../../core/hooks';
 
 export interface SurveyProps { }
 
@@ -38,6 +39,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   const [progress, setProgress] = useState(1);
   const [questions] = useState<SurveyType>(SurveyConfig);
   const [group, setGroup, clearGroup] = useRadioGroup(5);
+  const [, setSurveyResults] = useSurveyResults();
   const choices = useRef<SurveyChoices>([]);
   const choiceId = useRef<number>(-1);
 
@@ -66,7 +68,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
       );
     }
     if (isFinished){
-      console.log(getSurveyResults(choices.current))
+      setSurveyResults(getSurveyResults(choices.current));
       navigation.navigate('Suggestions');
     }
   }

@@ -1,21 +1,21 @@
 import { DrawerNavigationProp } from "@react-navigation/drawer"
-import { Professor } from "../core/hooks";
+import { Campus, CampusCourse, Professor } from "../core/hooks";
 
 export type RoutesParamList = {
   Tests: undefined;
-  Campus: undefined;
-  CampusContact: undefined;
-  CampusCourses: undefined;
-  CampusEvents: undefined;
-  Course: undefined;
-  CourseConcurrency: undefined;
-  CoursePlanning: undefined;
+  Campus: any;
+  CampusContact: any;
+  CampusCourses: any;
+  CampusEvents: any;
+  Course: { Campus: Campus, Course: CampusCourse };
+  CourseConcurrency: any;
+  CoursePlanning: any;
   CourseProfessor: Professor;
-  CourseProfessors: undefined;
-  SearchResults: undefined;
-  Suggestions: undefined;
-  Survey: undefined;
-  Welcome: undefined;
+  CourseProfessors: any;
+  SearchResults: any;
+  Suggestions: any;
+  Survey: any;
+  Welcome: any;
 }
 
 type ParameterizedRoute<T extends keyof RoutesParamList> = DrawerNavigationProp<RoutesParamList, T>;
