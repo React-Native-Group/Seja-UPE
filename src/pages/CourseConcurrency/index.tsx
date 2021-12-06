@@ -15,6 +15,8 @@ import {
   TitleOutline
 } from '../../core/components';
 
+type GradeType = 'highest' | 'lowest' | 'shareholderHighest' | 'shareholderLowest';
+
 export interface CourseConcurrencyProps { }
 
 export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () => {
@@ -24,6 +26,12 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
   const [isLoading, setIsLoading] = useState(true);
 
   const routes = useRoute<RouteProp<RoutesParamList, 'CourseConcurrency'>>();
+
+  function popGrade(grades: SsaGrade[] | SisuGrade[], type: GradeType, places: number = 2): string 
+  {
+    let lastGrade = (grades.length > 0) ? grades.slice(-1)[0][type] : '0'
+    return String(Number(lastGrade).toFixed(places)); 
+  }
 
   useEffect(() => {
     setSsaGrade(routes.params.ssaGrades);
@@ -54,23 +62,23 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
       <Spacer verticalSpace={16} />
 
       <CardConcurrency 
-        lowerNote={ssaGrade.length > 0 ? ssaGrade.slice(-1)[0].lowest : '0'} 
-        higherNote={ssaGrade.length > 0 ? ssaGrade.slice(-1)[0].highest : '0'} />
+        lowerNote={popGrade(ssaGrade, 'lowest')} 
+        higherNote={popGrade(ssaGrade, 'highest')} />
       <Spacer verticalSpace={16} />
 
       <TitleOutline title="Cotista" bold={false} />
       <Spacer verticalSpace={16} />
 
       <CardConcurrency 
-        lowerNote={ssaGrade.length > 0 ? ssaGrade.slice(-1)[0].shareholderLowest : '0'} 
-        higherNote={ssaGrade.length > 0 ? ssaGrade.slice(-1)[0].shareholderHighest : '0'} 
+        lowerNote={popGrade(ssaGrade, 'shareholderLowest')} 
+        higherNote={popGrade(ssaGrade, 'shareholderHighest')} 
       />
       <Spacer verticalSpace={16} />
 
       <TitleOutline title="Concorrente por vaga" bold={false} />
       <Spacer verticalSpace={16} />
 
-      <CardVacancy value={Number(ssaGrade.length > 0 ? ssaGrade.slice(-1)[0].concurrence : '0')} />
+      <CardVacancy value={Math.ceil(Number(ssaGrade.length > 0 ? (ssaGrade.slice(-1)[0].concurrence) : '0'))} />
       <Spacer verticalSpace={48} />
 
       <DividerConcurrency type="sisu" title="Informações do Sisu" />
@@ -80,8 +88,8 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
       <Spacer verticalSpace={16} />
 
       <CardConcurrency 
-        lowerNote={sisuGrade.length > 0 ? sisuGrade.slice(-1)[0].lowest : '0'} 
-        higherNote={sisuGrade.length > 0 ? sisuGrade.slice(-1)[0].highest : '0'}
+        lowerNote={popGrade(sisuGrade, 'lowest', 0)} 
+        higherNote={popGrade(sisuGrade, 'highest', 0)}
       />
       <Spacer verticalSpace={16} />
 
@@ -89,8 +97,8 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
       <Spacer verticalSpace={16} />
 
       <CardConcurrency 
-        lowerNote={sisuGrade.length > 0 ? sisuGrade.slice(-1)[0].shareholderLowest : '0'} 
-        higherNote={sisuGrade.length > 0 ? sisuGrade.slice(-1)[0].shareholderHighest : '0'} 
+        lowerNote={popGrade(sisuGrade, 'shareholderLowest', 0)} 
+        higherNote={popGrade(sisuGrade, 'shareholderHighest', 0)} 
       />
       <Spacer verticalSpace={48} />
 
