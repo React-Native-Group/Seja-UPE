@@ -1,4 +1,5 @@
 import { DrawerNavigationProp } from "@react-navigation/drawer"
+import { Professor } from "../core/hooks";
 
 export type RoutesParamList = {
   Tests: undefined;
@@ -9,7 +10,7 @@ export type RoutesParamList = {
   Course: undefined;
   CourseConcurrency: undefined;
   CoursePlanning: undefined;
-  CourseProfessor: undefined;
+  CourseProfessor: Professor;
   CourseProfessors: undefined;
   SearchResults: undefined;
   Suggestions: undefined;

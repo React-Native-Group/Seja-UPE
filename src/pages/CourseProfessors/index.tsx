@@ -15,7 +15,7 @@ import {
 
 import { CourseProfessorNavigationProp } from '../../routes';
 import { AssetProfessorPhotoIcon, AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
-import {  Professor, useCourseProfessors, useEnterScreen, useLeaveScreen } from '../../core/hooks';
+import { Professor, useCourseProfessors, useEnterScreen, useLeaveScreen } from '../../core/hooks';
 import { Alert } from 'react-native';
 
 export interface CourseProfessorsProps { }
@@ -38,7 +38,6 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
   });
 
   useEnterScreen(() => {
-    setIsLoading(false);
     getProfessors(1); //Mudar para o valor de ID do Curso.
   });
 
@@ -47,14 +46,14 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
   });
 
   function onDetailClick(professor: Professor){
-    navigation.navigate('CourseProfessor');
+    navigation.navigate('CourseProfessor', professor);
   }
 
   return (
     <PageLayout 
       showHeader
-      canGoBack
       showSpinner={isLoading}
+      canGoBack
     >
       <TitleOutline title="Corpo docente" icon={AssetWidgetProfessorsIcon} />
       <Spacer verticalSpace={32} />

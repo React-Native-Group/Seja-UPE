@@ -15,7 +15,7 @@ export const Avatar: FunctionComponent<AvatarProps> = ({ source, diameter, style
 
   return (
     <Container style={style} diameter={diameter + padding} {...theme}>
-      <Image diameter={diameter} source={source} resizeMode="contain" {...theme}/>
+      <Image diameter={diameter} source={source} resizeMode="cover" {...theme}/>
     </Container>
   );
 }
