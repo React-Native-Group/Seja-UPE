@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/core';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 import React, { Fragment, FunctionComponent, useState } from 'react';
 
 import { RobotContainer } from './styles';
@@ -13,7 +13,7 @@ import {
   TitleOutline
 } from '../../core/components';
 
-import { CourseProfessorNavigationProp } from '../../routes';
+import { CourseProfessorNavigationProp, RoutesParamList } from '../../routes';
 import { AssetProfessorPhotoIcon, AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
 import { Professor, useCourseProfessors, useEnterScreen, useLeaveScreen } from '../../core/hooks';
 import { Alert } from 'react-native';
@@ -22,6 +22,7 @@ export interface CourseProfessorsProps { }
 
 export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => {
   const navigation = useNavigation<CourseProfessorNavigationProp>();
+  const route = useRoute<RouteProp<RoutesParamList, 'CourseProfessors'>>();
   
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,7 +39,7 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
   });
 
   useEnterScreen(() => {
-    getProfessors(1); //Mudar para o valor de ID do Curso.
+    getProfessors(route.params.id);
   });
 
   useLeaveScreen(() => {
@@ -63,7 +64,7 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
         <Avatar source={AssetRobotKindIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
           <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px" paddingBottom="16px" justify>
-            {"Atualmente neste curso, possuímos " + professors?.data.response.length + " professores."}
+            {"Atualmente no curso de " + route.params.name + ", possuímos " + professors?.data.response.length + " professores."}
           </Paragraph>
         </CardBaloon>
 

@@ -1,12 +1,11 @@
-import React, { Fragment, FunctionComponent, useState } from 'react';
+import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
 import { FlatList, ImageSourcePropType } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 
-import { RoutesParamList } from '../../routes';
+import { CourseProfessorsNavigationProp, RoutesParamList } from '../../routes';
 
 import {
   CampusNavigationProp,
-  CourseProfessorNavigationProp,
   CoursePlanningNavigationProp,
   CourseConcurrencyNavigationProp
 } from '../../routes';
@@ -32,6 +31,11 @@ import {
 
 import { useEnterScreen, useLeaveScreen } from '../../core/hooks';
 
+type NavigationProps =  CampusNavigationProp 
+                      | CourseProfessorsNavigationProp 
+                      | CoursePlanningNavigationProp 
+                      | CourseConcurrencyNavigationProp;
+
 type WidgetData = {
   key: string;
   title: string;
@@ -39,11 +43,6 @@ type WidgetData = {
   icon: ImageSourcePropType;
   params: any;
 }
-
-type NavigationProps =  CampusNavigationProp 
-                      | CourseProfessorNavigationProp 
-                      | CoursePlanningNavigationProp 
-                      | CourseConcurrencyNavigationProp;
 
 export interface CourseProps { }
 
@@ -55,12 +54,16 @@ export const Course: FunctionComponent<CourseProps> = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [widgets, setWidgets] = useState<WidgetData[]>([
-    { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon,          params: route.params.Campus }, 
-    { key: '1', title: 'Corpo docente',       route: 'CourseProfessors',  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
-    { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
-    { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon,  params: route.params.Course }
-  ]);
+  const [widgets, setWidgets] = useState<WidgetData[]>([]);
+
+  useEffect(() => {
+    setWidgets([
+      { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon,          params: route.params.Campus }, 
+      { key: '1', title: 'Corpo docente',       route: 'CourseProfessors',  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
+      { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
+      { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon,  params: route.params.Course }
+    ])
+  }, [route]);
 
   useEnterScreen(() => {
     setIsLoading(false);
@@ -72,7 +75,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
   });
 
   function onWidgetClick(item: WidgetData){
-    navigation.navigate(item.route, );
+    navigation.navigate(item.route, item.params);
   }
 
   return (
