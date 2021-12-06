@@ -34,7 +34,7 @@ export const CardProfessor: FunctionComponent<CardProfessorProps> = ({ name, pho
       </Header>
       <Body>
         <PhotoContainer>
-          <Photo source={photo} />
+          <Photo resizeMode="cover" source={photo} />
         </PhotoContainer>
         <InfoContainer>
           <BiographyContainer>

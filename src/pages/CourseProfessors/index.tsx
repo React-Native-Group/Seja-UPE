@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { FunctionComponent } from 'react';
+import React, { Fragment, FunctionComponent, useState } from 'react';
 
 import { RobotContainer } from './styles';
 
@@ -14,18 +14,39 @@ import {
 } from '../../core/components';
 
 import { CourseProfessorNavigationProp } from '../../routes';
-import { AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
+import { AssetProfessorPhotoIcon, AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
+import {  Professor, useCourseProfessors, useEnterScreen, useLeaveScreen } from '../../core/hooks';
+import { Alert } from 'react-native';
 
 export interface CourseProfessorsProps { }
 
 export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => {
   const navigation = useNavigation<CourseProfessorNavigationProp>();
   
-  const photo = 'https://images.generated.photos/Ra3atuRPvZSe0FkVXmykFEl-oiLNEuc_U1rTkZ3gZs8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzI3MTAxLmpwZw.jpg';
-  const areas = ['Engenharia', 'Computação', 'Design', 'Exatas'];
-  const shortbio = 'É doutoranda pela Universidade Federal de Pernambuco (UFPE). Possui mestrado na área de Engenharia de Software pela Universidade de Pernambuco (2012). Possui graduação em Sistemas de Informação pela Universidade de Pernambuco (2010). Atualmente é professora assistente da Universidade de Pernambuco conduzindo pesquisas na área de Tecnologia e Educação e ensino de Computação baseado PBL.'
-  
-  function onDetailClick(){
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [professors, success, getProfessors] = useCourseProfessors(() => {
+    setIsLoading(false);
+    if (!success){
+      Alert.alert(
+        'Oops, não foi possível exibir os professores.', 
+        'Parece que não conseguimos obter os professores ' + 
+        'deste curso no momento. Verifique se você possui ' + 
+        'acesso à Internet e tente novamente em alguns instantes.'
+      );
+    }
+  });
+
+  useEnterScreen(() => {
+    setIsLoading(false);
+    getProfessors(1); //Mudar para o valor de ID do Curso.
+  });
+
+  useLeaveScreen(() => {
+    setIsLoading(true);
+  });
+
+  function onDetailClick(professor: Professor){
     navigation.navigate('CourseProfessor');
   }
 
@@ -33,6 +54,7 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
     <PageLayout 
       showHeader
       canGoBack
+      showSpinner={isLoading}
     >
       <TitleOutline title="Corpo docente" icon={AssetWidgetProfessorsIcon} />
       <Spacer verticalSpace={32} />
@@ -42,54 +64,29 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
         <Avatar source={AssetRobotKindIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
           <Paragraph paddingLeft="16px" paddingRight="16px" paddingTop="16px" paddingBottom="16px" justify>
-            Atualmente no curso de Engenharia de Software, 
-            possuímos 33 professores.
+            {"Atualmente neste curso, possuímos " + professors?.data.response.length + " professores."}
           </Paragraph>
         </CardBaloon>
 
       </RobotContainer>
-
       <Spacer verticalSpace={32} />
 
       <TitleOutline title="Docentes do curso" bold={false} />
       <Spacer verticalSpace={32} />
 
-      <CardProfessor 
-        name="Ariane Nune Rodrigues" 
-        photo={{ uri: photo }} 
-        shortbio={shortbio} 
-        areas={areas}
-        onPress={onDetailClick} 
-      />
-      <Spacer verticalSpace={16} />
-
-      <CardProfessor 
-        name="Ariane Nune Rodrigues" 
-        photo={{ uri: photo }} 
-        shortbio={shortbio} 
-        areas={areas}
-        onPress={onDetailClick}
-      />
-      <Spacer verticalSpace={16} />
-
-      <CardProfessor 
-        name="Ariane Nune Rodrigues" 
-        photo={{ uri: photo }} 
-        shortbio={shortbio} 
-        areas={areas}
-        onPress={onDetailClick}
-      />
-      <Spacer verticalSpace={16} />
-
-      <CardProfessor 
-        name="Ariane Nune Rodrigues" 
-        photo={{ uri: photo }} 
-        shortbio={shortbio} 
-        areas={areas} 
-        onPress={onDetailClick}
-      />
-
-      <Spacer verticalSpace={16} />
+      {professors?.data.response.map((professor: Professor) => (
+        <Fragment key={String(professor.id)}>
+          <CardProfessor 
+            key={String(professor.id)}
+            name={professor.name} 
+            photo={!!professor.photoUrl ? { uri: professor.photoUrl } : AssetProfessorPhotoIcon} 
+            shortbio={professor.shortbio} 
+            areas={professor.areas}
+            onPress={() => onDetailClick(professor)} 
+          />
+          <Spacer verticalSpace={16} />
+        </Fragment>
+      ))}
 
     </PageLayout>
   );

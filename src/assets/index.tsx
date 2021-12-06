@@ -7,6 +7,7 @@ export const AssetTriangleLeftIcon          = require('./res_triangle_left_icon.
 export const AssetTriangleRightIcon         = require('./res_triangle_right_icon.png');
 export const AssetTriangleTopIcon           = require('./res_triangle_top_icon.png');
 export const AssetCapIcon                   = require('./res_cap_icon.png');
+export const AssetProfessorPhotoIcon        = require('./res_professor_photo_icon.png');
 export const AssetSocialFacebookIcon        = require('./res_social_facebook_icon.png');
 export const AssetSocialInstagramIcon       = require('./res_social_instagram_icon.png');
 export const AssetSocialTwitterIcon         = require('./res_social_twitter_icon.png');

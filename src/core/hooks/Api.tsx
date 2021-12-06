@@ -70,6 +70,7 @@ export type Professor = {
   email: string;
   lattesUrl: string;
   photoUrl: string;
+  areas: string[];
 }
 
 export type CampusCourse = {
