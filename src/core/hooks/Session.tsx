@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GlobalValue } from "../providers";
 import { useGlobal } from "./Global";
 
-export type SessionHook = [GlobalValue, (e: GlobalValue) => void, (bearer: string) => void];
+export type SessionHook = [GlobalValue, (e: GlobalValue) => void, (bearer: string) => void, () => void];
 
 export function useSession(): SessionHook 
 {
@@ -12,6 +12,11 @@ export function useSession(): SessionHook
   function authorize(bearer: string){
     setData({...data, session: bearer});
     AsyncStorage.setItem("@session", JSON.stringify({...data, session: bearer}), (_?: Error) => {});
+  }
+
+  function deauthorize(){
+    setData({});
+    AsyncStorage.removeItem("@session", () => {});
   }
 
   useEffect(() => {
@@ -24,7 +29,7 @@ export function useSession(): SessionHook
     });
   }, []);
 
-  return [data, setData, authorize];
+  return [data, setData, authorize, deauthorize];
 }
 
 export function useIsSessionActive(): boolean

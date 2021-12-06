@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { Alert, ImageSourcePropType } from 'react-native';
 
@@ -8,9 +8,14 @@ import { SuggestionsNavigationProp } from '../../routes';
 
 import {
   ApiResponse,
-  AuthorizeResponse,
+  CampusResponse,
   useAuthorize,
+  useCampusWithCourses,
+  useEnterScreen,
+  useGlobal,
   useGoogleAuth,
+  useIsSessionActive,
+  useSession,
 } from '../../core/hooks';
 
 import {
@@ -37,22 +42,50 @@ export interface WelcomeProps { }
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const navigation = useNavigation<SuggestionsNavigationProp>();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [step, setStep] = useState(0);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
-  const [response, success, run] = useAuthorize(onAuthorizeResponse);
+  const [authorization, success, authorize] = useAuthorize(onAuthorizeResponse);
+  const isSessionActive = useIsSessionActive();
+  const [global, setGlobal] = useGlobal();
 
-  function onAuthorizeResponse() {
-    if (success && !response?.data.error){
+  const [,,getCourses] = useCampusWithCourses((success: boolean, response: ApiResponse<CampusResponse>) => {
+    if (success){
+      setGlobal({...global, data: response.data.response});
+      setShowSuggestions(true);
+    }
+    else {
+      Alert.alert(
+        'Oops, estamos passando por problemas!', 
+        'Parece que não conseguimos obter a lista mais recente dos cursos da UPE. ' + 
+        'Desculpe-nos pelo inconveniente, mas é possível que o aplicativo esteja em ' + 
+        'manutenção ou você esteja desconectado da Internet. Tente novamente em alguns minutos.');
+    }
+    setTimeout(() => setIsLoading(false), 1000);
+  });
+  
+  useEffect(() => {
+    if (isSessionActive)
+      getCourses();
+    setTimeout(() => setIsLoading(false), 5000);
+  }, [isSessionActive]);
+
+  useEffect(() => {
+    if (showSuggestions) 
       navigation.navigate('Suggestions');
-      setTimeout(() => setIsLoading(false), 1000);
+  }, [showSuggestions]);
+  
+  function onAuthorizeResponse() {
+    if (success && !authorization?.data.error){
+      getCourses();
     }
   }
 
   function onGoogleResponse(user: OAuth2Payload | undefined, isAuthenticated: boolean){
     if (isAuthenticated){
-      run(String(user?.idToken));
+      authorize(String(user?.idToken));
     } else {
       Alert.alert('Erro ao acessar conta Google', 
         'Não foi possível acessar sua conta Google, ' + 

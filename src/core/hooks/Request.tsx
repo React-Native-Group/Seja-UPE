@@ -79,6 +79,7 @@ export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: 
   const isAuthenticated = useIsSessionActive();
   const [canRequest, setCanRequest] = useState(false);
   const [requestOptions, setRequestOptions] = useState<[WebClientMethods, Request] | undefined>(undefined);
+  const requestStarted = useRef(false);
 
   useEffect(() => {
 
@@ -90,7 +91,7 @@ export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: 
       setCanRequest(false);
       setRequestOptions(undefined);
     }
-
+    
   }, [data, canRequest, requestOptions, isAuthenticated]);
 
   function doRequest(method: WebClientMethods, options: Request){
