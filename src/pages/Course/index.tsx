@@ -67,7 +67,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
   useEnterScreen(() => {
     setIsLoading(false);
-    setTimeout(() => setIsModalOpen(true), 6000);
+    //setTimeout(() => setIsModalOpen(true), 6000);
   });
 
   useLeaveScreen(() => {
@@ -92,7 +92,11 @@ export const Course: FunctionComponent<CourseProps> = () => {
         data={widgets}
         renderItem={({ item }) => (
           <Fragment>
-            <ButtonWidget legend={item.title} banner={item.icon} onPress={() => onWidgetClick(item)} />
+            <ButtonWidget 
+              legend={item.title} 
+              banner={item.icon} 
+              onPress={() => onWidgetClick(item)} 
+            />
           </Fragment>
         )}
         horizontal={true}

@@ -11,11 +11,9 @@ import {
   CampusResponse,
   useAuthorize,
   useCampusWithCourses,
-  useEnterScreen,
   useGlobal,
   useGoogleAuth,
   useIsSessionActive,
-  useSession,
 } from '../../core/hooks';
 
 import {
@@ -69,7 +67,6 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   useEffect(() => {
     if (isSessionActive)
       getCourses();
-    setTimeout(() => setIsLoading(false), 5000);
   }, [isSessionActive]);
 
   useEffect(() => {

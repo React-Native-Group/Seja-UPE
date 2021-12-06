@@ -129,10 +129,10 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     console.log(isSurveyDone)
   }
 
-  function onCourseClick(courseData: CampusCourse) {
+  function onCourseClick(courseData: CampusCourse, campusData: CampusWithCourse) {
     if (!!campusInfo){
       navigation.navigate('Course', { 
-        Campus: campusInfo[0],
+        Campus: campusData,
         Course: courseData
       });
     }
@@ -304,7 +304,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                         key={String(item.Course.id)}
                         title={item.Course.name}
                         progress={String(item.Score)}
-                        onPress={() => onCourseClick(item.Course)}
+                        onPress={() => onCourseClick(item.Course, item.Campus)}
                       />
                     </ListItemContainer>
                   )}
@@ -313,24 +313,21 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
               </Fragment>
             ))}
 
-
           </Render>
 
           <Render if={viewType == 'vertical'}>
             {/* Percorrer num loop e renderizar os resultados */}
-            {courseSuggestions.map((item: CourseSuggestionType) => {
-              return (
+            {courseSuggestions.map((item: CourseSuggestionType) => (
               <Fragment key={String(item.Course.id)}>
-                <ButtonSuggestion 
+                <ButtonSuggestion
                   key={item.Course.id}
-                  title={item.Course.name} 
-                  onPress={() => onCourseClick(item.Course)} 
+                  title={item.Course.name}
+                  onPress={() => onCourseClick(item.Course, item.Campus)}
                   progress={String(item.Score)}
                 />
                 <Spacer verticalSpace={18} />
               </Fragment>
-              )
-            })}
+            ))}
           </Render>
 
         </Render>
