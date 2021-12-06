@@ -8,7 +8,7 @@ export type RoutesParamList = {
   CampusCourses: any;
   CampusEvents: any;
   Course: { Campus: Campus, Course: CampusCourse };
-  CourseConcurrency: any;
+  CourseConcurrency: CampusCourse;
   CoursePlanning: CampusCourse;
   CourseProfessor: Professor;
   CourseProfessors: any;
