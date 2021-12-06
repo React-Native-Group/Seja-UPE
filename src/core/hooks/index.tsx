@@ -6,3 +6,4 @@ export * from './Api';
 export * from './Lifecycle';
 export * from './Session';
 export * from './Chat';
+export * from './Campus';
