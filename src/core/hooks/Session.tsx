@@ -19,6 +19,11 @@ export function useSession(): SessionHook
     AsyncStorage.removeItem("@session", () => {});
   }
 
+  function setSession(session: GlobalValue){
+    setData({...data, ...session});
+    AsyncStorage.setItem("@session", JSON.stringify({...data, ...session}), (_?: Error) => {});
+  }
+
   useEffect(() => {
     AsyncStorage.getItem("@session", (error?: Error, result?: string) => {
       if (!!error)
@@ -29,7 +34,7 @@ export function useSession(): SessionHook
     });
   }, []);
 
-  return [data, setData, authorize, deauthorize];
+  return [data, setSession, authorize, deauthorize];
 }
 
 export function useIsSessionActive(): boolean
