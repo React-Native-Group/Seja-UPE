@@ -40,7 +40,7 @@ export interface WelcomeProps { }
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const navigation = useNavigation<SuggestionsNavigationProp>();
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   
@@ -65,8 +65,10 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   });
   
   useEffect(() => {
-    if (isSessionActive)
+    if (isSessionActive){
       getCourses();
+      setIsLoading(true);
+    }
   }, [isSessionActive]);
 
   useEffect(() => {
