@@ -49,7 +49,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
     <Fragment>
 
       <Render if={!!showSpinner}>
-        <ScrollableContainer nestedScrollEnabled>
+        <ScrollableContainer nestedScrollEnabled overScrollMode="never">
           <Render if={!!showHeader}>
             <Header
               canGoBack={!!canGoBack}
@@ -65,7 +65,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
       </Render>
 
       <Render if={!showSpinner}>
-        <ScrollableContainer nestedScrollEnabled>
+        <ScrollableContainer nestedScrollEnabled overScrollMode="never">
           <Render if={!!showHeader}>
             <Header
               canGoBack={!!canGoBack}
