@@ -90,6 +90,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
       <FlatList
         data={widgets}
+        overScrollMode="never"
         renderItem={({ item }) => (
           <Fragment>
             <ButtonWidget 

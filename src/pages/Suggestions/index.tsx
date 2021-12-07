@@ -300,6 +300,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                   data={suggestion.CourseSuggestions}
                   horizontal={true}
                   style={{ width: '100%'}}
+                  overScrollMode="never"
                   alwaysBounceHorizontal={false}
                   showsHorizontalScrollIndicator={false}
                   renderItem={({ item }) => (

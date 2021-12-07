@@ -76,6 +76,7 @@ export const Campus: FunctionComponent<CampusProps> = () => {
 
       <FlatList
         data={widgets}
+        overScrollMode="never"
         renderItem={({ item }) => (
           <Fragment>
             <ButtonWidget legend={item.title} banner={item.icon} onPress={() => onWidgetClick(item)}/>
