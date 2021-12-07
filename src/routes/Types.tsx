@@ -5,7 +5,7 @@ export type RoutesParamList = {
   Tests: undefined;
   Campus: CampusWithCourse;
   CampusContact: CampusContact[];
-  CampusCourses: CampusCourse[];
+  CampusCourses: CampusWithCourse;
   CampusEvents: CampusEvent[];
   Course: { Campus: CampusWithCourse, Course: CampusCourse };
   CourseConcurrency: CampusCourse;

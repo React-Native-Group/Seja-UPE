@@ -52,7 +52,7 @@ export const Campus: FunctionComponent<CampusProps> = () => {
     setWidgets([
       { key: '0', title: 'Principais Eventos',  route: 'CampusEvents',  icon: AssetWidgetEventsIcon,  params: route.params.events }, 
       { key: '1', title: 'Contatos',            route: 'CampusContact', icon: AssetWidgetContactIcon, params: route.params.contacts }, 
-      { key: '2', title: 'Cursos',              route: 'CampusCourses', icon: AssetWidgetCoursesIcon, params: route.params.courses }
+      { key: '2', title: 'Cursos',              route: 'CampusCourses', icon: AssetWidgetCoursesIcon, params: route.params }
     ]);
   }, [route]);
 
