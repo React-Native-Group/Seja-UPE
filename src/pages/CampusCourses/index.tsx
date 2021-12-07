@@ -1,11 +1,13 @@
-import { useNavigation } from '@react-navigation/core';
-import React, { Fragment, FunctionComponent } from 'react';
-import { RouteProp, useRoute } from '@react-navigation/core';
+import React, { FunctionComponent } from 'react';
+import { RouteProp, useRoute, useNavigation} from '@react-navigation/core';
 
+import { RobotContainer } from './styles';
+import { CampusCourse } from '../../core/hooks';
+import { CourseNavigationProp, RoutesParamList } from '../../routes';
 
 import {
   AssetWidgetCoursesIcon,
-  AssetRobotNormalIcon
+  AssetRobotKindIcon
 } from '../../assets';
 
 import {
@@ -19,10 +21,6 @@ import {
   TitleOutline
 } from '../../core/components';
 
-import { CourseNavigationProp, RoutesParamList } from '../../routes';
-import { RobotContainer } from './styles';
-import { CampusCourse } from '../../core/hooks';
-
 export interface CampusCoursesProps { }
 
 export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
@@ -30,10 +28,8 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
   const navigation = useNavigation<CourseNavigationProp>();
 
   function onCourseClick(course?: CampusCourse){
-    if (!!course) {
+    if (!!course)
       navigation.navigate('Course', { Campus: route.params, Course: course });
-    }
-    
   }
 
   return (
@@ -46,7 +42,7 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
 
       <RobotContainer>
 
-        <Avatar source={AssetRobotNormalIcon} diameter={80} padding={16} />
+        <Avatar source={AssetRobotKindIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
           <Paragraph 
             paddingLeft="8px" 
@@ -61,17 +57,13 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
         </CardBaloon>
 
       </RobotContainer>
-
       <Spacer verticalSpace={32} />
 
       {route.params.courses.map((course?: CampusCourse) => (
-        <Render if={!!course}>
-          <Fragment key={String(course?.id)}>
-            <ButtonCourse onPress={() => onCourseClick(course)} title={course?.name ?? ""} />
-            <Spacer verticalSpace={18} />
-          </Fragment>
+        <Render if={!!course} key={String(course?.id)}>
+          <ButtonCourse onPress={() => onCourseClick(course)} title={course?.name ?? ""} />
+          <Spacer verticalSpace={18} />
         </Render>
-        
       ))}
 
     </PageLayout>
