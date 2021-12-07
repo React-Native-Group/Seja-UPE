@@ -25,11 +25,11 @@ export const CampusContact: FunctionComponent<CampusContactProps> = () => {
       <TitleOutline title="Contatos" icon={AssetWidgetContactIcon} />
       <Spacer verticalSpace={32} />
       {categorias.map((category: Contact[]) => (
-        <Fragment>
+        <Fragment key={String(category[0].id)}>
           <Accordion title={category[0].categoryName} bold>
             <AccordionBody>
               {category.map((contact: Contact) => (
-                <Fragment>
+                <Fragment key={String(contact.id)}>
                   <ButtonLink text={contact.value} iconName={contact.fieldIcon} iconColor={theme.red} />
                   <Spacer verticalSpace={8} />
                 </Fragment>
