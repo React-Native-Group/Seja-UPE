@@ -27,3 +27,4 @@ export const AssetWidgetClassificationIcon  = require('./res_widget_classificati
 export const AssetWidgetContactIcon         = require('./res_widget_contact_icon.png');
 export const AssetWidgetCoursesIcon         = require('./res_widget_courses_icon.png');
 export const AssetWidgetEventsIcon          = require('./res_widget_events_icon.png');
+export const AssetMarkerIcon                = require('./res_marker_icon.png');
