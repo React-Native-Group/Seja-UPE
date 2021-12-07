@@ -19,11 +19,14 @@ export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   padding-right: 32px;
   font-size: 18px;  
   font-weight: bold;
+  flex-wrap: wrap;
+  flex: 1;
   color: ${props => props.blue};
   max-width: 80%;
 `;
 
 export const ProgressContainer = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
+  flex-direction: row;
   background-color: ${props => props.blue};
   border-radius: 4px;
   padding: 4px;

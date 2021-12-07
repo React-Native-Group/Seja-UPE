@@ -18,7 +18,7 @@ export const ButtonSuggestion: FunctionComponent<ButtonSuggestionProps> = ({ onP
       <FontAwesome5 name="book" size={38} color={theme.blueNeon} />
       <Title {...theme} numberOfLines={1}>{title}</Title>
       <ProgressContainer {...theme}>
-        <Progress numberOfLines={1} {...theme}>{progress}%</Progress>
+        <Progress numberOfLines={2} {...theme}>{progress}%</Progress>
       </ProgressContainer>
     </Container>
   );

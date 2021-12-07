@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { ImageSourcePropType } from 'react-native';
-import { AssetWidgetSampleIcon } from '../../../assets';
 import { useTheme } from '../../hooks';
+import { AssetWidgetSampleIcon } from '../../../assets';
 import { Banner, BannerContainer, Container, Footer, FooterLabel } from './styles';
 
 export interface CardCourseProps {

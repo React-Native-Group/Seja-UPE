@@ -17,7 +17,7 @@ export const Footer = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   align-items: center;
   margin-top: auto;
   background-color: ${props => props.blue};
-  height: 48px;
+  min-height: 48px;
   width: 100%;
 `;
 
