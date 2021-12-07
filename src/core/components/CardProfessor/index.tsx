@@ -43,6 +43,7 @@ export const CardProfessor: FunctionComponent<CardProfessorProps> = ({ name, pho
           <AreaList 
             data={areas}
             horizontal={true}
+            overScrollMode="never"
             keyExtractor={(item) => String(item)}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => (

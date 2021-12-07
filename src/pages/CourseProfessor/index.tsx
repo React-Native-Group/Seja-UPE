@@ -50,6 +50,7 @@ export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
       <FlatList 
         data={professor().areas}
         horizontal={true}
+        overScrollMode="never"
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
