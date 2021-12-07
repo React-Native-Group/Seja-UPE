@@ -52,7 +52,7 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
             fontSize="16px"
             justify
           >
-            {"Atualmente no " + route.params.name + ", possuímos " + route.params.courses.length + " cursos presenciais."}
+            {"Atualmente no " + (route.params.name ?? "") + ", possuímos " + (route.params.courses.length ?? "") + " cursos presenciais."}
           </Paragraph>
         </CardBaloon>
 
