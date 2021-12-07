@@ -279,7 +279,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             <TitleOutline title="Cursos encontrados" />
             <ToggleView
               onToggle={setViewType}
-              initial="horizontal"
+              initial={viewType}
             />
           </ResultsTitleContainer>
           <Spacer verticalSpace={32} />
