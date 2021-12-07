@@ -12,10 +12,10 @@ export type RoutesParamList = {
   CoursePlanning: CampusCourse;
   CourseProfessor: Professor;
   CourseProfessors: CampusCourse;
-  SearchResults: any;
+  SearchResults: { Campus: CampusWithCourse, Courses: CampusCourse[] };
   Suggestions: any;
   Survey: any;
-  Welcome: any;
+  Welcome: undefined;
 }
 
 type ParameterizedRoute<T extends keyof RoutesParamList> = DrawerNavigationProp<RoutesParamList, T>;
