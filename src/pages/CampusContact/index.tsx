@@ -1,14 +1,21 @@
-import React, { FunctionComponent } from 'react';
+import React, { Fragment, FunctionComponent } from 'react';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { AccordionBody } from './styles';
-import { useTheme } from '../../core/hooks';
+import { RoutesParamList } from '../../routes';
 import { AssetWidgetContactIcon } from '../../assets';
+import { useTheme, CampusContact as Contact} from '../../core/hooks';
 import { Accordion, ButtonLink, PageLayout, Spacer, TitleOutline } from '../../core/components';
+
 
 export interface CampusContactProps { }
 
 export const CampusContact: FunctionComponent<CampusContactProps> = () => {
+  const route = useRoute<RouteProp<RoutesParamList, 'CampusContact'>>();
   const [theme] = useTheme();
+  const categorias = route.params.map(v => v.categoryName).filter(function (value, index, array) { 
+    return array.indexOf(value) === index;
+  }).map(v => route.params.filter(x => x.categoryName == v))
 
   return (
     <PageLayout 
@@ -17,54 +24,21 @@ export const CampusContact: FunctionComponent<CampusContactProps> = () => {
     >
       <TitleOutline title="Contatos" icon={AssetWidgetContactIcon} />
       <Spacer verticalSpace={32} />
-
-      <Accordion title="Escolaridade" bold>
-        <AccordionBody>
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-          
-          <Spacer verticalSpace={8} />
-          
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-        </AccordionBody>
-      </Accordion>
-
-      <Spacer verticalSpace={16} />
-
-      <Accordion title="Tesouraria" bold>
-        <AccordionBody>
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-          
-          <Spacer verticalSpace={8} />
-          
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-        </AccordionBody>
-      </Accordion>
-      
-      <Spacer verticalSpace={16} />
-      
-      <Accordion title="Biblioteca" bold>
-        <AccordionBody>
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-          
-          <Spacer verticalSpace={8} />
-          
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-        </AccordionBody>
-      </Accordion>
-
-      <Spacer verticalSpace={16} />
-
-      <Accordion title="Acessoria" bold>
-        <AccordionBody>
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-          
-          <Spacer verticalSpace={8} />
-          
-          <ButtonLink text="escolaridade.multicampi@upe.br" iconName="envelope" iconColor={theme.red} />
-        </AccordionBody>
-      </Accordion>
-
-      <Spacer verticalSpace={16} />
+      {categorias.map((category: Contact[]) => (
+        <Fragment>
+          <Accordion title={category[0].categoryName} bold>
+            <AccordionBody>
+              {category.map((contact: Contact) => (
+                <Fragment>
+                  <ButtonLink text={contact.value} iconName={contact.fieldIcon} iconColor={theme.red} />
+                  <Spacer verticalSpace={8} />
+                </Fragment>
+              ))}
+            </AccordionBody>
+          </Accordion> 
+          <Spacer verticalSpace={16} />
+        </Fragment>
+      ))}
 
     </PageLayout>
   );
