@@ -1,5 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { FunctionComponent } from 'react';
+import React, { Fragment, FunctionComponent } from 'react';
+import { RouteProp, useRoute } from '@react-navigation/core';
+
 
 import {
   AssetWidgetCoursesIcon,
@@ -12,20 +14,26 @@ import {
   CardBaloon,
   PageLayout,
   Paragraph,
+  Render,
   Spacer,
   TitleOutline
 } from '../../core/components';
 
-import { CourseNavigationProp } from '../../routes';
+import { CourseNavigationProp, RoutesParamList } from '../../routes';
 import { RobotContainer } from './styles';
+import { CampusCourse } from '../../core/hooks';
 
 export interface CampusCoursesProps { }
 
 export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
+  const route = useRoute<RouteProp<RoutesParamList, 'CampusCourses'>>();
   const navigation = useNavigation<CourseNavigationProp>();
 
-  function onCourseClick(courseData: any){
-    navigation.navigate('Course');
+  function onCourseClick(course?: CampusCourse){
+    if (!!course) {
+      navigation.navigate('Course', { Campus: route.params, Course: course });
+    }
+    
   }
 
   return (
@@ -48,7 +56,7 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
             fontSize="16px"
             justify
           >
-            Atualmente no Campus Garanhuns, possuímos 10 cursos presenciais.
+            {"Atualmente no " + route.params.name + ", possuímos " + route.params.courses.length + " cursos presenciais."}
           </Paragraph>
         </CardBaloon>
 
@@ -56,26 +64,15 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
 
       <Spacer verticalSpace={32} />
 
-      <ButtonCourse onPress={() => onCourseClick({})} title="Medicina" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Engenharia de Software" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Psicologia" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Letras" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Pedagogia" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Geografia" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Matemática" />
-      <Spacer verticalSpace={18} />
+      {route.params.courses.map((course?: CampusCourse) => (
+        <Render if={!!course}>
+          <Fragment key={String(course?.id)}>
+            <ButtonCourse onPress={() => onCourseClick(course)} title={course?.name ?? ""} />
+            <Spacer verticalSpace={18} />
+          </Fragment>
+        </Render>
+        
+      ))}
 
     </PageLayout>
   );
