@@ -2,8 +2,10 @@ import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import React, { Fragment, FunctionComponent, useRef, useState } from 'react';
 
+import { useSurveyResults } from '../../core/hooks';
 import { AssetRobotNormalIcon } from '../../assets';
 import { WelcomeNavigationProp } from '../../routes';
+import { getSurveyResults } from '../../core/services';
 import { Survey as SurveyConfig, SurveyChoices, SurveyType } from '../../core/config';
 import {
   Avatar,
@@ -26,8 +28,6 @@ import {
   RadioContainer,
   RobotContainer
 } from './styles';
-import { getSurveyResults } from '../../core/services';
-import { useSurveyResults } from '../../core/hooks';
 
 export interface SurveyProps { }
 
@@ -54,18 +54,19 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   }
 
   function doSurveyAdvance(isFinished: boolean){    
-    if ((choiceId.current != -1) && !isFinished){
-      choices.current.push(questions[progress - 1].Options[choiceId.current]);
-      choiceId.current = -1;
-      setProgress(progress+1);
-      clearGroup();
-    } else {
+    if ((choiceId.current == -1) && !isFinished){
       Alert.alert(
         'Precisamos da sua resposta', 
         'Para prosseguir e visualizar a próxima ' + 
         'pergunta, responda esta primeiro e marque ' +
         'uma das opções que mais corresponde a você.'
       );
+    }
+    if ((choiceId.current != -1) && !isFinished){
+      choices.current.push(questions[progress - 1].Options[choiceId.current]);
+      choiceId.current = -1;
+      setProgress(progress+1);
+      clearGroup();
     }
     if (isFinished){
       setSurveyResults(getSurveyResults(choices.current));
