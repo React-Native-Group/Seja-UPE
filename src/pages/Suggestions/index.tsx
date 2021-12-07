@@ -108,7 +108,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         scores = scores.concat(buffer[k]);
       }
 
-      setCourseSuggestions(scores);
+      setCourseSuggestions(scores.sort((c1: CourseSuggestionType, c2: CourseSuggestionType) => c2.Score - c1.Score));
       setCampusSuggestions(campusInfo.map((campus: CampusWithCourse) => {
         let x = scores.filter((suggestion: CourseSuggestionType) => suggestion.Campus.id == campus.id);
         return {
