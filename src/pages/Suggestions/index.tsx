@@ -250,7 +250,11 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                 paddingBottom="8px"
                 justify
               >
-                Encontrei 7 cursos com base nas informações que você me passou.
+                {
+                  "Estou te sugerindo alguns cursos que acho que combinam com você " + 
+                  "com base nos resultados do seu Teste Vocacional. Nos diga o que " +
+                  "acha dos nossos " + courseSuggestions.length + " cursos."
+                }
               </Paragraph>
 
               <Spacer verticalSpace={8} />
@@ -292,7 +296,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                 />
                 <Spacer verticalSpace={16} />
                 <FlatList
-                  keyExtractor={() => String(Math.floor(Math.random() * 10000))}
+                  keyExtractor={(item) => String(item.Course.id)}
                   data={suggestion.CourseSuggestions}
                   horizontal={true}
                   style={{ width: '100%'}}
