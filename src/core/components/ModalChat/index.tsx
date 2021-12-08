@@ -4,7 +4,7 @@ import { Modal } from 'react-native';
 
 import { Spacer } from '../Spacer';
 import { Messages } from '../Messages';
-import { useTheme } from '../../hooks';
+import { useChatWebSocket, useSession, useTheme } from '../../hooks';
 
 import {
   CloseButton,
@@ -19,28 +19,64 @@ import {
   ViewContainer,
   SendIcon
 } from './styles';
+import { GoogleUser } from 'expo-google-app-auth';
 
 export interface ModalChatProps {
   isOpen: boolean;
+  onClose: () => void;
 }
 
-export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen }) => {
+type ChatMessage = {
+  userPhoto: string;
+  userName: string;
+  userEmail: string;
+  text: string;
+}
+
+export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }) => {
   const [theme] = useTheme();
+  
+  const [session] = useSession();
   const [isVisible, setIsVisible] = useState(isOpen);
   const [inputValue, setInputValue] = useState("");
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [user, setUser] = useState<GoogleUser>({});
 
+  const [_, sendMessage, subscribe, unsubscribe] = useChatWebSocket<ChatMessage>();
 
   useEffect(() => {
     setIsVisible(isOpen);
   }, [isOpen]);
 
+  useEffect(() => {
+    let subscriptionId: number = subscribe(onMessageReceived);
+    return () => {
+      unsubscribe(subscriptionId);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!!session.user)
+      setUser((session.user as GoogleUser));
+  }, [session]);
+
   function closeModal(){
     setIsVisible(false);
+    onClose();
   }
 
-  function onSendClick(){
-    console.log(inputValue)
+  function onSendClick() {
+    sendMessage({
+      userPhoto: user.photoUrl ?? '',
+      userName: user.name ?? '',
+      userEmail: user.email ?? '',
+      text: inputValue
+    });
     setInputValue("");
+  }
+
+  function onMessageReceived(message: ChatMessage){
+    setMessages([...messages, {...message}]);
   }
 
   return (
@@ -68,38 +104,22 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen }) => {
           <Spacer verticalSpace={8} />
 
           <Messages
-            messages={[
-              {
-                isOwner: false,
-                username: "Luana Nóbrega",
-                photo: "https://i1.rgstatic.net/ii/profile.image/595851827228672-1519073554654_Q512/Ariane-Cardoso-3.jpg",
-                text: "oi, como vai vc?"
-              },
-              {
-                isOwner: true,
-                username: null,
-                photo: null,
-                text: "bem, e vc?"
-              },
-              {
-                isOwner: false,
-                username: "Luana Nóbrega",
-                photo: "https://i1.rgstatic.net/ii/profile.image/595851827228672-1519073554654_Q512/Ariane-Cardoso-3.jpg",
-                text: "estou bem, também!"
-              },
-              {
-                isOwner: true,
-                username: null,
-                photo: null,
-                text: "que bom!! gostei do aplicativo, muito legal..."
-              },
-            ]}
+            messages={
+              messages.map((message: ChatMessage) => {
+                return {
+                  isOwner: message.userEmail.toLocaleLowerCase() === user.email?.toLocaleLowerCase(),
+                  username: message.userName,
+                  photo: message.userPhoto,
+                  text: message.text
+                }
+              })
+            }
           />
 
           <Spacer verticalSpace={8} />
 
           <FooterContainer>
-            <Photo source={{ uri: 'https://i1.rgstatic.net/ii/profile.image/595851827228672-1519073554654_Q512/Ariane-Cardoso-3.jpg'}} />
+            <Photo source={{ uri: user.photoUrl}} />
 
             <InputContainer {...theme}>
               <Input 

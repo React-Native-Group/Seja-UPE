@@ -14,6 +14,7 @@ import {
   useGlobal,
   useGoogleAuth,
   useIsSessionActive,
+  useSession,
 } from '../../core/hooks';
 
 import {
@@ -48,6 +49,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const [authorization, success, authorize] = useAuthorize(onAuthorizeResponse);
   const isSessionActive = useIsSessionActive();
   const [global, setGlobal] = useGlobal();
+  const [session, setSession] = useSession();
 
   const [,,getCourses] = useCampusWithCourses((success: boolean, response: ApiResponse<CampusResponse>) => {
     if (success){
@@ -85,6 +87,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   function onGoogleResponse(user: OAuth2Payload | undefined, isAuthenticated: boolean){
     if (isAuthenticated){
       authorize(String(user?.idToken));
+      setSession({...session, user: user?.user});
     } else {
       Alert.alert('Erro ao acessar conta Google', 
         'Não foi possível acessar sua conta Google, ' + 

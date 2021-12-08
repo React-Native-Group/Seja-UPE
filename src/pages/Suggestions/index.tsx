@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 
 import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
 import { CourseNavigationProp, SearchResultsNavigationProp, SurveyNavigationProp } from '../../routes';
-import { CampusCourse, CampusWithCourse, useCampusData, useSurveyResults, useTheme } from '../../core/hooks';
+import { CampusCourse, CampusWithCourse, useCampusData, useEnterScreen, useSurveyResults, useTheme } from '../../core/hooks';
 
 import { SurveyValue } from '../../core/config';
 import {
@@ -121,12 +121,12 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     }
   }, [campusInfo, surveyResults]);
 
+  useEnterScreen(() => {
+    setSurveyDone((surveyResults.length > 0) && !!campusInfo);
+  });
+
   function onSurveyButtonClick(isSurveyDone: boolean) {
     navigation.navigate('Survey');
-    if (!isSurveyDone){
-      setSurveyDone(true);
-    }
-    console.log(isSurveyDone)
   }
 
   function onCourseClick(courseData: CampusCourse, campusData: CampusWithCourse) {
@@ -170,6 +170,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     <PageLayout
       showHeader
       showTabs
+      showFab
       onTabClick={setTab}
     >
 
