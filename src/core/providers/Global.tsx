@@ -7,7 +7,7 @@ export interface GlobalProps {
 export interface GlobalValue {
   user?: any;
   session?: string;
-  extra?: any;
+  survey?: any[];
   storage?: any;
   data?: any;
 }
