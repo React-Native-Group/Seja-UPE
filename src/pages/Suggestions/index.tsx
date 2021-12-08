@@ -63,7 +63,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [tab, setTab] = useState<'search' | 'suggestions'>('search');
   const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
   const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
-  const [surveyDone, setSurveyDone] = useState(true);
+  const [surveyDone, setSurveyDone] = useState(false);
   const [viewType, setViewType] = useState<ToggleType>('horizontal');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [courseSuggestions, setCourseSuggestions] = useState<CourseSuggestionType[]>([]);
@@ -84,13 +84,13 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         
         let courseSuggestions: CourseSuggestionType[] = [];
         let totalCourses = campus.courses?.length ?? 0;
-
+        
         for (let k = 0; k < totalCourses; k++) {
           let course = campus.courses[k];
-
+          
           if (!!course) {
             let [courseScore] = surveyResults.filter(([_, id]: SurveyValue) => course?.id == id);
-
+            
             courseSuggestions.push({
               Campus: campus,
               Course: course,
@@ -98,28 +98,28 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             });
           }
         }
-
+        
         return courseSuggestions;
       });
-
+      
       let scores: CourseSuggestionType[] = [];
-
+      
       for (let k = 0; k < buffer.length; k++){
         scores = scores.concat(buffer[k]);
       }
-
+      
+      setSurveyDone(true);
       setCourseSuggestions(scores.sort((c1: CourseSuggestionType, c2: CourseSuggestionType) => c2.Score - c1.Score));
       setCampusSuggestions(campusInfo.map((campus: CampusWithCourse) => {
-        let x = scores.filter((suggestion: CourseSuggestionType) => suggestion.Campus.id == campus.id);
+        let filtered = scores.filter((suggestion: CourseSuggestionType) => suggestion.Campus.id == campus.id);
         return {
           Campus: campus,
-          CourseSuggestions: x
+          CourseSuggestions: filtered
         }
       }));
 
     }
   }, [campusInfo, surveyResults]);
-
 
   function onSurveyButtonClick(isSurveyDone: boolean) {
     navigation.navigate('Survey');
@@ -279,7 +279,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             <TitleOutline title="Cursos encontrados" />
             <ToggleView
               onToggle={setViewType}
-              initial="horizontal"
+              initial={viewType}
             />
           </ResultsTitleContainer>
           <Spacer verticalSpace={32} />

@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/core';
 import React, { Fragment, FunctionComponent, useRef, useState } from 'react';
 
 import { useSurveyResults } from '../../core/hooks';
-import { AssetRobotNormalIcon } from '../../assets';
+import { AssetRobotAskingIcon } from '../../assets';
 import { WelcomeNavigationProp } from '../../routes';
 import { getSurveyResults } from '../../core/services';
 import { Survey as SurveyConfig, SurveyChoices, SurveyType } from '../../core/config';
@@ -82,7 +82,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
       <Spacer verticalSpace={16} />
 
       <RobotContainer>
-        <Avatar source={AssetRobotNormalIcon} diameter={128} padding={16} />
+        <Avatar source={AssetRobotAskingIcon} diameter={128} padding={16} />
       </RobotContainer>
 
       <Spacer verticalSpace={4} />
@@ -94,6 +94,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
           paddingRight="8px" 
           paddingTop="8px" 
           paddingBottom="8px"
+          justify
         >
           {questions[progress-1].Question}
         </Paragraph>
