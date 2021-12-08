@@ -10,12 +10,12 @@ export function useSurveyResults(): SurveyResultsHook
   const [results, setResults] = useState<SurveyValue[]>([]);
 
   function setSurveyResults(values: SurveyValue[]){
-    setSession({ ...session, extra: values });
+    setSession({ ...session, survey: values });
   }
 
   useEffect(() => {
-    if (!!session.extra){
-      setResults((session.extra as SurveyValue[]));
+    if (!!session.survey){
+      setResults((session.survey as SurveyValue[]));
     }
   }, [session]);
 

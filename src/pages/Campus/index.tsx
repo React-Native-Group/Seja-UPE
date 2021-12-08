@@ -1,4 +1,4 @@
-import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
 import { FlatList, ImageSourcePropType, Linking } from 'react-native';
 
@@ -38,6 +38,7 @@ type NavigationProps =  CampusEventsNavigationProp
 export interface CampusProps { }
 
 export const Campus: FunctionComponent<CampusProps> = () => {
+
   const navigation = useNavigation<NavigationProps>();
   const route = useRoute<RouteProp<RoutesParamList, 'Campus'>>();
 

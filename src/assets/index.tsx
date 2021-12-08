@@ -12,7 +12,6 @@ export const AssetSocialFacebookIcon        = require('./res_social_facebook_ico
 export const AssetSocialInstagramIcon       = require('./res_social_instagram_icon.png');
 export const AssetSocialTwitterIcon         = require('./res_social_twitter_icon.png');
 export const AssetSocialYoutubeIcon         = require('./res_social_youtube_icon.png');
-export const AssetRobotNormalIcon           = require('./res_robot_normal_icon.png');
 export const AssetRobotQuestionsIcon        = require('./res_robot_questions_icon.png');
 export const AssetRobotAskingIcon           = require('./res_robot_asking_icon.png');
 export const AssetRobotSmileDownIcon        = require('./res_robot_smile_down_icon.png');
