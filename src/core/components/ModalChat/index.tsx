@@ -66,13 +66,15 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
   }
 
   function onSendClick() {
-    sendMessage({
-      userPhoto: user.photoUrl ?? '',
-      userName: user.name ?? '',
-      userEmail: user.email ?? '',
-      text: inputValue
-    });
-    setInputValue("");
+    if (inputValue.trim() != ""){
+      sendMessage({
+        userPhoto: user.photoUrl ?? '',
+        userName: user.name ?? '',
+        userEmail: user.email ?? '',
+        text: inputValue
+      });
+      setInputValue("");
+    }
   }
 
   function onMessageReceived(message: ChatMessage){
