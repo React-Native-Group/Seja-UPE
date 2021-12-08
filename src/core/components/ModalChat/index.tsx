@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import { GoogleUser } from 'expo-google-app-auth';
 import { Modal } from 'react-native';
-
 
 import { Spacer } from '../Spacer';
 import { Messages } from '../Messages';
@@ -19,7 +19,6 @@ import {
   ViewContainer,
   SendIcon
 } from './styles';
-import { GoogleUser } from 'expo-google-app-auth';
 
 export interface ModalChatProps {
   isOpen: boolean;
@@ -41,6 +40,7 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [user, setUser] = useState<GoogleUser>({});
+  const messagesRef = useRef<ChatMessage[]>([]);
 
   const [_, sendMessage, subscribe, unsubscribe] = useChatWebSocket<ChatMessage>();
 
@@ -76,7 +76,8 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
   }
 
   function onMessageReceived(message: ChatMessage){
-    setMessages([...messages, {...message}]);
+    messagesRef.current.push(message);
+    setMessages(messagesRef.current);
   }
 
   return (
