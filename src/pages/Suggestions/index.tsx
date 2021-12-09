@@ -53,11 +53,6 @@ type CampusSuggestionType = {
   CourseSuggestions: CourseSuggestionType[];
 }
 
-type SearchResultsParams = { 
-  Campus: CampusWithCourse[]; 
-  Courses: CampusCourse[]; 
-}
-
 export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
@@ -183,7 +178,9 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   }
 
   function onSearchClick(){
+    const [campus] = campusInfo?.filter((v: CampusWithCourse) => v.id === campusSelected?.key) ?? [];
     let params: CampusCourse[] = courseList.current
+      .filter((courseA: CampusCourse) => !campus || campus?.courses.some((courseB?: CampusCourse) => courseA.id == courseB?.id))
       .filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
       .filter((course: CampusCourse) => {
         const [grade] = course[toggle == 'ssa' ? 'ssaGrades' : 'sisuGrades'].slice(-1);
