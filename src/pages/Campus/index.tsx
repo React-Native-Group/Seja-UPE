@@ -1,6 +1,7 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
 import { FlatList, ImageSourcePropType, Linking } from 'react-native';
+import capitalize from 'capitalize-first-letters';
 
 import {
   AssetWidgetCampusIcon,
@@ -127,7 +128,11 @@ export const Campus: FunctionComponent<CampusProps> = () => {
 
       {route.params.socialNetworks.map((social: CampusSocialNetwork) => (
         <Fragment key={String(social.id)}>
-          <ButtonSocial text={social.name} type={social.name} onPress={() => Linking.openURL(social.value)}/>
+          <ButtonSocial 
+            text={capitalize(social.name)} 
+            type={social.name} 
+            onPress={() => Linking.openURL(social.value)}
+          />
           <Spacer verticalSpace={16} />
         </Fragment>
       ))}
