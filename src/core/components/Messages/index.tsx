@@ -1,7 +1,9 @@
-import React, { Fragment, FunctionComponent } from 'react';
-import { useTheme } from '../../hooks';
+import React, { Fragment, FunctionComponent, useRef } from 'react';
+import { ScrollView } from 'react-native';
 
 import { Render } from '../Render';
+import { Spacer } from '../Spacer';
+import { useTheme } from '../../hooks';
 import { Container, MessageContainer, MessageText, Photo, Username, ViewAlign } from './styles';
 
 export interface MessageEnvelope {
@@ -17,9 +19,14 @@ export interface MessagesProps {
 
 export const Messages: FunctionComponent<MessagesProps> = ({ messages }) => {
   const [theme] = useTheme();
+  const containerRef = useRef<ScrollView | null>(null);
 
   return (
-    <Container nestedScrollEnabled>
+    <Container 
+      nestedScrollEnabled 
+      ref={(ref) => { containerRef.current = ref }}
+      onContentSizeChange={() => containerRef.current?.scrollToEnd({ animated: true })}
+    >
 
       {messages.map(({isOwner, ...message}) => (
         <Fragment key={String(Math.floor(Math.random() * 10**5))}>
@@ -42,6 +49,8 @@ export const Messages: FunctionComponent<MessagesProps> = ({ messages }) => {
 
         </Fragment>
       ))}
+
+      <Spacer verticalSpace={16} />
 
     </Container>
   );

@@ -1,11 +1,12 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { FlatList } from 'react-native';
 
-import { useTheme } from '../../core/hooks';
 import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
 import { CourseNavigationProp, SearchResultsNavigationProp, SurveyNavigationProp } from '../../routes';
+import { CampusCourse, CampusWithCourse, useCampusData, useEnterScreen, useSurveyResults, useTheme } from '../../core/hooks';
 
+import { SurveyValue } from '../../core/config';
 import {
   Avatar,
   Badge,
@@ -41,6 +42,22 @@ import {
   ListItemContainer
 } from './styles';
 
+type CourseSuggestionType = {
+  Campus: CampusWithCourse;
+  Course: CampusCourse;
+  Score: number;
+}
+
+type CampusSuggestionType = {
+  Campus: CampusWithCourse;
+  CourseSuggestions: CourseSuggestionType[];
+}
+
+type SearchResultsParams = { 
+  Campus: CampusWithCourse[]; 
+  Courses: CampusCourse[]; 
+}
+
 export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
@@ -48,63 +65,144 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
   const [theme] = useTheme();
 
-  const [tab, setTab] = useState<'search' | 'suggestions'>('search');
-  const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
-  const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
   const [surveyDone, setSurveyDone] = useState(false);
-  const [viewType, setViewType] = useState<ToggleType>('horizontal');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
+  const [tab, setTab] = useState<'search' | 'suggestions'>('search');
+  const [viewType, setViewType] = useState<ToggleType>('horizontal');
+
+  const [campusSelected, setCampusSelected] = useState<SelectOption>();
+  const [courseSelected, setCourseSelected] = useState<SelectOption>();
+  const [campusOptions, setCampusOptions] = useState<SelectOption[]>([]);
+  const [courseOptions, setCourseOptions] = useState<SelectOption[]>([]);
+  const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
+
+  const [courseSuggestions, setCourseSuggestions] = useState<CourseSuggestionType[]>([]);
+  const [campusSuggestions, setCampusSuggestions] = useState<CampusSuggestionType[]>([]);
+  
+  const campusList = useRef<CampusWithCourse[]>([]);
+  const courseList = useRef<CampusCourse[]>([]);
+
+  const [campusInfo] = useCampusData();
+  const [surveyResults] = useSurveyResults();
+
   useEffect(() => {
-    if (tab == 'suggestions')
-      setTimeout(() => setIsModalOpen(true), 5000);
+    setCampusSelected(undefined);
+    setCourseSelected(undefined);
+    // if (tab == 'suggestions')
+    //   setTimeout(() => setIsModalOpen(true), 5000);
   }, [tab]);
 
-  function onSurveyButtonClick(isSurveyDone: boolean) {
-    navigation.navigate('Survey');
-    if (!isSurveyDone){
+  useEffect(() => {
+    if ((surveyResults.length > 0) && !!campusInfo){
+      
+      let buffer = campusInfo.map((campus: CampusWithCourse) => {
+        
+        let courseSuggestions: CourseSuggestionType[] = [];
+        let totalCourses = campus.courses?.length ?? 0;
+        
+        for (let k = 0; k < totalCourses; k++) {
+          let course = campus.courses[k];
+          
+          if (!!course) {
+            let [courseScore] = surveyResults.filter(([_, id]: SurveyValue) => course?.id == id);
+            
+            courseSuggestions.push({
+              Campus: campus,
+              Course: course,
+              Score: Number((courseScore[0] / 15).toFixed(0))
+            });
+          }
+        }
+        
+        return courseSuggestions;
+      });
+      
+      let scores: CourseSuggestionType[] = [];
+      
+      for (let k = 0; k < buffer.length; k++){
+        scores = scores.concat(buffer[k]);
+      }
+      
       setSurveyDone(true);
+      setCourseSuggestions(scores.sort((c1: CourseSuggestionType, c2: CourseSuggestionType) => c2.Score - c1.Score));
+      setCampusSuggestions(campusInfo.map((campus: CampusWithCourse) => {
+        let filtered = scores.filter((suggestion: CourseSuggestionType) => suggestion.Campus.id == campus.id);
+        return {
+          Campus: campus,
+          CourseSuggestions: filtered
+        }
+      }));
+
     }
-    console.log(isSurveyDone)
+  }, [campusInfo, surveyResults]);
+
+  useEffect(() => {
+    if (!!campusInfo){
+      
+      let courses: CampusCourse[] = [];
+      let campi: CampusWithCourse[] = [];
+
+      setCampusOptions(campusInfo.map((campus: CampusWithCourse) => {
+        campi.push(campus);
+        campus.courses.forEach((course?: CampusCourse) => {
+          if (!!course)
+            courses.push(course);
+        });
+        return {
+          key: campus.id,
+          label: campus.name
+        }
+      }));
+
+      setCourseOptions(courses.map((course: CampusCourse) => {
+        courseList.current.push(course);
+        return {
+          key: course.id,
+          label: course.name
+        }
+      }));
+
+      courseList.current = courses;
+      campusList.current = campi;
+    }
+  }, [campusInfo]);
+
+  useEnterScreen(() => {
+    setSurveyDone((surveyResults.length > 0) && !!campusInfo);
+  });
+
+  function onSurveyButtonClick() {
+    navigation.navigate('Survey');
   }
 
-  function onCourseClick(courseData: any) {
-    navigation.navigate('Course');
-    console.log(courseData)
-  }
-
-  function onCampusSelected(campus: SelectOption){
-    console.log(campus)
-  }
-
-  function onCourseSelected(course: SelectOption){
-    console.log(course)
+  function onCourseClick(courseData: CampusCourse, campusData: CampusWithCourse) {
+    if (!!campusInfo){
+      navigation.navigate('Course', { 
+        Campus: campusData,
+        Course: courseData
+      });
+    }
   }
 
   function onSearchClick(){
-    navigation.navigate('SearchResults');
+    let params: SearchResultsParams = {
+      Campus: campusList.current.filter((campus: CampusWithCourse) => !campusSelected || (campus.id === campusSelected.key)),
+      Courses: courseList.current.filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
+        .filter((course: CampusCourse) => {
+          const [grade] = course[toggle == 'ssa' ? 'ssaGrades' : 'sisuGrades'].slice(-1);
+          return (Number(grade.lowest) >= noteRange.lowerValue) && (Number(grade.lowest) <= noteRange.higherValue);
+        })
+    }
+    navigation.navigate('SearchResults', params);
   }
-
-  const campusList = [
-    { key: 0, label: 'Campus Garanhuns' },
-    { key: 1, label: 'Campus Serra Talhada' },
-    { key: 2, label: 'Campus Mata Norte' },
-    { key: 3, label: 'Campus Caruaru' },
-    { key: 4, label: 'Campus Benfica' }
-  ];
-
-  const courseList = [
-    { key: 0, label: 'Medicina' },
-    { key: 1, label: 'Engenharia Civil' },
-    { key: 2, label: 'Engenharia de Software' },
-    { key: 3, label: 'Direito' },
-    { key: 4, label: 'Psicologia' }
-  ];
 
   return (
     <PageLayout
       showHeader
       showTabs
+      showFab
       onTabClick={setTab}
     >
 
@@ -139,19 +237,21 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         <Spacer verticalSpace={16} />
 
         <Select 
-          data={campusList}
-          placeholder="Escolha o Campus (Opcional)" 
-          onSelect={onCampusSelected} 
+          optional
+          placeholder="Escolha o Campus" 
+          onSelect={setCampusSelected} 
+          data={campusOptions}
         />
         <Spacer verticalSpace={24} />
 
         <TitleOutline title="Curso" bold={false} />
         <Spacer verticalSpace={16} />
 
-        <Select 
-          data={courseList}
-          placeholder="Escolha o Curso (Opcional)" 
-          onSelect={onCourseSelected} 
+        <Select
+          optional
+          placeholder="Escolha o Curso"
+          onSelect={setCourseSelected}
+          data={courseOptions}
         />
         <Spacer verticalSpace={32} />
 
@@ -165,7 +265,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           />
           <SearchButtonSpacer />
         </HorizontalContent>
-
 
       </Render>
 
@@ -185,7 +284,11 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                 paddingBottom="8px"
                 justify
               >
-                Encontrei 7 cursos com base nas informações que você me passou.
+                {
+                  "Estou te sugerindo alguns cursos que acho que combinam com você " + 
+                  "com base nos resultados do seu Teste Vocacional. Nos diga o que " +
+                  "acha dos nossos " + courseSuggestions.length + " cursos."
+                }
               </Paragraph>
 
               <Spacer verticalSpace={8} />
@@ -196,7 +299,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                   text="Refazer questionário"
                   bgColor={theme.red}
                   maxWidth="160px"
-                  onPress={() => onSurveyButtonClick(surveyDone)}
+                  onPress={onSurveyButtonClick}
                 />
               </RobotContainerRow>
 
@@ -210,7 +313,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             <TitleOutline title="Cursos encontrados" />
             <ToggleView
               onToggle={setViewType}
-              initial="horizontal"
+              initial={viewType}
             />
           </ResultsTitleContainer>
           <Spacer verticalSpace={32} />
@@ -218,59 +321,52 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           <Render if={viewType == 'horizontal'}>
 
             {/* Percorrer num loop e renderizar os resultados */}
-            <TitleOutline title="Campus Garanhuns" bold={false} />
-            <Spacer verticalSpace={16} />
-            <FlatList
-              data={["Engenharia de Software", "Medicina", "Ciências Biológicas", "Matemática"]}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              style={{ width: '100%'}}
-              alwaysBounceHorizontal={false}
-              renderItem={({ item }) => (
-                <ListItemContainer>
-                  <CardSuggestion
-                    title={item}
-                    progress="100"
-                    onPress={() => onCourseClick(item)}
-                  />
-                </ListItemContainer>
-              )}
-              keyExtractor={() => String(Math.random() * 1000)}
-            />
-            <Spacer verticalSpace={16} />
-
-            {/* Percorrer num loop e renderizar os resultados */}
-            <TitleOutline title="Campus Arcoverde" bold={false} />
-            <Spacer verticalSpace={16} />
-            <FlatList
-              data={["Engenharia de Software", "Medicina", "Ciências Biológicas", "Matemática"]}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              style={{ width: '100%'}}
-              alwaysBounceHorizontal={false}
-              renderItem={({ item }) => (
-                <ListItemContainer>
-                  <CardSuggestion
-                    title={item}
-                    progress="100"
-                    onPress={() => onCourseClick(item)}
-                  />
-                </ListItemContainer>
-              )}
-              keyExtractor={() => String(Math.random() * 1000)}
-            />
+            {campusSuggestions.map((suggestion: CampusSuggestionType) => (
+              <Fragment key={String(suggestion.Campus.id)}>
+                <TitleOutline 
+                  key={String(suggestion.Campus.id)} 
+                  title={suggestion.Campus.name} 
+                  bold={false} 
+                />
+                <Spacer verticalSpace={16} />
+                <FlatList
+                  keyExtractor={(item) => String(item.Course.id)}
+                  data={suggestion.CourseSuggestions}
+                  horizontal={true}
+                  style={{ width: '100%'}}
+                  overScrollMode="never"
+                  alwaysBounceHorizontal={false}
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item }) => (
+                    <ListItemContainer key={String(item.Course.id)}>
+                      <CardSuggestion
+                        key={String(item.Course.id)}
+                        title={item.Course.name}
+                        progress={String(item.Score)}
+                        onPress={() => onCourseClick(item.Course, item.Campus)}
+                      />
+                    </ListItemContainer>
+                  )}
+                />
+                <Spacer verticalSpace={16} />
+              </Fragment>
+            ))}
 
           </Render>
 
           <Render if={viewType == 'vertical'}>
             {/* Percorrer num loop e renderizar os resultados */}
-            <ButtonSuggestion title="Engenharia de Software" onPress={() => onCourseClick({})} progress="10"/>
-            <Spacer verticalSpace={18} />
-            <ButtonSuggestion title="Medicina" onPress={() => onCourseClick({})} progress="10"/>
-            <Spacer verticalSpace={18} />
-            <ButtonSuggestion title="Ciências Biológicas" onPress={() => onCourseClick({})} progress="10"/>
-            <Spacer verticalSpace={18} />
-            <ButtonSuggestion title="Matemática" onPress={() => onCourseClick({})} progress="10"/>
+            {courseSuggestions.map((item: CourseSuggestionType) => (
+              <Fragment key={String(item.Course.id)}>
+                <ButtonSuggestion
+                  key={item.Course.id}
+                  title={item.Course.name}
+                  onPress={() => onCourseClick(item.Course, item.Campus)}
+                  progress={String(item.Score)}
+                />
+                <Spacer verticalSpace={18} />
+              </Fragment>
+            ))}
           </Render>
 
         </Render>
@@ -303,7 +399,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                   text="Fazer questionário"
                   bgColor={theme.blue}
                   maxWidth="160px"
-                  onPress={() => onSurveyButtonClick(surveyDone)}
+                  onPress={onSurveyButtonClick}
                 />
               </SurveyButtonContainer>
             </VerticalContent>

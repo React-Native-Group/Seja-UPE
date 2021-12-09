@@ -51,7 +51,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
       </Header>
 
       <Render if={isOpen}>
-        <Body nestedScrollEnabled {...theme}>
+        <Body nestedScrollEnabled overScrollMode="never" {...theme}>
           <Render if={!!body}>
             <Text {...theme}>
               {body}

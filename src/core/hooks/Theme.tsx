@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { ThemeContext, ThemeValue } from '../providers';
 
 export function useTheme(): [ThemeValue, ((v: ThemeValue) => void) | undefined]{

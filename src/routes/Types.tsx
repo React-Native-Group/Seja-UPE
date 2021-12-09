@@ -1,19 +1,20 @@
 import { DrawerNavigationProp } from "@react-navigation/drawer"
+import { CampusContact, CampusCourse, CampusEvent, CampusWithCourse, Professor } from "../core/hooks";
 
 export type RoutesParamList = {
   Tests: undefined;
-  Campus: undefined;
-  CampusContact: undefined;
-  CampusCourses: undefined;
-  CampusEvents: undefined;
-  Course: undefined;
-  CourseConcurrency: undefined;
-  CoursePlanning: undefined;
-  CourseProfessor: undefined;
-  CourseProfessors: undefined;
-  SearchResults: undefined;
-  Suggestions: undefined;
-  Survey: undefined;
+  Campus: CampusWithCourse;
+  CampusContact: CampusContact[];
+  CampusCourses: CampusWithCourse;
+  CampusEvents: CampusEvent[];
+  Course: { Campus: CampusWithCourse, Course: CampusCourse };
+  CourseConcurrency: CampusCourse;
+  CoursePlanning: CampusCourse;
+  CourseProfessor: Professor;
+  CourseProfessors: CampusCourse;
+  SearchResults: { Campus: CampusWithCourse[], Courses: CampusCourse[] };
+  Suggestions: any;
+  Survey: any;
   Welcome: undefined;
 }
 

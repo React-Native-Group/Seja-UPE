@@ -20,7 +20,7 @@ export const CardConcurrency: FunctionComponent<CardConcurrencyProps> = ({ lower
           size={30} 
           color={theme.concurrencyGreen} 
         />
-        <Note {...theme}>{lowerNote}</Note>
+        <Note {...theme}>{higherNote}</Note>
       </Group>
       <Group>
         <MaterialCommunityIcons 
@@ -28,7 +28,7 @@ export const CardConcurrency: FunctionComponent<CardConcurrencyProps> = ({ lower
           size={30} 
           color={theme.concurrencyRed} 
         />
-        <Note {...theme}>{higherNote}</Note>
+        <Note {...theme}>{lowerNote}</Note>
       </Group>
     </Container>
   );

@@ -16,12 +16,19 @@ export interface RadioProps {
   onHandle: (v: SetStateAction<RadioType[]>) => void;
 }
 
-export function useRadioGroup(choices: number){
+export type RadioGroupHook = [RadioType[], React.Dispatch<React.SetStateAction<RadioType[]>>, () => void];
+
+export function useRadioGroup(choices: number): RadioGroupHook
+{
   let group: RadioType[] = [];
   for (let k = 0; k < choices; k++){
     group.push({ index: k, active: false });
   }
-  return useState<RadioType[]>(group);
+  const [state, setState] = useState<RadioType[]>(group);
+  function clearChoices(){
+    setState(group.map(v => ({...v, active: false })));
+  }
+  return [state, setState, clearChoices];
 }
 
 export const Radio: FunctionComponent<RadioProps> = ({ reference, group, onPress, onHandle }) => {

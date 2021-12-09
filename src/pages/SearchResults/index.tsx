@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
-import { useNavigation } from '@react-navigation/core';
+import React, { Fragment, FunctionComponent, useState } from 'react';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 
 import { RobotContainer } from './styles';
-
 import { AssetRobotKindIcon } from '../../assets';
-import { CourseNavigationProp } from '../../routes';
+import { CampusCourse, CampusWithCourse, useEnterScreen } from '../../core/hooks';
+import { CourseNavigationProp, RoutesParamList } from '../../routes';
 
 import {
   Avatar,
@@ -16,15 +16,28 @@ import {
   TitleOutline
 } from '../../core/components';
 
-export interface SearchResultsProps {
-
-}
+export interface SearchResultsProps { }
 
 export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
   const navigation = useNavigation<CourseNavigationProp>();
+  const route = useRoute<RouteProp<RoutesParamList, 'SearchResults'>>();
 
-  function onCourseClick(courseData: any){
-    navigation.navigate('Course');
+  const [foundCourses, setFoundCourses] = useState<CampusCourse[]>([]);
+
+  useEnterScreen(() => {
+    setFoundCourses(route.params.Courses.filter((courseA: CampusCourse) => {
+      return route.params.Campus.some((campus: CampusWithCourse) => 
+        campus.courses.some((courseB?: CampusCourse) => courseA.id == courseB?.id));
+    }));
+  });
+
+  function onCourseClick(courseData?: CampusCourse){
+    if (!!courseData){
+      //ESSE CAMPUS DEVE SER O REFERENTE AO CURSO
+      const [Campus] = route.params.Campus.filter((campus => 
+        campus.courses.some(course => course?.id == courseData.id))); 
+      navigation.navigate('Course', { Campus, Course: courseData });
+    }
   }
 
   return (
@@ -36,7 +49,11 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
       <Spacer verticalSpace={32} />
 
       <RobotContainer>
-        <Avatar source={AssetRobotKindIcon} diameter={96} padding={8} />
+        <Avatar 
+          source={AssetRobotKindIcon} 
+          diameter={96} 
+          padding={8} 
+        />
 
         <CardBaloon direction="left">
           <Paragraph
@@ -46,24 +63,22 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
             paddingBottom="8px"
             justify
           >
-            Encontrei 7 cursos com base nas informações que você me passou.
+            {"Encontrei " + foundCourses.length + " cursos na UPE que se encaixam nos critérios que você me passou."}
           </Paragraph>
         </CardBaloon>
       </RobotContainer>
 
       <Spacer verticalSpace={32} />
 
-      <ButtonCourse onPress={() => onCourseClick({})} title="Medicina" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Engenharia de Software" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Psicologia" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Letras" />
-      <Spacer verticalSpace={18} />
+      {foundCourses.map((course?: CampusCourse) => (
+        <Fragment key={String(course?.id)}>
+          <ButtonCourse 
+            onPress={() => onCourseClick(course)} 
+            title={course?.name ?? ""} 
+          />
+          <Spacer verticalSpace={18} />
+        </Fragment>
+      ))}
 
     </PageLayout>
   );

@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { Fragment, FunctionComponent, useState } from 'react';
 import { ActivityIndicator, BackHandler, Dimensions  } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
@@ -6,6 +6,7 @@ import Fab from 'react-native-fab';
 
 import { Header } from '../Header';
 import { Render } from '../Render';
+import { ModalChat } from '../ModalChat';
 import { useEnterScreen, useTheme } from '../../hooks';
 import { AreaView, Center, ScrollableContainer } from './styles';
 
@@ -24,6 +25,7 @@ export interface PageLayoutProps {
 
 export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
   const [ theme ] = useTheme();
+  const [ isChatOpen, setIsChatOpen ] = useState(false);
 
   const { onFabClick, onTabClick, onBackPressed } = props;
   const { showFab, showTabs, fabIcon, showSpinner } = props;
@@ -45,11 +47,19 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
     return () => BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
   });
 
+  function onChatOpen(){
+    setIsChatOpen(true);
+  }
+
+  function onChatClose(){
+    setIsChatOpen(false);
+  }
+
   return (
     <Fragment>
 
       <Render if={!!showSpinner}>
-        <ScrollableContainer nestedScrollEnabled>
+        <ScrollableContainer nestedScrollEnabled overScrollMode="never">
           <Render if={!!showHeader}>
             <Header
               canGoBack={!!canGoBack}
@@ -65,7 +75,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
       </Render>
 
       <Render if={!showSpinner}>
-        <ScrollableContainer nestedScrollEnabled>
+        <ScrollableContainer nestedScrollEnabled overScrollMode="never">
           <Render if={!!showHeader}>
             <Header
               canGoBack={!!canGoBack}
@@ -85,11 +95,16 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
         <Fab
           buttonColor={theme.white}
           iconTextColor={theme.blue}
-          onClickAction={onFabClick ?? (() => {})}
+          onClickAction={onFabClick ?? onChatOpen}
           visible={!!showFab}
           iconTextComponent={<FontAwesome name={fabIcon ?? "comments"} size={24} />}
         />
       </Render>
+
+      <ModalChat 
+        isOpen={isChatOpen} 
+        onClose={onChatClose}
+      />
 
     </Fragment>
   );

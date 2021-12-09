@@ -16,18 +16,16 @@
 
 ## Instalação
 
-Ainda não disponível, em breve.
+Para instalar o aplicativo, você necessitará do Expo GO disponível nas lojas PlayStore e AppStore. Com o Expo GO instalado você poderá escanear o QR Code abaixo e visualizar o aplicativo em sua versão de desenvolvimento.
+
+<p align="center">
+  <img src="https://i.imgur.com/0UXb5cC.png" alt="Mockups do Aplicativo" width="500px"/>
+</p>
 
 ## Imagens do App
 
-Ainda não disponível, em breve.
-
 <p align="center">
-
-</p>
-
-<p align="center">
-
+  <img src="https://i.imgur.com/6gZnyXR.png" alt="Mockups do Aplicativo" width="800px"/>
 </p>
 
 ## Metadados

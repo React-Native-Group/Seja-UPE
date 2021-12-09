@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
+import { RouteProp, useRoute } from '@react-navigation/core';
 
 import { RobotContainer } from './styles';
 import { AssetWidgetEventsIcon, AssetRobotSmileIcon } from '../../assets';
@@ -13,21 +14,35 @@ import {
   Spacer,
   TitleOutline
 } from '../../core/components';
+import { RoutesParamList } from '../../routes';
+import { CampusEvent, useEnterScreen, useLeaveScreen } from '../../core/hooks';
 
 export interface CampusEventsProps { }
 
 export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
+  const route = useRoute<RouteProp<RoutesParamList, 'CampusEvents'>>();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [link, setLink] = useState('about:blank');
+  const [isLoading, setIsLoading] = useState(true);
 
   function onOpenModal(source:string) {
     setLink(source);
     setIsModalOpen(true);
   }
 
+  useEnterScreen(() => {
+    setTimeout(() => setIsLoading(false), 1000);
+  });
+
+  useLeaveScreen(() => {
+    setIsLoading(true)
+  });
+
   return (
     <PageLayout 
       showHeader
+      showSpinner={isLoading}
       canGoBack
     >
       <TitleOutline title="Principais Eventos" icon={AssetWidgetEventsIcon} />
@@ -45,8 +60,7 @@ export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
             fontSize="16px"
             justify
           >
-            Prestigie nossos eventos acadêmicos, 
-            fique por dentro do que ocorre na universidade.
+            Prestigie nossos eventos acadêmicos, fique por dentro do que ocorre na universidade.
           </Paragraph>
         </CardBaloon>
 
@@ -54,20 +68,12 @@ export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
 
       <Spacer verticalSpace={32} />
 
-      <ButtonEvent title="SECAP" onPress={() => onOpenModal("https://doity.com.br/secap")}/>
-      <Spacer verticalSpace={18} />
-
-      <ButtonEvent title="SINPE" onPress={() => onOpenModal("https://secap.com.br/2021/")}/>
-      <Spacer verticalSpace={18} />
-
-      <ButtonEvent title="ENCUPE" onPress={() => onOpenModal("http://www.upe.br/garanhuns/3a-edicao-do-encupe/")}/>
-      <Spacer verticalSpace={18} />
-
-      <ButtonEvent title="Jogos Multicampi" onPress={() => onOpenModal("http://www.upe.br/garanhuns/ii-jogos-multicampi/")}/>
-      <Spacer verticalSpace={18} />
-
-      <ButtonEvent title="Jornal Extensionista" onPress={() => onOpenModal("http://www.upe.br/garanhuns/jornal-extensionista/")}/>
-      <Spacer verticalSpace={18} />
+      {route.params.map((event: CampusEvent) => (
+        <Fragment key={String(event.id)}>
+          <ButtonEvent title={event.name} onPress={() => onOpenModal(event.link)}/>
+          <Spacer verticalSpace={18} />
+        </Fragment>
+      ))}
 
       <ModalWebView link={link} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
 
