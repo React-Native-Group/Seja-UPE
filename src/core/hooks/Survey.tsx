@@ -15,7 +15,9 @@ export function useSurveyResults(): SurveyResultsHook
 
   useEffect(() => {
     if (!!session.survey){
-      setResults((session.survey as SurveyValue[]));
+      let surveyResults = (session.survey as SurveyValue[]);
+      //Converte os valores em percentuais
+      setResults(surveyResults.map(([note, id]: SurveyValue) => [note / 15, id]));
     }
   }, [session]);
 

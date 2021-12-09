@@ -2,11 +2,19 @@ import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 
 import { useNavigation } from '@react-navigation/core';
 import { FlatList } from 'react-native';
 
+import { SurveyValue } from '../../core/config';
 import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
 import { CourseNavigationProp, SearchResultsNavigationProp, SurveyNavigationProp } from '../../routes';
-import { CampusCourse, CampusWithCourse, useCampusData, useEnterScreen, useSurveyResults, useTheme } from '../../core/hooks';
 
-import { SurveyValue } from '../../core/config';
+import {
+  CampusCourse,
+  CampusWithCourse,
+  useCampusData,
+  useEnterScreen,
+  useSurveyResults,
+  useTheme
+} from '../../core/hooks';
+
 import {
   Avatar,
   Badge,
@@ -91,41 +99,36 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   useEffect(() => {
     if ((surveyResults.length > 0) && !!campusInfo){
       
-      let buffer = campusInfo.map((campus: CampusWithCourse) => {
-        
+      let buffer = campusInfo.map((Campus: CampusWithCourse) => {
         let courseSuggestions: CourseSuggestionType[] = [];
-        let totalCourses = campus.courses?.length ?? 0;
-        
-        for (let k = 0; k < totalCourses; k++) {
-          let course = campus.courses[k];
-          
-          if (!!course) {
-            let [courseScore] = surveyResults.filter(([_, id]: SurveyValue) => course?.id == id);
+
+        Campus.courses.forEach((Course?: CampusCourse) => {
+          if (!!Course) {
+            let [score] = surveyResults.filter(([_, id]: SurveyValue) => Course?.id == id);
             
             courseSuggestions.push({
-              Campus: campus,
-              Course: course,
-              Score: Number((courseScore[0] / 15).toFixed(0))
+              Campus,
+              Course,
+              Score: Number(score[0])
             });
           }
-        }
+        });
         
         return courseSuggestions;
       });
       
       let scores: CourseSuggestionType[] = [];
       
-      for (let k = 0; k < buffer.length; k++){
-        scores = scores.concat(buffer[k]);
-      }
+      buffer.forEach((score: CourseSuggestionType[]) => {
+        scores = scores.concat(score);
+      });
       
       setSurveyDone(true);
       setCourseSuggestions(scores.sort((c1: CourseSuggestionType, c2: CourseSuggestionType) => c2.Score - c1.Score));
       setCampusSuggestions(campusInfo.map((campus: CampusWithCourse) => {
-        let filtered = scores.filter((suggestion: CourseSuggestionType) => suggestion.Campus.id == campus.id);
         return {
           Campus: campus,
-          CourseSuggestions: filtered
+          CourseSuggestions: scores.filter((suggestion: CourseSuggestionType) => suggestion.Campus.id == campus.id)
         }
       }));
 
@@ -134,7 +137,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
   useEffect(() => {
     if (!!campusInfo){
-      
       let courses: CampusCourse[] = [];
 
       setCampusOptions(campusInfo.map((campus: CampusWithCourse) => {
