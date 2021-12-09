@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
+import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { FlatList } from 'react-native';
 
@@ -81,6 +81,9 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [courseSuggestions, setCourseSuggestions] = useState<CourseSuggestionType[]>([]);
   const [campusSuggestions, setCampusSuggestions] = useState<CampusSuggestionType[]>([]);
   
+  const campusList = useRef<CampusWithCourse[]>([]);
+  const courseList = useRef<CampusCourse[]>([]);
+
   const [campusInfo] = useCampusData();
   const [surveyResults] = useSurveyResults();
 
@@ -131,17 +134,40 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           CourseSuggestions: filtered
         }
       }));
-      setCampusOptions(campusSuggestions.map((suggestion: CampusSuggestionType) => ({
-        key: suggestion.Campus.id,
-        label: suggestion.Campus.name
-      })));
-      setCourseOptions(courseSuggestions.map((suggestion: CourseSuggestionType) => ({
-        key: suggestion.Course.id,
-        label: suggestion.Course.name
-      })));
 
     }
   }, [campusInfo, surveyResults]);
+
+  useEffect(() => {
+    if (!!campusInfo){
+      
+      let courses: CampusCourse[] = [];
+      let campi: CampusWithCourse[] = [];
+
+      setCampusOptions(campusInfo.map((campus: CampusWithCourse) => {
+        campi.push(campus);
+        campus.courses.forEach((course?: CampusCourse) => {
+          if (!!course)
+            courses.push(course);
+        });
+        return {
+          key: campus.id,
+          label: campus.name
+        }
+      }));
+
+      setCourseOptions(courses.map((course: CampusCourse) => {
+        courseList.current.push(course);
+        return {
+          key: course.id,
+          label: course.name
+        }
+      }));
+
+      courseList.current = courses;
+      campusList.current = campi;
+    }
+  }, [campusInfo]);
 
   useEnterScreen(() => {
     setSurveyDone((surveyResults.length > 0) && !!campusInfo);
@@ -162,10 +188,8 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
   function onSearchClick(){
     let params: SearchResultsParams = {
-      Campus: campusSuggestions.map((v: CampusSuggestionType) => v.Campus)
-        .filter((campus: CampusWithCourse) => !campusSelected || (campus.id === campusSelected.key)),
-      Courses: courseSuggestions.map((v: CourseSuggestionType) => v.Course)
-        .filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
+      Campus: campusList.current.filter((campus: CampusWithCourse) => !campusSelected || (campus.id === campusSelected.key)),
+      Courses: courseList.current.filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
         .filter((course: CampusCourse) => {
           const [grade] = course[toggle == 'ssa' ? 'ssaGrades' : 'sisuGrades'].slice(-1);
           return (Number(grade.lowest) >= noteRange.lowerValue) && (Number(grade.lowest) <= noteRange.higherValue);
