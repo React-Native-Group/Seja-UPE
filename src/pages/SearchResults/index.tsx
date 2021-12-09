@@ -1,9 +1,9 @@
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { Fragment, FunctionComponent, useState } from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 
 import { RobotContainer } from './styles';
-import { CampusCourse, CampusWithCourse } from '../../core/hooks';
 import { AssetRobotKindIcon } from '../../assets';
+import { CampusCourse, CampusWithCourse, useEnterScreen } from '../../core/hooks';
 import { CourseNavigationProp, RoutesParamList } from '../../routes';
 
 import {
@@ -19,13 +19,25 @@ import {
 export interface SearchResultsProps { }
 
 export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
-  const route = useRoute<RouteProp<RoutesParamList, 'SearchResults'>>();
   const navigation = useNavigation<CourseNavigationProp>();
+  const route = useRoute<RouteProp<RoutesParamList, 'SearchResults'>>();
+
+  const [foundCourses, setFoundCourses] = useState<CampusCourse[]>([]);
+
+  useEnterScreen(() => {
+    setFoundCourses(route.params.Courses.filter((courseA: CampusCourse) => {
+      return route.params.Campus.some((campus: CampusWithCourse) => 
+        campus.courses.some((courseB?: CampusCourse) => courseA.id == courseB?.id));
+    }));
+  });
 
   function onCourseClick(courseData?: CampusCourse){
-    let campus: CampusWithCourse = route.params.Campus; //ESSE CAMPUS DEVE SER O REFERENTE AO CURSO
-    if (!!courseData)
-      navigation.navigate('Course', { Campus: campus, Course: courseData });
+    if (!!courseData){
+      //ESSE CAMPUS DEVE SER O REFERENTE AO CURSO
+      const [Campus] = route.params.Campus.filter((campus => 
+        campus.courses.some(course => course?.id == courseData.id))); 
+      navigation.navigate('Course', { Campus, Course: courseData });
+    }
   }
 
   return (
@@ -51,14 +63,14 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
             paddingBottom="8px"
             justify
           >
-            {"Encontrei " + route.params.Courses.length + " cursos com base nas informações que você me passou."}
+            {"Encontrei " + foundCourses.length + " cursos na UPE que se encaixam nos critérios que você me passou."}
           </Paragraph>
         </CardBaloon>
       </RobotContainer>
 
       <Spacer verticalSpace={32} />
 
-      {route.params.Courses.map((course?: CampusCourse) => {
+      {foundCourses.map((course?: CampusCourse) => (
         <Fragment key={String(course?.id)}>
           <ButtonCourse 
             onPress={() => onCourseClick(course)} 
@@ -66,7 +78,7 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
           />
           <Spacer verticalSpace={18} />
         </Fragment>
-      })}
+      ))}
 
     </PageLayout>
   );

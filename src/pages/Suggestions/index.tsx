@@ -53,6 +53,11 @@ type CampusSuggestionType = {
   CourseSuggestions: CourseSuggestionType[];
 }
 
+type SearchResultsParams = { 
+  Campus: CampusWithCourse[]; 
+  Courses: CampusCourse[]; 
+}
+
 export interface SuggestionsProps { }
 
 export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
@@ -60,12 +65,19 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
   const [theme] = useTheme();
 
-  const [tab, setTab] = useState<'search' | 'suggestions'>('search');
-  const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
-  const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
   const [surveyDone, setSurveyDone] = useState(false);
-  const [viewType, setViewType] = useState<ToggleType>('horizontal');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
+  const [tab, setTab] = useState<'search' | 'suggestions'>('search');
+  const [viewType, setViewType] = useState<ToggleType>('horizontal');
+
+  const [campusSelected, setCampusSelected] = useState<SelectOption>();
+  const [courseSelected, setCourseSelected] = useState<SelectOption>();
+  const [campusOptions, setCampusOptions] = useState<SelectOption[]>([]);
+  const [courseOptions, setCourseOptions] = useState<SelectOption[]>([]);
+  const [noteRange, setNoteRange] = useState<MultiSliderValue>({ lowerValue: 0, higherValue: 0 });
+
   const [courseSuggestions, setCourseSuggestions] = useState<CourseSuggestionType[]>([]);
   const [campusSuggestions, setCampusSuggestions] = useState<CampusSuggestionType[]>([]);
   
@@ -73,6 +85,8 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [surveyResults] = useSurveyResults();
 
   useEffect(() => {
+    setCampusSelected(undefined);
+    setCourseSelected(undefined);
     // if (tab == 'suggestions')
     //   setTimeout(() => setIsModalOpen(true), 5000);
   }, [tab]);
@@ -117,6 +131,14 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           CourseSuggestions: filtered
         }
       }));
+      setCampusOptions(campusSuggestions.map((suggestion: CampusSuggestionType) => ({
+        key: suggestion.Campus.id,
+        label: suggestion.Campus.name
+      })));
+      setCourseOptions(courseSuggestions.map((suggestion: CourseSuggestionType) => ({
+        key: suggestion.Course.id,
+        label: suggestion.Course.name
+      })));
 
     }
   }, [campusInfo, surveyResults]);
@@ -125,7 +147,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     setSurveyDone((surveyResults.length > 0) && !!campusInfo);
   });
 
-  function onSurveyButtonClick(isSurveyDone: boolean) {
+  function onSurveyButtonClick() {
     navigation.navigate('Survey');
   }
 
@@ -138,33 +160,19 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     }
   }
 
-  function onCampusSelected(campus: SelectOption){
-    console.log(campus)
-  }
-
-  function onCourseSelected(course: SelectOption){
-    console.log(course)
-  }
-
   function onSearchClick(){
-    navigation.navigate('SearchResults');
+    let params: SearchResultsParams = {
+      Campus: campusSuggestions.map((v: CampusSuggestionType) => v.Campus)
+        .filter((campus: CampusWithCourse) => !campusSelected || (campus.id === campusSelected.key)),
+      Courses: courseSuggestions.map((v: CourseSuggestionType) => v.Course)
+        .filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
+        .filter((course: CampusCourse) => {
+          const [grade] = course[toggle == 'ssa' ? 'ssaGrades' : 'sisuGrades'].slice(-1);
+          return (Number(grade.lowest) >= noteRange.lowerValue) && (Number(grade.lowest) <= noteRange.higherValue);
+        })
+    }
+    navigation.navigate('SearchResults', params);
   }
-
-  const campusList = [
-    { key: 0, label: 'Campus Garanhuns' },
-    { key: 1, label: 'Campus Serra Talhada' },
-    { key: 2, label: 'Campus Mata Norte' },
-    { key: 3, label: 'Campus Caruaru' },
-    { key: 4, label: 'Campus Benfica' }
-  ];
-
-  const courseList = [
-    { key: 0, label: 'Medicina' },
-    { key: 1, label: 'Engenharia Civil' },
-    { key: 2, label: 'Engenharia de Software' },
-    { key: 3, label: 'Direito' },
-    { key: 4, label: 'Psicologia' }
-  ];
 
   return (
     <PageLayout
@@ -205,19 +213,21 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         <Spacer verticalSpace={16} />
 
         <Select 
-          data={campusList}
-          placeholder="Escolha o Campus (Opcional)" 
-          onSelect={onCampusSelected} 
+          optional
+          placeholder="Escolha o Campus" 
+          onSelect={setCampusSelected} 
+          data={campusOptions}
         />
         <Spacer verticalSpace={24} />
 
         <TitleOutline title="Curso" bold={false} />
         <Spacer verticalSpace={16} />
 
-        <Select 
-          data={courseList}
-          placeholder="Escolha o Curso (Opcional)" 
-          onSelect={onCourseSelected} 
+        <Select
+          optional
+          placeholder="Escolha o Curso"
+          onSelect={setCourseSelected}
+          data={courseOptions}
         />
         <Spacer verticalSpace={32} />
 
@@ -231,7 +241,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           />
           <SearchButtonSpacer />
         </HorizontalContent>
-
 
       </Render>
 
@@ -266,7 +275,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                   text="Refazer questionário"
                   bgColor={theme.red}
                   maxWidth="160px"
-                  onPress={() => onSurveyButtonClick(surveyDone)}
+                  onPress={onSurveyButtonClick}
                 />
               </RobotContainerRow>
 
@@ -366,7 +375,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                   text="Fazer questionário"
                   bgColor={theme.blue}
                   maxWidth="160px"
-                  onPress={() => onSurveyButtonClick(surveyDone)}
+                  onPress={onSurveyButtonClick}
                 />
               </SurveyButtonContainer>
             </VerticalContent>

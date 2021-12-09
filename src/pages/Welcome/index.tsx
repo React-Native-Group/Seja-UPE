@@ -41,8 +41,8 @@ export interface WelcomeProps { }
 export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const navigation = useNavigation<SuggestionsNavigationProp>();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [showSuggestions, setShowSuggestions] = useState(false);
   
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
@@ -71,13 +71,16 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
       getCourses();
       setIsLoading(true);
     }
+    setTimeout(() => {
+      if (!isSessionActive) setIsLoading(false)
+    }, 2000);
   }, [isSessionActive]);
 
   useEffect(() => {
     if (showSuggestions) 
       navigation.navigate('Suggestions');
   }, [showSuggestions]);
-  
+
   function onAuthorizeResponse() {
     if (success && !authorization?.data.error){
       getCourses();
