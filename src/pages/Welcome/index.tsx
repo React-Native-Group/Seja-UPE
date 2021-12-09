@@ -73,7 +73,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
     }
     setTimeout(() => {
       if (!isSessionActive) setIsLoading(false)
-    }, 2000);
+    }, 6000);
   }, [isSessionActive]);
 
   useEffect(() => {

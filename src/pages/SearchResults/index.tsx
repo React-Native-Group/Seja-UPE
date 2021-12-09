@@ -3,7 +3,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 
 import { RobotContainer } from './styles';
 import { AssetRobotKindIcon } from '../../assets';
-import { CampusCourse, CampusWithCourse, useEnterScreen } from '../../core/hooks';
+import { CampusCourse, useEnterScreen } from '../../core/hooks';
 import { CourseNavigationProp, RoutesParamList } from '../../routes';
 
 import {
@@ -21,28 +21,24 @@ export interface SearchResultsProps { }
 export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
   const navigation = useNavigation<CourseNavigationProp>();
   const route = useRoute<RouteProp<RoutesParamList, 'SearchResults'>>();
+  const [isLoading, setIsLoading] = useState(true);
 
   const [foundCourses, setFoundCourses] = useState<CampusCourse[]>([]);
 
   useEnterScreen(() => {
-    setFoundCourses(route.params.Courses.filter((courseA: CampusCourse) => {
-      return route.params.Campus.some((campus: CampusWithCourse) => 
-        campus.courses.some((courseB?: CampusCourse) => courseA.id == courseB?.id));
-    }));
+    setIsLoading(true);
+    setFoundCourses([...route.params]);
+    setTimeout(() => setIsLoading(false), 2000);
   });
 
   function onCourseClick(courseData?: CampusCourse){
-    if (!!courseData){
-      //ESSE CAMPUS DEVE SER O REFERENTE AO CURSO
-      const [Campus] = route.params.Campus.filter((campus => 
-        campus.courses.some(course => course?.id == courseData.id))); 
-      navigation.navigate('Course', { Campus, Course: courseData });
-    }
+    if (!!courseData) navigation.navigate('CourseConcurrency', courseData);
   }
 
   return (
     <PageLayout
       showHeader
+      showSpinner={isLoading}
       canGoBack
     >
       <TitleOutline title="Cursos encontrados" />

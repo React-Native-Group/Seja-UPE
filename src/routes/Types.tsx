@@ -12,7 +12,7 @@ export type RoutesParamList = {
   CoursePlanning: CampusCourse;
   CourseProfessor: Professor;
   CourseProfessors: CampusCourse;
-  SearchResults: { Campus: CampusWithCourse[], Courses: CampusCourse[] };
+  SearchResults: CampusCourse[];
   Suggestions: any;
   Survey: any;
   Welcome: undefined;

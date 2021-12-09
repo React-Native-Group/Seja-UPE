@@ -81,7 +81,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [courseSuggestions, setCourseSuggestions] = useState<CourseSuggestionType[]>([]);
   const [campusSuggestions, setCampusSuggestions] = useState<CampusSuggestionType[]>([]);
   
-  const campusList = useRef<CampusWithCourse[]>([]);
   const courseList = useRef<CampusCourse[]>([]);
 
   const [campusInfo] = useCampusData();
@@ -142,10 +141,8 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     if (!!campusInfo){
       
       let courses: CampusCourse[] = [];
-      let campi: CampusWithCourse[] = [];
 
       setCampusOptions(campusInfo.map((campus: CampusWithCourse) => {
-        campi.push(campus);
         campus.courses.forEach((course?: CampusCourse) => {
           if (!!course)
             courses.push(course);
@@ -165,7 +162,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
       }));
 
       courseList.current = courses;
-      campusList.current = campi;
     }
   }, [campusInfo]);
 
@@ -187,14 +183,12 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   }
 
   function onSearchClick(){
-    let params: SearchResultsParams = {
-      Campus: campusList.current.filter((campus: CampusWithCourse) => !campusSelected || (campus.id === campusSelected.key)),
-      Courses: courseList.current.filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
-        .filter((course: CampusCourse) => {
-          const [grade] = course[toggle == 'ssa' ? 'ssaGrades' : 'sisuGrades'].slice(-1);
-          return (Number(grade.lowest) >= noteRange.lowerValue) && (Number(grade.lowest) <= noteRange.higherValue);
-        })
-    }
+    let params: CampusCourse[] = courseList.current
+      .filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
+      .filter((course: CampusCourse) => {
+        const [grade] = course[toggle == 'ssa' ? 'ssaGrades' : 'sisuGrades'].slice(-1);
+        return (Number(grade.lowest) >= noteRange.lowerValue) && (Number(grade.lowest) <= noteRange.higherValue);
+      });
     navigation.navigate('SearchResults', params);
   }
 
