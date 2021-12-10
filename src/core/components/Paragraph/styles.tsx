@@ -8,6 +8,7 @@ export interface TextProps extends ThemeValue {
   paddingBottom?: string;
   fontSize?: string;
   justify: boolean;
+  bold?: boolean;
 }
 
 export const Text = styled.Text.attrs<TextProps>(props => props)<TextProps>`
@@ -19,4 +20,5 @@ export const Text = styled.Text.attrs<TextProps>(props => props)<TextProps>`
   padding-bottom: ${props => props.paddingBottom ?? '0'};
   font-size: ${props => props.fontSize ?? '14px'};
   ${props => props.justify ? 'text-align: justify;' : ''}
+  ${props => !!props.bold ? 'font-weight: bold;' : '' }
 `;

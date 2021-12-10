@@ -47,6 +47,7 @@ export const ModalWebView: FunctionComponent<ModalWebViewProps> = ({ link, isOpe
           </Header>
 
           <WebView 
+            nestedScrollEnabled
             onError={closeModal}
             onHttpError={closeModal}
             source={{uri: link}}

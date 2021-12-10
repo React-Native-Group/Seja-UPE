@@ -8,6 +8,7 @@ export const Pallete = {
   gray:                   '#C4C4C4',
   white:                  '#FFFFFF',
   whiteSmoke:             '#F4F5F8',
+  evaluationColor:        '#CBC4CC',
   concurrencyGreen:       '#17B41E',
   concurrencyRed:         '#D7292D',
   chartDatasetColor:      '#ED3238',

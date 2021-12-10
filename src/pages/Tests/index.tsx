@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 
 import { CampusNavigationProp, RoutesParamList } from '../../routes';
 import {
@@ -8,15 +8,24 @@ import {
   Spacer,
   TitleOutline
 } from '../../core/components';
+import { ApiResponse, CampusResponse, useCampusWithCourses, useEnterScreen } from '../../core/hooks';
 
 export interface TestsProps { }
 
 export const Tests: FunctionComponent<TestsProps> = () => {
   const navigation = useNavigation<CampusNavigationProp>();
 
+  const [,,run] = useCampusWithCourses((_: boolean, allCampus: ApiResponse<CampusResponse>) => {
+    console.log(allCampus)
+  });
+
   function navigate(route: keyof RoutesParamList){
     navigation.navigate(route);
   }
+
+  useEnterScreen(() => {
+    //run();
+  });
 
   return (
     <PageLayout 

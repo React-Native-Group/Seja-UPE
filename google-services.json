@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "304456217456",
+    "project_id": "seja-upe",
+    "storage_bucket": "seja-upe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304456217456:android:b7001d617af3eab291d5b5",
+        "android_client_info": {
+          "package_name": "com.sejaupe.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304456217456-mn75ck9937n5tgs7kv0lsr7ajunsgdel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC-0CU68_S61GanQLGEt_vq6xVuWg65hQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304456217456-mn75ck9937n5tgs7kv0lsr7ajunsgdel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

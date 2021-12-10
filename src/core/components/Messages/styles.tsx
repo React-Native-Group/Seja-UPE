@@ -21,14 +21,14 @@ export const MessageContainer = styled.View.attrs<ChatProps>(props => props)<Cha
 
 export const MessageText = styled.Text.attrs<ChatProps>(props => props)<ChatProps>`
   color: ${({ isOwner, ...props }) => isOwner ? props.chatOwnTextColor : props.chatTextColor};
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 `;
 
 export const ViewAlign = styled.View.attrs<ChatProps>(props => props)<ChatProps>`
   flex: 1;
   flex-direction: row;
-  margin-top: ${({ isOwner }) => isOwner ? 16 : 8}px;
+  margin-top: ${({ isOwner }) => isOwner ? 16 : 2}px;
   align-items: center;
   justify-content: ${({ isOwner }) => isOwner ? 'flex-end' : 'flex-start'};
 `;
@@ -44,4 +44,5 @@ export const Username = styled.Text`
   margin-top: 16px;
   padding-left: 56px;
   font-weight: bold;
+  font-size: 10px;
 `;

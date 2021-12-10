@@ -1,10 +1,13 @@
-import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent } from 'react';
+import { RouteProp, useRoute, useNavigation} from '@react-navigation/core';
 
-import { CourseNavigationProp } from '../../routes';
+import { RobotContainer } from './styles';
+import { CampusCourse } from '../../core/hooks';
+import { CourseNavigationProp, RoutesParamList } from '../../routes';
+
 import {
   AssetWidgetCoursesIcon,
-  AssetRobotNormalIcon
+  AssetRobotKindIcon
 } from '../../assets';
 
 import {
@@ -13,19 +16,20 @@ import {
   CardBaloon,
   PageLayout,
   Paragraph,
+  Render,
   Spacer,
   TitleOutline
 } from '../../core/components';
 
-import { RobotContainer } from './styles';
-
 export interface CampusCoursesProps { }
 
 export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
+  const route = useRoute<RouteProp<RoutesParamList, 'CampusCourses'>>();
   const navigation = useNavigation<CourseNavigationProp>();
 
-  function onCourseClick(courseData: any){
-    navigation.navigate('Course');
+  function onCourseClick(course?: CampusCourse){
+    if (!!course)
+      navigation.navigate('Course', { Campus: route.params, Course: course });
   }
 
   return (
@@ -38,7 +42,7 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
 
       <RobotContainer>
 
-        <Avatar source={AssetRobotNormalIcon} diameter={80} padding={16} />
+        <Avatar source={AssetRobotKindIcon} diameter={80} padding={16} />
         <CardBaloon direction="left">
           <Paragraph 
             paddingLeft="8px" 
@@ -48,34 +52,19 @@ export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
             fontSize="16px"
             justify
           >
-            Atualmente no Campus Garanhuns, possuímos 10 cursos presenciais.
+            {"Atualmente no " + (route.params.name ?? "") + ", possuímos " + (route.params.courses.length ?? "") + " cursos presenciais."}
           </Paragraph>
         </CardBaloon>
 
       </RobotContainer>
-
       <Spacer verticalSpace={32} />
 
-      <ButtonCourse onPress={() => onCourseClick({})} title="Medicina" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Engenharia de Software" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Psicologia" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Letras" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Pedagogia" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Geografia" />
-      <Spacer verticalSpace={18} />
-
-      <ButtonCourse onPress={() => onCourseClick({})} title="Matemática" />
-      <Spacer verticalSpace={18} />
+      {route.params.courses.map((course?: CampusCourse) => (
+        <Render if={!!course} key={String(course?.id)}>
+          <ButtonCourse onPress={() => onCourseClick(course)} title={course?.name ?? ""} />
+          <Spacer verticalSpace={18} />
+        </Render>
+      ))}
 
     </PageLayout>
   );

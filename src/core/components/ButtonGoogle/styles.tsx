@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
 import Ripple from 'react-native-material-ripple';
+import { ThemeValue } from "../../providers";
 
-export const Container = styled(Ripple)`
+export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
   align-items: center;
@@ -11,14 +12,17 @@ export const Container = styled(Ripple)`
   padding-right: 24px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #fff;
+  background-color: ${props => props.white};
   border-radius: 8px;
 `;
 
-export const Label = styled.Text`
+export const Label = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 20px;
   margin-left: 8px;
-  color: #324A76;
+  color: ${props => props.blue};
 `;
 
-export const Logo = styled.Image``;
+export const Logo = styled.Image`
+  width: 23px;
+  height: 23px;
+`;

@@ -1,15 +1,15 @@
 import React, { createContext, FunctionComponent, useState } from "react";
 
 export interface GlobalProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 export interface GlobalValue {
-  user?: any,
-  session?: any,
-  extra?: any,
-  storage?: any,
-  data?: any
+  user?: any;
+  session?: string;
+  survey?: any[];
+  storage?: any;
+  data?: any;
 }
 
 export interface GlobalProviderValue {

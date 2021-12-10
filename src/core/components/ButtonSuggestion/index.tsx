@@ -3,7 +3,7 @@ import { GestureResponderEvent } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import { useTheme } from '../../hooks';
-import { Container, ProgressContainer, Progress, Title } from './styles';
+import { Container, ProgressContainer, Progress, Title, TitleContainer } from './styles';
 
 export interface ButtonSuggestionProps {
   onPress?: (e: GestureResponderEvent) => void;
@@ -16,9 +16,11 @@ export const ButtonSuggestion: FunctionComponent<ButtonSuggestionProps> = ({ onP
   return (
     <Container {...theme} onPress={onPress ?? (() => {})}>
       <FontAwesome5 name="book" size={38} color={theme.blueNeon} />
-      <Title {...theme} numberOfLines={1}>{title}</Title>
+      <TitleContainer>
+      <Title {...theme} numberOfLines={2}>{title}</Title>
+      </TitleContainer>
       <ProgressContainer {...theme}>
-        <Progress numberOfLines={1} {...theme}>{progress}%</Progress>
+        <Progress numberOfLines={2} {...theme}>{progress}%</Progress>
       </ProgressContainer>
     </Container>
   );

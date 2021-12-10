@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Container } from './styles';
 import { useTheme } from '../../hooks';
@@ -13,6 +13,8 @@ export interface ToggleViewProps {
 export const ToggleView: FunctionComponent<ToggleViewProps> = ({ initial, onToggle }) => {
   const [theme] = useTheme();
   const [toggle, setToggle] = useState(initial);
+
+  useEffect(() => setToggle(initial), [initial]);
 
   function onPress(){
     let newValue: ToggleType = (toggle == 'horizontal' ? 'vertical' : 'horizontal');

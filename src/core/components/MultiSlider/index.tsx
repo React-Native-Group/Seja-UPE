@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { LayoutChangeEvent } from 'react-native';
 import Slider from '@ptomasroos/react-native-multi-slider';
 
@@ -47,6 +47,10 @@ export const MultiSlider: FunctionComponent<MultiSliderProps> = (props) => {
     if (side == 'left') setLeftLabelLength(e.layout.width);
     if (side == 'right') setRightLabelLength(e.layout.width);
   }
+
+  useEffect(() => {
+    onValueChange([minValue, maxValue]);
+  }, []);
 
   return (
     <Container onLayout={onLayoutChange}>

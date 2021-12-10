@@ -38,12 +38,13 @@ export const PhotoContainer = styled.View`
   justify-content: center;
   align-items: center;
   elevation: 3;
+  overflow: hidden;
 `;
 
 export const Photo = styled.Image`
   border-radius: 60px;
-  height: 60px;
-  width: 60px;
+  height: 54px;
+  width: 54px;
 `;
 
 export const InfoContainer = styled.View`

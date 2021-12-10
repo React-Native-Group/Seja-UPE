@@ -25,6 +25,8 @@ export * from './Header';
 export * from './HorizontalContent';
 export * from './MapView';
 export * from './Messages';
+export * from './ModalChat';
+export * from './ModalEvaluation';
 export * from './ModalWebView';
 export * from './MultiSlider';
 export * from './PageLayout';
