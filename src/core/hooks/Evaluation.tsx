@@ -18,11 +18,11 @@ export function useEvaluation(): EvaluationHook
   const [global, setGlobal] = useGlobal();
 
   function addEvaluation(evaluation: EvaluationType){
-    setGlobal({...global, storage: [...(global.storage as EvaluationType[]), evaluation]});
+    setGlobal({...global, storage: [...(global.storage ?? [] as EvaluationType[]), evaluation]});
   }
 
   function hasEvaluation(type: 'survey' | 'course', id: number){
-    return (global.storage as EvaluationType[]).filter((e: EvaluationType) => (e.type == type) && (e.id == id)).length > 0;
+    return (global.storage ?? [] as EvaluationType[]).filter((e: EvaluationType) => (e.type == type) && (e.id == id)).length > 0;
   }
 
   return [addEvaluation, hasEvaluation];
