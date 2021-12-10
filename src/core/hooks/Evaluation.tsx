@@ -1,40 +1,29 @@
-import { useEffect, useState } from "react";
-import { useSession } from "./Session";
+import { useGlobal } from "./Global";
 
 export type EvaluationType = {
   type: 'course';
   id: number;
-  value: 'like' | 'dislike';
 } | {
   type: 'survey';
   id: number;
-  value: number;
 }
 
 export type EvaluationHook = [
-  EvaluationType[], 
   (e: EvaluationType) => void, 
-  (t: 'survey' | 'course', id: number) => void
+  (t: 'survey' | 'course', id: number) => boolean
 ];
 
 export function useEvaluation(): EvaluationHook
 {
-  const [session, setSession] = useSession();
-  const [evaluations, setEvaluations] = useState<EvaluationType[]>([]);
-
-  useEffect(() => {
-    if (!!session.storage && Array.isArray(session.storage)){
-      setEvaluations((session.storage as EvaluationType[]));
-    }
-  }, [session]);
+  const [global, setGlobal] = useGlobal();
 
   function addEvaluation(evaluation: EvaluationType){
-    setSession({...session, storage: [...evaluations, evaluation]});
+    setGlobal({...global, storage: [...(global.storage as EvaluationType[]), evaluation]});
   }
 
   function hasEvaluation(type: 'survey' | 'course', id: number){
-    return evaluations.filter((e: EvaluationType) => (e.type == type) && (e.id == id));
+    return (global.storage as EvaluationType[]).filter((e: EvaluationType) => (e.type == type) && (e.id == id)).length > 0;
   }
 
-  return [evaluations, addEvaluation, hasEvaluation];
+  return [addEvaluation, hasEvaluation];
 }

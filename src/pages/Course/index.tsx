@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
+import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
 import { FlatList, ImageSourcePropType } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 
@@ -29,7 +29,7 @@ import {
   TitleOutline
 } from '../../core/components';
 
-import { useEnterScreen, useLeaveScreen } from '../../core/hooks';
+import { useEnterScreen, useEvaluation, useLeaveScreen } from '../../core/hooks';
 
 type NavigationProps =  CampusNavigationProp 
                       | CourseProfessorsNavigationProp 
@@ -53,8 +53,11 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
   const [widgets, setWidgets] = useState<WidgetData[]>([]);
+
+  const modalTask = useRef<NodeJS.Timeout>();
+
+  const [addEvaluation, hasEvaluation] = useEvaluation();
 
   useEffect(() => {
     setWidgets([
@@ -62,16 +65,24 @@ export const Course: FunctionComponent<CourseProps> = () => {
       { key: '1', title: 'Corpo docente',       route: 'CourseProfessors',  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
       { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
       { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon,  params: route.params.Course }
-    ])
+    ]);
   }, [route]);
 
   useEnterScreen(() => {
     setIsLoading(false);
-    //setTimeout(() => setIsModalOpen(true), 6000);
+    modalTask.current = setTimeout(() => {
+      if (!hasEvaluation('course', route.params.Course.id)){
+        addEvaluation({ type: 'course', id: route.params.Course.id });
+        setIsModalOpen(true);
+      }
+    }, 6000);
   });
 
   useLeaveScreen(() => {
     setIsLoading(true);
+
+    if (modalTask.current)
+      clearTimeout(modalTask.current);
   });
 
   function onWidgetClick(item: WidgetData){
