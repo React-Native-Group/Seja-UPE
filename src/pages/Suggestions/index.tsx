@@ -11,6 +11,8 @@ import {
   CampusWithCourse,
   useCampusData,
   useEnterScreen,
+  useEvaluation,
+  useLeaveScreen,
   useSurveyResults,
   useTheme
 } from '../../core/hooks';
@@ -85,15 +87,25 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [campusSuggestions, setCampusSuggestions] = useState<CampusSuggestionType[]>([]);
   
   const courseList = useRef<CampusCourse[]>([]);
+  const modalTask = useRef<NodeJS.Timeout>();
 
   const [campusInfo] = useCampusData();
   const [surveyResults] = useSurveyResults();
+  const [addEvaluation, hasEvaluation] = useEvaluation();
 
   useEffect(() => {
     setCampusSelected(undefined);
     setCourseSelected(undefined);
-    // if (tab == 'suggestions')
-    //   setTimeout(() => setIsModalOpen(true), 5000);
+    if (modalTask.current)
+      clearTimeout(modalTask.current);
+    if (tab == 'suggestions'){
+      setTimeout(() => {
+        if (surveyDone && !hasEvaluation('course', 0)){
+          addEvaluation({ type: 'survey', id: 0 });
+          setIsModalOpen(true);
+        }
+      }, 6000);
+    }
   }, [tab]);
 
   useEffect(() => {
