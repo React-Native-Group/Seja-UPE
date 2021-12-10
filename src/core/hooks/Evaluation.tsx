@@ -3,13 +3,19 @@ import { useSession } from "./Session";
 
 export type EvaluationType = {
   type: 'course';
+  id: number;
   value: 'like' | 'dislike';
 } | {
   type: 'survey';
+  id: number;
   value: number;
 }
 
-export type EvaluationHook = [EvaluationType[], (e: EvaluationType) => void];
+export type EvaluationHook = [
+  EvaluationType[], 
+  (e: EvaluationType) => void, 
+  (t: 'survey' | 'course', id: number) => void
+];
 
 export function useEvaluation(): EvaluationHook
 {
@@ -26,5 +32,9 @@ export function useEvaluation(): EvaluationHook
     setSession({...session, storage: [...evaluations, evaluation]});
   }
 
-  return [evaluations, addEvaluation];
+  function hasEvaluation(type: 'survey' | 'course', id: number){
+    return evaluations.filter((e: EvaluationType) => (e.type == type) && (e.id == id));
+  }
+
+  return [evaluations, addEvaluation, hasEvaluation];
 }
