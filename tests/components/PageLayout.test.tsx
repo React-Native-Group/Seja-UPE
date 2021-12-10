@@ -1,15 +1,18 @@
 import React from 'react';
+import { act } from 'react-test-renderer';
 import { PageLayout, Spacer } from '../../src/core/components';
-import { render } from '../core';
+import { create } from '../core';
 
 test('render of PageLayout', async () => {
-  render(
-    <PageLayout
-      canGoBack
-      showFab
-      showSpinner 
-    >
-      <Spacer/>
-    </PageLayout>
-  );
+  await act(async () => {
+    create(
+      <PageLayout
+        canGoBack
+        showFab
+        showSpinner 
+      >
+        <Spacer/>
+      </PageLayout>
+    );
+  });
 });
