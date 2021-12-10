@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { useSession } from "./Session";
+import { useEffect, useState } from "react";
 import { Optional, CampusWithCourseResponse } from "./Api";
 
 export function useCampusData()

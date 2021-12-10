@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "./Session";
 
 export type EvaluationType = {
@@ -16,9 +16,11 @@ export function useEvaluation(): EvaluationHook
   const [session, setSession] = useSession();
   const [evaluations, setEvaluations] = useState<EvaluationType[]>([]);
 
-  if (!!session.storage && Array.isArray(session.storage)){
-    setEvaluations((session.storage as EvaluationType[]));
-  }
+  useEffect(() => {
+    if (!!session.storage && Array.isArray(session.storage)){
+      setEvaluations((session.storage as EvaluationType[]));
+    }
+  }, [session]);
 
   function addEvaluation(evaluation: EvaluationType){
     setSession({...session, storage: [...evaluations, evaluation]});

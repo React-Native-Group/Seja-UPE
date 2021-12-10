@@ -8,3 +8,4 @@ export * from './Session';
 export * from './Chat';
 export * from './Campus';
 export * from './Survey';
+export * from './Evaluation';
