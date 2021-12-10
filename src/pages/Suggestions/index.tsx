@@ -3,8 +3,17 @@ import { useNavigation } from '@react-navigation/core';
 import { FlatList } from 'react-native';
 
 import { SurveyValue } from '../../core/config';
-import { AssetRobotAskingIcon, AssetRobotKindIcon } from '../../assets';
-import { CourseNavigationProp, SearchResultsNavigationProp, SurveyNavigationProp } from '../../routes';
+
+import {
+  AssetRobotAskingIcon,
+  AssetRobotKindIcon
+} from '../../assets';
+
+import {
+  CourseNavigationProp,
+  SearchResultsNavigationProp,
+  SurveyNavigationProp
+} from '../../routes';
 
 import {
   CampusCourse,
@@ -12,7 +21,6 @@ import {
   useCampusData,
   useEnterScreen,
   useEvaluation,
-  useLeaveScreen,
   useSurveyResults,
   useTheme
 } from '../../core/hooks';
