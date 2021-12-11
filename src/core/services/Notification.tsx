@@ -1,6 +1,5 @@
 import Constants, { AppOwnership } from 'expo-constants';
 import * as Notifications from 'expo-notifications';
-import { ExpoPushToken } from 'expo-notifications';
 import { Platform } from 'react-native';
 
 export const Notification = {
@@ -21,7 +20,7 @@ export const Notification = {
         shouldShowAlert: true,
         shouldPlaySound: false,
         shouldSetBadge: false,
-      }),
+      })
     });
   },
   
