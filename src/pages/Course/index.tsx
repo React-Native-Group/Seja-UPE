@@ -29,7 +29,7 @@ import {
   TitleOutline
 } from '../../core/components';
 
-import { useEnterScreen, useEvaluation, useLeaveScreen } from '../../core/hooks';
+import { useEnterScreen, useEvaluation, useLeaveScreen, usePopularityCourse } from '../../core/hooks';
 
 type NavigationProps =  CampusNavigationProp 
                       | CourseProfessorsNavigationProp 
@@ -58,6 +58,8 @@ export const Course: FunctionComponent<CourseProps> = () => {
   const modalTask = useRef<NodeJS.Timeout>();
 
   const [addEvaluation, hasEvaluation] = useEvaluation();
+
+  const [popularity, sucess, evaluate] = usePopularityCourse(() => {});
 
   useEffect(() => {
     setWidgets([
@@ -88,6 +90,14 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
   function onWidgetClick(item: WidgetData){
     navigation.navigate(item.route, item.params);
+  }
+
+  function OnEvaluationCourse(note: number | "like" | "dislike") {
+    if (note === "like") {
+      evaluate(route.params.Course.id, "like");
+    } else if (note === "dislike") {
+      evaluate(route.params.Course.id, "dislike");
+    }
   }
 
   return (
@@ -164,7 +174,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
       <ModalEvaluation 
         type="popularity" 
         isOpen={isModalOpen} 
-        onResult={console.log} 
+        onResult={OnEvaluationCourse} 
       />
 
     </PageLayout>
