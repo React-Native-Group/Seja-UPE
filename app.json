@@ -53,7 +53,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/icon.png"
+          "icon": "./assets/notify-icon.png"
         }
       ]
     ]

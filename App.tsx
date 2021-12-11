@@ -17,18 +17,6 @@ Sentry.init({
 });
 
 export default function App() {
-
-  useEffect(() => {
-    async function listenNotifications(){
-      let token = await Notification.listen();
-      await Notification.schedule();
-
-      Alert.alert('Token de notificação', String(token));
-    }
-
-    listenNotifications();
-  }, []);
-
   return (
     <GlobalProvider>
       <ThemeProvider>

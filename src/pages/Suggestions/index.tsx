@@ -102,7 +102,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [surveyResults] = useSurveyResults();
   const [addEvaluation, hasEvaluation] = useEvaluation();
 
-  const [rating, sucessSurvey , rate] = useRatingSurvey(() => {});
+  const [,,rate] = useRatingSurvey(() => {});
 
   useEffect(() => {
     setCampusSelected(undefined);
@@ -189,7 +189,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     setSurveyDone((surveyResults.length > 0) && !!campusInfo);
   });
   
-  function OnRatingSurvey(result: number | 'like' | 'dislike') {
+  function onRatingSurvey(result: number | 'like' | 'dislike') {
     rate(Number(result));
   }
 
@@ -431,7 +431,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
       <ModalEvaluation 
         type="rating" 
         isOpen={isModalOpen} 
-        onResult={OnRatingSurvey} 
+        onResult={onRatingSurvey} 
       />
       
     </PageLayout>

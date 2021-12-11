@@ -4,16 +4,6 @@ import { Platform } from 'react-native';
 
 export const Notification = {
   
-  schedule: async function() {
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: "Teste de Título",
-        body: 'Teste de Mensagem'
-      },
-      trigger: { seconds: 2 }
-    });
-  },
-
   init: function(){
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
@@ -23,7 +13,14 @@ export const Notification = {
       })
     });
   },
-  
+
+  schedule: async function(title: string, body: string, seconds: number = 0) {
+    await Notifications.scheduleNotificationAsync({
+      content: { title, body },
+      trigger: { seconds },
+    });
+  },
+
   listen: async function() {
     let token: string | null = null;
 
