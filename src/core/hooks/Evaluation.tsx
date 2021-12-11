@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import { GlobalValue } from "../providers";
 import { useGlobal } from "./Global";
 
 export type EvaluationType = {
@@ -16,13 +18,22 @@ export type EvaluationHook = [
 export function useEvaluation(): EvaluationHook
 {
   const [global, setGlobal] = useGlobal();
+  const globalRef = useRef<GlobalValue>({});
+
+  useEffect(() => {
+    globalRef.current = global;
+  }, [global]);
 
   function addEvaluation(evaluation: EvaluationType){
-    setGlobal({...global, storage: [...(global.storage ?? [] as EvaluationType[]), evaluation]});
+    setGlobal({
+      ...globalRef.current, 
+      storage: [...(globalRef.current.storage ?? [] as EvaluationType[]), evaluation]
+    });
   }
 
   function hasEvaluation(type: 'survey' | 'course', id: number){
-    return (global.storage ?? [] as EvaluationType[]).filter((e: EvaluationType) => (e.type == type) && (e.id == id)).length > 0;
+    return (globalRef.current.storage ?? [] as EvaluationType[]).filter((e: EvaluationType) => 
+      (e.type == type) && (e.id == id)).length > 0;
   }
 
   return [addEvaluation, hasEvaluation];
