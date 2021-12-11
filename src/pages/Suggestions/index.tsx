@@ -60,6 +60,7 @@ import {
   SurveyButtonContainer,
   ListItemContainer
 } from './styles';
+import { Notification } from '../../core/services';
 
 type CourseSuggestionType = {
   Campus: CampusWithCourse;
@@ -103,6 +104,10 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [addEvaluation, hasEvaluation] = useEvaluation();
 
   const [,,rate] = useRatingSurvey(() => {});
+
+  useEffect(() => {
+    onScheduleNotification();
+  }, []);
 
   useEffect(() => {
     setCampusSelected(undefined);
@@ -189,6 +194,16 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     setSurveyDone((surveyResults.length > 0) && !!campusInfo);
   });
   
+  function onScheduleNotification(){
+    Notification.schedule(
+      'Que tal se tornar UPE?',
+      'Parece que você ainda não sabe qual curso quer ainda.', 2);
+    Notification.schedule(
+      'Que tal se tornar UPE?', 
+      'Faça um teste vocacional, avalie alguns de nossos cursos e considere se tornar um estudante da UPE. ' +
+      'O curso dos seus sonhos pode estar te esperando bem aqui!', 3);
+  }
+
   function onRatingSurvey(result: number | 'like' | 'dislike') {
     rate(Number(result));
   }

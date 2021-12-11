@@ -58,8 +58,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
   const modalTask = useRef<NodeJS.Timeout>();
 
   const [addEvaluation, hasEvaluation] = useEvaluation();
-
-  const [popularity, sucess, evaluate] = usePopularityCourse(() => {});
+  const [,,evaluate] = usePopularityCourse(() => {});
 
   useEffect(() => {
     setWidgets([
@@ -92,7 +91,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
     navigation.navigate(item.route, item.params);
   }
 
-  function OnEvaluationCourse(note: number | "like" | "dislike") {
+  function onEvaluatingCourse(note: number | "like" | "dislike") {
     if (note === "like") {
       evaluate(route.params.Course.id, "like");
     } else if (note === "dislike") {
@@ -174,7 +173,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
       <ModalEvaluation 
         type="popularity" 
         isOpen={isModalOpen} 
-        onResult={OnEvaluationCourse} 
+        onResult={onEvaluatingCourse} 
       />
 
     </PageLayout>
