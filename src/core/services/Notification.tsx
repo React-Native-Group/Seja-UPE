@@ -39,7 +39,9 @@ export const Notification = {
       if (finalStatus == 'granted'){
         try{
           token = (await Notifications.getExpoPushTokenAsync()).data;
-        } catch (e){}
+        } catch (e: any){
+          console.log(e.message);
+        }
       }
     }
   
