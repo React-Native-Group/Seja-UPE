@@ -9,7 +9,7 @@ import { SentryDsn } from './src/core/config';
 import { Notification } from './src/core/services';
 import { GlobalProvider, ThemeProvider } from './src/core/providers';
 
-Notification.init();
+// Notification.init();
 Sentry.init({
   dsn: SentryDsn,
   enableInExpoDevelopment: false,
@@ -18,15 +18,15 @@ Sentry.init({
 
 export default function App() {
 
-  useEffect(() => {
-    async function listenNotifications(){
-      let token = await Notification.listen();
-      await Notification.schedule();
-      console.log(token)
-    }
+  // useEffect(() => {
+  //   async function listenNotifications(){
+  //     let token = await Notification.listen();
+  //     await Notification.schedule();
+  //     console.log(token)
+  //   }
 
-    listenNotifications();
-  }, []);
+  //   listenNotifications();
+  // }, []);
 
   return (
     <GlobalProvider>
