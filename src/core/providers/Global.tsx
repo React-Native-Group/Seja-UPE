@@ -8,7 +8,7 @@ export interface GlobalValue {
   user?: any;
   session?: string;
   survey?: any[];
-  storage?: any;
+  storage?: any[];
   data?: any;
 }
 
