@@ -21,6 +21,7 @@ import {
   useCampusData,
   useEnterScreen,
   useEvaluation,
+  useRatingSurvey,
   useSurveyResults,
   useTheme
 } from '../../core/hooks';
@@ -100,6 +101,8 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [campusInfo] = useCampusData();
   const [surveyResults] = useSurveyResults();
   const [addEvaluation, hasEvaluation] = useEvaluation();
+
+  const [rating, sucessSurvey , rate] = useRatingSurvey(() => {});
 
   useEffect(() => {
     setCampusSelected(undefined);
@@ -185,6 +188,10 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   useEnterScreen(() => {
     setSurveyDone((surveyResults.length > 0) && !!campusInfo);
   });
+  
+  function OnRatingSurvey(result: number | 'like' | 'dislike') {
+    rate(Number(result));
+  }
 
   function onSurveyButtonClick() {
     navigation.navigate('Survey');
@@ -424,7 +431,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
       <ModalEvaluation 
         type="rating" 
         isOpen={isModalOpen} 
-        onResult={console.log} 
+        onResult={OnRatingSurvey} 
       />
       
     </PageLayout>

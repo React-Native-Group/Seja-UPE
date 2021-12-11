@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Linking } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/core';
 
 import { useEnterScreen, useLeaveScreen, useTheme } from '../../core/hooks';
@@ -79,7 +79,11 @@ export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
       <TitleOutline title="E-mail para contato" />
       <Spacer verticalSpace={16} />
 
-      <ButtonLink iconName="envelope" text={!!professor().email ? professor().name : "E-mail indisponível"} />
+      <ButtonLink 
+        iconName="envelope" 
+        text={!!professor().email ? professor().email : "E-mail indisponível"} 
+        onPress={() => Linking.openURL(`mailto:${professor().email}`)}
+      />
       <Spacer verticalSpace={64} />
 
       <ButtonLattes onPress={() => setIsModalOpen(true)}/>
