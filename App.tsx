@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as Sentry from 'sentry-expo';
 import 'react-native-gesture-handler';
-import { StatusBar } from 'react-native';
+import { Alert, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { StackRoutes } from './src/routes';
@@ -22,7 +22,8 @@ export default function App() {
     async function listenNotifications(){
       let token = await Notification.listen();
       await Notification.schedule();
-      console.log(token)
+
+      Alert.alert('Token de notificação', String(token));
     }
 
     listenNotifications();

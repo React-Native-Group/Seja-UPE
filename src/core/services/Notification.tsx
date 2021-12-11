@@ -1,4 +1,4 @@
-import Constants from 'expo-constants';
+import Constants, { AppOwnership } from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import { ExpoPushToken } from 'expo-notifications';
 import { Platform } from 'react-native';
@@ -34,13 +34,24 @@ export const Notification = {
       if (finalStatus !== 'granted') {
         try{
           finalStatus = (await Notifications.requestPermissionsAsync()).status;
-        } catch (e){}
+        } catch (e: any){
+          console.warn(e.message);
+        }
       }
       if (finalStatus == 'granted'){
         try{
-          token = (await Notifications.getExpoPushTokenAsync()).data;
+          let isRunningOnExpo = Constants.appOwnership == AppOwnership.Expo;
+          if (isRunningOnExpo) {
+            token = (await Notifications.getExpoPushTokenAsync()).data;
+          } 
+          else {
+            let devicePushToken = await Notifications.getDevicePushTokenAsync();
+            if (devicePushToken.type == 'android'){
+              token = devicePushToken.data;
+            }
+          }
         } catch (e: any){
-          console.log(e.message);
+          console.warn(e.message);
         }
       }
     }
