@@ -47,7 +47,7 @@ type WidgetData = {
 export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
-
+  
   const navigation = useNavigation<NavigationProps>();
   const route = useRoute<RouteProp<RoutesParamList, 'Course'>>();
 
@@ -80,6 +80,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
   useLeaveScreen(() => {
     setIsLoading(true);
+    setIsModalOpen(false);
 
     if (modalTask.current)
       clearTimeout(modalTask.current);
