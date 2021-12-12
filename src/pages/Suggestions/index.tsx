@@ -197,11 +197,11 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   function onScheduleNotification(){
     Notification.schedule(
       'Que tal se tornar UPE?',
-      'Parece que você ainda não sabe qual curso quer ainda.', 2);
+      'Parece que você ainda não sabe qual curso quer ainda.', 18000);
     Notification.schedule(
       'Que tal se tornar UPE?', 
       'Faça um teste vocacional, avalie alguns de nossos cursos e considere se tornar um estudante da UPE. ' +
-      'O curso dos seus sonhos pode estar te esperando bem aqui!', 3);
+      'O curso dos seus sonhos pode estar te esperando bem aqui!', 18001);
   }
 
   function onRatingSurvey(result: number | 'like' | 'dislike') {
