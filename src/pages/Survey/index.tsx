@@ -2,7 +2,7 @@ import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import React, { Fragment, FunctionComponent, useRef, useState } from "react";
 
-import { useSurveyResults } from "../../core/hooks";
+import { useSurveyResults, useTheme } from "../../core/hooks";
 import { AssetRobotAskingIcon } from "../../assets";
 import { WelcomeNavigationProp } from "../../routes";
 import { getSurveyResults } from "../../core/services";
@@ -32,9 +32,8 @@ import {
 export interface SurveyProps { }
 
 export const Survey: FunctionComponent<SurveyProps> = () => {
+  const [theme] = useTheme();
   const navigation = useNavigation<WelcomeNavigationProp>();
-
-  const maxProgress = SurveyConfig.length;
 
   const [progress, setProgress] = useState(1);
   const [questions] = useState<SurveyType>(SurveyConfig);
@@ -42,6 +41,8 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   const [, setSurveyResults] = useSurveyResults();
   const choices = useRef<SurveyChoices>([]);
   const choiceId = useRef<number>(-1);
+  
+  const maxProgress = SurveyConfig.length;
 
   function onChoiceChanged(e: number){
     choiceId.current = e;
@@ -104,7 +105,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
 
       {questions[progress - 1].Options.map((option, i) => (
         <Fragment key={String(i)}>
-          <ChoiceContainer>
+          <ChoiceContainer {...theme}>
             <RadioContainer>
               <Radio
                 reference={group[i]}

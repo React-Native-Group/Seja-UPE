@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { ThemeValue } from "../../core/providers";
 
 export const RobotContainer = styled.View`
   flex: 1;
@@ -7,13 +8,13 @@ export const RobotContainer = styled.View`
   align-items: center;
 `;
 
-export const ChoiceContainer = styled.View`
+export const ChoiceContainer = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
   border-radius: 8px;
   elevation: 3;
   padding: 16px;
-  background-color: white;
+  background-color: ${props => props.white};
   align-items: center;
 `;
 
