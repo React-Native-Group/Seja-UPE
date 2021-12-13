@@ -31,7 +31,7 @@ export const Toggle = styled(Ripple).attrs<ToggleProps>(props => props)<TogglePr
   height: 36px;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.isActive ? props.blue : 'transparent'};
+  background-color: ${props => props.isActive ? props.blue : "transparent"};
 `;
 
 export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`

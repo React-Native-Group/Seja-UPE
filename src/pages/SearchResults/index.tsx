@@ -1,10 +1,10 @@
-import React, { Fragment, FunctionComponent, useState } from 'react';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import React, { Fragment, FunctionComponent, useState } from "react";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 
-import { RobotContainer } from './styles';
-import { AssetRobotKindIcon } from '../../assets';
-import { CampusCourse, useEnterScreen } from '../../core/hooks';
-import { CourseNavigationProp, RoutesParamList } from '../../routes';
+import { RobotContainer } from "./styles";
+import { AssetRobotKindIcon } from "../../assets";
+import { CampusCourse, useEnterScreen } from "../../core/hooks";
+import { CourseNavigationProp, RoutesParamList } from "../../routes";
 
 import {
   Avatar,
@@ -14,13 +14,13 @@ import {
   Paragraph,
   Spacer,
   TitleOutline
-} from '../../core/components';
+} from "../../core/components";
 
 export interface SearchResultsProps { }
 
 export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
   const navigation = useNavigation<CourseNavigationProp>();
-  const route = useRoute<RouteProp<RoutesParamList, 'SearchResults'>>();
+  const route = useRoute<RouteProp<RoutesParamList, "SearchResults">>();
   const [isLoading, setIsLoading] = useState(true);
 
   const [foundCourses, setFoundCourses] = useState<CampusCourse[]>([]);
@@ -32,7 +32,7 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
   });
 
   function onCourseClick(courseData?: CampusCourse){
-    if (!!courseData) navigation.navigate('CourseConcurrency', courseData);
+    if (!!courseData) navigation.navigate("CourseConcurrency", courseData);
   }
 
   return (

@@ -3,16 +3,16 @@ import { GlobalValue } from "../providers";
 import { useSession } from "./Session";
 
 export type EvaluationType = {
-  type: 'course';
+  type: "course";
   id: number;
 } | {
-  type: 'survey';
+  type: "survey";
   id: number;
 }
 
 export type EvaluationHook = [
   (e: EvaluationType) => void, 
-  (t: 'survey' | 'course', id: number) => boolean
+  (t: "survey" | "course", id: number) => boolean
 ];
 
 export function useEvaluation(): EvaluationHook
@@ -30,7 +30,7 @@ export function useEvaluation(): EvaluationHook
     setSession({...sessionRef.current, storage});
   }
 
-  function hasEvaluation(type: 'survey' | 'course', id: number){
+  function hasEvaluation(type: "survey" | "course", id: number){
     return (sessionRef.current.storage ?? [] as EvaluationType[]).filter((e: EvaluationType) => 
       (e.type == type) && (e.id == id)).length > 0;
   }

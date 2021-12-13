@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import { StyleProp, TextStyle } from 'react-native';
-import { useTheme } from '../../hooks';
-import { Text } from './styles';
+import React, { FunctionComponent } from "react";
+import { StyleProp, TextStyle } from "react-native";
+import { useTheme } from "../../hooks";
+import { Text } from "./styles";
 
 export interface ParagraphProps {
   children: string;

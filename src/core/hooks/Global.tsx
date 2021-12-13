@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { GlobalContext, GlobalValue } from '../providers';
+import React, { useContext } from "react";
+import { GlobalContext, GlobalValue } from "../providers";
 
 export function useGlobal(): [GlobalValue, (e: GlobalValue) => void] {
   const context = useContext(GlobalContext);

@@ -1,9 +1,9 @@
-import axios, { AxiosResponse } from 'axios';
-import { WebserviceUrl, AppVersion } from '../config';
+import axios, { AxiosResponse } from "axios";
+import { WebserviceUrl, AppVersion } from "../config";
 
 export const Client = axios.create({
   baseURL: WebserviceUrl,
-  headers: { 'X-App-Version': AppVersion }
+  headers: { "X-App-Version": AppVersion }
 });
 
 export type Request = {

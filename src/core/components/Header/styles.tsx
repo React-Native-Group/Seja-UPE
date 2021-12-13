@@ -43,7 +43,7 @@ export const Tab = styled(Ripple).attrs<TabProps>(props => props)<TabProps>`
   justify-content: center;
   align-items: center;
   border-color: ${props => props.blue};
-  ${({ isActive }) => isActive ? 'border-bottom-width: 4px;' : ''}
+  ${({ isActive }) => isActive ? "border-bottom-width: 4px;" : ""}
 `;
 
 export const Stack = styled.View`

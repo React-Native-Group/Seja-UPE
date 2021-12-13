@@ -28,7 +28,7 @@ export const Title = styled.Text.attrs<TitleProps>(props => props)<TitleProps>`
   align-self: flex-end;
   width: 100%;
   font-size: 24px;
-  ${props => props.bold ? 'font-weight: bold;' : ''}
+  ${props => props.bold ? "font-weight: bold;" : ""}
   color: ${props => props.blue};
 `;
 

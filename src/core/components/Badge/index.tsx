@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent } from 'react-native';
-import { useTheme } from '../../hooks';
-import { Container, Label } from './styles';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent } from "react-native";
+import { useTheme } from "../../hooks";
+import { Container, Label } from "./styles";
 
 export interface BadgeProps {
   bgColor?: string;
@@ -21,26 +21,26 @@ export interface BadgeProps {
 export const Badge: FunctionComponent<BadgeProps> = (props) => {
   const [theme] = useTheme();
 
-  let { bgColor, color, numberOfLines, borderRadius = '16px' } = props;
+  let { bgColor, color, numberOfLines, borderRadius = "16px" } = props;
   let { text, animated, onPress, hasShadow } = props;
   let { width, maxWidth, fontSize, bold } = props;
 
-  if (typeof animated == 'undefined')
+  if (typeof animated == "undefined")
     animated = true;
 
   return (
     <Container 
       onPress={onPress ?? (() => {})} 
       activeOpacity={!!animated ? 0.7 : 1} 
-      width={width ?? '100%'} 
-      maxWidth={maxWidth ?? '100%'} 
+      width={width ?? "100%"} 
+      maxWidth={maxWidth ?? "100%"} 
       bgColor={bgColor ?? theme.red} 
       hasShadow={!!hasShadow}
       borderRadius={borderRadius}
     >
       <Label 
-        fontSize={fontSize ?? '10px'} 
-        color={color ?? '#e3e3e3'} 
+        fontSize={fontSize ?? "10px"} 
+        color={color ?? "#e3e3e3"} 
         numberOfLines={numberOfLines ?? 1} 
         bold={!!bold}
       >

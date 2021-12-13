@@ -1,8 +1,8 @@
-import React, { FunctionComponent, SetStateAction, useState } from 'react';
-import { useTheme } from '../../hooks';
+import React, { FunctionComponent, SetStateAction, useState } from "react";
+import { useTheme } from "../../hooks";
 
-import { Render } from '../Render';
-import { Container, InnerContainer } from './styles';
+import { Render } from "../Render";
+import { Container, InnerContainer } from "./styles";
 
 export interface RadioType {
   index: number;

@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { ThemeValue } from "../../providers";
 
 export interface TextProps extends ThemeValue {
-  align: 'center' | 'left' | 'right' | 'justify';
+  align: "center" | "left" | "right" | "justify";
 } 
 
 export const Container = styled.View`

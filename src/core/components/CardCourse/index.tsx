@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { ImageSourcePropType } from 'react-native';
-import { useTheme } from '../../hooks';
-import { AssetWidgetSampleIcon } from '../../../assets';
-import { Banner, BannerContainer, Container, Footer, FooterLabel } from './styles';
+import React, { FunctionComponent } from "react";
+import { ImageSourcePropType } from "react-native";
+import { useTheme } from "../../hooks";
+import { AssetWidgetSampleIcon } from "../../../assets";
+import { Banner, BannerContainer, Container, Footer, FooterLabel } from "./styles";
 
 export interface CardCourseProps {
   banner?: ImageSourcePropType;

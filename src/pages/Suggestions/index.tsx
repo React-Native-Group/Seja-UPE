@@ -1,19 +1,20 @@
-import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
-import { useNavigation } from '@react-navigation/core';
-import { FlatList } from 'react-native';
+import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from "react";
+import { useNavigation } from "@react-navigation/core";
+import { FlatList } from "react-native";
 
-import { SurveyValue } from '../../core/config';
+import { SurveyValue } from "../../core/config";
+import { Notification } from "../../core/services";
 
 import {
   AssetRobotAskingIcon,
   AssetRobotKindIcon
-} from '../../assets';
+} from "../../assets";
 
 import {
   CourseNavigationProp,
   SearchResultsNavigationProp,
   SurveyNavigationProp
-} from '../../routes';
+} from "../../routes";
 
 import {
   CampusCourse,
@@ -24,7 +25,7 @@ import {
   useRatingSurvey,
   useSurveyResults,
   useTheme
-} from '../../core/hooks';
+} from "../../core/hooks";
 
 import {
   Avatar,
@@ -49,7 +50,7 @@ import {
   VerticalContent,
   ButtonSuggestion,
   ModalEvaluation
-} from '../../core/components';
+} from "../../core/components";
 
 import {
   ResultsTitleContainer,
@@ -59,8 +60,7 @@ import {
   SliderTitle,
   SurveyButtonContainer,
   ListItemContainer
-} from './styles';
-import { Notification } from '../../core/services';
+} from "./styles";
 
 type CourseSuggestionType = {
   Campus: CampusWithCourse;
@@ -83,9 +83,9 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   const [surveyDone, setSurveyDone] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [toggle, setToggle] = useState<'ssa' | 'sisu'>('ssa');
-  const [tab, setTab] = useState<'search' | 'suggestions'>('search');
-  const [viewType, setViewType] = useState<ToggleType>('horizontal');
+  const [toggle, setToggle] = useState<"ssa" | "sisu">("ssa");
+  const [tab, setTab] = useState<"search" | "suggestions">("search");
+  const [viewType, setViewType] = useState<ToggleType>("horizontal");
 
   const [campusSelected, setCampusSelected] = useState<SelectOption>();
   const [courseSelected, setCourseSelected] = useState<SelectOption>();
@@ -114,10 +114,10 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
     setCourseSelected(undefined);
     if (modalTask.current)
       clearTimeout(modalTask.current);
-    if (tab == 'suggestions'){
+    if (tab == "suggestions"){
       setTimeout(() => {
-        if (surveyDone && !hasEvaluation('survey', 0)){
-          addEvaluation({ type: 'survey', id: 0 });
+        if (surveyDone && !hasEvaluation("survey", 0)){
+          addEvaluation({ type: "survey", id: 0 });
           setIsModalOpen(true);
         }
       }, 6000);
@@ -196,25 +196,25 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   
   function onScheduleNotification(){
     Notification.schedule(
-      'Que tal se tornar UPE?',
-      'Parece que você ainda não sabe qual curso quer ainda.', 18000);
+      "Que tal se tornar UPE?",
+      "Parece que você ainda não sabe qual curso quer ainda.", 18000);
     Notification.schedule(
-      'Que tal se tornar UPE?', 
-      'Faça um teste vocacional, avalie alguns de nossos cursos e considere se tornar um estudante da UPE. ' +
-      'O curso dos seus sonhos pode estar te esperando bem aqui!', 18001);
+      "Que tal se tornar UPE?", 
+      "Faça um teste vocacional, avalie alguns de nossos cursos e considere se tornar um estudante da UPE. " +
+      "O curso dos seus sonhos pode estar te esperando bem aqui!", 18001);
   }
 
-  function onRatingSurvey(result: number | 'like' | 'dislike') {
+  function onRatingSurvey(result: number | "like" | "dislike") {
     rate(Number(result));
   }
 
   function onSurveyButtonClick() {
-    navigation.navigate('Survey');
+    navigation.navigate("Survey");
   }
 
   function onCourseClick(courseData: CampusCourse, campusData: CampusWithCourse) {
     if (!!campusInfo){
-      navigation.navigate('Course', { 
+      navigation.navigate("Course", { 
         Campus: campusData,
         Course: courseData
       });
@@ -227,10 +227,10 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
       .filter((courseA: CampusCourse) => !campus || campus?.courses.some((courseB?: CampusCourse) => courseA.id == courseB?.id))
       .filter((course: CampusCourse) => !courseSelected || (course.id === courseSelected.key))
       .filter((course: CampusCourse) => {
-        const [grade] = course[toggle == 'ssa' ? 'ssaGrades' : 'sisuGrades'].slice(-1);
+        const [grade] = course[toggle == "ssa" ? "ssaGrades" : "sisuGrades"].slice(-1);
         return (Number(grade.lowest) >= noteRange.lowerValue) && (Number(grade.lowest) <= noteRange.higherValue);
       });
-    navigation.navigate('SearchResults', params);
+    navigation.navigate("SearchResults", params);
   }
 
   return (
@@ -241,7 +241,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
       onTabClick={setTab}
     >
 
-      <Render if={tab == 'search'}>
+      <Render if={tab == "search"}>
 
         <ToggleGroup onChange={setToggle} />
         <Spacer verticalSpace={24} />
@@ -249,7 +249,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         <SliderTitle {...theme}>Minha nota está entre</SliderTitle>
         <Spacer verticalSpace={4} />
         
-        <Render if={toggle == 'ssa'}>
+        <Render if={toggle == "ssa"}>
           <MultiSlider 
             minValue={0} 
             maxValue={100} 
@@ -257,7 +257,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
             onChange={setNoteRange}
           />
         </Render>
-        <Render if={toggle == 'sisu'}>
+        <Render if={toggle == "sisu"}>
           <MultiSlider 
             minValue={0} 
             maxValue={1000} 
@@ -302,7 +302,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
       </Render>
 
-      <Render if={tab == 'suggestions'}>
+      <Render if={tab == "suggestions"}>
         <Spacer verticalSpace={16} />
 
         <Render if={surveyDone}>
@@ -352,7 +352,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           </ResultsTitleContainer>
           <Spacer verticalSpace={32} />
 
-          <Render if={viewType == 'horizontal'}>
+          <Render if={viewType == "horizontal"}>
 
             {/* Percorrer num loop e renderizar os resultados */}
             {campusSuggestions.map((suggestion: CampusSuggestionType) => (
@@ -367,7 +367,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
                   keyExtractor={(item) => String(item.Course.id)}
                   data={suggestion.CourseSuggestions}
                   horizontal={true}
-                  style={{ width: '100%'}}
+                  style={{ width: "100%"}}
                   overScrollMode="never"
                   alwaysBounceHorizontal={false}
                   showsHorizontalScrollIndicator={false}
@@ -388,7 +388,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
 
           </Render>
 
-          <Render if={viewType == 'vertical'}>
+          <Render if={viewType == "vertical"}>
             {/* Percorrer num loop e renderizar os resultados */}
             {courseSuggestions.map((item: CourseSuggestionType) => (
               <Fragment key={String(item.Course.id)}>

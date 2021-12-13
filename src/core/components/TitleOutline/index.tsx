@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
-import { ImageSourcePropType } from 'react-native';
+import React, { FunctionComponent } from "react";
+import { ImageSourcePropType } from "react-native";
 
-import { Render } from '../Render';
-import { useTheme } from '../../hooks';
-import { AssetWidgetSampleIcon } from '../../../assets';
-import { Banner, Container, Divider, Group, Title } from './styles';
+import { Render } from "../Render";
+import { useTheme } from "../../hooks";
+import { AssetWidgetSampleIcon } from "../../../assets";
+import { Banner, Container, Divider, Group, Title } from "./styles";
 
 export interface TitleOutlineProps {
   icon?: ImageSourcePropType;

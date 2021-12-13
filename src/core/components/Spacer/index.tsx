@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import React, { FunctionComponent } from "react";
+import { StyleProp, View, ViewStyle } from "react-native";
 
 export interface SpacerProps {
   style?: StyleProp<ViewStyle>,
@@ -11,8 +11,8 @@ export const Spacer: FunctionComponent<SpacerProps> = ({ style, verticalSpace, h
   
   let props: any = style || {};
   {
-    if (typeof verticalSpace != 'undefined') props.height = verticalSpace;
-    if (typeof verticalSpace != 'undefined') props.width = horizontalSpace;
+    if (typeof verticalSpace != "undefined") props.height = verticalSpace;
+    if (typeof verticalSpace != "undefined") props.width = horizontalSpace;
   }
 
   return (

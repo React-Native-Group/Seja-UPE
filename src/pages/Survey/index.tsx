@@ -1,12 +1,12 @@
-import { Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
-import React, { Fragment, FunctionComponent, useRef, useState } from 'react';
+import { Alert } from "react-native";
+import { useNavigation } from "@react-navigation/core";
+import React, { Fragment, FunctionComponent, useRef, useState } from "react";
 
-import { useSurveyResults } from '../../core/hooks';
-import { AssetRobotAskingIcon } from '../../assets';
-import { WelcomeNavigationProp } from '../../routes';
-import { getSurveyResults } from '../../core/services';
-import { Survey as SurveyConfig, SurveyChoices, SurveyType } from '../../core/config';
+import { useSurveyResults } from "../../core/hooks";
+import { AssetRobotAskingIcon } from "../../assets";
+import { WelcomeNavigationProp } from "../../routes";
+import { getSurveyResults } from "../../core/services";
+import { Survey as SurveyConfig, SurveyChoices, SurveyType } from "../../core/config";
 import {
   Avatar,
   Button,
@@ -19,7 +19,7 @@ import {
   Render,
   Spacer,
   useRadioGroup
-} from '../../core/components';
+} from "../../core/components";
 
 import {
   ButtonContainer,
@@ -27,7 +27,7 @@ import {
   ChoiceContainer,
   RadioContainer,
   RobotContainer
-} from './styles';
+} from "./styles";
 
 export interface SurveyProps { }
 
@@ -56,10 +56,10 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   function doSurveyAdvance(isFinished: boolean){    
     if ((choiceId.current == -1) && !isFinished){
       Alert.alert(
-        'Precisamos da sua resposta', 
-        'Para prosseguir e visualizar a próxima ' + 
-        'pergunta, responda esta primeiro e marque ' +
-        'uma das opções que mais corresponde a você.'
+        "Precisamos da sua resposta", 
+        "Para prosseguir e visualizar a próxima " + 
+        "pergunta, responda esta primeiro e marque " +
+        "uma das opções que mais corresponde a você."
       );
     }
     if ((choiceId.current != -1) && !isFinished){
@@ -70,7 +70,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
     }
     if (isFinished){
       setSurveyResults(getSurveyResults(choices.current));
-      navigation.navigate('Suggestions');
+      navigation.navigate("Suggestions");
     }
   }
 

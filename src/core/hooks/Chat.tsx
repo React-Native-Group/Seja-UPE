@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
-import useWebSocket from 'react-native-use-websocket';
-import { WebsocketServer } from '../config';
+import { useRef, useState } from "react";
+import useWebSocket from "react-native-use-websocket";
+import { WebsocketServer } from "../config";
 
 export type ChatSubscriber<T> = (e: T) => void;
 export type ChatWebSocketHook<T> = [boolean, (message: T) => void, (subscriber: ChatSubscriber<T>) => number, (id: number) => void];
@@ -26,7 +26,7 @@ export function useChatWebSocket<T>(): ChatWebSocketHook<T>
 
   function sendBroadcast(message: any)
   {
-    sendJsonMessage({ event: 'broadcast', data: message });
+    sendJsonMessage({ event: "broadcast", data: message });
   }
 
   function subscribe(subscriber: ChatSubscriber<T>)

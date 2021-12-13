@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useRef, useState } from 'react';
-import { LayoutChangeEvent, LayoutRectangle } from 'react-native';
+import React, { FunctionComponent, useRef, useState } from "react";
+import { LayoutChangeEvent, LayoutRectangle } from "react-native";
 import { LineChart } from "react-native-chart-kit";
-import { useTheme } from '../../hooks';
-import { Container } from './styles';
+import { useTheme } from "../../hooks";
+import { Container } from "./styles";
 
 export interface ChartProps {
   legend: string;

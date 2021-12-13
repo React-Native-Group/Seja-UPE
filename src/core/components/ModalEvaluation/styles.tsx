@@ -1,10 +1,10 @@
-import styled from 'styled-components/native';
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
+import styled from "styled-components/native";
+import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
-import { ThemeValue } from '../../providers';
-import { VerticalContent } from '../VerticalContent';
-import { HorizontalContent } from '../HorizontalContent';
+import { ThemeValue } from "../../providers";
+import { VerticalContent } from "../VerticalContent";
+import { HorizontalContent } from "../HorizontalContent";
 
 export const ModalContainer = styled.TouchableOpacity`
   flex: 1;

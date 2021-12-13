@@ -1,30 +1,30 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { WebView } from 'react-native-webview';
-import { Dimensions } from 'react-native';
-import PDFReader from 'rn-pdf-reader-js';
-import Constants from 'expo-constants';
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { WebView } from "react-native-webview";
+import { Dimensions } from "react-native";
+import PDFReader from "rn-pdf-reader-js";
+import Constants from "expo-constants";
 
-import { WebViewContainer } from './styles';
-import { useTheme } from '../../core/hooks';
-import { AssetWidgetPlanningIcon } from '../../assets';
-import { PageLayout, Render, Spacer, TitleOutline } from '../../core/components';
-import { RouteProp, useRoute } from '@react-navigation/core';
-import { RoutesParamList } from '../../routes';
+import { WebViewContainer } from "./styles";
+import { useTheme } from "../../core/hooks";
+import { AssetWidgetPlanningIcon } from "../../assets";
+import { PageLayout, Render, Spacer, TitleOutline } from "../../core/components";
+import { RouteProp, useRoute } from "@react-navigation/core";
+import { RoutesParamList } from "../../routes";
 
 
 export interface CoursePlanningProps { }
 
 export const CoursePlanning: FunctionComponent<CoursePlanningProps> = () => {
   const [theme] = useTheme();
-  const {height} = Dimensions.get('window');
+  const {height} = Dimensions.get("window");
   const [ppcUrl, setPpcUrl] = useState("about:blank");
   const [isPdf, setIsPdf] = useState(false);
   
-  const routes = useRoute<RouteProp<RoutesParamList, 'CoursePlanning'>>();
+  const routes = useRoute<RouteProp<RoutesParamList, "CoursePlanning">>();
 
   useEffect(() => {
     setPpcUrl(routes.params.ppcUrl)
-    setIsPdf(routes.params.ppcUrl.toLocaleLowerCase().endsWith('.pdf'))
+    setIsPdf(routes.params.ppcUrl.toLocaleLowerCase().endsWith(".pdf"))
   }, [routes])
 
   return (

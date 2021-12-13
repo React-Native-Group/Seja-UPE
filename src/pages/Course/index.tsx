@@ -1,14 +1,14 @@
-import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
-import { FlatList, ImageSourcePropType } from 'react-native';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from "react";
+import { FlatList, ImageSourcePropType } from "react-native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 
-import { CourseProfessorsNavigationProp, RoutesParamList } from '../../routes';
+import { CourseProfessorsNavigationProp, RoutesParamList } from "../../routes";
 
 import {
   CampusNavigationProp,
   CoursePlanningNavigationProp,
   CourseConcurrencyNavigationProp
-} from '../../routes';
+} from "../../routes";
 
 import {
   AssetCardCourseLogo,
@@ -16,7 +16,7 @@ import {
   AssetWidgetClassificationIcon,
   AssetWidgetPlanningIcon,
   AssetWidgetProfessorsIcon
-} from '../../assets';
+} from "../../assets";
 
 import {
   Accordion,
@@ -27,9 +27,9 @@ import {
   Paragraph,
   Spacer,
   TitleOutline
-} from '../../core/components';
+} from "../../core/components";
 
-import { useEnterScreen, useEvaluation, useLeaveScreen, usePopularityCourse } from '../../core/hooks';
+import { useEnterScreen, useEvaluation, useLeaveScreen, usePopularityCourse } from "../../core/hooks";
 
 type NavigationProps =  CampusNavigationProp 
                       | CourseProfessorsNavigationProp 
@@ -49,7 +49,7 @@ export interface CourseProps { }
 export const Course: FunctionComponent<CourseProps> = () => {
   
   const navigation = useNavigation<NavigationProps>();
-  const route = useRoute<RouteProp<RoutesParamList, 'Course'>>();
+  const route = useRoute<RouteProp<RoutesParamList, "Course">>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -62,18 +62,18 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
   useEffect(() => {
     setWidgets([
-      { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon,          params: route.params.Campus }, 
-      { key: '1', title: 'Corpo docente',       route: 'CourseProfessors',  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
-      { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
-      { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon,  params: route.params.Course }
+      { key: "0", title: "Sobre o Campus",      route: "Campus",            icon: AssetWidgetCampusIcon,          params: route.params.Campus }, 
+      { key: "1", title: "Corpo docente",       route: "CourseProfessors",  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
+      { key: "2", title: "Projeto Pedagógico",  route: "CoursePlanning",    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
+      { key: "3", title: "Notas de Corte",      route: "CourseConcurrency", icon: AssetWidgetClassificationIcon,  params: route.params.Course }
     ]);
   }, [route]);
 
   useEnterScreen(() => {
     setIsLoading(false);
     modalTask.current = setTimeout(() => {
-      if (!hasEvaluation('course', route.params.Course.id)){
-        addEvaluation({ type: 'course', id: route.params.Course.id });
+      if (!hasEvaluation("course", route.params.Course.id)){
+        addEvaluation({ type: "course", id: route.params.Course.id });
         setIsModalOpen(true);
       }
     }, 2000);

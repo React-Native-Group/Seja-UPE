@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { useTheme } from '../../hooks';
-import { Bar, Container, Label } from './styles';
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { useTheme } from "../../hooks";
+import { Bar, Container, Label } from "./styles";
 
 export interface ProgressProps {
   value: number,
@@ -20,7 +20,7 @@ export const Progress: FunctionComponent<ProgressProps> = ({ value, maxValue }) 
 
   return (
     <Container>
-      <Bar {...theme} style={{ width: Math.floor(100 * value / maxValue) + '%' }} />
+      <Bar {...theme} style={{ width: Math.floor(100 * value / maxValue) + "%" }} />
       <Label color={color}>
         {value}/{maxValue}
       </Label>

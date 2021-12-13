@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import Ripple from 'react-native-material-ripple';
+import Ripple from "react-native-material-ripple";
 import { ThemeValue } from "../../providers";
 
 export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeValue>`

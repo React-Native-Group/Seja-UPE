@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { FunctionComponent } from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { Container, Group, Note } from './styles';
-import { useTheme } from '../../hooks';
+import { Container, Group, Note } from "./styles";
+import { useTheme } from "../../hooks";
 
 export interface CardConcurrencyProps {
   lowerNote: string,

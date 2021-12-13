@@ -1,7 +1,7 @@
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
-import React, { Fragment, FunctionComponent, useState } from 'react';
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
+import React, { Fragment, FunctionComponent, useState } from "react";
 
-import { RobotContainer } from './styles';
+import { RobotContainer } from "./styles";
 
 import {
   Avatar,
@@ -11,18 +11,18 @@ import {
   Paragraph,
   Spacer,
   TitleOutline
-} from '../../core/components';
+} from "../../core/components";
 
-import { CourseProfessorNavigationProp, RoutesParamList } from '../../routes';
-import { AssetProfessorPhotoIcon, AssetRobotKindIcon, AssetWidgetProfessorsIcon } from '../../assets';
-import { Professor, useCourseProfessors, useEnterScreen, useLeaveScreen } from '../../core/hooks';
-import { Alert } from 'react-native';
+import { CourseProfessorNavigationProp, RoutesParamList } from "../../routes";
+import { AssetProfessorPhotoIcon, AssetRobotKindIcon, AssetWidgetProfessorsIcon } from "../../assets";
+import { Professor, useCourseProfessors, useEnterScreen, useLeaveScreen } from "../../core/hooks";
+import { Alert } from "react-native";
 
 export interface CourseProfessorsProps { }
 
 export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => {
   const navigation = useNavigation<CourseProfessorNavigationProp>();
-  const route = useRoute<RouteProp<RoutesParamList, 'CourseProfessors'>>();
+  const route = useRoute<RouteProp<RoutesParamList, "CourseProfessors">>();
   
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,10 +30,10 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
     setIsLoading(false);
     if (!success){
       Alert.alert(
-        'Oops, não foi possível exibir os professores.', 
-        'Parece que não conseguimos obter os professores ' + 
-        'deste curso no momento. Verifique se você possui ' + 
-        'acesso à Internet e tente novamente em alguns instantes.'
+        "Oops, não foi possível exibir os professores.", 
+        "Parece que não conseguimos obter os professores " + 
+        "deste curso no momento. Verifique se você possui " + 
+        "acesso à Internet e tente novamente em alguns instantes."
       );
     }
   });
@@ -47,7 +47,7 @@ export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => 
   });
 
   function onDetailClick(professor: Professor){
-    navigation.navigate('CourseProfessor', professor);
+    navigation.navigate("CourseProfessor", professor);
   }
 
   return (

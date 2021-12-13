@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { FunctionComponent } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 import {
   Campus,
   CampusContact,
@@ -15,9 +15,9 @@ import {
   Survey,
   Tests,
   Welcome
-} from '../pages';
+} from "../pages";
 
-import { RoutesParamList } from './Types';
+import { RoutesParamList } from "./Types";
 
 const Stack = createStackNavigator<RoutesParamList>();
 

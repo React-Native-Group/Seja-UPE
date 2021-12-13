@@ -1,1 +1,2 @@
-export * from './light.palette';
+export * from "./light.palette";
+export * from "./dark.palette";

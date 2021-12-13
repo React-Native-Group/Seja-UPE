@@ -1,14 +1,14 @@
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
-import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
-import { FlatList, ImageSourcePropType, Linking } from 'react-native';
-import capitalize from 'capitalize-first-letters';
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
+import React, { Fragment, FunctionComponent, useEffect, useState } from "react";
+import { FlatList, ImageSourcePropType, Linking } from "react-native";
+import capitalize from "capitalize-first-letters";
 
 import {
   AssetWidgetCampusIcon,
   AssetWidgetContactIcon,
   AssetWidgetCoursesIcon,
   AssetWidgetEventsIcon
-} from '../../assets';
+} from "../../assets";
 
 import {
   Accordion,
@@ -19,10 +19,10 @@ import {
   Paragraph,
   Spacer,
   TitleOutline
-} from '../../core/components';
-import { CampusSocialNetwork, useEnterScreen, useLeaveScreen } from '../../core/hooks';
+} from "../../core/components";
+import { CampusSocialNetwork, useEnterScreen, useLeaveScreen } from "../../core/hooks";
 
-import { CampusContactNavigationProp, CampusCoursesNavigationProp, CampusEventsNavigationProp, RoutesParamList } from '../../routes';
+import { CampusContactNavigationProp, CampusCoursesNavigationProp, CampusEventsNavigationProp, RoutesParamList } from "../../routes";
 
 type WidgetData = {
   key: string;
@@ -41,7 +41,7 @@ export interface CampusProps { }
 export const Campus: FunctionComponent<CampusProps> = () => {
 
   const navigation = useNavigation<NavigationProps>();
-  const route = useRoute<RouteProp<RoutesParamList, 'Campus'>>();
+  const route = useRoute<RouteProp<RoutesParamList, "Campus">>();
 
   const [widgets, setWidgets] = useState<WidgetData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -52,9 +52,9 @@ export const Campus: FunctionComponent<CampusProps> = () => {
 
   useEffect(() => {
     setWidgets([
-      { key: '0', title: 'Principais Eventos',  route: 'CampusEvents',  icon: AssetWidgetEventsIcon,  params: route.params.events }, 
-      { key: '1', title: 'Contatos',            route: 'CampusContact', icon: AssetWidgetContactIcon, params: route.params.contacts }, 
-      { key: '2', title: 'Cursos',              route: 'CampusCourses', icon: AssetWidgetCoursesIcon, params: route.params }
+      { key: "0", title: "Principais Eventos",  route: "CampusEvents",  icon: AssetWidgetEventsIcon,  params: route.params.events }, 
+      { key: "1", title: "Contatos",            route: "CampusContact", icon: AssetWidgetContactIcon, params: route.params.contacts }, 
+      { key: "2", title: "Cursos",              route: "CampusCourses", icon: AssetWidgetCoursesIcon, params: route.params }
     ]);
   }, [route]);
 
@@ -112,7 +112,7 @@ export const Campus: FunctionComponent<CampusProps> = () => {
         }}
         points={[
           {
-            title: 'Universidade de Pernambuco',
+            title: "Universidade de Pernambuco",
             description: route.params.name,
             coords: {
               latitude: Number(route.params.latitude),

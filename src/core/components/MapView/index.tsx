@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { Dimensions, ImageRequireSource, ImageURISource } from 'react-native';
-import { LatLng, Marker, Region } from 'react-native-maps';
-import { AssetMarkerIcon } from '../../../assets';
-import { MapStyle } from './custom';
-import { Container, MapContainer } from './styles';
+import React, { FunctionComponent } from "react";
+import { Dimensions, ImageRequireSource, ImageURISource } from "react-native";
+import { LatLng, Marker, Region } from "react-native-maps";
+import { AssetMarkerIcon } from "../../../assets";
+import { MapStyle } from "./custom";
+import { Container, MapContainer } from "./styles";
 
 export interface PointsProp {
   coords: LatLng;
@@ -22,7 +22,7 @@ export interface MapViewProps {
 export const MapView: FunctionComponent<MapViewProps> = ({ width, height, points, image, region }) => {
   
   return (
-    <Container width={width || '100%'} height={height || '100%'}>
+    <Container width={width || "100%"} height={height || "100%"}>
       <MapContainer region={region} customMapStyle={MapStyle}>
         {points.map(({ title, description, coords }) => (
           <Marker

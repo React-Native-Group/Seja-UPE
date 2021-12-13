@@ -1,11 +1,12 @@
 import React, { createContext, FunctionComponent, useState } from "react";
-import { Pallete } from "../themes";
+import { LightPallete } from "../themes";
 
 export interface ThemeProps {
   children?: React.ReactNode;
 }
 
 export interface ThemeValue {
+  schemaName: string;
   blue: string;
   blueNeon: string;
   red: string;
@@ -34,10 +35,10 @@ export interface ThemeProviderValue {
   setTheme?: (v: ThemeValue) => void;
 }
 
-export const ThemeContext = createContext<ThemeProviderValue>({ theme: Pallete });
+export const ThemeContext = createContext<ThemeProviderValue>({ theme: LightPallete });
 
 export const ThemeProvider: FunctionComponent<ThemeProps> = ({ children }: ThemeProps) => {
-  const [theme, setTheme] = useState<ThemeValue>(Pallete);
+  const [theme, setTheme] = useState<ThemeValue>(LightPallete);
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>

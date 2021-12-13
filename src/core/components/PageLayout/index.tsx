@@ -1,14 +1,14 @@
-import React, { Fragment, FunctionComponent, useState } from 'react';
-import { ActivityIndicator, BackHandler, Dimensions  } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import Constants from 'expo-constants';
-import Fab from 'react-native-fab';
+import React, { Fragment, FunctionComponent, useState } from "react";
+import { ActivityIndicator, BackHandler, Dimensions  } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import Constants from "expo-constants";
+import Fab from "react-native-fab";
 
-import { Header } from '../Header';
-import { Render } from '../Render';
-import { ModalChat } from '../ModalChat';
-import { useEnterScreen, useTheme } from '../../hooks';
-import { AreaView, Center, ScrollableContainer } from './styles';
+import { Header } from "../Header";
+import { Render } from "../Render";
+import { ModalChat } from "../ModalChat";
+import { useEnterScreen, useTheme } from "../../hooks";
+import { AreaView, Center, ScrollableContainer } from "./styles";
 
 export interface PageLayoutProps {
   canGoBack?: boolean;
@@ -18,7 +18,7 @@ export interface PageLayoutProps {
   showSpinner?: boolean;
   fabIcon?: keyof typeof FontAwesome.glyphMap;
   onFabClick?: () => void;
-  onTabClick?: (e: 'suggestions' | 'search') => void;
+  onTabClick?: (e: "suggestions" | "search") => void;
   onBackPressed?: () => boolean;
   children: React.ReactNode;
 }
@@ -31,7 +31,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
   const { showFab, showTabs, fabIcon, showSpinner } = props;
   const { showHeader, canGoBack, children } = props;
 
-  const { height } = Dimensions.get('window');
+  const { height } = Dimensions.get("window");
 
   function getPageHeight(){
     if (!!showHeader)

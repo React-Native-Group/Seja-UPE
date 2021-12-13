@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent, ImageSourcePropType } from 'react-native';
-import { useTheme } from '../../hooks';
-import { Badge } from '../Badge';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent, ImageSourcePropType } from "react-native";
+import { useTheme } from "../../hooks";
+import { Badge } from "../Badge";
 import { 
   AreaList, 
   Biography, 
@@ -14,7 +14,7 @@ import {
   Photo, 
   PhotoContainer, 
   Title 
-} from './styles';
+} from "./styles";
 
 export interface CardProfessorProps {
   name: string;

@@ -2,11 +2,11 @@ import React from "react";
 import * as Sentry from "sentry-expo";
 import "react-native-gesture-handler";
 import { StatusBar } from "react-native";
-import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 
 import { StackRoutes } from "./src/routes";
-import { useTheme } from "./src/core/hooks";
 import { SentryDsn } from "./src/core/config";
+import { useThemeSchema } from "./src/core/hooks";
 import { Notification } from "./src/core/services";
 import { GlobalProvider, ThemeProvider } from "./src/core/providers";
 
@@ -17,24 +17,22 @@ Sentry.init({
   debug: false
 });
 
-export default function App() {
-  const [ theme ] = useTheme();
+function Router(){
+  const schema = useThemeSchema();
 
-  const scheme = {
-    ...DefaultTheme,
-    colors: {
-      ...DefaultTheme.colors,
-      background: theme.whiteSmoke,
-    },
-  };
+  return (
+    <NavigationContainer theme={schema}>
+      <StackRoutes />
+    </NavigationContainer>
+  );
+}
   
+export default function Main() {
   return (
     <GlobalProvider>
       <ThemeProvider>
         <StatusBar hidden={false} />
-        <NavigationContainer theme={scheme}>
-          <StackRoutes />
-        </NavigationContainer>
+        <Router />
       </ThemeProvider>
     </GlobalProvider>
   );

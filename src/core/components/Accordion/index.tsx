@@ -1,9 +1,9 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
-import { FontAwesome } from '@expo/vector-icons'; 
+import React, { FunctionComponent, ReactNode, useEffect, useState } from "react";
+import { FontAwesome } from "@expo/vector-icons"; 
 
-import { Render } from '../Render';
-import { Container, Header, Title, Body, Text } from './styles';
-import { useTheme } from '../../hooks';
+import { Render } from "../Render";
+import { Container, Header, Title, Body, Text } from "./styles";
+import { useTheme } from "../../hooks";
 
 export interface AccordionProps {
   onToggle?: (state: boolean) => void;

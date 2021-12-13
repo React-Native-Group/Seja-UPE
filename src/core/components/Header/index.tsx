@@ -1,17 +1,17 @@
-import React, { FunctionComponent, useState } from 'react';
-import { useNavigation } from '@react-navigation/core';
-import { FontAwesome5 } from '@expo/vector-icons'; 
-import { BackHandler } from 'react-native';
+import React, { FunctionComponent, useState } from "react";
+import { useNavigation } from "@react-navigation/core";
+import { FontAwesome5 } from "@expo/vector-icons"; 
+import { BackHandler } from "react-native";
 
-import { Render } from '../Render';
-import { AssetHeaderLogo } from '../../../assets';
-import { BackButton, Container, Logo, Stack, Tab, TabsContainer, TabText } from './styles';
-import { useTheme } from '../../hooks';
+import { Render } from "../Render";
+import { AssetHeaderLogo } from "../../../assets";
+import { BackButton, Container, Logo, Stack, Tab, TabsContainer, TabText } from "./styles";
+import { useTheme } from "../../hooks";
 
 export interface HeaderProps {
   canGoBack?: boolean;
   showTabs?: boolean;
-  onTabClick?: (e: 'suggestions' | 'search') => void;
+  onTabClick?: (e: "suggestions" | "search") => void;
   onBackPressed?: () => boolean;
 }
 
@@ -30,7 +30,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
 
   function changeTabs(index: number){
     if (!!onTabClick)
-      onTabClick(index == 0 ? 'search' : 'suggestions');
+      onTabClick(index == 0 ? "search" : "suggestions");
     setTabIndex(index++ % 2);
   }
 

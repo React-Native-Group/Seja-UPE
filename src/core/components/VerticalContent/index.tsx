@@ -1,6 +1,6 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import { Container } from './styles';
+import React, { FunctionComponent, ReactNode } from "react";
+import { StyleProp, ViewStyle } from "react-native";
+import { Container } from "./styles";
 
 export interface VerticalContentProps {
   style?: StyleProp<ViewStyle>;

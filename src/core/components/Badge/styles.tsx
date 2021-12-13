@@ -25,12 +25,12 @@ export const Container = styled.TouchableOpacity.attrs<ContainerProps>(props => 
   justify-content: center;
   align-items: center;
   background-color: ${props => props.bgColor};
-  ${props => props.hasShadow ? 'elevation: 3;' : ''}
+  ${props => props.hasShadow ? "elevation: 3;" : ""}
 `;
 
 export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`
   color: ${props => props.color};
   font-size: ${props => props.fontSize};
   text-align: center;
-  ${props => props.bold ? 'font-weight: bold;' : ''} 
+  ${props => props.bold ? "font-weight: bold;" : ""} 
 `;

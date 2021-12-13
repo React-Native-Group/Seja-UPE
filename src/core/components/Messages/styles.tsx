@@ -30,7 +30,7 @@ export const ViewAlign = styled.View.attrs<ChatProps>(props => props)<ChatProps>
   flex-direction: row;
   margin-top: ${({ isOwner }) => isOwner ? 16 : 2}px;
   align-items: center;
-  justify-content: ${({ isOwner }) => isOwner ? 'flex-end' : 'flex-start'};
+  justify-content: ${({ isOwner }) => isOwner ? "flex-end" : "flex-start"};
 `;
 
 export const Photo = styled.Image`

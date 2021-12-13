@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { del, get, post, put, Request } from "../services";
 import { useSession, useIsSessionActive } from "./Session";
 
-export type WebClientMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
+export type WebClientMethods = "GET" | "POST" | "PUT" | "DELETE";
 
 export type WebClientCacheEntry<T> = {
   key: string;
@@ -40,10 +40,10 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean)
       setResponse(undefined);
 
       const caller = {
-        'GET': get,
-        'POST': post,
-        'PUT': put,
-        'DELETE': del
+        "GET": get,
+        "POST": post,
+        "PUT": put,
+        "DELETE": del
       }[method];
 
       const [isSuccess, res] = await caller<T>(request);
@@ -84,7 +84,7 @@ export function useAuthorizedRequest<T>(event: WebClientCallback<T>, cacheable: 
 
     if (canRequest && isAuthenticated && !!requestOptions){
       const [method, options] = requestOptions;
-      const Authorization = { Authorization: 'Bearer ' + data.session ?? '' };
+      const Authorization = { Authorization: "Bearer " + data.session ?? "" };
       if (!!options)
         request(method, { ...options, headers: { ...options.headers, ...Authorization } });
       setCanRequest(false);

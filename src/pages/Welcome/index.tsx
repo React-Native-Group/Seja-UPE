@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/core';
-import { Alert, ImageSourcePropType } from 'react-native';
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/core";
+import { Alert, ImageSourcePropType } from "react-native";
 
-import { Container } from './styles';
-import { OAuth2Payload } from '../../core/services';
-import { SuggestionsNavigationProp } from '../../routes';
+import { Container } from "./styles";
+import { OAuth2Payload } from "../../core/services";
+import { SuggestionsNavigationProp } from "../../routes";
 
 import {
   ApiResponse,
@@ -15,14 +15,14 @@ import {
   useGoogleAuth,
   useIsSessionActive,
   useSession,
-} from '../../core/hooks';
+} from "../../core/hooks";
 
 import {
   AssetRobotKindIcon,
   AssetRobotQuestionsIcon,
   AssetRobotSmileDownIcon,
   AssetRobotSmileIcon
-} from '../../assets';
+} from "../../assets";
 
 import {
   Avatar,
@@ -34,7 +34,7 @@ import {
   Render,
   Spacer,
   Title
-} from '../../core/components';
+} from "../../core/components";
 
 export interface WelcomeProps { }
 
@@ -58,10 +58,10 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
     }
     else {
       Alert.alert(
-        'Oops, estamos passando por problemas!', 
-        'Parece que não conseguimos obter a lista mais recente dos cursos da UPE. ' + 
-        'Desculpe-nos pelo inconveniente, mas é possível que o aplicativo esteja em ' + 
-        'manutenção ou você esteja desconectado da Internet. Tente novamente em alguns minutos.');
+        "Oops, estamos passando por problemas!", 
+        "Parece que não conseguimos obter a lista mais recente dos cursos da UPE. " + 
+        "Desculpe-nos pelo inconveniente, mas é possível que o aplicativo esteja em " + 
+        "manutenção ou você esteja desconectado da Internet. Tente novamente em alguns minutos.");
     }
     setTimeout(() => setIsLoading(false), 1000);
   });
@@ -78,7 +78,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
 
   useEffect(() => {
     if (showSuggestions) 
-      navigation.navigate('Suggestions');
+      navigation.navigate("Suggestions");
   }, [showSuggestions]);
 
   function onAuthorizeResponse() {
@@ -92,9 +92,9 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
       authorize(String(user?.idToken));
       setSession({...session, user: user?.user});
     } else {
-      Alert.alert('Erro ao acessar conta Google', 
-        'Não foi possível acessar sua conta Google, ' + 
-        'você cancelou o procedimento? Tente novamente.');
+      Alert.alert("Erro ao acessar conta Google", 
+        "Não foi possível acessar sua conta Google, " + 
+        "você cancelou o procedimento? Tente novamente.");
     }
   }
 

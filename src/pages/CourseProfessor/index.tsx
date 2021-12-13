@@ -1,18 +1,18 @@
-import React, { FunctionComponent, useState } from 'react';
-import { FlatList, Linking } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/core';
+import React, { FunctionComponent, useState } from "react";
+import { FlatList, Linking } from "react-native";
+import { RouteProp, useRoute } from "@react-navigation/core";
 
-import { useEnterScreen, useLeaveScreen, useTheme } from '../../core/hooks';
-import { RoutesParamList } from '../../routes';
-import { AssetProfessorPhotoIcon } from '../../assets';
-import { AvatarRow, BadgeContainer, NameContainer, NameText } from './styles';
-import { Avatar, Badge, ButtonLattes, ButtonLink, ModalWebView, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
+import { useEnterScreen, useLeaveScreen, useTheme } from "../../core/hooks";
+import { RoutesParamList } from "../../routes";
+import { AssetProfessorPhotoIcon } from "../../assets";
+import { AvatarRow, BadgeContainer, NameContainer, NameText } from "./styles";
+import { Avatar, Badge, ButtonLattes, ButtonLink, ModalWebView, PageLayout, Paragraph, Spacer, TitleOutline } from "../../core/components";
 
 export interface CourseProfessorProps { }
 
 export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
   const [theme] = useTheme();
-  const route = useRoute<RouteProp<RoutesParamList, 'CourseProfessor'>>();
+  const route = useRoute<RouteProp<RoutesParamList, "CourseProfessor">>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

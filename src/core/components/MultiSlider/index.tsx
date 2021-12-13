@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { LayoutChangeEvent } from 'react-native';
-import Slider from '@ptomasroos/react-native-multi-slider';
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { LayoutChangeEvent } from "react-native";
+import Slider from "@ptomasroos/react-native-multi-slider";
 
-import { Render } from '../Render';
-import { useTheme } from '../../hooks';
-import { Container, Group, Label } from './styles';
+import { Render } from "../Render";
+import { useTheme } from "../../hooks";
+import { Container, Group, Label } from "./styles";
 
 export interface MultiSliderValue {
   lowerValue: number;
@@ -43,9 +43,9 @@ export const MultiSlider: FunctionComponent<MultiSliderProps> = (props) => {
     setScale(e.layout.width / (maxValue - minValue));
   }
 
-  function onLabelLayoutChange(side: 'left' | 'right', { nativeEvent: e }: LayoutChangeEvent){
-    if (side == 'left') setLeftLabelLength(e.layout.width);
-    if (side == 'right') setRightLabelLength(e.layout.width);
+  function onLabelLayoutChange(side: "left" | "right", { nativeEvent: e }: LayoutChangeEvent){
+    if (side == "left") setLeftLabelLength(e.layout.width);
+    if (side == "right") setRightLabelLength(e.layout.width);
   }
 
   useEffect(() => {
@@ -69,14 +69,14 @@ export const MultiSlider: FunctionComponent<MultiSliderProps> = (props) => {
         <Group>
           <Label 
             {...theme}
-            onLayout={(e) => onLabelLayoutChange('left', e)} 
+            onLayout={(e) => onLabelLayoutChange("left", e)} 
             offset={value[0] * scale - (leftLabelLength / 2)}
           >
             {value[0]}
           </Label>
           <Label 
             {...theme}
-            onLayout={(e) => onLabelLayoutChange('right', e)} 
+            onLayout={(e) => onLabelLayoutChange("right", e)} 
             offset={value[1] * scale - (rightLabelLength / 2)}
           >
             {value[1]}

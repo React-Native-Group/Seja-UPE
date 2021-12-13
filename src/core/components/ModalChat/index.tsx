@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
-import { GoogleUser } from 'expo-google-app-auth';
-import { Modal } from 'react-native';
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import { GoogleUser } from "expo-google-app-auth";
+import { Modal } from "react-native";
 
-import { Spacer } from '../Spacer';
-import { Messages } from '../Messages';
-import { useChatWebSocket, useSession, useTheme } from '../../hooks';
+import { Spacer } from "../Spacer";
+import { Messages } from "../Messages";
+import { useChatWebSocket, useSession, useTheme } from "../../hooks";
 
 import {
   CloseButton,
@@ -18,7 +18,7 @@ import {
   Photo,
   ViewContainer,
   SendIcon
-} from './styles';
+} from "./styles";
 
 export interface ModalChatProps {
   isOpen: boolean;
@@ -73,9 +73,9 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
   function onSendClick() {
     if (inputValue.trim() != ""){
       sendMessage({
-        userPhoto: user.photoUrl ?? '',
-        userName: user.name ?? '',
-        userEmail: user.email ?? '',
+        userPhoto: user.photoUrl ?? "",
+        userName: user.name ?? "",
+        userEmail: user.email ?? "",
         text: inputValue
       });
       setInputValue("");

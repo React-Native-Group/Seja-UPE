@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
-import { ThemeValue } from '../../providers';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 
 export const ModalContainer = styled.TouchableOpacity`
   flex: 1;

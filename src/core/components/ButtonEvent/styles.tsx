@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { FontAwesome5 } from '@expo/vector-icons';
-import Ripple from 'react-native-material-ripple';
+import { FontAwesome5 } from "@expo/vector-icons";
+import Ripple from "react-native-material-ripple";
 import { ThemeValue } from "../../providers";
 
 export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeValue>`

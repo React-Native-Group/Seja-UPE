@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent } from 'react-native';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent } from "react-native";
 
-import { useTheme } from '../../hooks';
-import { ThemeValue } from '../../providers';
-import { Container, Label } from './styles';
+import { useTheme } from "../../hooks";
+import { ThemeValue } from "../../providers";
+import { Container, Label } from "./styles";
 
 export interface ButtonProps {
   onPress?: (e: GestureResponderEvent) => void;

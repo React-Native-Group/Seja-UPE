@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Dimensions, Modal } from 'react-native';
-import { WebView } from 'react-native-webview';
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { Dimensions, Modal } from "react-native";
+import { WebView } from "react-native-webview";
 
-import { Spacer } from '../Spacer';
-import { useTheme } from '../../hooks';
-import { CloseButton, Header, HeaderDivider, ModalContainer, ViewContainer } from './styles';
+import { Spacer } from "../Spacer";
+import { useTheme } from "../../hooks";
+import { CloseButton, Header, HeaderDivider, ModalContainer, ViewContainer } from "./styles";
 
 export interface ModalWebViewProps {
   link: string;
@@ -15,7 +15,7 @@ export interface ModalWebViewProps {
 export const ModalWebView: FunctionComponent<ModalWebViewProps> = ({ link, isOpen = false, onClose }) => {
   const [theme] = useTheme();
   const [isOpenLink, setOpenLink] = useState(isOpen);
-  const {height} = Dimensions.get('window');
+  const {height} = Dimensions.get("window");
 
   function closeModal(){
     setOpenLink(false);
