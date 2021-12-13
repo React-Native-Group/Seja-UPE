@@ -29,6 +29,14 @@ export const BackButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
+export const ThemeSwitch = styled.TouchableOpacity`
+  position: absolute;
+  right: 20px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const TabsContainer = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
