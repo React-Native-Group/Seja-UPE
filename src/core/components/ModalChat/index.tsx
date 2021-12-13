@@ -42,11 +42,16 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
   const [user, setUser] = useState<GoogleUser>({});
   const messagesRef = useRef<ChatMessage[]>([]);
 
-  const [_, sendMessage, subscribe, unsubscribe] = useChatWebSocket<ChatMessage>();
+  const [isSocketUp, sendMessage, subscribe, unsubscribe] = useChatWebSocket<ChatMessage>();
 
   useEffect(() => {
     setIsVisible(isOpen);
   }, [isOpen]);
+
+  useEffect(() => {
+    if (isSocketUp) 
+      messagesRef.current = [];
+  }, [isSocketUp]);
 
   useEffect(() => {
     let subscriptionId: number = subscribe(onMessageReceived);
