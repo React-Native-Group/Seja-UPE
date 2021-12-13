@@ -1,5 +1,6 @@
 import React, { Fragment, FunctionComponent, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import {Linking} from 'react-native'
 
 import { AccordionBody } from './styles';
 import { RoutesParamList } from '../../routes';
@@ -14,6 +15,15 @@ export const CampusContact: FunctionComponent<CampusContactProps> = () => {
   const route = useRoute<RouteProp<RoutesParamList, 'CampusContact'>>();
   const [theme] = useTheme();
   const [categories, setCategories] = useState<Contact[][]>([]);
+
+  function onContactClick(contact: Contact){
+    if (contact.fieldIcon == 'envelope'){
+      Linking.openURL(`mailto:${contact.value}`)
+    } 
+    else if (contact.fieldIcon == 'phone-square-alt'){
+      Linking.openURL(`tel:${contact.value}`)
+    }
+  }
 
   useEnterScreen(() => {
     setCategories(route.params.map(v => v.categoryName)
@@ -34,7 +44,12 @@ export const CampusContact: FunctionComponent<CampusContactProps> = () => {
             <AccordionBody>
               {category.map((contact: Contact) => (
                 <Fragment key={String(contact.id)}>
-                  <ButtonLink text={contact.value} iconName={contact.fieldIcon} iconColor={theme.red} />
+                  <ButtonLink 
+                    text={contact.value} 
+                    iconName={contact.fieldIcon} 
+                    iconColor={theme.red} 
+                    onPress={() => onContactClick(contact)}
+                  />
                   <Spacer verticalSpace={8} />
                 </Fragment>
               ))}

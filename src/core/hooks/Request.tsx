@@ -49,14 +49,14 @@ export function useRequest<T>(event: WebClientCallback<T>, cacheable: boolean)
       const [isSuccess, res] = await caller<T>(request);
 
       setSuccess(isSuccess);
-      setResponse({ data: res.data, status: res.status });
+      setResponse({ data: res?.data, status: res?.status });
 
       if (cacheable && !isRequestCached(request, method, cache.current)){
         cache.current.push({
           key: request.url,
           method: method,
           success: isSuccess,
-          response: { data: res.data, status: res.status }
+          response: { data: res?.data, status: res?.status }
         });
       }
       return;

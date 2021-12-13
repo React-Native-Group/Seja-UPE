@@ -274,7 +274,7 @@ export function useRatingSurvey(event: ApiEventResponse<RatingResponse>): Rating
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<RatingResponse>>(event, false);
 
   const run = (note: number) => request('POST', { 
-    url: '/evaluation/rating/survey' + encodeURIComponent(note)
+    url: '/evaluation/rating/survey/' + encodeURIComponent(note)
   });
 
   return [ response, success, run ];
