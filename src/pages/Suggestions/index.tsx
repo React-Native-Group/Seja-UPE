@@ -116,7 +116,7 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
       clearTimeout(modalTask.current);
     if (tab == 'suggestions'){
       setTimeout(() => {
-        if (surveyDone && !hasEvaluation('course', 0)){
+        if (surveyDone && !hasEvaluation('survey', 0)){
           addEvaluation({ type: 'survey', id: 0 });
           setIsModalOpen(true);
         }
