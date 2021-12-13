@@ -40,7 +40,7 @@ export const Badge: FunctionComponent<BadgeProps> = (props) => {
     >
       <Label 
         fontSize={fontSize ?? "10px"} 
-        color={color ?? "#e3e3e3"} 
+        color={color ?? theme.textColor} 
         numberOfLines={numberOfLines ?? 1} 
         bold={!!bold}
       >

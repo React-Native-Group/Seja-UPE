@@ -17,7 +17,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ onPress, text, bgColor,
 
   return (
     <Container bgColor={bgColor} {...theme} onPress={onPress}>
-      <Label numberOfLines={1} color="#e3e3e3" {...theme}>{text}</Label>
+      <Label numberOfLines={1} color={theme.textColor} {...theme}>{text}</Label>
     </Container>
   );
 }

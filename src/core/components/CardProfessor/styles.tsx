@@ -20,7 +20,7 @@ export const Header = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
 
 export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 12px;
-  color: #e3e3e3;
+  color: ${props => props.textColor};
 `;
 
 export const Body = styled.View`

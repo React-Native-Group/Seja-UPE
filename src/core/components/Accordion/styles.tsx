@@ -40,7 +40,7 @@ export const Header = styled(Ripple).attrs<HeaderProps>(props => props)<HeaderPr
 
 export const Title = styled.Text.attrs<TitleProps>(props => props)<TitleProps>`
   font-size: 16px;
-  color: #e3e3e3;
+  color: ${props => props.textColor};
   ${props => props.bold ? "font-weight: bold;" : ""}
 `;
 

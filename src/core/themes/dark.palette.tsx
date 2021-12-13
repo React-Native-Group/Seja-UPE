@@ -10,6 +10,7 @@ export const DarkPallete = {
   white:                  "#161616", //OK
   whiteSmoke:             "#1C1C1C", //OK
   evaluationColor:        "#CBC4CC", 
+  textColor:              "#E3E3E3", 
   concurrencyGreen:       "#17B41E", 
   concurrencyRed:         "#D7292D", 
   chartDatasetColor:      "#ED3238", 
