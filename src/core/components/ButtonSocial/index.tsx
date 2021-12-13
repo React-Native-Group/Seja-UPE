@@ -1,7 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import { GestureResponderEvent } from 'react-native';
-import { AssetSocialFacebookIcon, AssetSocialInstagramIcon, AssetSocialTwitterIcon, AssetSocialYoutubeIcon, AssetWidgetSampleIcon } from '../../../assets';
+
+import { useTheme } from '../../hooks';
 import { Container, Icon, Text } from './styles';
+import {
+  AssetSocialFacebookIcon,
+  AssetSocialInstagramIcon,
+  AssetSocialTwitterIcon,
+  AssetSocialYoutubeIcon,
+  AssetWidgetSampleIcon
+} from '../../../assets';
 
 export interface ButtonSocialProps {
   text: string;
@@ -10,6 +18,8 @@ export interface ButtonSocialProps {
 }
 
 export const ButtonSocial: FunctionComponent<ButtonSocialProps> = ({ text, type, onPress }) => {
+  const [theme] = useTheme();
+  
   const socialIcons = {
     'instagram': AssetSocialInstagramIcon,
     'twitter': AssetSocialTwitterIcon,
@@ -20,7 +30,7 @@ export const ButtonSocial: FunctionComponent<ButtonSocialProps> = ({ text, type,
   return (
     <Container activeOpacity={0.7} onPress={onPress ?? (() => {})}>
       <Icon source={socialIcons ?? AssetWidgetSampleIcon} />
-      <Text>{text}</Text>
+      <Text {...theme}>{text}</Text>
     </Container>
   );
 }

@@ -6,8 +6,8 @@ export interface ContainerProps extends ThemeValue {
   bgColor: keyof ThemeValue;
 }
 
-export interface LabelProps extends ThemeValue {
-  color: keyof ThemeValue;
+export interface LabelProps {
+  color: string;
 }
 
 export const Container = styled(Ripple).attrs<ContainerProps>(props => props)<ContainerProps>`
@@ -24,5 +24,5 @@ export const Container = styled(Ripple).attrs<ContainerProps>(props => props)<Co
 export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`
   font-size: 16px;
   text-align: center;
-  color: ${props => props[props.color]};
+  color: ${props => props.color};
 `;

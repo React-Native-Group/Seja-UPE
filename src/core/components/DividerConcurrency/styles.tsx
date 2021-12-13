@@ -23,5 +23,5 @@ export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-weight: bold;
   text-align: center;
   margin-left: 16px;
-  color: ${props => props.white};
+  color: #e3e3e3;
 `;

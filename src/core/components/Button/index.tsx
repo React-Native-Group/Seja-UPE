@@ -9,7 +9,7 @@ export interface ButtonProps {
   onPress?: (e: GestureResponderEvent) => void;
   text: string;
   bgColor: keyof ThemeValue;
-  color: keyof ThemeValue;
+  color?: keyof ThemeValue;
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({ onPress, text, bgColor, color }) => {
@@ -17,7 +17,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ onPress, text, bgColor,
 
   return (
     <Container bgColor={bgColor} {...theme} onPress={onPress}>
-      <Label numberOfLines={1} color={color} {...theme}>{text}</Label>
+      <Label numberOfLines={1} color="#e3e3e3" {...theme}>{text}</Label>
     </Container>
   );
 }

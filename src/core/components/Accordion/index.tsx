@@ -46,7 +46,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({ onToggle, title, 
         <FontAwesome 
           name={isOpen ? "caret-down" : "caret-right"} 
           size={24} 
-          color={theme.white} 
+          color="#e3e3e3" 
         />
       </Header>
 

@@ -24,7 +24,7 @@ export const Footer = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
 export const FooterLabel = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 24px;
   text-align: center;
-  color: ${props => props.white};
+  color: #e3e3e3;
 `;
 
 export const BannerContainer = styled.View`

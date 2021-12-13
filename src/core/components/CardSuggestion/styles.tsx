@@ -21,7 +21,7 @@ export const Header = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
 
 export const Title = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 18px;
-  color: ${props => props.white};
+  color: #e3e3e3;
 `;
 
 export const Body = styled.View`

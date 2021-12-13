@@ -22,7 +22,7 @@ export const NameContainer = styled.View.attrs<ThemeValue>(props => props)<Theme
 export const NameText = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 20px;
   text-align: center;
-  color: ${props => props.white};
+  color: #e3e3e3;
 `;
 
 export const BadgeContainer = styled.View`

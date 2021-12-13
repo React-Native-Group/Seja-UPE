@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
-import * as Sentry from 'sentry-expo';
-import 'react-native-gesture-handler';
-import { Alert, StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import React from "react";
+import * as Sentry from "sentry-expo";
+import "react-native-gesture-handler";
+import { StatusBar } from "react-native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 
-import { StackRoutes } from './src/routes';
-import { SentryDsn } from './src/core/config';
-import { Notification } from './src/core/services';
-import { GlobalProvider, ThemeProvider } from './src/core/providers';
+import { StackRoutes } from "./src/routes";
+import { useTheme } from "./src/core/hooks";
+import { SentryDsn } from "./src/core/config";
+import { Notification } from "./src/core/services";
+import { GlobalProvider, ThemeProvider } from "./src/core/providers";
 
 Notification.init();
 Sentry.init({
@@ -17,11 +18,21 @@ Sentry.init({
 });
 
 export default function App() {
+  const [ theme ] = useTheme();
+
+  const scheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: theme.whiteSmoke,
+    },
+  };
+  
   return (
     <GlobalProvider>
       <ThemeProvider>
         <StatusBar hidden={false} />
-        <NavigationContainer>
+        <NavigationContainer theme={scheme}>
           <StackRoutes />
         </NavigationContainer>
       </ThemeProvider>

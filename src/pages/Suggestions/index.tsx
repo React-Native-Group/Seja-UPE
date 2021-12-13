@@ -295,7 +295,6 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
           <Button
             text="Pesquisar"
             bgColor="blue"
-            color="white"
             onPress={onSearchClick}
           />
           <SearchButtonSpacer />

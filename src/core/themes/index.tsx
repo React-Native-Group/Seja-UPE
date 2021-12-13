@@ -1,1 +1,1 @@
-export * from './palette';
+export * from './light.palette';

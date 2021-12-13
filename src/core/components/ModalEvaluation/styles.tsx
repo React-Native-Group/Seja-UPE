@@ -25,7 +25,7 @@ export const ViewContainer = styled.View.attrs<ThemeValue>(props => props)<Theme
   padding: 8px;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: ${props => props.white};
 `;
 
 export const RobotBanner = styled.Image.attrs<ThemeValue>(props => props)<ThemeValue>`

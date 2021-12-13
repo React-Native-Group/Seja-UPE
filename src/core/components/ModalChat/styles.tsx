@@ -21,7 +21,7 @@ export const ViewContainer = styled.View.attrs<ThemeValue>(props => props)<Theme
   padding: 24px;
   padding-top: 16px;
   padding-bottom: 16px;
-  background-color: #fff;
+  background-color: ${props => props.white};
 `;
 
 export const CloseButton = styled(Feather)`
