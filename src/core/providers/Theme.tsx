@@ -16,6 +16,7 @@ export interface ThemeValue {
   white: string;
   whiteSmoke: string;
   evaluationColor: string;
+  textColor: string;
   concurrencyGreen: string;
   concurrencyRed: string;
   chartDatasetColor: string;
@@ -24,9 +25,10 @@ export interface ThemeValue {
   chartColor: string;
   chartLabelColor: string;
   chartDotColor: string;
-  chatOwnTextColor: string,
-  chatOwnBackgroundColor: string,
-  chatTextColor: string,
+  chatOwnTextColor: string;
+  chatOwnBackgroundColor: string;
+  chatTextColor: string;
+  chatTextBackgroundColor: string;
   chatBackgroundColor: string;
 }
 

@@ -49,8 +49,8 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
   }, [isOpen]);
 
   useEffect(() => {
-    if (isSocketUp) 
-      messagesRef.current = [];
+    messagesRef.current = [];
+    setMessages([]);
   }, [isSocketUp]);
 
   useEffect(() => {
@@ -133,8 +133,9 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
               <Input 
                 placeholder="Digite algo..."
                 selectionColor={theme.blue}
-                value={inputValue} 
+                placeholderTextColor={theme.black}
                 onChangeText={setInputValue} 
+                value={inputValue} 
                 {...theme} 
               />
               

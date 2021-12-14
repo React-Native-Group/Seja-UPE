@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
+import { RouteProp, useRoute } from "@react-navigation/core";
 import { WebView } from "react-native-webview";
 import { Dimensions } from "react-native";
 import PDFReader from "rn-pdf-reader-js";
@@ -6,11 +7,9 @@ import Constants from "expo-constants";
 
 import { WebViewContainer } from "./styles";
 import { useTheme } from "../../core/hooks";
+import { RoutesParamList } from "../../routes";
 import { AssetWidgetPlanningIcon } from "../../assets";
 import { PageLayout, Render, Spacer, TitleOutline } from "../../core/components";
-import { RouteProp, useRoute } from "@react-navigation/core";
-import { RoutesParamList } from "../../routes";
-
 
 export interface CoursePlanningProps { }
 
@@ -39,6 +38,7 @@ export const CoursePlanning: FunctionComponent<CoursePlanningProps> = () => {
 
         <Render if={isPdf}>
           <PDFReader 
+            onError={() => {}}
             style={{ height: height - (224 + Constants.statusBarHeight) }} 
             source={{ uri: ppcUrl }}>
           </PDFReader>

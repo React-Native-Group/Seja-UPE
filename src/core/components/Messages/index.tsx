@@ -32,7 +32,7 @@ export const Messages: FunctionComponent<MessagesProps> = ({ messages }) => {
         <Fragment key={String(Math.floor(Math.random() * 10**5))}>
 
           <Render if={!isOwner}>
-            <Username>{message.username ?? ""}</Username>
+            <Username {...theme}>{message.username ?? ""}</Username>
           </Render>
 
           <ViewAlign {...theme} isOwner={isOwner}>

@@ -14,7 +14,7 @@ export function useChatWebSocket<T>(): ChatWebSocketHook<T>
     share: true,
     shouldReconnect: () => true,
     onOpen: () => setIsOpen(true),
-    onClose: () => setIsOpen(true),
+    onClose: () => setIsOpen(false),
     onMessage: (event: WebSocketMessageEvent) => {
       subscribers.current.map(subscriber => {
         try{
