@@ -160,7 +160,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
 
         <Render if={step == 0}>
           <Paragraph justify>
-            Eu sou o UPerson, daqui pra frente vou  ajudar você a decidir seu tão sonhado 
+            Eu sou o Dennis Ritchie, daqui pra frente vou  ajudar você a decidir seu tão sonhado 
             curso ❤️!
           </Paragraph>
         </Render>
