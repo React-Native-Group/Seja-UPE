@@ -16,7 +16,7 @@ export const Progress: FunctionComponent<ProgressProps> = ({ value, maxValue }) 
       setColor(theme.white);
     else 
       setColor(theme.black);
-  }, [value, maxValue]);
+  }, [value, maxValue, theme]);
 
   return (
     <Container>
