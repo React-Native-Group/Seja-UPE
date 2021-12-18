@@ -14,17 +14,17 @@ import { PageLayout, Render, Spacer, TitleOutline } from "../../core/components"
 export interface CoursePlanningProps { }
 
 export const CoursePlanning: FunctionComponent<CoursePlanningProps> = () => {
+  const route = useRoute<RouteProp<RoutesParamList, "CoursePlanning">>();
   const [theme] = useTheme();
+  
   const {height} = Dimensions.get("window");
   const [ppcUrl, setPpcUrl] = useState("about:blank");
   const [isPdf, setIsPdf] = useState(false);
   
-  const routes = useRoute<RouteProp<RoutesParamList, "CoursePlanning">>();
-
   useEffect(() => {
-    setPpcUrl(routes.params.ppcUrl)
-    setIsPdf(routes.params.ppcUrl.toLocaleLowerCase().endsWith(".pdf"))
-  }, [routes])
+    setPpcUrl(route.params.ppcUrl)
+    setIsPdf(route.params.ppcUrl.toLocaleLowerCase().endsWith(".pdf"))
+  }, [route])
 
   return (
     <PageLayout 

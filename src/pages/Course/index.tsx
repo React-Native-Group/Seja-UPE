@@ -47,9 +47,8 @@ type WidgetData = {
 export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
-  
-  const navigation = useNavigation<NavigationProps>();
   const route = useRoute<RouteProp<RoutesParamList, "Course">>();
+  const navigation = useNavigation<NavigationProps>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

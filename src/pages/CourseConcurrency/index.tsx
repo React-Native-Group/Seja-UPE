@@ -20,12 +20,11 @@ type GradeType = "highest" | "lowest" | "shareholderHighest" | "shareholderLowes
 export interface CourseConcurrencyProps { }
 
 export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () => {
+  const route = useRoute<RouteProp<RoutesParamList, "CourseConcurrency">>();
 
   const [ssaGrade, setSsaGrade] = useState<SsaGrade[]>([]);
   const [sisuGrade, setSisuGrade] = useState<SisuGrade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const routes = useRoute<RouteProp<RoutesParamList, "CourseConcurrency">>();
 
   function popGrade(grades: SsaGrade[] | SisuGrade[], type: GradeType, places: number = 2): string 
   {
@@ -34,9 +33,9 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
   }
 
   useEffect(() => {
-    setSsaGrade(routes.params.ssaGrades);
-    setSisuGrade(routes.params.sisuGrades);
-  }, [routes]);
+    setSsaGrade(route.params.ssaGrades);
+    setSisuGrade(route.params.sisuGrades);
+  }, [route]);
 
   useEnterScreen(() => {
     setTimeout(() => setIsLoading(false), 1000);
