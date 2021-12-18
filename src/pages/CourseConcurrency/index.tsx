@@ -26,8 +26,7 @@ export const CourseConcurrency: FunctionComponent<CourseConcurrencyProps> = () =
   const [sisuGrade, setSisuGrade] = useState<SisuGrade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  function popGrade(grades: SsaGrade[] | SisuGrade[], type: GradeType, places: number = 2): string 
-  {
+  function popGrade(grades: SsaGrade[] | SisuGrade[], type: GradeType, places: number = 2): string {
     let lastGrade = (grades.length > 0) ? grades.slice(-1)[0][type] : "0"
     return String(Number(lastGrade).toFixed(places)); 
   }
