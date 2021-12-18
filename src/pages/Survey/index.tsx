@@ -50,6 +50,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
 
   function doSurveyBack(){
     choiceId.current = -1;
+    choices.current.pop();
     setProgress(progress-1);
     clearGroup();
   }
