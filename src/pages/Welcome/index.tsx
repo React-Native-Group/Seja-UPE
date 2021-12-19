@@ -91,12 +91,12 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
       authorize(String(user?.idToken));
       setSession({...session, user: user?.user});
     } else {
+      setIsLoading(false);
       Alert.alert(
         "Erro ao acessar conta Google", 
         "Não foi possível acessar sua conta Google, " + 
         "você cancelou o procedimento? Tente novamente.");
     }
-    setIsLoading(false);
   }
 
   function onGoogleButtonClick(){
