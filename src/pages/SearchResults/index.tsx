@@ -1,17 +1,19 @@
 import React, { Fragment, FunctionComponent, useState } from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 
-import { RobotContainer } from './styles';
-import { AssetRobotKindIcon } from '../../assets';
-import { CampusCourse, useEnterScreen } from '../../core/hooks';
+import { RobotContainer, RobotContainerRow } from './styles';
+import { AssetRobotKindIcon, AssetRobotQuestionsIcon } from '../../assets';
+import { CampusCourse, useEnterScreen, useTheme } from '../../core/hooks';
 import { CourseNavigationProp, RoutesParamList } from '../../routes';
 
 import {
   Avatar,
+  Badge,
   ButtonCourse,
   CardBaloon,
   PageLayout,
   Paragraph,
+  Render,
   Spacer,
   TitleOutline
 } from '../../core/components';
@@ -19,10 +21,11 @@ import {
 export interface SearchResultsProps { }
 
 export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
-  const navigation = useNavigation<CourseNavigationProp>();
   const route = useRoute<RouteProp<RoutesParamList, 'SearchResults'>>();
-  const [isLoading, setIsLoading] = useState(true);
+  const navigation = useNavigation<CourseNavigationProp>();
+  const [theme] = useTheme();
 
+  const [isLoading, setIsLoading] = useState(true);
   const [foundCourses, setFoundCourses] = useState<CampusCourse[]>([]);
 
   useEnterScreen(() => {
@@ -46,21 +49,49 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
 
       <RobotContainer>
         <Avatar 
-          source={AssetRobotKindIcon} 
+          source={foundCourses.length > 0 ? AssetRobotKindIcon : AssetRobotQuestionsIcon} 
           diameter={96} 
           padding={8} 
         />
 
         <CardBaloon direction="left">
-          <Paragraph
-            paddingLeft="8px"
-            paddingRight="8px"
-            paddingTop="8px"
-            paddingBottom="8px"
-            justify
-          >
-            {"Encontrei " + foundCourses.length + " cursos na UPE que se encaixam nos critérios que você me passou."}
-          </Paragraph>
+          <Render if={foundCourses.length > 0}>
+            <Paragraph
+              paddingLeft="8px"
+              paddingRight="8px"
+              paddingTop="8px"
+              paddingBottom="8px"
+              justify
+            >
+              {"Encontrei " + foundCourses.length + " cursos na UPE que se encaixam nos critérios que você me passou. 😊"}
+            </Paragraph>
+          </Render>
+
+          <Render if={foundCourses.length == 0}>
+            <Paragraph
+              paddingLeft="8px"
+              paddingRight="8px"
+              paddingTop="8px"
+              paddingBottom="8px"
+              justify
+            >
+              {"Poxa! Não consegui encontrar nenhum curso que satisfaça seus critérios. Mas não se preocupe, " + 
+              "continue procurando que irei encontrar algo para você! 😊"}
+            </Paragraph>
+
+            <Spacer verticalSpace={8} />
+
+            <RobotContainerRow>
+              <Badge 
+                text="Pesquisar novamente" 
+                onPress={navigation.goBack} 
+                bgColor={theme.blue}
+                maxWidth="160px"
+                bold 
+              />
+            </RobotContainerRow>
+
+          </Render>
         </CardBaloon>
       </RobotContainer>
 

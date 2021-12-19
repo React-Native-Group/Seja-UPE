@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import { ImageSourcePropType, StyleProp, ViewStyle } from 'react-native';
-import { Container, Image } from './styles';
-import { useTheme } from '../../hooks';
+import React, { FunctionComponent } from "react";
+import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
+import { Container, Image } from "./styles";
+import { useTheme } from "../../hooks";
 
 export interface AvatarProps {
   source: ImageSourcePropType;

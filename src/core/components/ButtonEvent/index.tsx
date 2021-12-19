@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
-import { useTheme } from '../../hooks';
-import { Container, Icon, Title } from './styles';
+import { useTheme } from "../../hooks";
+import { Container, Icon, Title } from "./styles";
 
 export interface ButtonEventProps {
   onPress?: (e: GestureResponderEvent) => void,

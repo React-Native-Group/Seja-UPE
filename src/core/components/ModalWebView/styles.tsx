@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
-import { ThemeValue } from '../../providers';
-import { Feather } from '@expo/vector-icons';
+import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
+import { Feather } from "@expo/vector-icons";
 
 export const Header = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   padding: 24px;

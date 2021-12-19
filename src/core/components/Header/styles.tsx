@@ -29,6 +29,14 @@ export const BackButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
+export const ThemeSwitch = styled.TouchableOpacity`
+  position: absolute;
+  right: 20px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const TabsContainer = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
@@ -43,7 +51,7 @@ export const Tab = styled(Ripple).attrs<TabProps>(props => props)<TabProps>`
   justify-content: center;
   align-items: center;
   border-color: ${props => props.blue};
-  ${({ isActive }) => isActive ? 'border-bottom-width: 4px;' : ''}
+  ${({ isActive }) => isActive ? "border-bottom-width: 4px;" : ""}
 `;
 
 export const Stack = styled.View`

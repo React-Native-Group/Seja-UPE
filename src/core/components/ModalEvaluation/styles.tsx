@@ -1,10 +1,10 @@
-import styled from 'styled-components/native';
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
+import styled from "styled-components/native";
+import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
-import { ThemeValue } from '../../providers';
-import { VerticalContent } from '../VerticalContent';
-import { HorizontalContent } from '../HorizontalContent';
+import { ThemeValue } from "../../providers";
+import { VerticalContent } from "../VerticalContent";
+import { HorizontalContent } from "../HorizontalContent";
 
 export const ModalContainer = styled.TouchableOpacity`
   flex: 1;
@@ -25,7 +25,7 @@ export const ViewContainer = styled.View.attrs<ThemeValue>(props => props)<Theme
   padding: 8px;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: ${props => props.white};
 `;
 
 export const RobotBanner = styled.Image.attrs<ThemeValue>(props => props)<ThemeValue>`

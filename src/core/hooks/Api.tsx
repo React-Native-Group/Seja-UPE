@@ -35,7 +35,7 @@ export type AuthorizeResponse = {
   }
 }
 
-export type PopularityNote = 'like' | 'dislike';
+export type PopularityNote = "like" | "dislike";
 
 export type SsaGrade = {
   createdAt: number;
@@ -110,7 +110,7 @@ export type CampusSocialNetwork = {
   createdAt: number;
   updatedAt: number | null;
   id: number;
-  name: 'instagram' | 'twitter' | 'youtube' | 'facebook';
+  name: "instagram" | "twitter" | "youtube" | "facebook";
   value: string;
 }
 
@@ -199,8 +199,8 @@ export function useAuthorize(event: ApiEventResponse<AuthorizeResponse>): Author
 
   const { response, success, request } = useRequest<ApiDefaultResponse<AuthorizeResponse>>(onResponse, false);
 
-  const run = (idToken: string) => request('POST', {
-    url: '/auth/authorize',
+  const run = (idToken: string) => request("POST", {
+    url: "/auth/authorize",
     body: { idToken }
   });
 
@@ -211,7 +211,7 @@ export function useCampus(event: ApiEventResponse<CampusResponse>): CampusHook
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusResponse>>(event, true);
 
-  const run = () => request('GET', { url: '/campus' });
+  const run = () => request("GET", { url: "/campus" });
 
   return [ response, success, run ];
 }
@@ -220,8 +220,8 @@ export function useCampusRef(event: ApiEventResponse<CampusRefResponse>): Campus
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusRefResponse>>(event, true);
 
-  const run = (campusId: number) => request('GET', { 
-    url: '/campus/' + encodeURIComponent(campusId) 
+  const run = (campusId: number) => request("GET", { 
+    url: "/campus/" + encodeURIComponent(campusId) 
   });
 
   return [ response, success, run ];
@@ -231,8 +231,8 @@ export function useCampusCourses(event: ApiEventResponse<CampusCoursesResponse>)
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusCoursesResponse>>(event, true);
 
-  const run = (campusId: number) => request('GET', { 
-    url: '/campus/' + encodeURIComponent(campusId) + '/courses'
+  const run = (campusId: number) => request("GET", { 
+    url: "/campus/" + encodeURIComponent(campusId) + "/courses"
   });
 
   return [ response, success, run ];
@@ -242,8 +242,8 @@ export function useCampusEvents(event: ApiEventResponse<CampusEventsResponse>): 
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusEventsResponse>>(event, true);
 
-  const run = (campusId: number) => request('GET', { 
-    url: '/campus/' + encodeURIComponent(campusId) + '/events'
+  const run = (campusId: number) => request("GET", { 
+    url: "/campus/" + encodeURIComponent(campusId) + "/events"
   });
 
   return [ response, success, run ];
@@ -253,8 +253,8 @@ export function useCampusContacts(event: ApiEventResponse<CampusContactsResponse
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusContactsResponse>>(event, true);
 
-  const run = (campusId: number) => request('GET', { 
-    url: '/campus/' + encodeURIComponent(campusId) + '/contacts'
+  const run = (campusId: number) => request("GET", { 
+    url: "/campus/" + encodeURIComponent(campusId) + "/contacts"
   });
 
   return [ response, success, run ];
@@ -264,7 +264,7 @@ export function useCampusWithCourses(event: ApiEventResponse<CampusWithCourseRes
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CampusWithCourseResponse>>(event, true);
 
-  const run = () => request('GET', { url: '/campus/courses' });
+  const run = () => request("GET", { url: "/campus/courses" });
 
   return [ response, success, run ];
 }
@@ -273,8 +273,8 @@ export function useRatingSurvey(event: ApiEventResponse<RatingResponse>): Rating
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<RatingResponse>>(event, false);
 
-  const run = (note: number) => request('POST', { 
-    url: '/evaluation/rating/survey' + encodeURIComponent(note)
+  const run = (note: number) => request("POST", { 
+    url: "/evaluation/rating/survey/" + encodeURIComponent(note)
   });
 
   return [ response, success, run ];
@@ -284,8 +284,8 @@ export function usePopularityCourse(event: ApiEventResponse<PopularityResponse>)
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<PopularityResponse>>(event, false);
 
-  const run = (courseId: number, note: 'like' | 'dislike') => request('POST', { 
-    url: '/evaluation/popularity/course',
+  const run = (courseId: number, note: "like" | "dislike") => request("POST", { 
+    url: "/evaluation/popularity/course",
     body: { courseId, value: note }
   });
 
@@ -296,7 +296,7 @@ export function useProfessors(event: ApiEventResponse<ProfessorsResponse>): Prof
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<ProfessorsResponse>>(event, true);
 
-  const run = () => request('GET', { url: '/professors' });
+  const run = () => request("GET", { url: "/professors" });
 
   return [ response, success, run ];
 }
@@ -305,8 +305,8 @@ export function useProfessorRef(event: ApiEventResponse<ProfessorRefResponse>): 
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<ProfessorRefResponse>>(event, true);
 
-  const run = (professorId: number) => request('GET', { 
-    url: '/professors/' + encodeURIComponent(professorId) 
+  const run = (professorId: number) => request("GET", { 
+    url: "/professors/" + encodeURIComponent(professorId) 
   });
 
   return [ response, success, run ];
@@ -316,7 +316,7 @@ export function useAllCourses(event: ApiEventResponse<AllCoursesResponse>): AllC
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<AllCoursesResponse>>(event, true);
 
-  const run = () => request('GET', { url: '/courses' });
+  const run = () => request("GET", { url: "/courses" });
 
   return [ response, success, run ];
 }
@@ -325,8 +325,8 @@ export function useCourses(event: ApiEventResponse<CoursesResponse>): CoursesHoo
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CoursesResponse>>(event, true);
 
-  const run = (campusId: number) => request('GET', { 
-    url: '/courses/campus/' + encodeURIComponent(campusId) + '/all' 
+  const run = (campusId: number) => request("GET", { 
+    url: "/courses/campus/" + encodeURIComponent(campusId) + "/all" 
   });
 
   return [ response, success, run ];
@@ -336,8 +336,8 @@ export function useCourseProfessors(event: ApiEventResponse<CourseProfessorsResp
 {
   const { response, success, request } = useAuthorizedRequest<ApiDefaultResponse<CourseProfessorsResponse>>(event, true);
 
-  const run = (courseId: number) => request('GET', { 
-    url: '/courses/' + encodeURIComponent(courseId) + '/professors' 
+  const run = (courseId: number) => request("GET", { 
+    url: "/courses/" + encodeURIComponent(courseId) + "/professors" 
   });
 
   return [ response, success, run ];

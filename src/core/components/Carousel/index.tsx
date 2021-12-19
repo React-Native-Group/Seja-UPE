@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
-import AnimatedDotsCarousel from 'react-native-animated-dots-carousel';
-import { useTheme } from '../../hooks';
+import React, { FunctionComponent } from "react";
+import AnimatedDotsCarousel from "react-native-animated-dots-carousel";
+import { useTheme } from "../../hooks";
 
 export interface CarouselProps {
   length: number,

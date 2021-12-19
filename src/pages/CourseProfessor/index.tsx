@@ -1,18 +1,18 @@
-import React, { FunctionComponent, useState } from 'react';
-import { FlatList } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/core';
+import React, { FunctionComponent, useState } from "react";
+import { FlatList, Linking } from "react-native";
+import { RouteProp, useRoute } from "@react-navigation/core";
 
-import { useEnterScreen, useLeaveScreen, useTheme } from '../../core/hooks';
-import { RoutesParamList } from '../../routes';
-import { AssetProfessorPhotoIcon } from '../../assets';
-import { AvatarRow, BadgeContainer, NameContainer, NameText } from './styles';
-import { Avatar, Badge, ButtonLattes, ButtonLink, ModalWebView, PageLayout, Paragraph, Spacer, TitleOutline } from '../../core/components';
+import { useEnterScreen, useLeaveScreen, useTheme } from "../../core/hooks";
+import { RoutesParamList } from "../../routes";
+import { AssetProfessorPhotoIcon } from "../../assets";
+import { AvatarRow, BadgeContainer, NameContainer, NameText } from "./styles";
+import { Avatar, Badge, ButtonLattes, ButtonLink, ModalWebView, PageLayout, Paragraph, Spacer, TitleOutline } from "../../core/components";
 
 export interface CourseProfessorProps { }
 
 export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
+  const route = useRoute<RouteProp<RoutesParamList, "CourseProfessor">>();
   const [theme] = useTheme();
-  const route = useRoute<RouteProp<RoutesParamList, 'CourseProfessor'>>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -79,7 +79,11 @@ export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
       <TitleOutline title="E-mail para contato" />
       <Spacer verticalSpace={16} />
 
-      <ButtonLink iconName="envelope" text={!!professor().email ? professor().name : "E-mail indisponível"} />
+      <ButtonLink 
+        iconName="envelope" 
+        text={!!professor().email ? professor().email : "E-mail indisponível"} 
+        onPress={() => Linking.openURL(`mailto:${professor().email}`)}
+      />
       <Spacer verticalSpace={64} />
 
       <ButtonLattes onPress={() => setIsModalOpen(true)}/>

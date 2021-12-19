@@ -1,10 +1,10 @@
-import React, { Fragment, FunctionComponent, useRef } from 'react';
-import { ScrollView } from 'react-native';
+import React, { Fragment, FunctionComponent, useRef } from "react";
+import { ScrollView } from "react-native";
 
-import { Render } from '../Render';
-import { Spacer } from '../Spacer';
-import { useTheme } from '../../hooks';
-import { Container, MessageContainer, MessageText, Photo, Username, ViewAlign } from './styles';
+import { Render } from "../Render";
+import { Spacer } from "../Spacer";
+import { useTheme } from "../../hooks";
+import { Container, MessageContainer, MessageText, Photo, Username, ViewAlign } from "./styles";
 
 export interface MessageEnvelope {
   photo: string | null;
@@ -32,13 +32,13 @@ export const Messages: FunctionComponent<MessagesProps> = ({ messages }) => {
         <Fragment key={String(Math.floor(Math.random() * 10**5))}>
 
           <Render if={!isOwner}>
-            <Username>{message.username ?? ''}</Username>
+            <Username {...theme}>{message.username ?? ""}</Username>
           </Render>
 
           <ViewAlign {...theme} isOwner={isOwner}>
 
             <Render if={!isOwner}>
-              <Photo resizeMode="cover" source={{ uri: message.photo ?? '' }} />
+              <Photo resizeMode="cover" source={{ uri: message.photo ?? "" }} />
             </Render>
 
             <MessageContainer {...theme} isOwner={isOwner}>

@@ -1,14 +1,14 @@
-import React, { FunctionComponent } from 'react';
-import { RouteProp, useRoute, useNavigation} from '@react-navigation/core';
+import React, { FunctionComponent } from "react";
+import { RouteProp, useRoute, useNavigation} from "@react-navigation/core";
 
-import { RobotContainer } from './styles';
-import { CampusCourse } from '../../core/hooks';
-import { CourseNavigationProp, RoutesParamList } from '../../routes';
+import { RobotContainer } from "./styles";
+import { CampusCourse } from "../../core/hooks";
+import { CourseNavigationProp, RoutesParamList } from "../../routes";
 
 import {
   AssetWidgetCoursesIcon,
   AssetRobotKindIcon
-} from '../../assets';
+} from "../../assets";
 
 import {
   Avatar,
@@ -19,17 +19,17 @@ import {
   Render,
   Spacer,
   TitleOutline
-} from '../../core/components';
+} from "../../core/components";
 
 export interface CampusCoursesProps { }
 
 export const CampusCourses: FunctionComponent<CampusCoursesProps> = () => {
-  const route = useRoute<RouteProp<RoutesParamList, 'CampusCourses'>>();
+  const route = useRoute<RouteProp<RoutesParamList, "CampusCourses">>();
   const navigation = useNavigation<CourseNavigationProp>();
 
   function onCourseClick(course?: CampusCourse){
     if (!!course)
-      navigation.navigate('Course', { Campus: route.params, Course: course });
+      navigation.navigate("Course", { Campus: route.params, Course: course });
   }
 
   return (

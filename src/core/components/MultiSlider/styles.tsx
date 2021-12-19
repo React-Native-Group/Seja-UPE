@@ -15,7 +15,7 @@ export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`
   font-weight: bold;
   font-size: 16px;
   position: absolute;
-  ${props => !!props.offset ? `left: ${props.offset}px;` : ''}
+  ${props => !!props.offset ? `left: ${props.offset}px;` : ""}
 `;
 
 export const Group = styled.View`

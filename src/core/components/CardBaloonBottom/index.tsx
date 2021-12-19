@@ -1,7 +1,7 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-import { AssetTriangleTopIcon } from '../../../assets';
-import { useTheme } from '../../hooks';
-import { ArrowTop, Box, Container } from './styles';
+import React, { FunctionComponent, ReactNode } from "react";
+import { AssetTriangleTopDarkIcon, AssetTriangleTopIcon } from "../../../assets";
+import { useTheme } from "../../hooks";
+import { ArrowTop, Box, Container } from "./styles";
 
 export interface CardBaloonBottomProps {
   children: ReactNode;
@@ -13,7 +13,7 @@ export const CardBaloonBottom: FunctionComponent<CardBaloonBottomProps> = ({ chi
   return (
     <Box>
       <Container {...theme}>
-        <ArrowTop source={AssetTriangleTopIcon} />
+        <ArrowTop source={theme.schemaName == 'light' ? AssetTriangleTopIcon : AssetTriangleTopDarkIcon} />
         {children}
       </Container>
     </Box>

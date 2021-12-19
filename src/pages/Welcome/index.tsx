@@ -1,13 +1,14 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/core';
-import { Alert, ImageSourcePropType } from 'react-native';
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { Alert, ImageSourcePropType, Linking } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
-import { Container } from './styles';
-import { OAuth2Payload } from '../../core/services';
-import { SuggestionsNavigationProp } from '../../routes';
+import { Container } from "./styles";
+import { OAuth2Payload } from "../../core/services";
+import { SuggestionsNavigationProp } from "../../routes";
 
 import {
   ApiResponse,
+  AuthorizeResponse,
   CampusResponse,
   useAuthorize,
   useCampusWithCourses,
@@ -15,14 +16,14 @@ import {
   useGoogleAuth,
   useIsSessionActive,
   useSession,
-} from '../../core/hooks';
+} from "../../core/hooks";
 
 import {
   AssetRobotKindIcon,
   AssetRobotQuestionsIcon,
   AssetRobotSmileDownIcon,
   AssetRobotSmileIcon
-} from '../../assets';
+} from "../../assets";
 
 import {
   Avatar,
@@ -34,7 +35,7 @@ import {
   Render,
   Spacer,
   Title
-} from '../../core/components';
+} from "../../core/components";
 
 export interface WelcomeProps { }
 
@@ -46,22 +47,17 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   
   const [doLogin] = useGoogleAuth({ onResponse: onGoogleResponse });
-  const [authorization, success, authorize] = useAuthorize(onAuthorizeResponse);
-  const isSessionActive = useIsSessionActive();
+  const [authorization,, authorize] = useAuthorize(onAuthorizeResponse);
   const [global, setGlobal] = useGlobal();
   const [session, setSession] = useSession();
+  const isSessionActive = useIsSessionActive();
 
   const [,,getCourses] = useCampusWithCourses((success: boolean, response: ApiResponse<CampusResponse>) => {
     if (success){
       setGlobal({...global, data: response.data.response});
       setShowSuggestions(true);
-    }
-    else {
-      Alert.alert(
-        'Oops, estamos passando por problemas!', 
-        'Parece que não conseguimos obter a lista mais recente dos cursos da UPE. ' + 
-        'Desculpe-nos pelo inconveniente, mas é possível que o aplicativo esteja em ' + 
-        'manutenção ou você esteja desconectado da Internet. Tente novamente em alguns minutos.');
+    } else {
+      onResponseError(response.data.code);
     }
     setTimeout(() => setIsLoading(false), 1000);
   });
@@ -73,17 +69,20 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
     }
     setTimeout(() => {
       if (!isSessionActive) setIsLoading(false)
-    }, 6000);
+    }, 8000);
   }, [isSessionActive]);
 
   useEffect(() => {
     if (showSuggestions) 
-      navigation.navigate('Suggestions');
+      navigation.navigate("Suggestions");
   }, [showSuggestions]);
 
-  function onAuthorizeResponse() {
+  function onAuthorizeResponse(success: boolean, response: ApiResponse<AuthorizeResponse>) {
     if (success && !authorization?.data.error){
       getCourses();
+    } else 
+    if (!success){
+      onResponseError(response.data.code);
     }
   }
 
@@ -92,9 +91,11 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
       authorize(String(user?.idToken));
       setSession({...session, user: user?.user});
     } else {
-      Alert.alert('Erro ao acessar conta Google', 
-        'Não foi possível acessar sua conta Google, ' + 
-        'você cancelou o procedimento? Tente novamente.');
+      setIsLoading(false);
+      Alert.alert(
+        "Erro ao acessar conta Google", 
+        "Não foi possível acessar sua conta Google, " + 
+        "você cancelou o procedimento? Tente novamente.");
     }
   }
 
@@ -103,10 +104,35 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
     doLogin();
   }
 
-  function customBackHandler() {
+  function onBackPressed() {
     if (step > 0)
       setStep(step-1);
     return true;
+  }
+
+  function onResponseError(code: string) {
+    switch (code) {
+      case 'status_outdated_version_exception': {
+        Alert.alert(
+          "Parece que sua versão está muito desatualizada!",
+          "Verificamos a versão do Seja UPE instalada neste aparelho e " +
+          "constatamos que ela já está muito desatualizada! Você gostaria " + 
+          "de atualizar seu aplicativo agora?",
+          [
+            { text: "Não, obrigado", style: "cancel" },
+            { text: "Sim, por favor", onPress: () => Linking.openURL("market://details?id=com.sejaupe.app") }
+          ]);
+        setSession({}); //Limpa o cache do aplicativo
+        break;
+      }
+      default: {
+        Alert.alert(
+          "Oops, estamos passando por problemas!",
+          "Parece que não conseguimos obter a lista mais recente dos cursos da UPE. " +
+          "Desculpe-nos pelo inconveniente, mas é possível que o aplicativo esteja em " +
+          "manutenção ou você esteja desconectado da Internet. Tente novamente em alguns minutos.");
+      }
+    }
   }
 
   function getRobotIcon(): ImageSourcePropType {
@@ -123,7 +149,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
       showHeader
       showSpinner={isLoading}
       canGoBack
-      onBackPressed={customBackHandler}
+      onBackPressed={onBackPressed}
     >
       <Container>
         <Spacer verticalSpace={16} />
@@ -160,7 +186,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
 
         <Render if={step == 0}>
           <Paragraph justify>
-            Eu sou o UPerson, daqui pra frente vou  ajudar você a decidir seu tão sonhado 
+            Eu sou o D-Ritchie, daqui pra frente vou  ajudar você a decidir seu tão sonhado 
             curso ❤️!
           </Paragraph>
         </Render>

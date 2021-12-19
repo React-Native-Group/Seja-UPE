@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import Ripple from 'react-native-material-ripple';
+import Ripple from "react-native-material-ripple";
 import { ThemeValue } from "../../providers";
 
 export interface ContainerProps extends ThemeValue {
@@ -40,8 +40,8 @@ export const Header = styled(Ripple).attrs<HeaderProps>(props => props)<HeaderPr
 
 export const Title = styled.Text.attrs<TitleProps>(props => props)<TitleProps>`
   font-size: 16px;
-  color: ${props => props.white};
-  ${props => props.bold ? 'font-weight: bold;' : ''}
+  color: ${props => props.textColor};
+  ${props => props.bold ? "font-weight: bold;" : ""}
 `;
 
 export const Body = styled.ScrollView.attrs<ThemeValue>(props => props)<ThemeValue>`

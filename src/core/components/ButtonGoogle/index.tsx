@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent } from 'react-native';
-import { AssetGoogleLogo } from '../../../assets';
-import { useTheme } from '../../hooks';
-import { Container, Label, Logo } from './styles';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent } from "react-native";
+import { AssetGoogleLogo } from "../../../assets";
+import { useTheme } from "../../hooks";
+import { Container, Label, Logo } from "./styles";
 
 export interface ButtonGoogleProps {
   onPress: (e: GestureResponderEvent) => void,

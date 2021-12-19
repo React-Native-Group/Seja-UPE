@@ -29,7 +29,7 @@ export function useSession(): SessionHook
       if (!!error)
         return;
       try{
-        setData(JSON.parse(result ?? '{}'));
+        setData(JSON.parse(result ?? "{}"));
       } catch(e){}
     });
   }, []);

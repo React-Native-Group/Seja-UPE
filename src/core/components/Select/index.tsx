@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useState } from 'react';
-import ModalSelector from 'react-native-modal-selector';
-import { useTheme } from '../../hooks';
+import React, { FunctionComponent, useState } from "react";
+import ModalSelector from "react-native-modal-selector";
+import { useTheme } from "../../hooks";
 
 export interface SelectOption {
   key: number;
@@ -38,8 +38,8 @@ export const Select: FunctionComponent<SelectProps> = ({ data, placeholder, opti
       optionTextStyle={{color: theme.blue}}
       cancelTextStyle={{color: theme.red}}
       cancelText="Cancelar"
-      initValueTextStyle={{color: '#6d6d6d'}}
-      initValue={placeholder + (optional ? ' (Opcional)' : '')}
+      initValueTextStyle={{color: "#6d6d6d"}}
+      initValue={placeholder + (optional ? " (Opcional)" : "")}
       onChange={onChangeSelection} 
     />
   );

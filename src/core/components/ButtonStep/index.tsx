@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { GestureResponderEvent } from 'react-native';
-import { Container, Label } from './styles';
-import { useTheme } from '../../hooks';
+import React, { FunctionComponent } from "react";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { GestureResponderEvent } from "react-native";
+import { Container, Label } from "./styles";
+import { useTheme } from "../../hooks";
 
 export interface ButtonStepProps {
   text: string;

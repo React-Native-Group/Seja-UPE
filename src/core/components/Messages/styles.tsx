@@ -11,7 +11,7 @@ export const Container = styled.ScrollView`
 `;
 
 export const MessageContainer = styled.View.attrs<ChatProps>(props => props)<ChatProps>`
-  background-color: ${({ isOwner, ...props }) => isOwner ? props.chatOwnBackgroundColor : props.chatBackgroundColor};
+  background-color: ${({ isOwner, ...props }) => isOwner ? props.chatOwnBackgroundColor : props.chatTextBackgroundColor};
   border-radius: 12px;
   padding: 4px;
   padding-left: 12px;
@@ -30,7 +30,7 @@ export const ViewAlign = styled.View.attrs<ChatProps>(props => props)<ChatProps>
   flex-direction: row;
   margin-top: ${({ isOwner }) => isOwner ? 16 : 2}px;
   align-items: center;
-  justify-content: ${({ isOwner }) => isOwner ? 'flex-end' : 'flex-start'};
+  justify-content: ${({ isOwner }) => isOwner ? "flex-end" : "flex-start"};
 `;
 
 export const Photo = styled.Image`
@@ -40,9 +40,10 @@ export const Photo = styled.Image`
   margin-right: 12px;
 `;
 
-export const Username = styled.Text`
+export const Username = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   margin-top: 16px;
   padding-left: 56px;
   font-weight: bold;
   font-size: 10px;
+  color: ${props => props.black};
 `;

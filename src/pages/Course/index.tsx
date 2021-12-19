@@ -1,14 +1,14 @@
-import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
-import { FlatList, ImageSourcePropType } from 'react-native';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from "react";
+import { FlatList, ImageSourcePropType } from "react-native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 
-import { CourseProfessorsNavigationProp, RoutesParamList } from '../../routes';
+import { CourseProfessorsNavigationProp, RoutesParamList } from "../../routes";
 
 import {
   CampusNavigationProp,
   CoursePlanningNavigationProp,
   CourseConcurrencyNavigationProp
-} from '../../routes';
+} from "../../routes";
 
 import {
   AssetCardCourseLogo,
@@ -16,7 +16,7 @@ import {
   AssetWidgetClassificationIcon,
   AssetWidgetPlanningIcon,
   AssetWidgetProfessorsIcon
-} from '../../assets';
+} from "../../assets";
 
 import {
   Accordion,
@@ -27,9 +27,9 @@ import {
   Paragraph,
   Spacer,
   TitleOutline
-} from '../../core/components';
+} from "../../core/components";
 
-import { useEnterScreen, useEvaluation, useLeaveScreen } from '../../core/hooks';
+import { useEnterScreen, useEvaluation, useLeaveScreen, usePopularityCourse } from "../../core/hooks";
 
 type NavigationProps =  CampusNavigationProp 
                       | CourseProfessorsNavigationProp 
@@ -47,9 +47,8 @@ type WidgetData = {
 export interface CourseProps { }
 
 export const Course: FunctionComponent<CourseProps> = () => {
-
+  const route = useRoute<RouteProp<RoutesParamList, "Course">>();
   const navigation = useNavigation<NavigationProps>();
-  const route = useRoute<RouteProp<RoutesParamList, 'Course'>>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -58,28 +57,30 @@ export const Course: FunctionComponent<CourseProps> = () => {
   const modalTask = useRef<NodeJS.Timeout>();
 
   const [addEvaluation, hasEvaluation] = useEvaluation();
+  const [,,evaluate] = usePopularityCourse(() => {});
 
   useEffect(() => {
     setWidgets([
-      { key: '0', title: 'Sobre o Campus',      route: 'Campus',            icon: AssetWidgetCampusIcon,          params: route.params.Campus }, 
-      { key: '1', title: 'Corpo docente',       route: 'CourseProfessors',  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
-      { key: '2', title: 'Projeto Pedagógico',  route: 'CoursePlanning',    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
-      { key: '3', title: 'Notas de Corte',      route: 'CourseConcurrency', icon: AssetWidgetClassificationIcon,  params: route.params.Course }
+      { key: "0", title: "Sobre o Campus",      route: "Campus",            icon: AssetWidgetCampusIcon,          params: route.params.Campus }, 
+      { key: "1", title: "Corpo docente",       route: "CourseProfessors",  icon: AssetWidgetProfessorsIcon,      params: route.params.Course }, 
+      { key: "2", title: "Projeto Pedagógico",  route: "CoursePlanning",    icon: AssetWidgetPlanningIcon,        params: route.params.Course }, 
+      { key: "3", title: "Notas de Corte",      route: "CourseConcurrency", icon: AssetWidgetClassificationIcon,  params: route.params.Course }
     ]);
   }, [route]);
 
   useEnterScreen(() => {
     setIsLoading(false);
     modalTask.current = setTimeout(() => {
-      if (!hasEvaluation('course', route.params.Course.id)){
-        addEvaluation({ type: 'course', id: route.params.Course.id });
+      if (!hasEvaluation("course", route.params.Course.id)){
+        addEvaluation({ type: "course", id: route.params.Course.id });
         setIsModalOpen(true);
       }
-    }, 6000);
+    }, 12000);
   });
 
   useLeaveScreen(() => {
     setIsLoading(true);
+    setIsModalOpen(false);
 
     if (modalTask.current)
       clearTimeout(modalTask.current);
@@ -87,6 +88,14 @@ export const Course: FunctionComponent<CourseProps> = () => {
 
   function onWidgetClick(item: WidgetData){
     navigation.navigate(item.route, item.params);
+  }
+
+  function onEvaluatingCourse(note: number | "like" | "dislike") {
+    if (note === "like") {
+      evaluate(route.params.Course.id, "like");
+    } else if (note === "dislike") {
+      evaluate(route.params.Course.id, "dislike");
+    }
   }
 
   return (
@@ -163,7 +172,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
       <ModalEvaluation 
         type="popularity" 
         isOpen={isModalOpen} 
-        onResult={console.log} 
+        onResult={onEvaluatingCourse} 
       />
 
     </PageLayout>

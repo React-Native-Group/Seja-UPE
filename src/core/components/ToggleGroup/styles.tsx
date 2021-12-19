@@ -1,21 +1,22 @@
 import styled from "styled-components/native";
 import Ripple from "react-native-material-ripple";
+import { ThemeValue } from "../../providers";
 
-export type ToggleProps = {
+export interface ToggleProps extends ThemeValue {
   isActive: boolean;
 }
 
-export type LabelProps = {
+export interface LabelProps extends ThemeValue {
   isActive: boolean;
 }
 
-export const Container = styled.View`
+export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
   flex: 1;
   flex-direction: row;
   border-width: 1px;
   border-radius: 8px;
-  border-color: #C4C4C4;
-  background-color: #fff;
+  border-color: ${props => props.gray};
+  background-color: ${props => props.white};
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -30,10 +31,10 @@ export const Toggle = styled(Ripple).attrs<ToggleProps>(props => props)<TogglePr
   height: 36px;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.isActive ? '#324A76' : 'transparent'};
+  background-color: ${props => props.isActive ? props.blue : "transparent"};
 `;
 
 export const Label = styled.Text.attrs<LabelProps>(props => props)<LabelProps>`
   font-size: 18px;
-  color: ${props => props.isActive ? '#fff' : '#324A76'};
+  color: ${props => props.isActive ? props.white : props.blue};
 `;

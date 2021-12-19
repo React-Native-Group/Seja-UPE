@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent } from 'react-native';
-import { AssetLattesWhiteLogo } from '../../../assets';
-import { useTheme } from '../../hooks';
-import { Container, Logo } from './styles';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent } from "react-native";
+import { AssetLattesWhiteLogo } from "../../../assets";
+import { useTheme } from "../../hooks";
+import { Container, Logo } from "./styles";
 
 export interface ButtonLattesProps {
   onPress?: (e: GestureResponderEvent) => void

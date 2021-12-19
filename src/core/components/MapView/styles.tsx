@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import Map from 'react-native-maps';
+import Map from "react-native-maps";
 
 export type ContainerProps = {
   width: string;

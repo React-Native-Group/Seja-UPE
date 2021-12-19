@@ -1,8 +1,8 @@
-import React, { Fragment, FunctionComponent, useEffect, useState } from 'react';
-import { RouteProp, useRoute } from '@react-navigation/core';
+import React, { Fragment, FunctionComponent, useEffect, useState } from "react";
+import { RouteProp, useRoute } from "@react-navigation/core";
 
-import { RobotContainer } from './styles';
-import { AssetWidgetEventsIcon, AssetRobotSmileIcon } from '../../assets';
+import { RobotContainer } from "./styles";
+import { AssetWidgetEventsIcon, AssetRobotSmileIcon } from "../../assets";
 
 import {
   Avatar,
@@ -13,17 +13,17 @@ import {
   Paragraph,
   Spacer,
   TitleOutline
-} from '../../core/components';
-import { RoutesParamList } from '../../routes';
-import { CampusEvent, useEnterScreen, useLeaveScreen } from '../../core/hooks';
+} from "../../core/components";
+import { RoutesParamList } from "../../routes";
+import { CampusEvent, useEnterScreen, useLeaveScreen } from "../../core/hooks";
 
 export interface CampusEventsProps { }
 
 export const CampusEvents: FunctionComponent<CampusEventsProps> = () => {
-  const route = useRoute<RouteProp<RoutesParamList, 'CampusEvents'>>();
+  const route = useRoute<RouteProp<RoutesParamList, "CampusEvents">>();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [link, setLink] = useState('about:blank');
+  const [link, setLink] = useState("about:blank");
   const [isLoading, setIsLoading] = useState(true);
 
   function onOpenModal(source:string) {

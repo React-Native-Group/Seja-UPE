@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent } from 'react-native';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent } from "react-native";
 
-import { Badge } from '../Badge';
-import { useTheme } from '../../hooks';
-import { AssetCapIcon } from '../../../assets';
-import { Body, Container, Footer, Header, Icon, Progress, Title } from './styles';
+import { Badge } from "../Badge";
+import { useTheme } from "../../hooks";
+import { AssetCapIcon } from "../../../assets";
+import { Body, Container, Footer, Header, Icon, Progress, Title } from "./styles";
 
 export interface CardSuggestionProps {
   onPress?: (e: GestureResponderEvent) => void;

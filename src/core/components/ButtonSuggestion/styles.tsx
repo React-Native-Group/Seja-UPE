@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import Ripple from 'react-native-material-ripple';
+import Ripple from "react-native-material-ripple";
 import { ThemeValue } from "../../providers";
 
 export const Container = styled(Ripple).attrs<ThemeValue>(props => props)<ThemeValue>`
@@ -43,5 +43,5 @@ export const ProgressContainer = styled.View.attrs<ThemeValue>(props => props)<T
 export const Progress = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 16px;
   font-weight: bold;
-  color: ${props => props.white};
+  color: ${props => props.textColor};
 `;

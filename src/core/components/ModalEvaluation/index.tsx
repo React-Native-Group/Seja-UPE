@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
-import { Modal } from 'react-native';
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import { Modal } from "react-native";
 
-import { Render } from '../Render';
-import { Spacer } from '../Spacer';
-import { useTheme } from '../../hooks';
-import { AssetRobotAskingIcon, AssetRobotKindIcon, AssetRobotSmileIcon } from '../../../assets';
+import { Render } from "../Render";
+import { Spacer } from "../Spacer";
+import { useTheme } from "../../hooks";
+import { AssetRobotAskingIcon, AssetRobotKindIcon, AssetRobotSmileIcon } from "../../../assets";
 
 import {
   ButtonsRow,
@@ -18,18 +18,18 @@ import {
   Star,
   Vertical,
   ViewContainer
-} from './styles';
+} from "./styles";
 
 export interface ModalEvaluationProps {
-  type: 'rating' | 'popularity';
+  type: "rating" | "popularity";
   isOpen: boolean;
-  onResult: (e: number | 'like' | 'dislike') => void;
+  onResult: (e: number | "like" | "dislike") => void;
 }
 
 export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type, isOpen, onResult }) => {
   const [theme] = useTheme();
   const [isOpenModal, setOpenModal] = useState(isOpen);
-  const [popularity, setPopularity] = useState<'none' | 'like' | 'dislike'>('none');
+  const [popularity, setPopularity] = useState<"none" | "like" | "dislike">("none");
   const [rating, setRating] = useState(0);
   const [thanks, setThanks] = useState(false);
 
@@ -37,7 +37,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
 
   useEffect(() => setOpenModal(isOpen), [isOpen]);
 
-  function onPopularityChoosed(result: 'like' | 'dislike'){
+  function onPopularityChoosed(result: "like" | "dislike"){
     if (!mutex.current){
       mutex.current = true;
       setPopularity(result);
@@ -66,7 +66,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
       <ModalContainer activeOpacity={1}>
         <ViewContainer {...theme}>
 
-          <Render if={!thanks && (type == 'popularity')}>
+          <Render if={!thanks && (type == "popularity")}>
             <Vertical>
 
               <RobotBanner 
@@ -82,22 +82,22 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
               <ButtonsRow>
                 <Horizontal>
 
-                  <Clickable onPress={() => onPopularityChoosed('like')} activeOpacity={0.7}>
+                  <Clickable onPress={() => onPopularityChoosed("like")} activeOpacity={0.7}>
                     <Like 
                       name="like1" 
                       size={48} 
-                      color={popularity == 'like' ? theme.blue : theme.evaluationColor} 
+                      color={popularity == "like" ? theme.blue : theme.evaluationColor} 
                     />
                   </Clickable>
 
-                  <Clickable onPress={() => onPopularityChoosed('dislike')} activeOpacity={0.7}>
+                  <Clickable onPress={() => onPopularityChoosed("dislike")} activeOpacity={0.7}>
                     <Dislike
                       name="dislike1"
                       size={48}
-                      color={popularity == 'dislike' ? theme.blue : theme.evaluationColor}
+                      color={popularity == "dislike" ? theme.blue : theme.evaluationColor}
                       style={{
                         transform: [
-                          { rotateX: '180deg' }, //Horizontal
+                          { rotateX: "180deg" }, //Horizontal
                           { scaleX: -1 }, //Horizontal
                           { scaleY: -1 } //Vertical
                         ]
@@ -111,7 +111,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
             </Vertical>
           </Render>
 
-          <Render if={!thanks && (type == 'rating')}>
+          <Render if={!thanks && (type == "rating")}>
             <Vertical>
 
               <RobotBanner

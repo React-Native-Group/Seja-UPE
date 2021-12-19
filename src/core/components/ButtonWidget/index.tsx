@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent, ImageSourcePropType } from 'react-native';
-import { AssetWidgetSampleIcon } from '../../../assets';
-import { Banner, Box, Container, Legend } from './styles';
-import Ripple from 'react-native-material-ripple';
-import { useTheme } from '../../hooks';
+import React, { FunctionComponent } from "react";
+import { GestureResponderEvent, ImageSourcePropType } from "react-native";
+import { AssetWidgetSampleIcon } from "../../../assets";
+import { Banner, Box, Container, Legend } from "./styles";
+import Ripple from "react-native-material-ripple";
+import { useTheme } from "../../hooks";
 
 export interface ButtonWidgetProps {
   legend: string;

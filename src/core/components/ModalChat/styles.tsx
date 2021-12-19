@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
-import { ThemeValue } from '../../providers';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import styled from "styled-components/native";
+import { ThemeValue } from "../../providers";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 
 export const ModalContainer = styled.TouchableOpacity`
   flex: 1;
@@ -21,7 +21,7 @@ export const ViewContainer = styled.View.attrs<ThemeValue>(props => props)<Theme
   padding: 24px;
   padding-top: 16px;
   padding-bottom: 16px;
-  background-color: #fff;
+  background-color: ${props => props.white};
 `;
 
 export const CloseButton = styled(Feather)`
@@ -46,7 +46,7 @@ export const Header = styled.View.attrs<ThemeValue>(props => props)<ThemeValue>`
 
 export const HeaderTitle = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
   font-size: 14px;
-  color: ${props => props.white};
+  color: ${props => props.textColor};
 `;
 
 export const Input = styled.TextInput.attrs<ThemeValue>(props => props)<ThemeValue>`

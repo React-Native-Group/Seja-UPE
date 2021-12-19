@@ -13,7 +13,7 @@ export const Container = styled.View.attrs<ThemeValue>(props => props)<ThemeValu
 `;
 
 export const Note = styled.Text.attrs<ThemeValue>(props => props)<ThemeValue>`
-  font-size: 36px;
+  font-size: 34px;
   color: ${props => props.blue};
 `;
 

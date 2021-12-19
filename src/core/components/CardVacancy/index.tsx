@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { Container, Label } from './styles';
-import { useTheme } from '../../hooks';
+import React, { FunctionComponent } from "react";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Container, Label } from "./styles";
+import { useTheme } from "../../hooks";
 
 export interface CardVacancyProps {
   value: number
