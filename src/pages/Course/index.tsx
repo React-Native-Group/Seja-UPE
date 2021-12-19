@@ -75,7 +75,7 @@ export const Course: FunctionComponent<CourseProps> = () => {
         addEvaluation({ type: "course", id: route.params.Course.id });
         setIsModalOpen(true);
       }
-    }, 2000);
+    }, 12000);
   });
 
   useLeaveScreen(() => {
