@@ -1,6 +1,8 @@
 import React from 'react';
+import { fireEvent, render } from "../core";
 import { Button } from '../../src/core/components';
-import { fireEvent, render, waitFor } from "../core";
+
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 test('render of Button', async () => {
 
