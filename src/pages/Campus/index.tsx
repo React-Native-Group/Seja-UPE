@@ -39,9 +39,8 @@ type NavigationProps =  CampusEventsNavigationProp
 export interface CampusProps { }
 
 export const Campus: FunctionComponent<CampusProps> = () => {
-
-  const navigation = useNavigation<NavigationProps>();
   const route = useRoute<RouteProp<RoutesParamList, "Campus">>();
+  const navigation = useNavigation<NavigationProps>();
 
   const [widgets, setWidgets] = useState<WidgetData[]>([]);
   const [isLoading, setIsLoading] = useState(true);

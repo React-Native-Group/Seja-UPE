@@ -21,8 +21,8 @@ import { Alert } from "react-native";
 export interface CourseProfessorsProps { }
 
 export const CourseProfessors: FunctionComponent<CourseProfessorsProps> = () => {
-  const navigation = useNavigation<CourseProfessorNavigationProp>();
   const route = useRoute<RouteProp<RoutesParamList, "CourseProfessors">>();
+  const navigation = useNavigation<CourseProfessorNavigationProp>();
   
   const [isLoading, setIsLoading] = useState(true);
 

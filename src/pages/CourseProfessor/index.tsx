@@ -11,8 +11,8 @@ import { Avatar, Badge, ButtonLattes, ButtonLink, ModalWebView, PageLayout, Para
 export interface CourseProfessorProps { }
 
 export const CourseProfessor: FunctionComponent<CourseProfessorProps> = () => {
-  const [theme] = useTheme();
   const route = useRoute<RouteProp<RoutesParamList, "CourseProfessor">>();
+  const [theme] = useTheme();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

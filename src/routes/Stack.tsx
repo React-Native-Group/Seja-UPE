@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+
+import { RoutesParamList } from "./Types";
 import {
   Campus,
   CampusContact,
@@ -16,8 +18,6 @@ import {
   Tests,
   Welcome
 } from "../pages";
-
-import { RoutesParamList } from "./Types";
 
 const Stack = createStackNavigator<RoutesParamList>();
 

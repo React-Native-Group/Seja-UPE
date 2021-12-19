@@ -32,8 +32,8 @@ import {
 export interface SurveyProps { }
 
 export const Survey: FunctionComponent<SurveyProps> = () => {
-  const [theme] = useTheme();
   const navigation = useNavigation<WelcomeNavigationProp>();
+  const [theme] = useTheme();
 
   const [progress, setProgress] = useState(1);
   const [questions] = useState<SurveyType>(SurveyConfig);
@@ -50,6 +50,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
 
   function doSurveyBack(){
     choiceId.current = -1;
+    choices.current.pop();
     setProgress(progress-1);
     clearGroup();
   }

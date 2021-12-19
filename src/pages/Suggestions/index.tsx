@@ -4,11 +4,7 @@ import { FlatList } from "react-native";
 
 import { SurveyValue } from "../../core/config";
 import { Notification } from "../../core/services";
-
-import {
-  AssetRobotAskingIcon,
-  AssetRobotKindIcon
-} from "../../assets";
+import { AssetRobotAskingIcon, AssetRobotKindIcon } from "../../assets";
 
 import {
   CourseNavigationProp,
@@ -112,15 +108,17 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   useEffect(() => {
     setCampusSelected(undefined);
     setCourseSelected(undefined);
+
     if (modalTask.current)
       clearTimeout(modalTask.current);
+
     if (tab == "suggestions"){
       setTimeout(() => {
         if (surveyDone && !hasEvaluation("survey", 0)){
           addEvaluation({ type: "survey", id: 0 });
           setIsModalOpen(true);
         }
-      }, 6000);
+      }, 10000);
     }
   }, [tab]);
 

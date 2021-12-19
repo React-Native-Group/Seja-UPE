@@ -21,9 +21,9 @@ import {
 export interface SearchResultsProps { }
 
 export const SearchResults: FunctionComponent<SearchResultsProps> = () => {
-  const [theme] = useTheme();
-  const navigation = useNavigation<CourseNavigationProp>();
   const route = useRoute<RouteProp<RoutesParamList, 'SearchResults'>>();
+  const navigation = useNavigation<CourseNavigationProp>();
+  const [theme] = useTheme();
 
   const [isLoading, setIsLoading] = useState(true);
   const [foundCourses, setFoundCourses] = useState<CampusCourse[]>([]);
