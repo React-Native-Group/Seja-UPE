@@ -139,6 +139,7 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
                   isOwner: message.userEmail.toLocaleLowerCase() === user.email?.toLocaleLowerCase(),
                   username: message.userName,
                   photo: message.userPhoto,
+                  email: message.userEmail,
                   text: message.text
                 }
               })
