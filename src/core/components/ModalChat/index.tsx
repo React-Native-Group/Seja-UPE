@@ -44,13 +44,34 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
 
   const [isSocketUp, sendMessage, subscribe, unsubscribe] = useChatWebSocket<ChatMessage>();
 
+  const RobotMessages: ChatMessage[] = [
+    {
+      userPhoto: "https://i.imgur.com/iR7G6ng.png",
+      userName: "D-Ritchie",
+      userEmail: "noreply@sejaupe.website",
+      text: "Olá, tudo bem?"
+    },
+    {
+      userPhoto: "https://i.imgur.com/iR7G6ng.png",
+      userName: "D-Ritchie",
+      userEmail: "noreply@sejaupe.website",
+      text: "Aqui você pode interagir com outras pessoas!"
+    },
+    {
+      userPhoto: "https://i.imgur.com/iR7G6ng.png",
+      userName: "D-Ritchie",
+      userEmail: "noreply@sejaupe.website",
+      text: "Deixe sua mensagem, quem sabe alguém não possa te ajudar?"
+    }
+  ];
+
   useEffect(() => {
     setIsVisible(isOpen);
   }, [isOpen]);
 
   useEffect(() => {
-    messagesRef.current = [];
-    setMessages([]);
+    messagesRef.current = RobotMessages;
+    setMessages(RobotMessages);
   }, [isSocketUp]);
 
   useEffect(() => {
@@ -118,6 +139,7 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
                   isOwner: message.userEmail.toLocaleLowerCase() === user.email?.toLocaleLowerCase(),
                   username: message.userName,
                   photo: message.userPhoto,
+                  email: message.userEmail,
                   text: message.text
                 }
               })
