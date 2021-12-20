@@ -1,7 +1,7 @@
 
 export const DarkPallete = {
   schemaName:               "dark",
-  blue:                     "#334b75", //OK
+  blue:                     "#435d8a", //OK
   blueNeon:                 "#1ED8D8", //OK
   red:                      "#BE272C", //OK
   black:                    "#D9D9D9", //OK
