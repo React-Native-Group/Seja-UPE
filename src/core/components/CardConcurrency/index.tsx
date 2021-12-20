@@ -16,19 +16,19 @@ export const CardConcurrency: FunctionComponent<CardConcurrencyProps> = ({ lower
     <Container {...theme}>
       <Group>
         <MaterialCommunityIcons 
-          name="chevron-double-up" 
-          size={30} 
-          color={theme.concurrencyGreen} 
-        />
-        <Note {...theme}>{higherNote}</Note>
-      </Group>
-      <Group>
-        <MaterialCommunityIcons 
           name="chevron-double-down" 
           size={30} 
           color={theme.concurrencyRed} 
         />
         <Note {...theme}>{lowerNote}</Note>
+      </Group>
+      <Group>
+        <MaterialCommunityIcons 
+          name="chevron-double-up" 
+          size={30} 
+          color={theme.concurrencyGreen} 
+        />
+        <Note {...theme}>{higherNote}</Note>
       </Group>
     </Container>
   );
