@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion } from "../../src/core/components";
+import { Accordion, Paragraph } from "../../src/core/components";
 import { render } from "../core";
 
 test('render of Acorddion', async () => {
@@ -8,8 +8,11 @@ test('render of Acorddion', async () => {
     <Accordion
       title="Accordion"
       body="body"
-      bold={false}
-    />
+      bold={true}
+      beginOpen
+    >
+        <Paragraph>Hello!</Paragraph>
+    </Accordion>
   );
 
 });
