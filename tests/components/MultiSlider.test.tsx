@@ -23,10 +23,14 @@ test('press MultiSlider', async () => {
     />
   );
 
-  fireEvent(getByTestId('multislider.container'), 'onChange', { 
+  fireEvent(getByTestId('multislider.container'), 'onLayout', { 
     nativeEvent: { 
-      locationX: 100, 
-      locationY: 100 
+      layout: {
+        height: 300, 
+        width: 400, 
+        x: 0, 
+        y: 0
+      }
     }
   });
 
