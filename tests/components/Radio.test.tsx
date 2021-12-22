@@ -21,7 +21,7 @@ test('render of Radio', async () => {
   );
 });
 
-test('press Button', async () => {
+test('press Radio', async () => {
   
   const { getByTestId } = render(
     <RadioContainer>

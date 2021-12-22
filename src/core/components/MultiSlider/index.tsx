@@ -53,7 +53,7 @@ export const MultiSlider: FunctionComponent<MultiSliderProps> = (props) => {
   }, []);
 
   return (
-    <Container onLayout={onLayoutChange}>
+    <Container onLayout={onLayoutChange} testID="multislider.container">
       <Render if={length > 0}>
         <Slider
           snapped

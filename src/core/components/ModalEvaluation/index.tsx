@@ -82,7 +82,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
               <ButtonsRow>
                 <Horizontal>
 
-                  <Clickable onPress={() => onPopularityChoosed("like")} activeOpacity={0.7}>
+                  <Clickable onPress={() => onPopularityChoosed("like")} activeOpacity={0.7} testID="modalevaluation.clickable">
                     <Like 
                       name="like1" 
                       size={48} 
