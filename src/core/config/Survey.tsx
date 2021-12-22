@@ -1758,8 +1758,6 @@ export const Survey: SurveyType = [
         Text: "Não sei. Não entendo muito sobre isto.",
         Values: [
           [50, 1], //Bacharelado em Enfermagem
-          [50, 1], //Bacharelado em Enfermagem
-          [50, 1], //Bacharelado em Enfermagem
           [50, 2], //Bacharelado em Fisioterapia
           [50, 3], //Bacharelado em Nutrição
           [50, 4], //Licenciatura em Ciências Biológicas

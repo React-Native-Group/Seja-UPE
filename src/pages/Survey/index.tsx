@@ -64,16 +64,17 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
         "uma das opções que mais corresponde a você."
       );
     }
-    if ((choiceId.current != -1) && !isFinished){
+    if ((choiceId.current != -1)) {
       choices.current.push(questions[progress - 1].Options[choiceId.current]);
-      choiceId.current = -1;
-      setProgress(progress+1);
-      clearGroup();
+      if (!isFinished){
+        setProgress(progress+1);
+        clearGroup();
+      } else {
+        setSurveyResults(getSurveyResults(choices.current));
+        navigation.navigate("Suggestions");
+      }
     }
-    if (isFinished){
-      setSurveyResults(getSurveyResults(choices.current));
-      navigation.navigate("Suggestions");
-    }
+    choiceId.current = -1;
   }
 
   return (

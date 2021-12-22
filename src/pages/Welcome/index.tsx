@@ -19,8 +19,9 @@ import {
 } from "../../core/hooks";
 
 import {
+  AssetRobotHandOnTheWaistIcon,
+  AssetRobotHappyIcon,
   AssetRobotKindIcon,
-  AssetRobotQuestionsIcon,
   AssetRobotSmileDownIcon,
   AssetRobotSmileIcon
 } from "../../assets";
@@ -137,10 +138,10 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
 
   function getRobotIcon(): ImageSourcePropType {
     return [
-      AssetRobotSmileDownIcon,
+      AssetRobotHandOnTheWaistIcon,
       AssetRobotKindIcon,
       AssetRobotSmileDownIcon,
-      AssetRobotQuestionsIcon
+      AssetRobotHappyIcon
     ][step] ?? AssetRobotSmileIcon;
   }
 
