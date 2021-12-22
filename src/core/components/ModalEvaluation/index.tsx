@@ -161,7 +161,6 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
                 {...theme}
                 resizeMode="contain"
                 source={AssetRobotSmileIcon}
-                testID="modalEvaluation.thanks"
               />
               <Spacer verticalSpace={18} />
 
