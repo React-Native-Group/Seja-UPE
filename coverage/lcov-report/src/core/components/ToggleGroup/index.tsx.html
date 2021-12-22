@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">58.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>7/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
@@ -54,8 +54,14 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,27 +94,31 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,33 +129,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Container, Label, Toggle } from './styles';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { FunctionComponent, useEffect, useState } from "react";
+import { useTheme } from "../../hooks";
+import { Container, Label, Toggle } from "./styles";
 &nbsp;
 export interface ToggleGroupProps {
-  onChange?: (e: 'ssa' | 'sisu') =&gt; void;
-  initialValue?: 'ssa' | 'sisu';
+  onChange?: (e: "ssa" | "sisu") =&gt; void;
+  initialValue?: "ssa" | "sisu";
 }
 &nbsp;
-export const ToggleGroup: FunctionComponent&lt;ToggleGroupProps&gt; = <span class="fstat-no" title="function not covered" >({</span> onChange, initialValue }) =&gt; {
-  const [ selected, setSelected ] = <span class="cstat-no" title="statement not covered" >useState&lt;'ssa' | 'sisu'&gt;(initialValue ?? 'ssa');</span>
+export const ToggleGroup: FunctionComponent&lt;ToggleGroupProps&gt; = ({ onChange, initialValue }) =&gt; {
+  const [ selected, setSelected ] = useState&lt;"ssa" | "sisu"&gt;(initialValue ?? <span class="branch-1 cbranch-no" title="branch not covered" >"ssa")</span>;
+  const [ theme ] = useTheme();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (!!onChange) <span class="cstat-no" title="statement not covered" >onChange(selected);</span></span>
+  useEffect(() =&gt; {
+    if (!!onChange) onChange(selected);
   }, []);
 &nbsp;
-  function <span class="fstat-no" title="function not covered" >onChangeSelection(</span>e: 'ssa' | 'sisu'){
+  function <span class="fstat-no" title="function not covered" >onChangeSelection(</span>e: "ssa" | "sisu"){
 <span class="cstat-no" title="statement not covered" >    if (!!onChange) <span class="cstat-no" title="statement not covered" >onChange(e);</span></span>
 <span class="cstat-no" title="statement not covered" >    setSelected(e);</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;Container&gt;
-      &lt;Toggle isActive={selected == 'ssa'} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onChangeSelection('ssa')}</span>&gt;
-        &lt;Label isActive={selected == 'ssa'}&gt;SSA&lt;/Label&gt;
+  return (
+    &lt;Container {...theme}&gt;
+      &lt;Toggle isActive={selected == "ssa"} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onChangeSelection("ssa")}</span> {...theme}&gt;
+        &lt;Label isActive={selected == "ssa"} {...theme}&gt;SSA&lt;/Label&gt;
       &lt;/Toggle&gt;
-      &lt;Toggle isActive={selected == 'sisu'} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onChangeSelection('sisu')}</span>&gt;
-        &lt;Label isActive={selected == 'sisu'}&gt;SISU&lt;/Label&gt;
+      &lt;Toggle isActive={selected == "sisu"} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onChangeSelection("sisu")}</span> {...theme}&gt;
+        &lt;Label isActive={selected == "sisu"} {...theme}&gt;SISU&lt;/Label&gt;
       &lt;/Toggle&gt;
     &lt;/Container&gt;
   );
@@ -156,8 +168,8 @@ export const ToggleGroup: FunctionComponent&lt;ToggleGroupProps&gt; = <span clas
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Dec 01 2021 20:56:18 GMT-0300 (GMT-03:00)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
+                at Tue Dec 21 2021 21:15:34 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

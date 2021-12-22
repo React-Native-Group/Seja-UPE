@@ -1,13 +1,12 @@
 import React from "react";
-import { Radio, RadioType, useRadioGroup } from "../../src/core/components";
+import { Radio, useRadioGroup } from "../../src/core/components";
 import { RadioContainer } from "../../src/pages/Survey/styles";
-import { render } from "../core";
+import { fireEvent, render } from "../core";
 import { renderHook } from '@testing-library/react-hooks'
 
+const radio = renderHook(() => useRadioGroup(5));
+const [group, setGroup] = radio.result.current;
 test('render of Radio', async () => {
-
-  const radio = renderHook(() => useRadioGroup(5));
-  const [group, setGroup] = radio.result.current;
   
   render(
     <RadioContainer>
@@ -20,4 +19,26 @@ test('render of Radio', async () => {
     </RadioContainer>
   
   );
+});
+
+test('press Button', async () => {
+  
+  const { getByTestId } = render(
+    <RadioContainer>
+      <Radio 
+        reference={group[1]}
+        group={group} 
+        onPress={() => {}} 
+        onHandle={setGroup}      
+        />
+    </RadioContainer>
+  );
+
+  fireEvent(getByTestId('radio.container'), 'onPress', { 
+    nativeEvent: { 
+      locationX: 100, 
+      locationY: 100 
+    }
+  });
+
 });

@@ -30,16 +30,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
@@ -54,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line low'></div>
     <pre><table class="coverage">
@@ -99,10 +105,14 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,6 +121,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,12 +140,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -136,17 +148,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios from 'axios';
-import { WebserviceUrl, AppVersion } from '../config';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios, { AxiosResponse } from "axios";
+import { WebserviceUrl, AppVersion } from "../config";
 &nbsp;
 export const Client = axios.create({
   baseURL: WebserviceUrl,
-  headers: { 'X-App-Version': AppVersion }
+  headers: { "X-App-Version": AppVersion }
 });
 &nbsp;
 export type Request = {
@@ -156,32 +170,36 @@ export type Request = {
   headers?: any
 } 
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >get&lt;</span>T&gt;({ url, params, headers }: Request): Promise&lt;T | boolean&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await Client.get&lt;T&gt;(url, { headers, params });</span>
-<span class="cstat-no" title="statement not covered" >  if (!response || !response.data)</span>
-<span class="cstat-no" title="statement not covered" >    return false;</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+export async function <span class="fstat-no" title="function not covered" >get&lt;</span>T&gt;({ url, params, headers }: Request): Promise&lt;[boolean, AxiosResponse&lt;T&gt;]&gt; {
+<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, _) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    Client.get&lt;T&gt;(url, { headers, params })</span>
+      .then(<span class="fstat-no" title="function not covered" >re</span>s =&gt; <span class="cstat-no" title="statement not covered" >resolve([true, res]))</span>
+      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >resolve([false, error.response]))</span>;
+  });
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >post&lt;</span>T&gt;({ url, params, body, headers }: Request): Promise&lt;T | boolean&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await Client.post&lt;T&gt;(url, body, { headers, params });</span>
-<span class="cstat-no" title="statement not covered" >  if (!response || !response.data)</span>
-<span class="cstat-no" title="statement not covered" >    return false;</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+export async function <span class="fstat-no" title="function not covered" >post&lt;</span>T&gt;({ url, params, body, headers }: Request): Promise&lt;[boolean, AxiosResponse&lt;T&gt;]&gt; {
+<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, _) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    Client.post&lt;T&gt;(url, body, { headers, params })</span>
+      .then(<span class="fstat-no" title="function not covered" >re</span>s =&gt; <span class="cstat-no" title="statement not covered" >resolve([true, res]))</span>
+      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >resolve([false, error.response]))</span>;
+  });
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >put&lt;</span>T&gt;({ url, params, body, headers }: Request): Promise&lt;T | boolean&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await Client.put&lt;T&gt;(url, body, { headers, params });</span>
-<span class="cstat-no" title="statement not covered" >  if (!response || !response.data)</span>
-<span class="cstat-no" title="statement not covered" >    return false;</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+export async function <span class="fstat-no" title="function not covered" >put&lt;</span>T&gt;({ url, params, body, headers }: Request): Promise&lt;[boolean, AxiosResponse&lt;T&gt;]&gt; {
+<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, _) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    Client.put&lt;T&gt;(url, body, { headers, params })</span>
+      .then(<span class="fstat-no" title="function not covered" >re</span>s =&gt; <span class="cstat-no" title="statement not covered" >resolve([true, res]))</span>
+      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >resolve([false, error.response]))</span>;
+  });
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >del&lt;</span>T&gt;({ url, params, headers }: Request): Promise&lt;T | boolean&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await Client.delete&lt;T&gt;(url, { headers, params });</span>
-<span class="cstat-no" title="statement not covered" >  if (!response || !response.data)</span>
-<span class="cstat-no" title="statement not covered" >    return false;</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+export async function <span class="fstat-no" title="function not covered" >del&lt;</span>T&gt;({ url, params, headers }: Request): Promise&lt;[boolean, AxiosResponse&lt;T&gt;]&gt; {
+<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, _) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    Client.delete&lt;T&gt;(url, { headers, params })</span>
+      .then(<span class="fstat-no" title="function not covered" >re</span>s =&gt; <span class="cstat-no" title="statement not covered" >resolve([true, res]))</span>
+      .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >resolve([false, error.response]))</span>;
+  });
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -189,8 +207,8 @@ export async function <span class="fstat-no" title="function not covered" >del&l
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Dec 01 2021 20:56:18 GMT-0300 (GMT-03:00)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
+                at Tue Dec 21 2021 21:15:34 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

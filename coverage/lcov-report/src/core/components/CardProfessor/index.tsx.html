@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -54,8 +54,14 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -120,7 +126,8 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,11 +152,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,14 +172,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,10 +187,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { FunctionComponent } from 'react';
-import { GestureResponderEvent, ImageSourcePropType } from 'react-native';
-import { useTheme } from '../../hooks';
-import { Badge } from '../Badge';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { FunctionComponent } from "react";
+import { GestureResponderEvent, ImageSourcePropType } from "react-native";
+import { useTheme } from "../../hooks";
+import { Badge } from "../Badge";
 import { 
   AreaList, 
   Biography, 
@@ -199,7 +207,7 @@ import {
   Photo, 
   PhotoContainer, 
   Title 
-} from './styles';
+} from "./styles";
 &nbsp;
 export interface CardProfessorProps {
   name: string;
@@ -209,17 +217,17 @@ export interface CardProfessorProps {
   onPress?: (e: GestureResponderEvent) =&gt; void;
 }
 &nbsp;
-export const CardProfessor: FunctionComponent&lt;CardProfessorProps&gt; = <span class="fstat-no" title="function not covered" >({</span> name, photo, shortbio, areas, onPress }) =&gt; {
-  const [theme] = <span class="cstat-no" title="statement not covered" >useTheme();</span>
+export const CardProfessor: FunctionComponent&lt;CardProfessorProps&gt; = ({ name, photo, shortbio, areas, onPress }) =&gt; {
+  const [theme] = useTheme();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;Container {...theme} activeOpacity={0.7} onPress={onPress ?? (<span class="fstat-no" title="function not covered" >()</span> =&gt; {})}&gt;
       &lt;Header {...theme}&gt;
         &lt;Title {...theme} numberOfLines={1}&gt;{name}&lt;/Title&gt;
       &lt;/Header&gt;
       &lt;Body&gt;
         &lt;PhotoContainer&gt;
-          &lt;Photo source={photo} /&gt;
+          &lt;Photo resizeMode="cover" source={photo} /&gt;
         &lt;/PhotoContainer&gt;
         &lt;InfoContainer&gt;
           &lt;BiographyContainer&gt;
@@ -228,10 +236,11 @@ export const CardProfessor: FunctionComponent&lt;CardProfessorProps&gt; = <span 
           &lt;AreaList 
             data={areas}
             horizontal={true}
-            keyExtractor={<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >String(item)}</span>
+            overScrollMode="never"
+            keyExtractor={(item) =&gt; String(item)}
             showsHorizontalScrollIndicator={false}
-            renderItem={<span class="fstat-no" title="function not covered" >({</span> item }) =&gt; (
-<span class="cstat-no" title="statement not covered" >              &lt;ItemView&gt;</span>
+            renderItem={({ item }) =&gt; (
+              &lt;ItemView&gt;
                 &lt;Badge 
                   text={String(item)} 
                   animated={false} 
@@ -252,8 +261,8 @@ export const CardProfessor: FunctionComponent&lt;CardProfessorProps&gt; = <span 
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Dec 01 2021 20:56:18 GMT-0300 (GMT-03:00)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
+                at Tue Dec 21 2021 21:15:34 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
