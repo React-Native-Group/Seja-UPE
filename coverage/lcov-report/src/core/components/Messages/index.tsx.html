@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -120,7 +120,16 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,6 +152,10 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,7 +164,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,6 +205,7 @@ export interface MessageEnvelope {
   photo: string | null;
   username: string | null;
   text: string;
+  email: string;
   isOwner: boolean;
 }
 &nbsp;
@@ -200,6 +217,10 @@ export const Messages: FunctionComponent&lt;MessagesProps&gt; = ({ messages }) =
   const [theme] = useTheme();
   const containerRef = useRef&lt;ScrollView | null&gt;(null);
 &nbsp;
+  function isSameOwner(message: MessageEnvelope, index: number, array: MessageEnvelope[]){
+    return message.email != (index &lt;= 0 ? "" : array[index-1].email);
+  }
+&nbsp;
   return (
     &lt;Container 
       nestedScrollEnabled 
@@ -207,17 +228,20 @@ export const Messages: FunctionComponent&lt;MessagesProps&gt; = ({ messages }) =
       onContentSizeChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >containerRef.current?.scrollToEnd({ animated: true })}</span>
     &gt;
 &nbsp;
-      {messages.map(<span class="fstat-no" title="function not covered" >({</span>isOwner, ...message}) =&gt; (
-<span class="cstat-no" title="statement not covered" >        &lt;Fragment key={String(Math.floor(Math.random() * 10**5))}&gt;</span>
+      {messages.map(({isOwner, ...message}, index: number, array: MessageEnvelope[]) =&gt; (
+        &lt;Fragment key={String(Math.floor(Math.random() * 10**5))}&gt;
 &nbsp;
-          &lt;Render if={!isOwner}&gt;
-            &lt;Username {...theme}&gt;{message.username ?? ""}&lt;/Username&gt;
+          &lt;Render if={!isOwner &amp;&amp; isSameOwner({isOwner, ...message}, index, array)}&gt;
+            &lt;Username {...theme}&gt;{message.username ?? <span class="branch-1 cbranch-no" title="branch not covered" >""}</span>&lt;/Username&gt;
           &lt;/Render&gt;
 &nbsp;
           &lt;ViewAlign {...theme} isOwner={isOwner}&gt;
 &nbsp;
             &lt;Render if={!isOwner}&gt;
-              &lt;Photo resizeMode="cover" source={{ uri: message.photo ?? "" }} /&gt;
+              &lt;Photo 
+                resizeMode="cover" 
+                source={{ uri: isSameOwner({isOwner, ...message}, index, array) ? (message.photo ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined)</span> : undefined}} 
+              /&gt;
             &lt;/Render&gt;
 &nbsp;
             &lt;MessageContainer {...theme} isOwner={isOwner}&gt;
@@ -241,7 +265,7 @@ export const Messages: FunctionComponent&lt;MessagesProps&gt; = ({ messages }) =
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Tue Dec 21 2021 22:33:11 GMT-0300 (GMT-03:00)
+                at Tue Dec 21 2021 23:04:09 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

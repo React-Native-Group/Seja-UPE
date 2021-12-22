@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">86.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/30</span>
+                <span class='fraction'>26/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.28% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/14</span>
+                <span class='fraction'>12/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.66% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.83% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/24</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -258,15 +258,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -278,17 +288,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -321,7 +321,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -359,7 +359,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -444,13 +444,13 @@ export const ModalEvaluation: FunctionComponent&lt;ModalEvaluationProps&gt; = ({
     }
   }
 &nbsp;
-  function <span class="fstat-no" title="function not covered" >onRatingChoosed(</span>result: number){
-<span class="cstat-no" title="statement not covered" >    if (!mutex.current){</span>
-<span class="cstat-no" title="statement not covered" >      mutex.current = true;</span>
-<span class="cstat-no" title="statement not covered" >      setRating(result);</span>
-<span class="cstat-no" title="statement not covered" >      onResult(result);</span>
-<span class="cstat-no" title="statement not covered" >      setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setThanks(true),</span> 1000);</span>
-<span class="cstat-no" title="statement not covered" >      setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setOpenModal(false),</span> 2500);</span>
+  function onRatingChoosed(result: number){
+    if (!mutex.current){
+      mutex.current = true;
+      setRating(result);
+      onResult(result);
+      setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setThanks(true),</span> 1000);
+      setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setOpenModal(false),</span> 2500);
     }
   }
 &nbsp;
@@ -479,7 +479,7 @@ export const ModalEvaluation: FunctionComponent&lt;ModalEvaluationProps&gt; = ({
               &lt;ButtonsRow&gt;
                 &lt;Horizontal&gt;
 &nbsp;
-                  &lt;Clickable onPress={() =&gt; onPopularityChoosed("like")} activeOpacity={0.7} testID="modalevaluation.clickable"&gt;
+                  &lt;Clickable onPress={() =&gt; onPopularityChoosed("like")} activeOpacity={0.7} testID="like.clickable"&gt;
                     &lt;Like 
                       name="like1" 
                       size={48} 
@@ -487,7 +487,7 @@ export const ModalEvaluation: FunctionComponent&lt;ModalEvaluationProps&gt; = ({
                     /&gt;
                   &lt;/Clickable&gt;
 &nbsp;
-                  &lt;Clickable onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onPopularityChoosed("dislike")}</span> activeOpacity={0.7}&gt;
+                  &lt;Clickable onPress={() =&gt; onPopularityChoosed("dislike")} activeOpacity={0.7} testID="dislike.clickable"&gt;
                     &lt;Dislike
                       name="dislike1"
                       size={48}
@@ -525,12 +525,12 @@ export const ModalEvaluation: FunctionComponent&lt;ModalEvaluationProps&gt; = ({
                 &lt;Horizontal&gt;
 &nbsp;
                   {[...Array(5)].map((_, i) =&gt; (
-                    &lt;Clickable activeOpacity={0.7} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onRatingChoosed(i+1)}</span> key={String(i)}&gt;
+                    &lt;Clickable activeOpacity={0.7} onPress={() =&gt; onRatingChoosed(i+1)} key={String(i)} testID={"rating.clickable" + i}&gt;
                       &lt;Star 
                         key={String(i)}
                         name="star" 
                         size={38} 
-                        color={rating &gt; i ? <span class="branch-0 cbranch-no" title="branch not covered" >theme.yellow </span>: theme.evaluationColor} 
+                        color={rating &gt; i ? theme.yellow : theme.evaluationColor} 
                       /&gt;
                     &lt;/Clickable&gt;
                   ))}
@@ -568,7 +568,7 @@ export const ModalEvaluation: FunctionComponent&lt;ModalEvaluationProps&gt; = ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Tue Dec 21 2021 22:33:11 GMT-0300 (GMT-03:00)
+                at Tue Dec 21 2021 23:04:09 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
