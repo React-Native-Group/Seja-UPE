@@ -2,6 +2,8 @@ import React from 'react';
 import { Header } from '../../src/core/components';
 import { fireEvent, render } from "../core";
 
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+
 test('render of Header', async () => {
 
   render(
