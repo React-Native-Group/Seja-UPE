@@ -5,12 +5,12 @@ import { renderHook } from "@testing-library/react-hooks"
 
 
 test("render of Radio", () => {
-  const {result} = renderHook(() => useRadioGroup(5));
+  const {result} = renderHook(() => useRadioGroup(1));
   const [group, setGroup] = result.current;
 
   render(
     <Radio
-      reference={group[1]}
+      reference={group[0]}
       group={group}
       onPress={() => { }}
       onHandle={setGroup}
@@ -20,14 +20,14 @@ test("render of Radio", () => {
 });
 
 test("press Radio", () => {
-  const {result} = renderHook(() => useRadioGroup(5));
-  const [group, setGroup] = result.current;
+  const {result} = renderHook(() => useRadioGroup(1));
+  const [group, setGroup, clearChoices] = result.current;
   
   const { getByTestId } = render(
     <Radio
-      reference={group[1]}
+      reference={group[0]}
       group={group}
-      onPress={() => { }}
+      onPress={() => {}}
       onHandle={setGroup}
     />
   );
@@ -39,6 +39,7 @@ test("press Radio", () => {
         locationY: 100
       }
     });
+    clearChoices();
   });
 
 });
