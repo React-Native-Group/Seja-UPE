@@ -1,6 +1,6 @@
 import React from "react";
 import { ToggleGroup } from "../../src/core/components";
-import { render } from "../core";
+import { fireEvent, render } from "../core";
 
 test('render of ToggleGroup', async () => {
   render(
@@ -9,4 +9,22 @@ test('render of ToggleGroup', async () => {
       initialValue="ssa"
     />
   );
+});
+
+test('press ToggleGroup', async () => {
+  
+  const { getByTestId } = render(
+    <ToggleGroup
+      onChange={() => {}}
+      initialValue="ssa"
+    />
+  );
+
+  fireEvent(getByTestId('togglegroup.container'), 'onPress', { 
+    nativeEvent: { 
+      locationX: 200,
+      locationY: 300
+    }
+  });
+
 });
