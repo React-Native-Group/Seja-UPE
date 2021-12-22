@@ -82,7 +82,11 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
               <ButtonsRow>
                 <Horizontal>
 
-                  <Clickable onPress={() => onPopularityChoosed("like")} activeOpacity={0.7} testID="modalevaluation.clickable">
+                  <Clickable 
+                    onPress={() => onPopularityChoosed("like")} 
+                    activeOpacity={0.7} 
+                    testID="teste"
+                  >
                     <Like 
                       name="like1" 
                       size={48} 
@@ -90,7 +94,10 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
                     />
                   </Clickable>
 
-                  <Clickable onPress={() => onPopularityChoosed("dislike")} activeOpacity={0.7}>
+                  <Clickable 
+                    onPress={() => onPopularityChoosed("dislike")} 
+                    activeOpacity={0.7}
+                  >
                     <Dislike
                       name="dislike1"
                       size={48}
@@ -128,7 +135,11 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
                 <Horizontal>
 
                   {[...Array(5)].map((_, i) => (
-                    <Clickable activeOpacity={0.7} onPress={() => onRatingChoosed(i+1)} key={String(i)}>
+                    <Clickable 
+                      activeOpacity={0.7} 
+                      onPress={() => onRatingChoosed(i+1)} 
+                      key={String(i)}
+                    >
                       <Star 
                         key={String(i)}
                         name="star" 
@@ -150,6 +161,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
                 {...theme}
                 resizeMode="contain"
                 source={AssetRobotSmileIcon}
+                testID="modalEvaluation.thanks"
               />
               <Spacer verticalSpace={18} />
 

@@ -1,9 +1,8 @@
-import React from 'react';
-import { MapView } from '../../src/core/components';
+import React from "react";
+import { MapView } from "../../src/core/components";
 import { render } from "../core";
 
-test('render of MapView', async () => {
-
+test("render of MapView", () => {
   render(
     <MapView 
         region={{
@@ -14,8 +13,8 @@ test('render of MapView', async () => {
         }}
         points={[
           {
-            title: 'Universidade de Pernambuco',
-            description: 'Campus Garanhuns',
+            title: "Universidade de Pernambuco",
+            description: "Campus Garanhuns",
             coords: {
               latitude: -8.8833723,
               longitude: -36.4970813
@@ -24,5 +23,4 @@ test('render of MapView', async () => {
         ]}        
       />
   );
-
 });

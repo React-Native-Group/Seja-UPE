@@ -2,8 +2,7 @@ import React from "react";
 import { Badge } from "../../src/core/components";
 import { render } from "../core";
 
-test('render of Badge', async () => {
-
+test("render of Badge", () => {
   render(
     <Badge
       bgColor= "white"
@@ -19,5 +18,4 @@ test('render of Badge', async () => {
       text= "text"
     />
   );
-
 });

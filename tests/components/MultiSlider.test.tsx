@@ -1,8 +1,9 @@
-import React from 'react';
-import { MultiSlider } from '../../src/core/components';
+import React from "react";
+import { act } from "react-test-renderer";
+import { MultiSlider } from "../../src/core/components";
 import { fireEvent, render } from "../core";
 
-test('render of MultiSlider', async () => {
+test("render of MultiSlider", () => {
   render(
     <MultiSlider
       minValue={1}
@@ -12,7 +13,7 @@ test('render of MultiSlider', async () => {
   );
 });
 
-test('press MultiSlider', async () => {
+test("press MultiSlider", () => {
   
   const { getByTestId } = render(
     <MultiSlider
@@ -23,15 +24,17 @@ test('press MultiSlider', async () => {
     />
   );
 
-  fireEvent(getByTestId('multislider.container'), 'onLayout', { 
-    nativeEvent: { 
-      layout: {
-        height: 300, 
-        width: 400, 
-        x: 0, 
-        y: 0
+  act(() => {
+    fireEvent(getByTestId("multislider.container"), "onLayout", { 
+      nativeEvent: { 
+        layout: {
+          height: 300, 
+          width: 400, 
+          x: 0, 
+          y: 0
+        }
       }
-    }
+    });
   });
 
 });

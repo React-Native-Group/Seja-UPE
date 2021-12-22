@@ -1,9 +1,8 @@
-import React from 'react';
-import { CardBaloonBottom, Paragraph } from '../../src/core/components';
+import React from "react";
 import { render } from "../core";
+import { CardBaloonBottom, Paragraph } from "../../src/core/components";
 
-test('render of CardBaloonBottom', async () => {
-
+test("render of CardBaloonBottom", () => {
   render(
     <CardBaloonBottom>
       <Paragraph
@@ -17,5 +16,4 @@ test('render of CardBaloonBottom', async () => {
       </Paragraph>
     </CardBaloonBottom>
   );
-
 });

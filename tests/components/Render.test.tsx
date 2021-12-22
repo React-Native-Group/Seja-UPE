@@ -1,15 +1,13 @@
 import React from "react";
-import { Paragraph, Render } from "../../src/core/components";
 import { render } from "../core";
+import { Paragraph, Render } from "../../src/core/components";
 
-test('render of Render', async () => {
+test("render of Render", () => {
   render(
-    <Render 
-      if={false}
-    >
+    <Render if={false}>
       <Paragraph>
         Hello!
       </Paragraph>
     </Render>
-  )
+  );
 });

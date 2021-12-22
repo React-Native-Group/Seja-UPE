@@ -1,18 +1,16 @@
-import React from 'react';
+import React from "react";
+import { create } from "../core";
 import { Accordion, Paragraph } from "../../src/core/components";
-import { render } from "../core";
 
-test('render of Acorddion', async () => {
-
-  render(
+test("render of Acorddion", async () => {
+  create(
     <Accordion
       title="Accordion"
       body="body"
       bold={true}
       beginOpen
     >
-        <Paragraph>Hello!</Paragraph>
+      <Paragraph>Hello!</Paragraph>
     </Accordion>
   );
-
 });

@@ -1,11 +1,10 @@
-import React from 'react';
-import { fireEvent, render } from "../core";
-import { Button } from '../../src/core/components';
+import React from "react";
+import { fireEvent, render, act } from "../core";
+import { Button } from "../../src/core/components";
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
 
-test('render of Button', async () => {
-
+test("render of Button", () => {
   render(
     <Button 
       text="button" 
@@ -13,10 +12,9 @@ test('render of Button', async () => {
       color="white"
     />
   );
-
 });
 
-test('press Button', async () => {
+test("press Button", () => {
   
   const { getByTestId } = render(
     <Button 
@@ -27,11 +25,13 @@ test('press Button', async () => {
     />
   );
 
-  fireEvent(getByTestId('button.container'), 'onPress', { 
-    nativeEvent: { 
-      locationX: 100, 
-      locationY: 100 
-    }
+  act(() => {
+    fireEvent(getByTestId("button.container"), "onPress", { 
+      nativeEvent: { 
+        locationX: 100, 
+        locationY: 100 
+      }
+    });
   });
 
 });

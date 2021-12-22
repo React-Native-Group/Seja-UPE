@@ -1,10 +1,10 @@
 import React from "react";
 import { ToggleView } from "../../src/core/components";
-import { fireEvent, render } from "../core";
+import { act, fireEvent, render } from "../core";
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
 
-test('render of ToggleView', async () => {
+test("render of ToggleView", () => {
   render(
     <ToggleView 
       initial={"horizontal"}
@@ -13,7 +13,7 @@ test('render of ToggleView', async () => {
   );
 });
 
-test('press ToggleView', async () => {
+test("press ToggleView", async () => {
   
   const { getByTestId } = render(
     <ToggleView 
@@ -21,12 +21,13 @@ test('press ToggleView', async () => {
       onToggle={() => {}}
     />
   );
-
-  fireEvent(getByTestId('toggleview.container'), 'onPress', { 
-    nativeEvent: { 
-      locationX: 200,
-      locationY: 300
-    }
+  await act(async () => {
+    fireEvent(getByTestId("toggleview.container"), "onPress", { 
+      nativeEvent: { 
+        locationX: 200,
+        locationY: 300
+      }
+    });
   });
 
 });

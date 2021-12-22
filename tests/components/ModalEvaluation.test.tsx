@@ -1,36 +1,29 @@
-import React from 'react';
-import { ModalEvaluation } from '../../src/core/components';
-import { fireEvent, render } from "../core";
+import React from "react";
+import { render } from "../core";
+import { ModalEvaluation } from "../../src/core/components";
 
-test('render of ModalEvaluation', async () => {
+test("render of ModalEvaluation", () => {
   render(
-    <ModalEvaluation 
-      type={'rating'}
-      isOpen={false} 
-      onResult={() => {}}
-    >
-      
-    </ModalEvaluation>
+    <ModalEvaluation
+      type={"rating"}
+      isOpen={true}
+      onResult={() => { }}
+    />
   )
-})
-
-test('press ModalEvaluation', async () => {
-  
-  const { getByTestId } = render(
-    <ModalEvaluation 
-      type={'popularity'}
-      isOpen={false} 
-      onResult={() => {}}
-    >
-      
-    </ModalEvaluation>
-  );
-
-  fireEvent(getByTestId('modalevaluation.clickable'), 'onPress', { 
-    nativeEvent: { 
-      locationX: 200,
-      locationY: 300
-    }
-  });
-
 });
+
+// test("check if like button works in ModalEvaluation", async () => {
+  
+//   const { getByTestId } = render(
+//     <ModalEvaluation
+//       type="popularity"
+//       isOpen={true}
+//       onResult={() => { }}
+//     />
+//   );
+
+//   act(() => {
+//     fireEvent.press(getByTestId("teste"));
+//   });
+
+// });

@@ -1,11 +1,9 @@
-import React from 'react';
-import { HorizontalContent } from '../../src/core/components';
+import React from "react";
 import { render } from "../core";
+import { HorizontalContent } from "../../src/core/components";
 
-test('render of HorizontalContent', async () => {
-
+test("render of HorizontalContent", () => {
   render(
     <HorizontalContent />
   );
-
 });

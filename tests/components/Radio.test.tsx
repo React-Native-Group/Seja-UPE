@@ -1,44 +1,44 @@
 import React from "react";
 import { Radio, useRadioGroup } from "../../src/core/components";
-import { RadioContainer } from "../../src/pages/Survey/styles";
-import { fireEvent, render } from "../core";
-import { renderHook } from '@testing-library/react-hooks'
+import { act, fireEvent, render } from "../core";
+import { renderHook } from "@testing-library/react-hooks"
 
-const radio = renderHook(() => useRadioGroup(5));
-const [group, setGroup] = radio.result.current;
-test('render of Radio', async () => {
-  
+
+test("render of Radio", () => {
+  const {result} = renderHook(() => useRadioGroup(5));
+  const [group, setGroup] = result.current;
+
   render(
-    <RadioContainer>
-      <Radio 
-        reference={group[1]}
-        group={group} 
-        onPress={() => {}} 
-        onHandle={setGroup}      
-        />
-    </RadioContainer>
-  
+    <Radio
+      reference={group[1]}
+      group={group}
+      onPress={() => { }}
+      onHandle={setGroup}
+    />
   );
+
 });
 
-test('press Radio', async () => {
+test("press Radio", () => {
+  const {result} = renderHook(() => useRadioGroup(5));
+  const [group, setGroup] = result.current;
   
   const { getByTestId } = render(
-    <RadioContainer>
-      <Radio 
-        reference={group[1]}
-        group={group} 
-        onPress={() => {}} 
-        onHandle={setGroup}      
-        />
-    </RadioContainer>
+    <Radio
+      reference={group[1]}
+      group={group}
+      onPress={() => { }}
+      onHandle={setGroup}
+    />
   );
 
-  fireEvent(getByTestId('radio.container'), 'onPress', { 
-    nativeEvent: { 
-      locationX: 100, 
-      locationY: 100 
-    }
+  act(() => {
+    fireEvent(getByTestId("radio.container"), "onPress", {
+      nativeEvent: {
+        locationX: 100,
+        locationY: 100
+      }
+    });
   });
 
 });
