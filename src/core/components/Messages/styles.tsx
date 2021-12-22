@@ -17,6 +17,7 @@ export const MessageContainer = styled.View.attrs<ChatProps>(props => props)<Cha
   padding-left: 12px;
   padding-right: 12px;
   max-width: 65%;
+  margin-bottom: ${({ isOwner }) => isOwner ? '0px' : '8px'};
 `;
 
 export const MessageText = styled.Text.attrs<ChatProps>(props => props)<ChatProps>`
@@ -28,7 +29,7 @@ export const MessageText = styled.Text.attrs<ChatProps>(props => props)<ChatProp
 export const ViewAlign = styled.View.attrs<ChatProps>(props => props)<ChatProps>`
   flex: 1;
   flex-direction: row;
-  margin-top: ${({ isOwner }) => isOwner ? 16 : 2}px;
+  margin-top: ${({ isOwner }) => isOwner ? 8 : 2}px;
   align-items: center;
   justify-content: ${({ isOwner }) => isOwner ? "flex-end" : "flex-start"};
 `;
