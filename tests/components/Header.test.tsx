@@ -39,13 +39,13 @@ test('tab press test', async () => {
 
   fireEvent(getByTestId("header.tab"), "onPress", {
     nativeEvent: {
-      locationX: 75, 
-      locationY: 25 
+      locationX: 25, 
+      locationY: 75 
     }
   })
 })
 
-test('theme change test', async () => {
+test('change theme test', async () => {
   const { getByTestId } = render (
     <Header
       canGoBack
@@ -55,7 +55,7 @@ test('theme change test', async () => {
 
   fireEvent(getByTestId("header.theme"), "onPress", {
     nativeEvent: {
-      locationX: 250,
+      locationX: 500,
       locationY: 25
     }
   })
