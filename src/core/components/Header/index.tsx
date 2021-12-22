@@ -49,7 +49,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
           </BackButton>
         </Render>
 
-        <ThemeSwitch activeOpacity={0.7} onPress={changeTheme}>
+        <ThemeSwitch activeOpacity={0.7} onPress={changeTheme} testID="header.theme">
           <FontAwesome5 name="adjust" size={24} color={theme.blue} />
         </ThemeSwitch>
 
