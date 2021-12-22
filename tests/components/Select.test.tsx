@@ -7,6 +7,7 @@ test('render of Select', async () => {
     <Select 
       data={[]}
       placeholder={"Testing..."} 
+      optional={true}
       onSelect={() => {}}    
     />
   );
