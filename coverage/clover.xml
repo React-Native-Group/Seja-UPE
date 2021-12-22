@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1640135076398" clover="3.2.0">
-  <project timestamp="1640135076398" name="All files">
-    <metrics statements="869" coveredstatements="601" conditionals="285" coveredconditionals="126" methods="428" coveredmethods="259" elements="1582" coveredelements="986" complexity="0" loc="869" ncloc="869" packages="52" files="147" classes="147"/>
+<coverage generated="1640135269169" clover="3.2.0">
+  <project timestamp="1640135269169" name="All files">
+    <metrics statements="869" coveredstatements="604" conditionals="285" coveredconditionals="127" methods="428" coveredmethods="260" elements="1582" coveredelements="991" complexity="0" loc="869" ncloc="869" packages="52" files="147" classes="147"/>
     <package name="src.assets">
       <metrics statements="64" coveredstatements="64" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\assets\index.tsx">
@@ -1080,22 +1080,22 @@
       </file>
     </package>
     <package name="src.core.components.ToggleView">
-      <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="4"/>
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="5"/>
       <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ToggleView\index.tsx">
-        <metrics statements="8" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="13" count="42" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
       </file>
       <file name="styles.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\components\ToggleView\styles.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="5" count="42" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.core.components.VerticalContent">
@@ -1325,10 +1325,10 @@
       </file>
       <file name="Theme.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\hooks\Theme.tsx">
         <metrics statements="10" coveredstatements="4" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="1"/>
-        <line num="6" count="61" type="stmt"/>
-        <line num="7" count="61" type="cond" truecount="1" falsecount="1"/>
-        <line num="8" count="61" type="stmt"/>
-        <line num="9" count="61" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="63" type="stmt"/>
+        <line num="7" count="63" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="63" type="stmt"/>
+        <line num="9" count="63" type="cond" truecount="1" falsecount="1"/>
         <line num="13" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
@@ -1346,15 +1346,15 @@
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="20" count="42" type="stmt"/>
         <line num="25" count="42" type="stmt"/>
-        <line num="26" count="48" type="stmt"/>
-        <line num="28" count="48" type="stmt"/>
+        <line num="26" count="49" type="stmt"/>
+        <line num="28" count="49" type="stmt"/>
       </file>
       <file name="Theme.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\providers\Theme.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="40" count="42" type="stmt"/>
         <line num="42" count="42" type="stmt"/>
-        <line num="43" count="47" type="stmt"/>
-        <line num="45" count="47" type="stmt"/>
+        <line num="43" count="48" type="stmt"/>
+        <line num="45" count="48" type="stmt"/>
       </file>
       <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\src\core\providers\index.tsx">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -1463,8 +1463,8 @@
       <file name="index.tsx" path="D:\Engenharia de Software - UPE\5º PERÍODO\Projeto I\Seja UPE\Seja-UPE\tests\core\index.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="13" count="42" type="stmt"/>
-        <line num="14" count="47" type="stmt"/>
-        <line num="26" count="46" type="stmt"/>
+        <line num="14" count="48" type="stmt"/>
+        <line num="26" count="47" type="stmt"/>
         <line num="27" count="42" type="stmt"/>
       </file>
     </package>
