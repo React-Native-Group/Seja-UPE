@@ -2,6 +2,8 @@ import React from "react";
 import { ToggleGroup } from "../../src/core/components";
 import { fireEvent, render } from "../core";
 
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+
 test('render of ToggleGroup', async () => {
   render(
     <ToggleGroup
