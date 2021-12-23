@@ -50,7 +50,7 @@ export const Chart: FunctionComponent<ChartProps> = ({ legend, labels, data}) =>
   }
 
   return (
-    <Container onLayout={onLayoutChange}>
+    <Container onLayout={onLayoutChange} testID="chart.container">
       <LineChart
         bezier 
         data={chartData} 

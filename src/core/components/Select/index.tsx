@@ -40,7 +40,7 @@ export const Select: FunctionComponent<SelectProps> = ({ data, placeholder, opti
       cancelText="Cancelar"
       initValueTextStyle={{color: "#6d6d6d"}}
       initValue={placeholder + (optional ? " (Opcional)" : "")}
-      onChange={onChangeSelection} 
+      onChange={onChangeSelection}
     />
   );
 }

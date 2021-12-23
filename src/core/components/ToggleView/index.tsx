@@ -23,7 +23,7 @@ export const ToggleView: FunctionComponent<ToggleViewProps> = ({ initial, onTogg
   }
 
   return (
-    <Container {...theme} onPress={onPress}>
+    <Container {...theme} onPress={onPress} testID="toggleview.container">
       <FontAwesome5 name={"grip-" + toggle} size={18} color={theme.textColor} />
     </Container>
   );
