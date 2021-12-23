@@ -44,12 +44,12 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
 
       <Container {...theme}>
         <Render if={!!canGoBack}>
-          <BackButton activeOpacity={0.7} onPress={goBack}>
+          <BackButton activeOpacity={0.7} onPress={goBack} testID="header.backbutton">
             <FontAwesome5 name="arrow-left" size={24} color={theme.blue} />
           </BackButton>
         </Render>
 
-        <ThemeSwitch activeOpacity={0.7} onPress={changeTheme}>
+        <ThemeSwitch activeOpacity={0.7} onPress={changeTheme} testID="header.theme">
           <FontAwesome5 name="adjust" size={24} color={theme.blue} />
         </ThemeSwitch>
 
@@ -61,7 +61,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ canGoBack, showTabs, on
 
       <Render if={!!showTabs}>
         <TabsContainer {...theme}>
-          <Tab {...theme} isActive={tabIndex == 0} onPress={() => changeTabs(0)}>
+          <Tab {...theme} isActive={tabIndex == 0} onPress={() => changeTabs(0)} testID="header.tab">
             <TabText {...theme} numberOfLines={1}>Já sei o que quero</TabText>
           </Tab>
           <Tab {...theme} isActive={tabIndex == 1} onPress={() => changeTabs(1)}>

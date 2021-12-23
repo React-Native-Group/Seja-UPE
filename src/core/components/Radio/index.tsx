@@ -43,7 +43,7 @@ export const Radio: FunctionComponent<RadioProps> = ({ reference, group, onPress
   }
 
   return (
-    <Container {...theme} activeOpacity={0.7} onPress={() => radioHandler(reference.index)}>
+    <Container {...theme} activeOpacity={0.7} onPress={() => radioHandler(reference.index)} testID="radio.container">
       <Render if={reference.active}>
         <InnerContainer {...theme} />
       </Render>

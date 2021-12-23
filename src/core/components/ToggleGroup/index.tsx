@@ -22,7 +22,7 @@ export const ToggleGroup: FunctionComponent<ToggleGroupProps> = ({ onChange, ini
 
   return (
     <Container {...theme}>
-      <Toggle isActive={selected == "ssa"} onPress={() => onChangeSelection("ssa")} {...theme}>
+      <Toggle isActive={selected == "ssa"} onPress={() => onChangeSelection("ssa")} {...theme} testID="togglegroup.container">
         <Label isActive={selected == "ssa"} {...theme}>SSA</Label>
       </Toggle>
       <Toggle isActive={selected == "sisu"} onPress={() => onChangeSelection("sisu")} {...theme}>
