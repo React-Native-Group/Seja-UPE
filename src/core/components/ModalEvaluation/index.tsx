@@ -34,16 +34,27 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
   const [thanks, setThanks] = useState(false);
 
   const mutex = useRef(false);
+  const thanksRef = useRef<NodeJS.Timeout>();
+  const openModalRef = useRef<NodeJS.Timeout>();
 
-  useEffect(() => setOpenModal(isOpen), [isOpen]);
+  useEffect(() => {
+    setOpenModal(isOpen);
+    return () => {
+      if (thanksRef.current)
+        clearTimeout(thanksRef.current);
+
+      if (openModalRef.current)
+        clearTimeout(openModalRef.current);
+    }
+  }, [isOpen]);
 
   function onPopularityChoosed(result: "like" | "dislike"){
     if (!mutex.current){
       mutex.current = true;
       setPopularity(result);
       onResult(result);
-      setTimeout(() => setThanks(true), 1000);
-      setTimeout(() => setOpenModal(false), 2500);
+      thanksRef.current = setTimeout(() => setThanks(true), 1000);
+      openModalRef.current = setTimeout(() => setOpenModal(false), 2500);
     }
   }
 
@@ -52,8 +63,8 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
       mutex.current = true;
       setRating(result);
       onResult(result);
-      setTimeout(() => setThanks(true), 1000);
-      setTimeout(() => setOpenModal(false), 2500);
+      thanksRef.current = setTimeout(() => setThanks(true), 1000);
+      openModalRef.current = setTimeout(() => setOpenModal(false), 2500);
     }
   }
 
@@ -85,7 +96,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
                   <Clickable 
                     onPress={() => onPopularityChoosed("like")} 
                     activeOpacity={0.7} 
-                    testID="teste"
+                    testID="modalEvaluation.like"
                   >
                     <Like 
                       name="like1" 
@@ -97,6 +108,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
                   <Clickable 
                     onPress={() => onPopularityChoosed("dislike")} 
                     activeOpacity={0.7}
+                    testID="modalEvaluation.dislike"
                   >
                     <Dislike
                       name="dislike1"
@@ -139,6 +151,7 @@ export const ModalEvaluation: FunctionComponent<ModalEvaluationProps> = ({ type,
                       activeOpacity={0.7} 
                       onPress={() => onRatingChoosed(i+1)} 
                       key={String(i)}
+                      testID={"modalEvaluation.star" + i}
                     >
                       <Star 
                         key={String(i)}
