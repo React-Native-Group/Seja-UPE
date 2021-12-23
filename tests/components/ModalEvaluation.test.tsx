@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "../core";
+import { act, fireEvent, render } from "../core";
 import { ModalEvaluation } from "../../src/core/components";
 
 test("render of ModalEvaluation", () => {
@@ -12,18 +12,50 @@ test("render of ModalEvaluation", () => {
   )
 });
 
-// test("check if like button works in ModalEvaluation", async () => {
+test("check if like button works in ModalEvaluation", async () => {
   
-//   const { getByTestId } = render(
-//     <ModalEvaluation
-//       type="popularity"
-//       isOpen={true}
-//       onResult={() => { }}
-//     />
-//   );
+  const { getByTestId } = render(
+    <ModalEvaluation
+      type="popularity"
+      isOpen={true}
+      onResult={() => { }}
+    />
+  );
 
-//   act(() => {
-//     fireEvent.press(getByTestId("teste"));
-//   });
+  await act(async () => {
+    fireEvent.press(getByTestId("modalEvaluation.like"));
+  });
 
-// });
+});
+
+test("check if dislike button works in ModalEvaluation", async () => {
+  
+  const { getByTestId } = render(
+    <ModalEvaluation
+      type="popularity"
+      isOpen={true}
+      onResult={() => { }}
+    />
+  );
+
+  await act(async () => {
+    fireEvent.press(getByTestId("modalEvaluation.dislike"));
+  });
+
+});
+
+test("check if rating button works in ModalEvaluation", async () => {
+  
+  const { getByTestId } = render(
+    <ModalEvaluation
+      type="rating"
+      isOpen={true}
+      onResult={() => { }}
+    />
+  );
+
+  await act(async () => {
+    fireEvent.press(getByTestId("modalEvaluation.star4"));
+  });
+
+});
