@@ -12,8 +12,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --passWithNoTests",
-    "coverage": "jest --coverage"
+    "test": "jest --passWithNoTests --config jest.config.js --no-cache",
+    "coverage": "jest --coverage --config jest.config.js --no-cache"
   },
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "^2.2.2",

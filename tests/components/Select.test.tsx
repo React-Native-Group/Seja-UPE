@@ -6,26 +6,38 @@ import ModalSelector from "react-native-modal-selector";
 
 test("render of Select", () => {
   render(
-    <Select 
-      data={[{key: 1, label: "Hello"}, {key: 2, label: "Goodbye"}]}
-      placeholder={"Testing..."} 
+    <Select
+      data={[{ key: 1, label: "Hello" }, { key: 2, label: "Goodbye" }]}
+      placeholder={"Testing..."}
       optional={true}
-      onSelect={() => {}}    
+      onSelect={() => { }}
+    />
+  );
+});
+
+test("render of Select non-optional", () => {
+  render(
+    <Select
+      data={[{ key: 1, label: "Hello" }, { key: 2, label: "Goodbye" }]}
+      placeholder={"Testing..."}
+      onSelect={() => { }}
     />
   );
 });
 
 test("select option test", () => {
   function MockedSelect() {
-    return <Select 
-              data={[{key: 1, label: "Hello"}, {key: 2, label: "Goodbye"}]}
-              placeholder={"Testing..."} 
-              optional={true}
-              onSelect={() => {}}
-            />  
+    return (
+      <Select
+        data={[{ key: 1, label: "Hello" }, { key: 2, label: "Goodbye" }]}
+        placeholder={"Testing..."}
+        optional={true}
+        onSelect={() => { }}
+      />
+    );
   };
 
   const tree = create(<MockedSelect />);
   const treeRoot = tree.root;
   fireEvent(treeRoot.findByType(ModalSelector), "change");
-})
+});

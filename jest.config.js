@@ -1,6 +1,18 @@
 module.exports = {
   testTimeout: 20000,
   preset: "jest-expo",
+  coveragePathIgnorePatterns: [
+    "node_modules",
+    "<rootDir>/App.tsx",
+    "__mocks__",
+    ".expo",
+    ".expo-shared",
+    ".github",
+    ".tmp",
+    ".vscode",
+    "<rootDir>/src/core/services",
+    "<rootDir>/src/core/hooks"
+  ],
   moduleDirectories: [
     "node_modules"
   ],
