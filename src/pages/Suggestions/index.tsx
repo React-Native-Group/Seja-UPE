@@ -55,7 +55,8 @@ import {
   SearchButtonSpacer,
   SliderTitle,
   SurveyButtonContainer,
-  ListItemContainer
+  ListItemContainer,
+  SliderContainer
 } from "./styles";
 
 type CourseSuggestionType = {
@@ -248,20 +249,24 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
         <Spacer verticalSpace={4} />
         
         <Render if={toggle == "ssa"}>
-          <MultiSlider 
-            minValue={0} 
-            maxValue={100} 
-            minDistance={10} 
-            onChange={setNoteRange}
-          />
+          <SliderContainer>
+            <MultiSlider 
+              minValue={0} 
+              maxValue={100} 
+              minDistance={10} 
+              onChange={setNoteRange}
+            />
+          </SliderContainer>
         </Render>
         <Render if={toggle == "sisu"}>
-          <MultiSlider 
-            minValue={0} 
-            maxValue={1000} 
-            minDistance={50} 
-            onChange={setNoteRange}
-          />
+          <SliderContainer>
+            <MultiSlider 
+              minValue={0} 
+              maxValue={1000} 
+              minDistance={100} 
+              onChange={setNoteRange}
+            />
+          </SliderContainer>
         </Render>
 
         <Spacer verticalSpace={24} />

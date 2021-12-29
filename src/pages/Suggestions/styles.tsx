@@ -43,3 +43,8 @@ export const ResultsTitleContainer = styled.View`
 export const ListItemContainer = styled.View`
   padding: 12px;
 `;
+
+export const SliderContainer = styled.View`
+  padding-left: 9px;
+  padding-right: 9px;
+`;

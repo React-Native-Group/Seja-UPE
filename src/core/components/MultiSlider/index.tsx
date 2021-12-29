@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { Fragment, FunctionComponent, useEffect, useState } from "react";
 import { LayoutChangeEvent } from "react-native";
 import Slider from "@ptomasroos/react-native-multi-slider";
 
@@ -64,7 +64,8 @@ export const MultiSlider: FunctionComponent<MultiSliderProps> = (props) => {
           onValuesChange={onValueChange}
           minMarkerOverlapDistance={minDistance * scale}
           selectedStyle={{ backgroundColor: theme.blue }}
-          markerStyle={{ backgroundColor: theme.blue }}
+          pressedMarkerStyle={{backgroundColor: theme.blue, width: 20, height: 20 }}
+          markerStyle={{ backgroundColor: theme.blue, width: 18, height: 18 }}
         />
         <Group>
           <Label 
