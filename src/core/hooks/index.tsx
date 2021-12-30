@@ -9,3 +9,4 @@ export * from "./Chat";
 export * from "./Campus";
 export * from "./Survey";
 export * from "./Evaluation";
+export * from "./Scroll";

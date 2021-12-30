@@ -2,10 +2,10 @@ import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import React, { Fragment, FunctionComponent, useRef, useState } from "react";
 
-import { useSurveyResults, useTheme } from "../../core/hooks";
 import { AssetRobotAskingIcon } from "../../assets";
 import { WelcomeNavigationProp } from "../../routes";
 import { getSurveyResults } from "../../core/services";
+import { usePageScroll, useSurveyResults, useTheme } from "../../core/hooks";
 import { Survey as SurveyConfig, SurveyChoices, SurveyType } from "../../core/config";
 import {
   Avatar,
@@ -34,6 +34,7 @@ export interface SurveyProps { }
 export const Survey: FunctionComponent<SurveyProps> = () => {
   const navigation = useNavigation<WelcomeNavigationProp>();
   const [theme] = useTheme();
+  const pageScroll = usePageScroll();
 
   const [progress, setProgress] = useState(1);
   const [questions] = useState<SurveyType>(SurveyConfig);
@@ -53,6 +54,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
     choices.current.pop();
     setProgress(progress-1);
     clearGroup();
+    pageScroll.scrollToTop();
   }
 
   function doSurveyAdvance(isFinished: boolean){    
@@ -66,6 +68,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
     }
     if ((choiceId.current != -1)) {
       choices.current.push(questions[progress - 1].Options[choiceId.current]);
+      pageScroll.scrollToTop();
       if (!isFinished){
         setProgress(progress+1);
         clearGroup();
@@ -80,6 +83,7 @@ export const Survey: FunctionComponent<SurveyProps> = () => {
   return (
     <PageLayout 
       showHeader
+      pageScroll={pageScroll}
     >
       <Progress value={progress} maxValue={maxProgress} />
       <Spacer verticalSpace={16} />

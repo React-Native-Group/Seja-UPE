@@ -7,7 +7,7 @@ import Fab from "react-native-fab";
 import { Header } from "../Header";
 import { Render } from "../Render";
 import { ModalChat } from "../ModalChat";
-import { useEnterScreen, useTheme } from "../../hooks";
+import { PageScrollHook, useEnterScreen, useTheme } from "../../hooks";
 import { AreaView, Center, ScrollableContainer } from "./styles";
 
 export interface PageLayoutProps {
@@ -17,6 +17,7 @@ export interface PageLayoutProps {
   showTabs?: boolean;
   showSpinner?: boolean;
   fabIcon?: keyof typeof FontAwesome.glyphMap;
+  pageScroll?: PageScrollHook;
   onFabClick?: () => void;
   onTabClick?: (e: "suggestions" | "search") => void;
   onBackPressed?: () => boolean;
@@ -30,6 +31,7 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
   const { onFabClick, onTabClick, onBackPressed } = props;
   const { showFab, showTabs, fabIcon, showSpinner } = props;
   const { showHeader, canGoBack, children } = props;
+  const { pageScroll = null } = props;
 
   const { height } = Dimensions.get("window");
 
@@ -59,7 +61,11 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
     <Fragment>
 
       <Render if={!!showSpinner}>
-        <ScrollableContainer nestedScrollEnabled overScrollMode="never">
+        <ScrollableContainer 
+          nestedScrollEnabled 
+          overScrollMode="never" 
+          ref={pageScroll?.setScroll}
+        >
           <Render if={!!showHeader}>
             <Header
               canGoBack={!!canGoBack}
@@ -75,7 +81,11 @@ export const PageLayout: FunctionComponent<PageLayoutProps> = (props) => {
       </Render>
 
       <Render if={!showSpinner}>
-        <ScrollableContainer nestedScrollEnabled overScrollMode="never">
+        <ScrollableContainer 
+          nestedScrollEnabled 
+          overScrollMode="never" 
+          ref={pageScroll?.setScroll}
+        >
           <Render if={!!showHeader}>
             <Header
               canGoBack={!!canGoBack}

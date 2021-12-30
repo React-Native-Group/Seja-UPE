@@ -38,8 +38,6 @@ test("press fab test", async () => {
 
   await act(async () => {
     fireEvent(treeRoot.findByType(Fab), "onClickAction");
-    
   });
-  
   
 });
