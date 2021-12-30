@@ -124,8 +124,7 @@ export const Welcome: FunctionComponent<WelcomeProps> = () => {
             { text: "Sim, por favor", onPress: () => Linking.openURL("market://details?id=com.sejaupe.app") }
           ]);
         setSession({}); //Limpa o cache do aplicativo
-        break;
-      }
+      } break;
       default: {
         Alert.alert(
           "Oops, estamos passando por problemas!",

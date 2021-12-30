@@ -1,6 +1,6 @@
 import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/core";
-import { FlatList } from "react-native";
+import { Alert, FlatList } from "react-native";
 
 import { SurveyValue } from "../../core/config";
 import { Notification } from "../../core/services";
@@ -208,7 +208,15 @@ export const Suggestions: FunctionComponent<SuggestionsProps> = () => {
   }
 
   function onSurveyButtonClick() {
-    navigation.navigate("Survey");
+    Alert.alert(
+      "Funcionalidade Experimental",
+      "O Teste Vocacional é uma funcionalidade que está em fase experimental e teste piloto. " +
+      "Dessa forma, gostaríamos de informá-lo(a) que é possível que os resultados apresentados não " +
+      "estejam em total conformidade com a realidade.",
+      [
+        { text: "Cancelar", style: "cancel" },
+        { text: "Tudo bem!", onPress: () => { navigation.navigate("Survey"); } }
+      ]);
   }
 
   function onCourseClick(courseData: CampusCourse, campusData: CampusWithCourse) {
