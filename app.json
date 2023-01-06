@@ -2,7 +2,7 @@
   "expo": {
     "name": "Seja UPE",
     "slug": "seja-upe-app",
-    "version": "3.272.116",
+    "version": "3.272.118",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -31,7 +31,7 @@
         }
       },
       "package": "com.sejaupe.app",
-      "versionCode": 5
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -57,6 +57,11 @@
           "icon": "./assets/notify-icon.png"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f6714a09-81ff-4975-b651-665e76839da0"
+      }
+    }
   }
 }

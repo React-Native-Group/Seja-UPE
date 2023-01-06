@@ -48,19 +48,19 @@ export const ModalChat: FunctionComponent<ModalChatProps> = ({ isOpen, onClose }
     {
       userPhoto: "https://i.imgur.com/iR7G6ng.png",
       userName: "D-Ritchie",
-      userEmail: "noreply@sejaupe.website",
+      userEmail: "noreply@sejaupe.click",
       text: "Olá, tudo bem?"
     },
     {
       userPhoto: "https://i.imgur.com/iR7G6ng.png",
       userName: "D-Ritchie",
-      userEmail: "noreply@sejaupe.website",
+      userEmail: "noreply@sejaupe.click",
       text: "Aqui você pode interagir com outras pessoas!"
     },
     {
       userPhoto: "https://i.imgur.com/iR7G6ng.png",
       userName: "D-Ritchie",
-      userEmail: "noreply@sejaupe.website",
+      userEmail: "noreply@sejaupe.click",
       text: "Deixe sua mensagem, quem sabe alguém não possa te ajudar?"
     }
   ];

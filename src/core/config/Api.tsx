@@ -1,2 +1,2 @@
-export const WebserviceUrl = "https://sejaupe.website/api/v1";
-export const WebsocketServer = "wss://sejaupe.website";
+export const WebserviceUrl = "https://sejaupe.click/api/v1";
+export const WebsocketServer = "wss://sejaupe.click";
